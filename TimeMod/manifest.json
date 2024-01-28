@@ -1,0 +1,10 @@
+{
+  "Name": "Time Mod",
+  "Author": "NeverToxic",
+  "Version": "0.0.1",
+  "Description": "Manipulate game time.",
+  "UniqueID": "NeverToxic.TimeMod",
+  "EntryDll": "TimeMod.dll",
+  "MinimumApiVersion": "3.0.0",
+  "UpdateKeys": []
+}
