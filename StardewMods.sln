@@ -5,7 +5,9 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishingMod", "StardewFishing\FishingMod.csproj", "{85FC1C47-2272-4DAA-BD42-0E87BD6D883D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMod", "TimeMod\TimeMod.csproj", "{27F6F3ED-0FE0-4C85-802A-C19C61E4E802}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeMod", "TimeMod\TimeMod.csproj", "{27F6F3ED-0FE0-4C85-802A-C19C61E4E802}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Common", "Common\Common.shproj", "{399EE2CB-FC83-44E1-9820-78C0F29AA2BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,5 +29,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2EE2AF65-1966-4F25-9F0B-7206AFE6F4D9}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Common\Common.projitems*{27f6f3ed-0fe0-4c85-802a-c19c61e4e802}*SharedItemsImports = 5
+		Common\Common.projitems*{399ee2cb-fc83-44e1-9820-78c0f29aa2bf}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

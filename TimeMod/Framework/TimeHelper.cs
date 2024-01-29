@@ -1,4 +1,5 @@
-﻿using StardewModdingAPI;
+﻿using Common;
+using StardewModdingAPI;
 using StardewValley;
 
 namespace TimeMod.Framework
@@ -38,45 +39,52 @@ namespace TimeMod.Framework
             LastTimeInterval = Game1.gameTimeInterval;
         }
 
+        private void OnSpeedUpdate()
+        {
+            string Message = I18n.Message_TimeUpdate(Percentage: SpeedPercentage);
+            Monitor.Log(Message, LogLevel.Info);
+            Notifier.HudNotify(Message);
+        }
+
         public void IncreaseSpeed()
         {
             if (SpeedPercentage < 700)
                 SpeedPercentage += 10;
-            Monitor.Log(I18n.Message_TimeUpdate(Percentage: SpeedPercentage), LogLevel.Info);
+                OnSpeedUpdate();
         }
 
         public void DecreaseSpeed()
         {
             if (SpeedPercentage > 10)
                 SpeedPercentage -= 10;
-            Monitor.Log(I18n.Message_TimeUpdate(Percentage: SpeedPercentage), LogLevel.Info);
+                OnSpeedUpdate();
         }
 
         public void ResetSpeed()
         {
             SpeedPercentage = Config.DefaultSpeedPercentage;
-            Monitor.Log(I18n.Message_TimeUpdate(Percentage: SpeedPercentage), LogLevel.Info);
+            OnSpeedUpdate();
         }
 
         public void SetHalfSpeed()
         {
             SpeedPercentage = 50;
-            Monitor.Log(I18n.Message_TimeUpdate(Percentage: SpeedPercentage), LogLevel.Info);
+            OnSpeedUpdate();
         }
 
         public void SetDoubleSpeed()
         {
             SpeedPercentage = 200;
-            Monitor.Log(I18n.Message_TimeUpdate(Percentage: SpeedPercentage), LogLevel.Info);
+            OnSpeedUpdate();
         }
 
         public void ToggleFreeze()
         {
             TimeFrozen = !TimeFrozen;
-            if (TimeFrozen)
-                Monitor.Log(I18n.Message_TimeFrozen(), LogLevel.Info);
-            else
-                Monitor.Log(I18n.Message_TimeUnfrozen(), LogLevel.Info);
+
+            string Message = (TimeFrozen) ? I18n.Message_TimeFrozen() : I18n.Message_TimeUnfrozen();
+            Monitor.Log(Message, LogLevel.Info);
+            Notifier.HudNotify(Message);
         }
     }
 }
