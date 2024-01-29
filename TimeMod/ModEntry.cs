@@ -1,6 +1,5 @@
 ﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
-using StardewValley;
 using TimeMod.Framework;
 
 namespace TimeMod
@@ -9,21 +8,14 @@ namespace TimeMod
     {
         private ModConfig Config;
 
-        private int LastTimeInterval;
-
-        private int SpeedPercentage;
-
-        private bool TimeFrozen;
+        private TimeHelper TimeHelper;
 
         public override void Entry(IModHelper helper)
         {
             I18n.Init(helper.Translation);
 
             Config = helper.ReadConfig<ModConfig>();
-
-            LastTimeInterval = 0;
-            SpeedPercentage = Config.DefaultSpeedPercentage;
-            TimeFrozen = false;
+            TimeHelper = new(Config, Monitor);
 
             helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
@@ -43,7 +35,7 @@ namespace TimeMod
                 return;
             }
 
-            UpdateTime();
+            TimeHelper.Update();
         }
 
         private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)
@@ -54,78 +46,23 @@ namespace TimeMod
             if (Config.Keys.ReloadConfig.JustPressed())
                 ReloadConfig();
             else if (Config.Keys.IncreaseSpeed.JustPressed())
-                IncreaseSpeed();
+                TimeHelper.IncreaseSpeed();
             else if (Config.Keys.DecreaseSpeed.JustPressed())
-                DecreaseSpeed();
+                TimeHelper.DecreaseSpeed();
             else if (Config.Keys.ResetSpeed.JustPressed())
-                ResetSpeed();
+                TimeHelper.ResetSpeed();
             else if (Config.Keys.DoubleSpeed.JustPressed())
-                SetDoubleSpeed();
+                TimeHelper.SetDoubleSpeed();
             else if (Config.Keys.HalfSpeed.JustPressed())
-                SetHalfSpeed();
+                TimeHelper.SetHalfSpeed();
             else if (Config.Keys.ToggleFreeze.JustPressed())
-                ToggleFreeze();
-        }
-
-        private void UpdateTime()
-        {
-            if (TimeFrozen)
-                Game1.gameTimeInterval = 0;
-
-            if (Game1.gameTimeInterval < LastTimeInterval)
-            {
-                LastTimeInterval = 0;
-            }
-
-            Game1.gameTimeInterval = (int)(LastTimeInterval + (Game1.gameTimeInterval - LastTimeInterval) * SpeedPercentage / 100);
-            LastTimeInterval = Game1.gameTimeInterval;
+                TimeHelper.ToggleFreeze();
         }
 
         private void ReloadConfig()
         {
             Config = Helper.ReadConfig<ModConfig>();
             Monitor.Log(I18n.Message_ConfigReloaded(), LogLevel.Info);
-        }
-
-        private void IncreaseSpeed()
-        {
-            if (SpeedPercentage < 700)
-                SpeedPercentage += 10;
-            Monitor.Log(I18n.Message_TimeUpdate(Percentage: SpeedPercentage), LogLevel.Info);
-        }
-        
-        private void DecreaseSpeed()
-        {
-            if (SpeedPercentage > 10)
-                SpeedPercentage -= 10;
-            Monitor.Log(I18n.Message_TimeUpdate(Percentage: SpeedPercentage), LogLevel.Info);
-        }
-
-        private void ResetSpeed()
-        {
-            SpeedPercentage = Config.DefaultSpeedPercentage;
-            Monitor.Log(I18n.Message_TimeUpdate(Percentage: SpeedPercentage), LogLevel.Info);
-        }
-
-        private void SetHalfSpeed()
-        {
-            SpeedPercentage = 50;
-            Monitor.Log(I18n.Message_TimeUpdate(Percentage: SpeedPercentage), LogLevel.Info);
-        }
-
-        private void SetDoubleSpeed()
-        {
-            SpeedPercentage = 200;
-            Monitor.Log(I18n.Message_TimeUpdate(Percentage: SpeedPercentage), LogLevel.Info);
-        }
-
-        private void ToggleFreeze()
-        {
-            TimeFrozen = !TimeFrozen;
-            if (TimeFrozen)
-                Monitor.Log(I18n.Message_TimeFrozen(), LogLevel.Info);
-            else
-                Monitor.Log(I18n.Message_TimeUnfrozen(), LogLevel.Info);
         }
     }
 }
