@@ -35,7 +35,7 @@ namespace TimeMod.Framework
                 LastTimeInterval = 0;
             }
 
-            Game1.gameTimeInterval = (int)(LastTimeInterval + (Game1.gameTimeInterval - LastTimeInterval) * SpeedPercentage / 100);
+            Game1.gameTimeInterval = LastTimeInterval + (Game1.gameTimeInterval - LastTimeInterval) * SpeedPercentage / 100;
             LastTimeInterval = Game1.gameTimeInterval;
         }
 
@@ -43,12 +43,12 @@ namespace TimeMod.Framework
         {
             string Message = I18n.Message_TimeUpdate(Percentage: SpeedPercentage);
             Monitor.Log(Message, LogLevel.Info);
-            Notifier.HudNotify(Message);
+            Notifier.DisplayHudNotification(Message);
         }
 
         public void IncreaseSpeed()
         {
-            if (SpeedPercentage < 700)
+            if (SpeedPercentage < 690)
                 SpeedPercentage += 10;
                 OnSpeedUpdate();
         }
@@ -84,7 +84,7 @@ namespace TimeMod.Framework
 
             string Message = (TimeFrozen) ? I18n.Message_TimeFrozen() : I18n.Message_TimeUnfrozen();
             Monitor.Log(Message, LogLevel.Info);
-            Notifier.HudNotify(Message);
+            Notifier.DisplayHudNotification(Message, LogLevel: LogLevel.Warn);
         }
     }
 }

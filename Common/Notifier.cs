@@ -1,12 +1,18 @@
-﻿using StardewValley;
+﻿using StardewModdingAPI;
+using StardewValley;
 
 namespace Common
 {
     public class Notifier
     {
-        public static void HudNotify(string Message, float duration = 2500)
+        public static void DisplayHudNotification(string Message, float Duration = 2500, LogLevel LogLevel = LogLevel.Info)
         {
-            Game1.addHUDMessage(new HUDMessage(Message, HUDMessage.newQuest_type) { timeLeft = duration });
+            if (LogLevel is LogLevel.Warn || LogLevel is LogLevel.Alert)
+                Game1.addHUDMessage(new HUDMessage(Message, HUDMessage.newQuest_type) { timeLeft = Duration });
+            else if (LogLevel is LogLevel.Error)
+                Game1.addHUDMessage(new HUDMessage(Message, HUDMessage.error_type) { timeLeft = Duration });
+            else
+                Game1.addHUDMessage(new HUDMessage(Message, HUDMessage.newQuest_type) { timeLeft = Duration, noIcon = true });
         }
     }
 }

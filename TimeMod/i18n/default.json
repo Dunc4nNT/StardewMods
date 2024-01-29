@@ -1,7 +1,7 @@
 {
   "message.config-reloaded": "Configuration file reloaded.",
-  "message.not-main-player-warning": "Disabled mod. Only the host can manipulate game time.",
-  "message.time-update": "Speed is {{Percentage}}%",
-  "message.time-unfrozen": "Time is resumed.",
-  "message.time-frozen": "Time is frozen."
+  "message.not-main-player-warning": "Disabled mod; only the host can manipulate game time.",
+  "message.time-update": "Set time speed to {{Percentage}}%",
+  "message.time-unfrozen": "Time is now resumed.",
+  "message.time-frozen": "Time is now frozen."
 }
