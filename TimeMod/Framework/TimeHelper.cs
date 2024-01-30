@@ -18,8 +18,8 @@ namespace TimeMod.Framework
 
         public TimeHelper(ModConfig config, IMonitor monitor)
         {
-            this._config = config;
-            this._monitor = monitor;
+            _config = config;
+            _monitor = monitor;
             _lastTimeInterval = 0;
             _speedPercentage = config.DefaultSpeedPercentage;
             _timeFrozen = false;
@@ -82,7 +82,7 @@ namespace TimeMod.Framework
         {
             _timeFrozen = !_timeFrozen;
 
-            string message = (_timeFrozen) ? I18n.Message_TimeFrozen() : I18n.Message_TimeUnfrozen();
+            string message = _timeFrozen ? I18n.Message_TimeFrozen() : I18n.Message_TimeUnfrozen();
             _monitor.Log(message, LogLevel.Info);
             Notifier.DisplayHudNotification(message, logLevel: LogLevel.Warn);
         }
