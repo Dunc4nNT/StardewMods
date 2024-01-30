@@ -6,16 +6,16 @@ namespace TimeMod
 {
     internal class ModEntry : Mod
     {
-        private ModConfig Config;
+        private ModConfig _config;
 
-        private TimeHelper TimeHelper;
+        private TimeHelper _timeHelper;
 
         public override void Entry(IModHelper helper)
         {
             I18n.Init(helper.Translation);
 
-            Config = helper.ReadConfig<ModConfig>();
-            TimeHelper = new(Config, Monitor);
+            _config = helper.ReadConfig<ModConfig>();
+            _timeHelper = new(_config, Monitor);
 
             helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
@@ -35,7 +35,7 @@ namespace TimeMod
                 return;
             }
 
-            TimeHelper.Update();
+            _timeHelper.Update();
         }
 
         private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)
@@ -43,25 +43,25 @@ namespace TimeMod
             if (!Context.IsWorldReady || !Context.IsMainPlayer)
                 return;
 
-            if (Config.Keys.ReloadConfig.JustPressed())
+            if (_config.Keys.ReloadConfig.JustPressed())
                 ReloadConfig();
-            else if (Config.Keys.IncreaseSpeed.JustPressed())
-                TimeHelper.IncreaseSpeed();
-            else if (Config.Keys.DecreaseSpeed.JustPressed())
-                TimeHelper.DecreaseSpeed();
-            else if (Config.Keys.ResetSpeed.JustPressed())
-                TimeHelper.ResetSpeed();
-            else if (Config.Keys.DoubleSpeed.JustPressed())
-                TimeHelper.SetDoubleSpeed();
-            else if (Config.Keys.HalfSpeed.JustPressed())
-                TimeHelper.SetHalfSpeed();
-            else if (Config.Keys.ToggleFreeze.JustPressed())
-                TimeHelper.ToggleFreeze();
+            else if (_config.Keys.IncreaseSpeed.JustPressed())
+                _timeHelper.IncreaseSpeed();
+            else if (_config.Keys.DecreaseSpeed.JustPressed())
+                _timeHelper.DecreaseSpeed();
+            else if (_config.Keys.ResetSpeed.JustPressed())
+                _timeHelper.ResetSpeed();
+            else if (_config.Keys.DoubleSpeed.JustPressed())
+                _timeHelper.SetDoubleSpeed();
+            else if (_config.Keys.HalfSpeed.JustPressed())
+                _timeHelper.SetHalfSpeed();
+            else if (_config.Keys.ToggleFreeze.JustPressed())
+                _timeHelper.ToggleFreeze();
         }
 
         private void ReloadConfig()
         {
-            Config = Helper.ReadConfig<ModConfig>();
+            _config = Helper.ReadConfig<ModConfig>();
             Monitor.Log(I18n.Message_ConfigReloaded(), LogLevel.Info);
         }
     }

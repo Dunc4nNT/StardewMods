@@ -5,34 +5,35 @@ namespace FishingMod.Framework
 {
     internal class SBobberBar
     {
-        private readonly IReflectedField<float> DistanceFromCatchingField;
-        private readonly IReflectedField<bool> TreasureField;
-        private readonly IReflectedField<bool> TreasureCaughtField;
+        private readonly IReflectedField<float> _distanceFromCatchingField;
+        private readonly IReflectedField<bool> _treasureField;
+        private readonly IReflectedField<bool> _treasureCaughtField;
 
         public BobberBar Instance { get; set; }
 
-        public float DistanceFromCatching { 
-            get => DistanceFromCatchingField.GetValue();
-            set => DistanceFromCatchingField.SetValue(value);
+        public float DistanceFromCatching
+        {
+            get => _distanceFromCatchingField.GetValue();
+            set => _distanceFromCatchingField.SetValue(value);
         }
         public bool Treasure
         {
-            get => TreasureField.GetValue();
-            set => TreasureField.SetValue(value);
+            get => _treasureField.GetValue();
+            set => _treasureField.SetValue(value);
         }
         public bool TreasureCaught
         {
-            get => TreasureCaughtField.GetValue();
-            set => TreasureCaughtField.SetValue(value);
+            get => _treasureCaughtField.GetValue();
+            set => _treasureCaughtField.SetValue(value);
         }
 
         public SBobberBar(BobberBar instance, IReflectionHelper reflection)
         {
             Instance = instance;
 
-            DistanceFromCatchingField = reflection.GetField<float>(instance, "distanceFromCatching");
-            TreasureField = reflection.GetField<bool>(instance, "treasure");
-            TreasureCaughtField = reflection.GetField<bool>(instance, "treasureCaught");
+            _distanceFromCatchingField = reflection.GetField<float>(instance, "distanceFromCatching");
+            _treasureField = reflection.GetField<bool>(instance, "treasure");
+            _treasureCaughtField = reflection.GetField<bool>(instance, "treasureCaught");
         }
     }
 }

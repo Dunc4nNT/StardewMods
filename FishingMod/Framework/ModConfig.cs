@@ -6,6 +6,6 @@ namespace FishingMod.Framework
     {
         public KeybindList ReloadConfigButton { get; set; } = KeybindList.Parse("F5");
 
-        public bool InstantCatchFish { get; set; } = false;
+        public bool InstantCatchFish { get; set; } = true;
     }
 }

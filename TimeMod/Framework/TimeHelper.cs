@@ -6,85 +6,85 @@ namespace TimeMod.Framework
 {
     internal class TimeHelper
     {
-        private readonly ModConfig Config;
+        private readonly ModConfig _config;
 
-        private readonly IMonitor Monitor;
+        private readonly IMonitor _monitor;
 
-        private int LastTimeInterval;
+        private int _lastTimeInterval;
 
-        private int SpeedPercentage;
+        private int _speedPercentage;
 
-        private bool TimeFrozen;
+        private bool _timeFrozen;
 
-        public TimeHelper(ModConfig Config, IMonitor Monitor)
+        public TimeHelper(ModConfig config, IMonitor monitor)
         {
-            this.Config = Config;
-            this.Monitor = Monitor;
-            LastTimeInterval = 0;
-            SpeedPercentage = Config.DefaultSpeedPercentage;
-            TimeFrozen = false;
+            this._config = config;
+            this._monitor = monitor;
+            _lastTimeInterval = 0;
+            _speedPercentage = config.DefaultSpeedPercentage;
+            _timeFrozen = false;
         }
 
         public void Update()
         {
-            if (TimeFrozen)
+            if (_timeFrozen)
                 Game1.gameTimeInterval = 0;
 
-            if (Game1.gameTimeInterval < LastTimeInterval)
+            if (Game1.gameTimeInterval < _lastTimeInterval)
             {
-                LastTimeInterval = 0;
+                _lastTimeInterval = 0;
             }
 
-            Game1.gameTimeInterval = LastTimeInterval + (Game1.gameTimeInterval - LastTimeInterval) * SpeedPercentage / 100;
-            LastTimeInterval = Game1.gameTimeInterval;
+            Game1.gameTimeInterval = _lastTimeInterval + (Game1.gameTimeInterval - _lastTimeInterval) * _speedPercentage / 100;
+            _lastTimeInterval = Game1.gameTimeInterval;
         }
 
         private void OnSpeedUpdate()
         {
-            string Message = I18n.Message_TimeUpdate(Percentage: SpeedPercentage);
-            Monitor.Log(Message, LogLevel.Info);
-            Notifier.DisplayHudNotification(Message);
+            string message = I18n.Message_TimeUpdate(Percentage: _speedPercentage);
+            _monitor.Log(message, LogLevel.Info);
+            Notifier.DisplayHudNotification(message);
         }
 
         public void IncreaseSpeed()
         {
-            if (SpeedPercentage < 690)
-                SpeedPercentage += 10;
-                OnSpeedUpdate();
+            if (_speedPercentage < 690)
+                _speedPercentage += 10;
+            OnSpeedUpdate();
         }
 
         public void DecreaseSpeed()
         {
-            if (SpeedPercentage > 10)
-                SpeedPercentage -= 10;
-                OnSpeedUpdate();
+            if (_speedPercentage > 10)
+                _speedPercentage -= 10;
+            OnSpeedUpdate();
         }
 
         public void ResetSpeed()
         {
-            SpeedPercentage = Config.DefaultSpeedPercentage;
+            _speedPercentage = _config.DefaultSpeedPercentage;
             OnSpeedUpdate();
         }
 
         public void SetHalfSpeed()
         {
-            SpeedPercentage = 50;
+            _speedPercentage = 50;
             OnSpeedUpdate();
         }
 
         public void SetDoubleSpeed()
         {
-            SpeedPercentage = 200;
+            _speedPercentage = 200;
             OnSpeedUpdate();
         }
 
         public void ToggleFreeze()
         {
-            TimeFrozen = !TimeFrozen;
+            _timeFrozen = !_timeFrozen;
 
-            string Message = (TimeFrozen) ? I18n.Message_TimeFrozen() : I18n.Message_TimeUnfrozen();
-            Monitor.Log(Message, LogLevel.Info);
-            Notifier.DisplayHudNotification(Message, LogLevel: LogLevel.Warn);
+            string message = (_timeFrozen) ? I18n.Message_TimeFrozen() : I18n.Message_TimeUnfrozen();
+            _monitor.Log(message, LogLevel.Info);
+            Notifier.DisplayHudNotification(message, logLevel: LogLevel.Warn);
         }
     }
 }

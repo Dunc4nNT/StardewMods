@@ -1,21 +1,21 @@
-﻿using StardewModdingAPI;
+﻿using FishingMod.Framework;
+using StardewModdingAPI;
 using StardewModdingAPI.Events;
-using StardewValley.Menus;
 using StardewModdingAPI.Utilities;
-using FishingMod.Framework;
+using StardewValley.Menus;
 
 
 namespace FishingMod
 {
-    internal sealed class ModEntry: Mod
+    internal sealed class ModEntry : Mod
     {
-        private ModConfig Config;
+        private ModConfig _config;
 
-        private readonly PerScreen<SBobberBar> Bobber = new();
+        private readonly PerScreen<SBobberBar> _bobber = new();
 
         public override void Entry(IModHelper helper)
         {
-            Config = helper.ReadConfig<ModConfig>();
+            _config = helper.ReadConfig<ModConfig>();
 
             helper.Events.Display.MenuChanged += OnMenuChanged;
             helper.Events.Input.ButtonsChanged += OnButtonsChanged;
@@ -31,9 +31,9 @@ namespace FishingMod
 
         private void OnFishingStart(BobberBar bar)
         {
-            SBobberBar bobber = Bobber.Value = new SBobberBar(bar, Helper.Reflection);
+            SBobberBar bobber = _bobber.Value = new SBobberBar(bar, Helper.Reflection);
 
-            if (Config.InstantCatchFish)
+            if (_config.InstantCatchFish)
             {
                 if (bobber.Treasure)
                     bobber.TreasureCaught = true;
@@ -44,7 +44,7 @@ namespace FishingMod
 
         private void OnFishingStop()
         {
-            Bobber.Value = null;
+            _bobber.Value = null;
         }
 
         private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)
@@ -52,8 +52,8 @@ namespace FishingMod
             if (!Context.IsWorldReady)
                 return;
 
-            if (Config.ReloadConfigButton.JustPressed())
-                Config = Helper.ReadConfig<ModConfig>();
+            if (_config.ReloadConfigButton.JustPressed())
+                _config = Helper.ReadConfig<ModConfig>();
         }
     }
 }
