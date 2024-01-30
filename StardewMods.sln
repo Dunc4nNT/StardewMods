@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishingMod", "StardewFishing\FishingMod.csproj", "{85FC1C47-2272-4DAA-BD42-0E87BD6D883D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishingMod", "FishingMod\FishingMod.csproj", "{85FC1C47-2272-4DAA-BD42-0E87BD6D883D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeMod", "TimeMod\TimeMod.csproj", "{27F6F3ED-0FE0-4C85-802A-C19C61E4E802}"
 EndProject
