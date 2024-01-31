@@ -274,6 +274,7 @@ dotnet_naming_style.pascal_case_style.capitalization = pascal_case
 # Styling analyzer
 dotnet_diagnostic.IDE0004.severity = suggestion
 dotnet_diagnostic.IDE0047.severity = suggestion
+dotnet_diagnostic.IDE0090.severity = suggestion
 
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = end_of_line
