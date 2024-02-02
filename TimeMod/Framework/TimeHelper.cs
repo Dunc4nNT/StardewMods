@@ -17,7 +17,7 @@ namespace TimeMod.Framework
             get => this._speedPercentage;
             set
             {
-                if (value > 0 && value <= 700)
+                if (value is > 0 and <= 700)
                 {
                     this._speedPercentage = value;
                     this.OnSpeedUpdate();
@@ -45,7 +45,7 @@ namespace TimeMod.Framework
                 this._lastTimeInterval = 0;
             }
 
-            Game1.gameTimeInterval = this._lastTimeInterval + (Game1.gameTimeInterval - this._lastTimeInterval) * this.SpeedPercentage / 100;
+            Game1.gameTimeInterval = this._lastTimeInterval + ((Game1.gameTimeInterval - this._lastTimeInterval) * this.SpeedPercentage / 100);
             this._lastTimeInterval = Game1.gameTimeInterval;
         }
 
