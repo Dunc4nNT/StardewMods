@@ -13,18 +13,18 @@ namespace FishingMod.Framework
 
         public float DistanceFromCatching
         {
-            get => _distanceFromCatchingField.GetValue();
-            set => _distanceFromCatchingField.SetValue(value);
+            get => this._distanceFromCatchingField.GetValue();
+            set => this._distanceFromCatchingField.SetValue(value);
         }
         public bool Treasure
         {
-            get => _treasureField.GetValue();
-            set => _treasureField.SetValue(value);
+            get => this._treasureField.GetValue();
+            set => this._treasureField.SetValue(value);
         }
         public bool TreasureCaught
         {
-            get => _treasureCaughtField.GetValue();
-            set => _treasureCaughtField.SetValue(value);
+            get => this._treasureCaughtField.GetValue();
+            set => this._treasureCaughtField.SetValue(value);
         }
     }
 }

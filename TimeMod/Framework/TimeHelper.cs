@@ -14,83 +14,83 @@ namespace TimeMod.Framework
 
         private int SpeedPercentage
         {
-            get => _speedPercentage;
+            get => this._speedPercentage;
             set
             {
                 if (value > 0 && value <= 700)
                 {
-                    _speedPercentage = value;
-                    OnSpeedUpdate();
+                    this._speedPercentage = value;
+                    this.OnSpeedUpdate();
                 }
             }
         }
 
         private bool IsTimeFrozen
         {
-            get => _istimeFrozen;
+            get => this._istimeFrozen;
             set
             {
-                _istimeFrozen = value;
-                OnFreezeUpdate();
+                this._istimeFrozen = value;
+                this.OnFreezeUpdate();
             }
         }
 
         public void Update()
         {
-            if (_istimeFrozen)
+            if (this._istimeFrozen)
                 Game1.gameTimeInterval = 0;
 
-            if (Game1.gameTimeInterval < _lastTimeInterval)
+            if (Game1.gameTimeInterval < this._lastTimeInterval)
             {
-                _lastTimeInterval = 0;
+                this._lastTimeInterval = 0;
             }
 
-            Game1.gameTimeInterval = _lastTimeInterval + (Game1.gameTimeInterval - _lastTimeInterval) * SpeedPercentage / 100;
-            _lastTimeInterval = Game1.gameTimeInterval;
+            Game1.gameTimeInterval = this._lastTimeInterval + (Game1.gameTimeInterval - this._lastTimeInterval) * this.SpeedPercentage / 100;
+            this._lastTimeInterval = Game1.gameTimeInterval;
         }
 
         private void OnSpeedUpdate()
         {
-            string message = I18n.Message_TimeUpdate(Percentage: SpeedPercentage);
+            string message = I18n.Message_TimeUpdate(Percentage: this.SpeedPercentage);
             monitor.Log(message, LogLevel.Info);
             Notifier.DisplayHudNotification(message);
         }
 
         private void OnFreezeUpdate()
         {
-            string message = IsTimeFrozen ? I18n.Message_TimeFrozen() : I18n.Message_TimeUnfrozen();
+            string message = this.IsTimeFrozen ? I18n.Message_TimeFrozen() : I18n.Message_TimeUnfrozen();
             monitor.Log(message, LogLevel.Info);
             Notifier.DisplayHudNotification(message, logLevel: LogLevel.Warn);
         }
 
         public void IncreaseSpeed()
         {
-            SpeedPercentage += 10;
+            this.SpeedPercentage += 10;
         }
 
         public void DecreaseSpeed()
         {
-            SpeedPercentage -= 10;
+            this.SpeedPercentage -= 10;
         }
 
         public void ResetSpeed()
         {
-            SpeedPercentage = config.DefaultSpeedPercentage;
+            this.SpeedPercentage = config.DefaultSpeedPercentage;
         }
 
         public void SetHalfSpeed()
         {
-            SpeedPercentage = 50;
+            this.SpeedPercentage = 50;
         }
 
         public void SetDoubleSpeed()
         {
-            SpeedPercentage = 200;
+            this.SpeedPercentage = 200;
         }
 
         public void ToggleFreeze()
         {
-            IsTimeFrozen = !IsTimeFrozen;
+            this.IsTimeFrozen = !this.IsTimeFrozen;
         }
     }
 }
