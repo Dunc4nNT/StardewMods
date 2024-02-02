@@ -8,6 +8,8 @@ namespace TimeMod
     {
         private ModConfig _config;
 
+        private ModConfigKeys Keys => _config.Keys;
+
         private TimeHelper _timeHelper;
 
         public override void Entry(IModHelper helper)
@@ -43,19 +45,19 @@ namespace TimeMod
             if (!Context.IsWorldReady || !Context.IsMainPlayer)
                 return;
 
-            if (_config.Keys.ReloadConfig.JustPressed())
+            if (Keys.ReloadConfig.JustPressed())
                 ReloadConfig();
-            else if (_config.Keys.IncreaseSpeed.JustPressed())
+            else if (Keys.IncreaseSpeed.JustPressed())
                 _timeHelper.IncreaseSpeed();
-            else if (_config.Keys.DecreaseSpeed.JustPressed())
+            else if (Keys.DecreaseSpeed.JustPressed())
                 _timeHelper.DecreaseSpeed();
-            else if (_config.Keys.ResetSpeed.JustPressed())
+            else if (Keys.ResetSpeed.JustPressed())
                 _timeHelper.ResetSpeed();
-            else if (_config.Keys.DoubleSpeed.JustPressed())
+            else if (Keys.DoubleSpeed.JustPressed())
                 _timeHelper.SetDoubleSpeed();
-            else if (_config.Keys.HalfSpeed.JustPressed())
+            else if (Keys.HalfSpeed.JustPressed())
                 _timeHelper.SetHalfSpeed();
-            else if (_config.Keys.ToggleFreeze.JustPressed())
+            else if (Keys.ToggleFreeze.JustPressed())
                 _timeHelper.ToggleFreeze();
         }
 

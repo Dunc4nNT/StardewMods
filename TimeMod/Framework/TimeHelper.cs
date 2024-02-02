@@ -4,17 +4,13 @@ using StardewValley;
 
 namespace TimeMod.Framework
 {
-    internal class TimeHelper
+    internal class TimeHelper(ModConfig config, IMonitor monitor)
     {
-        private readonly ModConfig _config;
+        private int _lastTimeInterval = 0;
 
-        private readonly IMonitor _monitor;
+        private int _speedPercentage = config.DefaultSpeedPercentage;
 
-        private int _lastTimeInterval;
-
-        private int _speedPercentage;
-
-        private bool _istimeFrozen;
+        private bool _istimeFrozen = false;
 
         private int SpeedPercentage
         {
@@ -39,15 +35,6 @@ namespace TimeMod.Framework
             }
         }
 
-        public TimeHelper(ModConfig config, IMonitor monitor)
-        {
-            _config = config;
-            _monitor = monitor;
-            _lastTimeInterval = 0;
-            _speedPercentage = config.DefaultSpeedPercentage;
-            _istimeFrozen = false;
-        }
-
         public void Update()
         {
             if (_istimeFrozen)
@@ -65,14 +52,14 @@ namespace TimeMod.Framework
         private void OnSpeedUpdate()
         {
             string message = I18n.Message_TimeUpdate(Percentage: SpeedPercentage);
-            _monitor.Log(message, LogLevel.Info);
+            monitor.Log(message, LogLevel.Info);
             Notifier.DisplayHudNotification(message);
         }
 
         private void OnFreezeUpdate()
         {
             string message = IsTimeFrozen ? I18n.Message_TimeFrozen() : I18n.Message_TimeUnfrozen();
-            _monitor.Log(message, LogLevel.Info);
+            monitor.Log(message, LogLevel.Info);
             Notifier.DisplayHudNotification(message, logLevel: LogLevel.Warn);
         }
 
@@ -88,7 +75,7 @@ namespace TimeMod.Framework
 
         public void ResetSpeed()
         {
-            SpeedPercentage = _config.DefaultSpeedPercentage;
+            SpeedPercentage = config.DefaultSpeedPercentage;
         }
 
         public void SetHalfSpeed()
