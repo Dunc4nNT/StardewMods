@@ -4,30 +4,40 @@ using StardewValley;
 
 namespace TimeMod.Framework
 {
-    internal class TimeHelper
+    internal class TimeHelper(ModConfig config, IMonitor monitor)
     {
-        private readonly ModConfig _config;
+        private int _lastTimeInterval = 0;
 
-        private readonly IMonitor _monitor;
+        private int _speedPercentage = config.DefaultSpeedPercentage;
 
-        private int _lastTimeInterval;
+        private bool _istimeFrozen = false;
 
-        private int _speedPercentage;
-
-        private bool _timeFrozen;
-
-        public TimeHelper(ModConfig config, IMonitor monitor)
+        private int SpeedPercentage
         {
-            _config = config;
-            _monitor = monitor;
-            _lastTimeInterval = 0;
-            _speedPercentage = config.DefaultSpeedPercentage;
-            _timeFrozen = false;
+            get => _speedPercentage;
+            set
+            {
+                if (value > 0 && value <= 700)
+                {
+                    _speedPercentage = value;
+                    OnSpeedUpdate();
+                }
+            }
+        }
+
+        private bool IsTimeFrozen
+        {
+            get => _istimeFrozen;
+            set
+            {
+                _istimeFrozen = value;
+                OnFreezeUpdate();
+            }
         }
 
         public void Update()
         {
-            if (_timeFrozen)
+            if (_istimeFrozen)
                 Game1.gameTimeInterval = 0;
 
             if (Game1.gameTimeInterval < _lastTimeInterval)
@@ -35,56 +45,52 @@ namespace TimeMod.Framework
                 _lastTimeInterval = 0;
             }
 
-            Game1.gameTimeInterval = _lastTimeInterval + (Game1.gameTimeInterval - _lastTimeInterval) * _speedPercentage / 100;
+            Game1.gameTimeInterval = _lastTimeInterval + (Game1.gameTimeInterval - _lastTimeInterval) * SpeedPercentage / 100;
             _lastTimeInterval = Game1.gameTimeInterval;
         }
 
         private void OnSpeedUpdate()
         {
-            string message = I18n.Message_TimeUpdate(Percentage: _speedPercentage);
-            _monitor.Log(message, LogLevel.Info);
+            string message = I18n.Message_TimeUpdate(Percentage: SpeedPercentage);
+            monitor.Log(message, LogLevel.Info);
             Notifier.DisplayHudNotification(message);
+        }
+
+        private void OnFreezeUpdate()
+        {
+            string message = IsTimeFrozen ? I18n.Message_TimeFrozen() : I18n.Message_TimeUnfrozen();
+            monitor.Log(message, LogLevel.Info);
+            Notifier.DisplayHudNotification(message, logLevel: LogLevel.Warn);
         }
 
         public void IncreaseSpeed()
         {
-            if (_speedPercentage < 690)
-                _speedPercentage += 10;
-            OnSpeedUpdate();
+            SpeedPercentage += 10;
         }
 
         public void DecreaseSpeed()
         {
-            if (_speedPercentage > 10)
-                _speedPercentage -= 10;
-            OnSpeedUpdate();
+            SpeedPercentage -= 10;
         }
 
         public void ResetSpeed()
         {
-            _speedPercentage = _config.DefaultSpeedPercentage;
-            OnSpeedUpdate();
+            SpeedPercentage = config.DefaultSpeedPercentage;
         }
 
         public void SetHalfSpeed()
         {
-            _speedPercentage = 50;
-            OnSpeedUpdate();
+            SpeedPercentage = 50;
         }
 
         public void SetDoubleSpeed()
         {
-            _speedPercentage = 200;
-            OnSpeedUpdate();
+            SpeedPercentage = 200;
         }
 
         public void ToggleFreeze()
         {
-            _timeFrozen = !_timeFrozen;
-
-            string message = _timeFrozen ? I18n.Message_TimeFrozen() : I18n.Message_TimeUnfrozen();
-            _monitor.Log(message, LogLevel.Info);
-            Notifier.DisplayHudNotification(message, logLevel: LogLevel.Warn);
+            IsTimeFrozen = !IsTimeFrozen;
         }
     }
 }
