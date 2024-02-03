@@ -8,7 +8,7 @@ namespace TimeMod
     {
         private ModConfig _config;
 
-        private ModConfigKeys Keys => _config.Keys;
+        private ModConfigKeys Keys => this._config.Keys;
 
         private TimeHelper _timeHelper;
 
@@ -16,28 +16,26 @@ namespace TimeMod
         {
             I18n.Init(helper.Translation);
 
-            _config = helper.ReadConfig<ModConfig>();
-            _timeHelper = new(_config, Monitor);
+            this._config = helper.ReadConfig<ModConfig>();
+            this._timeHelper = new(this._config, this.Monitor);
 
-            helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
-            helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
-            helper.Events.Input.ButtonsChanged += OnButtonsChanged;
+            helper.Events.GameLoop.SaveLoaded += this.OnSaveLoaded;
+            helper.Events.GameLoop.UpdateTicked += this.OnUpdateTicked;
+            helper.Events.Input.ButtonsChanged += this.OnButtonsChanged;
         }
 
         private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
         {
             if (!Context.IsMainPlayer)
-                Monitor.Log(I18n.Message_NotMainPlayerWarning(), LogLevel.Warn);
+                this.Monitor.Log(I18n.Message_NotMainPlayerWarning(), LogLevel.Warn);
         }
 
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
         {
             if (!Context.IsWorldReady || !Context.IsMainPlayer)
-            {
                 return;
-            }
 
-            _timeHelper.Update();
+            this._timeHelper.Update();
         }
 
         private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)
@@ -45,26 +43,26 @@ namespace TimeMod
             if (!Context.IsWorldReady || !Context.IsMainPlayer)
                 return;
 
-            if (Keys.ReloadConfig.JustPressed())
-                ReloadConfig();
-            else if (Keys.IncreaseSpeed.JustPressed())
-                _timeHelper.IncreaseSpeed();
-            else if (Keys.DecreaseSpeed.JustPressed())
-                _timeHelper.DecreaseSpeed();
-            else if (Keys.ResetSpeed.JustPressed())
-                _timeHelper.ResetSpeed();
-            else if (Keys.DoubleSpeed.JustPressed())
-                _timeHelper.SetDoubleSpeed();
-            else if (Keys.HalfSpeed.JustPressed())
-                _timeHelper.SetHalfSpeed();
-            else if (Keys.ToggleFreeze.JustPressed())
-                _timeHelper.ToggleFreeze();
+            if (this.Keys.ReloadConfig.JustPressed())
+                this.ReloadConfig();
+            else if (this.Keys.IncreaseSpeed.JustPressed())
+                this._timeHelper.IncreaseSpeed();
+            else if (this.Keys.DecreaseSpeed.JustPressed())
+                this._timeHelper.DecreaseSpeed();
+            else if (this.Keys.ResetSpeed.JustPressed())
+                this._timeHelper.ResetSpeed();
+            else if (this.Keys.DoubleSpeed.JustPressed())
+                this._timeHelper.SetDoubleSpeed();
+            else if (this.Keys.HalfSpeed.JustPressed())
+                this._timeHelper.SetHalfSpeed();
+            else if (this.Keys.ToggleFreeze.JustPressed())
+                this._timeHelper.ToggleFreeze();
         }
 
         private void ReloadConfig()
         {
-            _config = Helper.ReadConfig<ModConfig>();
-            Monitor.Log(I18n.Message_ConfigReloaded(), LogLevel.Info);
+            this._config = this.Helper.ReadConfig<ModConfig>();
+            this.Monitor.Log(I18n.Message_ConfigReloaded(), LogLevel.Info);
         }
     }
 }

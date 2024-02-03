@@ -15,25 +15,25 @@ namespace FishingMod
 
         public override void Entry(IModHelper helper)
         {
-            _config = helper.ReadConfig<ModConfig>();
+            this._config = helper.ReadConfig<ModConfig>();
 
-            helper.Events.Display.MenuChanged += OnMenuChanged;
-            helper.Events.Input.ButtonsChanged += OnButtonsChanged;
+            helper.Events.Display.MenuChanged += this.OnMenuChanged;
+            helper.Events.Input.ButtonsChanged += this.OnButtonsChanged;
         }
 
         private void OnMenuChanged(object sender, MenuChangedEventArgs e)
         {
             if (e.NewMenu is BobberBar bar)
-                OnFishingStart(bar);
+                this.OnFishingStart(bar);
             else if (e.OldMenu is BobberBar)
-                OnFishingStop();
+                this.OnFishingStop();
         }
 
         private void OnFishingStart(BobberBar bar)
         {
-            SBobberBar bobber = _bobber.Value = new SBobberBar(bar, Helper.Reflection);
+            SBobberBar bobber = this._bobber.Value = new SBobberBar(bar, this.Helper.Reflection);
 
-            if (_config.InstantCatchFish)
+            if (this._config.InstantCatchFish)
             {
                 if (bobber.Treasure)
                     bobber.TreasureCaught = true;
@@ -44,7 +44,7 @@ namespace FishingMod
 
         private void OnFishingStop()
         {
-            _bobber.Value = null;
+            this._bobber.Value = null;
         }
 
         private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)
@@ -52,8 +52,8 @@ namespace FishingMod
             if (!Context.IsWorldReady)
                 return;
 
-            if (_config.ReloadConfigButton.JustPressed())
-                _config = Helper.ReadConfig<ModConfig>();
+            if (this._config.ReloadConfigButton.JustPressed())
+                this._config = this.Helper.ReadConfig<ModConfig>();
         }
     }
 }
