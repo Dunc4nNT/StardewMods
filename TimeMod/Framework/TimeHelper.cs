@@ -41,9 +41,7 @@ namespace TimeMod.Framework
                 Game1.gameTimeInterval = 0;
 
             if (Game1.gameTimeInterval < this._lastTimeInterval)
-            {
                 this._lastTimeInterval = 0;
-            }
 
             Game1.gameTimeInterval = this._lastTimeInterval + ((Game1.gameTimeInterval - this._lastTimeInterval) * this.SpeedPercentage / 100);
             this._lastTimeInterval = Game1.gameTimeInterval;

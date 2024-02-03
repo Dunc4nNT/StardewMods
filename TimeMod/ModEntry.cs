@@ -33,9 +33,7 @@ namespace TimeMod
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
         {
             if (!Context.IsWorldReady || !Context.IsMainPlayer)
-            {
                 return;
-            }
 
             this._timeHelper.Update();
         }
