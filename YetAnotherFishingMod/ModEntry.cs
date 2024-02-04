@@ -1,7 +1,9 @@
 ﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
+using StardewValley;
 using StardewValley.Menus;
+using StardewValley.Tools;
 using YetAnotherFishingMod.Framework;
 
 
@@ -13,7 +15,7 @@ namespace YetAnotherFishingMod
 
         private ModConfigKeys Keys => this._config.Keys;
 
-        private readonly PerScreen<SBobberBar> _bobber = new();
+        private readonly PerScreen<SBobberBar> _bobberBar = new();
 
         public override void Entry(IModHelper helper)
         {
@@ -21,34 +23,42 @@ namespace YetAnotherFishingMod
 
             this._config = helper.ReadConfig<ModConfig>();
 
+            helper.Events.GameLoop.UpdateTicked += this.OnUpdateTicked;
             helper.Events.Display.MenuChanged += this.OnMenuChanged;
             helper.Events.Input.ButtonsChanged += this.OnButtonsChanged;
         }
 
-        private void OnMenuChanged(object sender, MenuChangedEventArgs e)
+        private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
         {
-            if (e.NewMenu is BobberBar bar)
-                this.OnFishingStart(bar);
-            else if (e.OldMenu is BobberBar)
-                this.OnFishingStop();
-        }
+            if (!Context.IsWorldReady)
+                return;
 
-        private void OnFishingStart(BobberBar bar)
-        {
-            SBobberBar bobber = this._bobber.Value = new SBobberBar(bar, this.Helper.Reflection);
-
-            if (this._config.InstantCatchFish)
+            if (Game1.player.CurrentTool is FishingRod fishingRod_)
             {
-                if (bobber.Treasure)
-                    bobber.TreasureCaught = true;
+                SFishingRod fishingRod = new(fishingRod_, this.Helper.Reflection);
 
-                bobber.DistanceFromCatching = 1.0f;
+                if (this._config.AlwaysMaxCastingPower)
+                    fishingRod.CastingPower = 1.01f;
             }
         }
 
-        private void OnFishingStop()
+        private void OnMenuChanged(object sender, MenuChangedEventArgs e)
         {
-            this._bobber.Value = null;
+            if (e.NewMenu is BobberBar bobberBar)
+            {
+                SBobberBar bobber = this._bobberBar.Value = new SBobberBar(bobberBar, this.Helper.Reflection);
+                this.OnFishingStart(bobber);
+            }
+            else if (e.OldMenu is BobberBar)
+                this._bobberBar.Value = null;
+        }
+
+        private void OnFishingStart(SBobberBar bobber)
+        {
+            if ((this._config.InstantCatchTreasure && bobber.Treasure) || this._config.AlwaysCatchTreasure)
+                bobber.TreasureCaught = true;
+            if (this._config.InstantCatchFish)
+                bobber.DistanceFromCatching = 1.0f;
         }
 
         private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)
