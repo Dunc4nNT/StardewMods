@@ -1,7 +1,7 @@
 ﻿using StardewModdingAPI;
 using StardewValley.Menus;
 
-namespace FishingMod.Framework
+namespace YetAnotherFishingMod.Framework
 {
     internal class SBobberBar(BobberBar instance, IReflectionHelper reflection)
     {

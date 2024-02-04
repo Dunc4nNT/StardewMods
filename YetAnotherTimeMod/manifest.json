@@ -1,0 +1,10 @@
+{
+  "Name": "Yet Another Time Mod",
+  "Author": "NeverToxic",
+  "Version": "0.0.1-alpha",
+  "Description": "Manipulate game time.",
+  "UniqueID": "NeverToxic.YetAnotherTimeMod",
+  "EntryDll": "YetAnotherTimeMod.dll",
+  "MinimumApiVersion": "3.0.0",
+  "UpdateKeys": []
+}

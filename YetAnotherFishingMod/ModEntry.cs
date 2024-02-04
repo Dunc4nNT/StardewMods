@@ -1,20 +1,24 @@
-﻿using FishingMod.Framework;
-using StardewModdingAPI;
+﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley.Menus;
+using YetAnotherFishingMod.Framework;
 
 
-namespace FishingMod
+namespace YetAnotherFishingMod
 {
     internal sealed class ModEntry : Mod
     {
         private ModConfig _config;
 
+        private ModConfigKeys Keys => this._config.Keys;
+
         private readonly PerScreen<SBobberBar> _bobber = new();
 
         public override void Entry(IModHelper helper)
         {
+            I18n.Init(helper.Translation);
+
             this._config = helper.ReadConfig<ModConfig>();
 
             helper.Events.Display.MenuChanged += this.OnMenuChanged;
@@ -52,8 +56,14 @@ namespace FishingMod
             if (!Context.IsWorldReady)
                 return;
 
-            if (this._config.ReloadConfigButton.JustPressed())
-                this._config = this.Helper.ReadConfig<ModConfig>();
+            if (this.Keys.ReloadConfig.JustPressed())
+                this.ReloadConfig();
+        }
+
+        private void ReloadConfig()
+        {
+            this._config = this.Helper.ReadConfig<ModConfig>();
+            this.Monitor.Log(I18n.Message_ConfigReloaded(), LogLevel.Info);
         }
     }
 }

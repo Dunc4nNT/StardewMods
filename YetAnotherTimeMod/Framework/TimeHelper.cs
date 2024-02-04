@@ -2,7 +2,7 @@
 using StardewModdingAPI;
 using StardewValley;
 
-namespace TimeMod.Framework
+namespace YetAnotherTimeMod.Framework
 {
     internal class TimeHelper(ModConfig config, IMonitor monitor)
     {

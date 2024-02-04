@@ -1,8 +1,8 @@
 ﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
-using TimeMod.Framework;
+using YetAnotherTimeMod.Framework;
 
-namespace TimeMod
+namespace YetAnotherTimeMod
 {
     internal class ModEntry : Mod
     {

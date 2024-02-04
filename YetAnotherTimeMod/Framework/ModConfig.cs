@@ -1,4 +1,4 @@
-﻿namespace TimeMod.Framework
+﻿namespace YetAnotherTimeMod.Framework
 {
     internal class ModConfig
     {
