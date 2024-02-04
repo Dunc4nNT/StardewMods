@@ -1,6 +1,5 @@
 ﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
-using StardewModdingAPI.Utilities;
 using StardewValley;
 using StardewValley.Menus;
 using StardewValley.Tools;
@@ -15,13 +14,14 @@ namespace YetAnotherFishingMod
 
         private ModConfigKeys Keys => this._config.Keys;
 
-        private readonly PerScreen<SBobberBar> _bobberBar = new();
+        private FishHelper _fishHelper;
 
         public override void Entry(IModHelper helper)
         {
             I18n.Init(helper.Translation);
 
             this._config = helper.ReadConfig<ModConfig>();
+            this._fishHelper = new(this._config, this.Monitor, helper.Reflection);
 
             helper.Events.GameLoop.UpdateTicked += this.OnUpdateTicked;
             helper.Events.Display.MenuChanged += this.OnMenuChanged;
@@ -33,12 +33,14 @@ namespace YetAnotherFishingMod
             if (!Context.IsWorldReady)
                 return;
 
-            if (Game1.player.CurrentTool is FishingRod fishingRod_)
+            if (Game1.player.CurrentTool is FishingRod fishingRod)
             {
-                SFishingRod fishingRod = new(fishingRod_, this.Helper.Reflection);
+                this._fishHelper.ApplyFishingRodBuffs(fishingRod);
+            }
 
-                if (this._config.AlwaysMaxCastingPower)
-                    fishingRod.CastingPower = 1.01f;
+            if (this._fishHelper.IsInFishingMiniGame.Value)
+            {
+                this._fishHelper.ApplyFishingMiniGameBuffs();
             }
         }
 
@@ -46,19 +48,10 @@ namespace YetAnotherFishingMod
         {
             if (e.NewMenu is BobberBar bobberBar)
             {
-                SBobberBar bobber = this._bobberBar.Value = new SBobberBar(bobberBar, this.Helper.Reflection);
-                this.OnFishingStart(bobber);
+                this._fishHelper.OnFishingMiniGameStart(bobberBar);
             }
             else if (e.OldMenu is BobberBar)
-                this._bobberBar.Value = null;
-        }
-
-        private void OnFishingStart(SBobberBar bobber)
-        {
-            if ((this._config.InstantCatchTreasure && bobber.Treasure) || this._config.AlwaysCatchTreasure)
-                bobber.TreasureCaught = true;
-            if (this._config.InstantCatchFish)
-                bobber.DistanceFromCatching = 1.0f;
+                this._fishHelper.OnFishingMiniGameEnd();
         }
 
         private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)
@@ -74,6 +67,7 @@ namespace YetAnotherFishingMod
         {
             this._config = this.Helper.ReadConfig<ModConfig>();
             this.Monitor.Log(I18n.Message_ConfigReloaded(), LogLevel.Info);
+            this.Monitor.Log($"instant catch changed to: {this._config.InstantCatchFish}");
         }
     }
 }

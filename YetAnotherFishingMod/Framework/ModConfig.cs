@@ -8,8 +8,10 @@
 
         public bool InstantCatchTreasure { get; set; } = true;
 
-        public bool AlwaysMaxCastingPower { get; set; } = true;
+        public bool AlwaysMaxCastingPower { get; set; } = false;
 
-        public bool AlwaysCatchTreasure { get; set; } = true;
+        public bool AlwaysPerfect { get; set; } = false;
+
+        public bool AlwaysCatchTreasure { get; set; } = false;
     }
 }
