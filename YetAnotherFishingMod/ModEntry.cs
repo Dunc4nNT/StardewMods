@@ -10,18 +10,18 @@ namespace YetAnotherFishingMod
 {
     internal sealed class ModEntry : Mod
     {
-        private ModConfig _config;
+        private ModConfig Config { get; set; }
 
-        private ModConfigKeys Keys => this._config.Keys;
+        private ModConfigKeys Keys => this.Config.Keys;
 
-        private FishHelper _fishHelper;
+        private FishHelper FishHelper { get; set; }
 
         public override void Entry(IModHelper helper)
         {
             I18n.Init(helper.Translation);
 
-            this._config = helper.ReadConfig<ModConfig>();
-            this._fishHelper = new(this._config, this.Monitor, helper.Reflection);
+            this.Config = helper.ReadConfig<ModConfig>();
+            this.FishHelper = new(() => this.Config, this.Monitor, helper.Reflection);
 
             helper.Events.GameLoop.UpdateTicked += this.OnUpdateTicked;
             helper.Events.Display.MenuChanged += this.OnMenuChanged;
@@ -34,24 +34,18 @@ namespace YetAnotherFishingMod
                 return;
 
             if (Game1.player.CurrentTool is FishingRod fishingRod)
-            {
-                this._fishHelper.ApplyFishingRodBuffs(fishingRod);
-            }
+                this.FishHelper.ApplyFishingRodBuffs(fishingRod);
 
-            if (this._fishHelper.IsInFishingMiniGame.Value)
-            {
-                this._fishHelper.ApplyFishingMiniGameBuffs();
-            }
+            if (this.FishHelper.IsInFishingMiniGame.Value)
+                this.FishHelper.ApplyFishingMiniGameBuffs();
         }
 
         private void OnMenuChanged(object sender, MenuChangedEventArgs e)
         {
             if (e.NewMenu is BobberBar bobberBar)
-            {
-                this._fishHelper.OnFishingMiniGameStart(bobberBar);
-            }
+                this.FishHelper.OnFishingMiniGameStart(bobberBar);
             else if (e.OldMenu is BobberBar)
-                this._fishHelper.OnFishingMiniGameEnd();
+                this.FishHelper.OnFishingMiniGameEnd();
         }
 
         private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)
@@ -65,9 +59,8 @@ namespace YetAnotherFishingMod
 
         private void ReloadConfig()
         {
-            this._config = this.Helper.ReadConfig<ModConfig>();
+            this.Config = this.Helper.ReadConfig<ModConfig>();
             this.Monitor.Log(I18n.Message_ConfigReloaded(), LogLevel.Info);
-            this.Monitor.Log($"instant catch changed to: {this._config.InstantCatchFish}");
         }
     }
 }
