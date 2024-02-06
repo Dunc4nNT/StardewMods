@@ -1,6 +1,6 @@
 ﻿using StardewModdingAPI.Utilities;
 
-namespace TimeMod.Framework
+namespace YetAnotherTimeMod.Framework
 {
     internal class ModConfigKeys
     {
@@ -17,6 +17,5 @@ namespace TimeMod.Framework
         public KeybindList HalfSpeed { get; set; } = KeybindList.Parse("F10");
 
         public KeybindList DoubleSpeed { get; set; } = KeybindList.Parse("F11");
-
     }
 }

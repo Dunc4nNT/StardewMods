@@ -2,7 +2,7 @@
 using StardewModdingAPI;
 using StardewValley;
 
-namespace TimeMod.Framework
+namespace YetAnotherTimeMod.Framework
 {
     internal class TimeHelper(ModConfig config, IMonitor monitor)
     {
@@ -10,7 +10,7 @@ namespace TimeMod.Framework
 
         private int _speedPercentage = config.DefaultSpeedPercentage;
 
-        private bool _istimeFrozen = false;
+        private bool _isTimeFrozen = false;
 
         private int SpeedPercentage
         {
@@ -27,17 +27,17 @@ namespace TimeMod.Framework
 
         private bool IsTimeFrozen
         {
-            get => this._istimeFrozen;
+            get => this._isTimeFrozen;
             set
             {
-                this._istimeFrozen = value;
+                this._isTimeFrozen = value;
                 this.OnFreezeUpdate();
             }
         }
 
         public void Update()
         {
-            if (this._istimeFrozen)
+            if (this.IsTimeFrozen)
                 Game1.gameTimeInterval = 0;
 
             if (Game1.gameTimeInterval < this._lastTimeInterval)
