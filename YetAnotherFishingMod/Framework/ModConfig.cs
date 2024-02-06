@@ -13,19 +13,5 @@
         public bool AlwaysPerfect { get; set; } = false;
 
         public bool AlwaysCatchTreasure { get; set; } = false;
-        /*
-        private static ModConfig s_instance;
-
-        public static ModConfig GetInstance()
-        {
-            s_instance ??= new();
-            return s_instance;
-        }
-
-        public void LoadConfig(IModHelper helper)
-        {
-            s_instance = helper.ReadConfig<ModConfig>();
-        }
-        */
     }
 }
