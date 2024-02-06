@@ -15,5 +15,9 @@
         public bool AlwaysCatchTreasure { get; set; } = false;
 
         public bool AlwaysCatchDouble { get; set; } = true;
+
+        public bool InstantBite { get; set; } = true;
+
+        public bool AutoHook { get; set; } = true;
     }
 }

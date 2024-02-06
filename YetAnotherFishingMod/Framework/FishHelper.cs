@@ -1,5 +1,6 @@
 ﻿using StardewModdingAPI;
 using StardewModdingAPI.Utilities;
+using StardewValley;
 using StardewValley.Menus;
 using StardewValley.Tools;
 using System;
@@ -21,6 +22,15 @@ namespace YetAnotherFishingMod.Framework
                 fishingRod.CastingPower = 1.01f;
             if (config_.AlwaysCatchDouble)
                 fishingRod.CaughtDoubleFish = true;
+            if (config_.InstantBite && fishingRod.TimeUntilFishingBite > 0)
+                fishingRod.TimeUntilFishingBite = 0f;
+            if (config_.AutoHook && fishingRod.Instance.isNibbling && !fishingRod.Instance.hit && !fishingRod.Instance.isReeling)
+            {
+                fishingRod.Instance.timePerBobberBob = 1f;
+                fishingRod.Instance.timeUntilFishingNibbleDone = FishingRod.maxTimeToNibble;
+                fishingRod.Instance.DoFunction(Game1.player.currentLocation, (int)fishingRod.Instance.bobber.X, (int)fishingRod.Instance.bobber.Y, 1, Game1.player);
+                Rumble.rumble(0.95f, 200f);
+            }
         }
 
         public void ApplyFishingMiniGameBuffs()

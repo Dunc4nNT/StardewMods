@@ -7,6 +7,7 @@ namespace YetAnotherFishingMod.Framework
     {
         private readonly IReflectedField<float> _castingPower = reflection.GetField<float>(instance, "castingPower");
         private readonly IReflectedField<bool> _caughtDoubleFish = reflection.GetField<bool>(instance, "caughtDoubleFish");
+        private readonly IReflectedField<float> _timeUntilFishingBite = reflection.GetField<float>(instance, "timeUntilFishingBite");
 
         public FishingRod Instance { get; set; } = instance;
 
@@ -20,6 +21,12 @@ namespace YetAnotherFishingMod.Framework
         {
             get => this._caughtDoubleFish.GetValue();
             set => this._caughtDoubleFish.SetValue(value);
+        }
+
+        public float TimeUntilFishingBite
+        {
+            get => this._timeUntilFishingBite.GetValue();
+            set => this._timeUntilFishingBite.SetValue(value);
         }
     }
 }
