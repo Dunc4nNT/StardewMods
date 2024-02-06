@@ -15,8 +15,12 @@ namespace YetAnotherFishingMod.Framework
         {
             SFishingRod fishingRod = new(fishingRod_, reflectionHelper);
 
-            if (config().AlwaysMaxCastingPower)
+            ModConfig config_ = config();
+
+            if (config_.AlwaysMaxCastingPower)
                 fishingRod.CastingPower = 1.01f;
+            if (config_.AlwaysCatchDouble)
+                fishingRod.CaughtDoubleFish = true;
         }
 
         public void ApplyFishingMiniGameBuffs()
