@@ -24,11 +24,11 @@ namespace YetAnotherFishingMod.Framework
                 fishingRod.CaughtDoubleFish = true;
             if (config_.InstantBite && fishingRod.TimeUntilFishingBite > 0)
                 fishingRod.TimeUntilFishingBite = 0f;
-            if (config_.AutoHook && fishingRod.Instance.isNibbling && !fishingRod.Instance.hit && !fishingRod.Instance.isReeling && !fishingRod.Instance.pullingOutOfWater && !fishingRod.Instance.fishCaught && !fishingRod.Instance.showingTreasure)
+            if (config_.AutoHook && fishingRod.IsNibbling && !fishingRod.Hit && !fishingRod.IsReeling && !fishingRod.PullingOutOfWater && !fishingRod.FishCaught && !fishingRod.ShowingTreasure)
             {
-                fishingRod.Instance.timePerBobberBob = 1f;
-                fishingRod.Instance.timeUntilFishingNibbleDone = FishingRod.maxTimeToNibble;
-                fishingRod.Instance.DoFunction(Game1.player.currentLocation, (int)fishingRod.Instance.bobber.X, (int)fishingRod.Instance.bobber.Y, 1, Game1.player);
+                fishingRod.TimePerBobberBob = 1f;
+                fishingRod.TimeUntilFishingNibbleDone = FishingRod.maxTimeToNibble;
+                reflectionHelper.GetMethod(fishingRod.Instance, "DoFunction").Invoke(Game1.player.currentLocation, (int)fishingRod.Instance.bobber.X, (int)fishingRod.Instance.bobber.Y, 1, Game1.player);
                 Rumble.rumble(0.95f, 200f);
             }
         }

@@ -8,6 +8,14 @@ namespace YetAnotherFishingMod.Framework
         private readonly IReflectedField<float> _castingPower = reflection.GetField<float>(instance, "castingPower");
         private readonly IReflectedField<bool> _caughtDoubleFish = reflection.GetField<bool>(instance, "caughtDoubleFish");
         private readonly IReflectedField<float> _timeUntilFishingBite = reflection.GetField<float>(instance, "timeUntilFishingBite");
+        private readonly IReflectedField<bool> _isNibbling = reflection.GetField<bool>(instance, "isNibbling");
+        private readonly IReflectedField<bool> _hit = reflection.GetField<bool>(instance, "hit");
+        private readonly IReflectedField<bool> _isReeling = reflection.GetField<bool>(instance, "isReeling");
+        private readonly IReflectedField<bool> _pullingOutOfWater = reflection.GetField<bool>(instance, "pullingOutOfWater");
+        private readonly IReflectedField<bool> _fishCaught = reflection.GetField<bool>(instance, "fishCaught");
+        private readonly IReflectedField<bool> _showingTreasure = reflection.GetField<bool>(instance, "showingTreasure");
+        private readonly IReflectedField<float> _timePerBobberBob = reflection.GetField<float>(instance, "timePerBobberBob");
+        private readonly IReflectedField<float> _timeUntilFishingNibbleDone = reflection.GetField<float>(instance, "timeUntilFishingNibbleDone");
 
         public FishingRod Instance { get; set; } = instance;
 
@@ -27,6 +35,30 @@ namespace YetAnotherFishingMod.Framework
         {
             get => this._timeUntilFishingBite.GetValue();
             set => this._timeUntilFishingBite.SetValue(value);
+        }
+
+        public bool IsNibbling => this._isNibbling.GetValue();
+
+        public bool Hit => this._hit.GetValue();
+
+        public bool IsReeling => this._isReeling.GetValue();
+
+        public bool PullingOutOfWater => this._pullingOutOfWater.GetValue();
+
+        public bool FishCaught => this._fishCaught.GetValue();
+
+        public bool ShowingTreasure => this._showingTreasure.GetValue();
+
+        public float TimePerBobberBob
+        {
+            get => this._timePerBobberBob.GetValue();
+            set => this._timePerBobberBob.SetValue(value);
+        }
+
+        public float TimeUntilFishingNibbleDone
+        {
+            get => this._timeUntilFishingNibbleDone.GetValue();
+            set => this._timeUntilFishingNibbleDone.SetValue(value);
         }
     }
 }
