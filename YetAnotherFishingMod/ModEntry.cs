@@ -34,7 +34,9 @@ namespace YetAnotherFishingMod
                 return;
 
             if (Game1.player.CurrentTool is FishingRod fishingRod)
-                this.FishHelper.ApplyFishingRodBuffs(fishingRod);
+                this.FishHelper.OnFishingRodEquipped(fishingRod);
+            else if (Game1.player.CurrentTool is not FishingRod)
+                this.FishHelper.OnFishingRodNotEquipped();
 
             if (this.FishHelper.IsInFishingMiniGame.Value)
                 this.FishHelper.ApplyFishingMiniGameBuffs();
