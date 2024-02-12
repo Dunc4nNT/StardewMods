@@ -24,7 +24,7 @@ namespace YetAnotherFishingMod.Framework
                 fishingRod.CaughtDoubleFish = true;
             if (config_.InstantBite && fishingRod.TimeUntilFishingBite > 0)
                 fishingRod.TimeUntilFishingBite = 0f;
-            if (config_.AutoHook && fishingRod.Instance.isNibbling && !fishingRod.Instance.hit && !fishingRod.Instance.isReeling)
+            if (config_.AutoHook && fishingRod.Instance.isNibbling && !fishingRod.Instance.hit && !fishingRod.Instance.isReeling && !fishingRod.Instance.pullingOutOfWater && !fishingRod.Instance.fishCaught && !fishingRod.Instance.showingTreasure)
             {
                 fishingRod.Instance.timePerBobberBob = 1f;
                 fishingRod.Instance.timeUntilFishingNibbleDone = FishingRod.maxTimeToNibble;
