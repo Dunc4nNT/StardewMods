@@ -41,8 +41,7 @@ namespace YetAnotherFishingMod.Framework
 
         public void OnFishingRodEquipped(FishingRod fishingRod)
         {
-            if (this._fishingRod.Value == null)
-                this._fishingRod.Value = new(fishingRod, reflectionHelper);
+            this._fishingRod.Value ??= new(fishingRod, reflectionHelper);
 
             this.ApplyFishingRodBuffs();
         }
