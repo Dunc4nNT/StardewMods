@@ -19,6 +19,14 @@ namespace YetAnotherFishingMod.Framework
             ModConfig config_ = config();
             SFishingRod fishingRod = this._fishingRod.Value;
 
+            Object bait = fishingRod.Instance.GetBait();
+            if (config_.InfiniteBait && bait is not null)
+                bait.Stack = bait.maximumStackSize();
+
+            Object tackle = fishingRod.Instance.GetTackle();
+            if (config_.InfiniteTackle && tackle is not null)
+                tackle.uses.Value = 0;
+
             if (config_.AlwaysMaxCastingPower)
                 fishingRod.CastingPower = 1.01f;
             if (config_.InstantBite && fishingRod.TimeUntilFishingBite > 0)
