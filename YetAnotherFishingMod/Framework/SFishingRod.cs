@@ -1,4 +1,5 @@
 ﻿using StardewModdingAPI;
+using StardewValley;
 using StardewValley.Tools;
 
 namespace YetAnotherFishingMod.Framework
@@ -18,6 +19,14 @@ namespace YetAnotherFishingMod.Framework
         private readonly IReflectedField<float> _timeUntilFishingNibbleDone = reflection.GetField<float>(instance, "timeUntilFishingNibbleDone");
 
         public FishingRod Instance { get; set; } = instance;
+
+        private readonly int _initialAttachmentSlotsCount = instance.AttachmentSlotsCount;
+        private readonly Object _initialBait = instance.GetBait();
+        private readonly Object _initialTackle = instance.GetTackle();
+
+        public int InitialAttachmentSlotsCount => this._initialAttachmentSlotsCount;
+        public Object InitialBait => this._initialBait;
+        public Object InitialTackle => this._initialTackle;
 
         public float CastingPower
         {
