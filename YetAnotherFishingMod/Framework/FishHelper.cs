@@ -89,7 +89,10 @@ namespace YetAnotherFishingMod.Framework
             }
             else if (this._fishingRod.Value.Instance != fishingRod)
             {
-                this.ResetFishingRod();
+                ModConfig config_ = config();
+                if (config_.ResetAttachmentsWhenNotEquipped)
+                    this.ResetFishingRod();
+
                 this.CreateFishingRod(fishingRod);
             }
 
@@ -100,7 +103,10 @@ namespace YetAnotherFishingMod.Framework
         {
             if (this._fishingRod.Value is not null)
             {
-                this.ResetFishingRod();
+                ModConfig config_ = config();
+                if (config_.ResetAttachmentsWhenNotEquipped)
+                    this.ResetFishingRod();
+
                 this._fishingRod.Value = null;
             }
         }
