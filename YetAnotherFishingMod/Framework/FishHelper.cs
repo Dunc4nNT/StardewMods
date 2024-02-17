@@ -50,11 +50,12 @@ namespace YetAnotherFishingMod.Framework
 
         private void ResetFishingRod()
         {
-            this._fishingRod.Value.Instance.AttachmentSlotsCount = this._fishingRod.Value.InitialAttachmentSlotsCount;
             if (this._fishingRod.Value.Instance.AttachmentSlotsCount >= 1)
                 this._fishingRod.Value.Instance.attachments[0] = this._fishingRod.Value.InitialBait;
             if (this._fishingRod.Value.Instance.AttachmentSlotsCount >= 2)
                 this._fishingRod.Value.Instance.attachments[1] = this._fishingRod.Value.InitialTackle;
+
+            this._fishingRod.Value.Instance.AttachmentSlotsCount = this._fishingRod.Value.InitialAttachmentSlotsCount;
         }
 
         private void CreateFishingRod(FishingRod fishingRod)
