@@ -119,6 +119,8 @@ namespace YetAnotherFishingMod.Framework
 
             ModConfig config_ = config();
 
+            this._bobberBar.Value.Difficulty *= config_.DifficultyMultiplier;
+
             if ((config_.InstantCatchTreasure && this._bobberBar.Value.Treasure) || config_.AlwaysCatchTreasure)
                 this._bobberBar.Value.TreasureCaught = true;
             if (config_.InstantCatchFish)
