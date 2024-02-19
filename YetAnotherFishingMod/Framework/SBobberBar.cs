@@ -10,6 +10,7 @@ namespace YetAnotherFishingMod.Framework
         private readonly IReflectedField<bool> _treasure = reflection.GetField<bool>(instance, "treasure");
         private readonly IReflectedField<bool> _treasureCaught = reflection.GetField<bool>(instance, "treasureCaught");
         private readonly IReflectedField<float> _difficulty = reflection.GetField<float>(instance, "difficulty");
+        private readonly IReflectedField<int> _fishQuality = reflection.GetField<int>(instance, "fishQuality");
 
         public BobberBar Instance { get; set; } = instance;
 
@@ -41,6 +42,12 @@ namespace YetAnotherFishingMod.Framework
         {
             get => this._difficulty.GetValue();
             set => this._difficulty.SetValue(value);
+        }
+
+        public int FishQuality
+        {
+            get => this._fishQuality.GetValue();
+            set => this._fishQuality.SetValue(value);
         }
     }
 }
