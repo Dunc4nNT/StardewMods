@@ -90,7 +90,7 @@ namespace YetAnotherFishingMod.Framework
             {
                 if (!fishingRod.hasEnchantmentOfType<AutoHookEnchantment>() && (config_.AddAllEnchantments || config_.AddAutoHookEnchantment))
                     this._fishingRod.Value.AddEnchantment(new AutoHookEnchantment());
-                if (!fishingRod.hasEnchantmentOfType<EfficientToolEnchantment>() && (config_.AddAllEnchantments || config_.AddEfficientEnchantment))
+                if (!fishingRod.hasEnchantmentOfType<EfficientToolEnchantment>() && (config_.AddAllEnchantments || config_.AddEfficientToolEnchantment))
                     this._fishingRod.Value.AddEnchantment(new EfficientToolEnchantment());
                 if (!fishingRod.hasEnchantmentOfType<MasterEnchantment>() && (config_.AddAllEnchantments || config_.AddMasterEnchantment))
                     this._fishingRod.Value.AddEnchantment(new MasterEnchantment());

@@ -74,7 +74,7 @@
 
         public bool AddAutoHookEnchantment { get; set; } = true;
 
-        public bool AddEfficientEnchantment { get; set; } = true;
+        public bool AddEfficientToolEnchantment { get; set; } = true;
 
         public bool AddMasterEnchantment { get; set; } = true;
 
