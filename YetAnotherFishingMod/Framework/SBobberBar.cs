@@ -1,53 +1,9 @@
-﻿using StardewModdingAPI;
-using StardewValley.Menus;
+﻿using StardewValley.Menus;
 
 namespace YetAnotherFishingMod.Framework
 {
-    internal class SBobberBar(BobberBar instance, IReflectionHelper reflection)
+    internal class SBobberBar(BobberBar instance)
     {
-        private readonly IReflectedField<float> _distanceFromCatching = reflection.GetField<float>(instance, "distanceFromCatching");
-        private readonly IReflectedField<bool> _perfect = reflection.GetField<bool>(instance, "perfect");
-        private readonly IReflectedField<bool> _treasure = reflection.GetField<bool>(instance, "treasure");
-        private readonly IReflectedField<bool> _treasureCaught = reflection.GetField<bool>(instance, "treasureCaught");
-        private readonly IReflectedField<float> _difficulty = reflection.GetField<float>(instance, "difficulty");
-        private readonly IReflectedField<int> _fishQuality = reflection.GetField<int>(instance, "fishQuality");
-
         public BobberBar Instance { get; set; } = instance;
-
-        public float DistanceFromCatching
-        {
-            get => this._distanceFromCatching.GetValue();
-            set => this._distanceFromCatching.SetValue(value);
-        }
-
-        public bool Perfect
-        {
-            get => this._perfect.GetValue();
-            set => this._perfect.SetValue(value);
-        }
-
-        public bool Treasure
-        {
-            get => this._treasure.GetValue();
-            set => this._treasure.SetValue(value);
-        }
-
-        public bool TreasureCaught
-        {
-            get => this._treasureCaught.GetValue();
-            set => this._treasureCaught.SetValue(value);
-        }
-
-        public float Difficulty
-        {
-            get => this._difficulty.GetValue();
-            set => this._difficulty.SetValue(value);
-        }
-
-        public int FishQuality
-        {
-            get => this._fishQuality.GetValue();
-            set => this._fishQuality.SetValue(value);
-        }
     }
 }

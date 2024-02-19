@@ -8,11 +8,11 @@ namespace YetAnotherFishingMod.Framework
     {
         public FishingRod Instance { get; set; } = instance;
 
-        private readonly SObject _initialTackle = instance.GetTackle();
-
         public int InitialAttachmentSlotsCount { get; } = instance.AttachmentSlotsCount;
+
         public SObject InitialBait { get; } = instance.GetBait();
-        public SObject InitialTackle => this._initialTackle;
+
+        public SObject InitialTackle { get; } = instance.GetTackle();
 
         public bool CanHook()
         {

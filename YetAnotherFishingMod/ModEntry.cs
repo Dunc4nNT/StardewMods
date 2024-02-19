@@ -21,7 +21,7 @@ namespace YetAnotherFishingMod
             I18n.Init(helper.Translation);
 
             this.Config = helper.ReadConfig<ModConfig>();
-            this.FishHelper = new(() => this.Config, this.Monitor, helper.Reflection);
+            this.FishHelper = new(() => this.Config);
 
             helper.Events.GameLoop.UpdateTicked += this.OnUpdateTicked;
             helper.Events.Display.MenuChanged += this.OnMenuChanged;

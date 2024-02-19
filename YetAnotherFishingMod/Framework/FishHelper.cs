@@ -1,5 +1,4 @@
-﻿using StardewModdingAPI;
-using StardewModdingAPI.Utilities;
+﻿using StardewModdingAPI.Utilities;
 using StardewValley.Menus;
 using StardewValley.Tools;
 using System;
@@ -7,7 +6,7 @@ using SObject = StardewValley.Object;
 
 namespace YetAnotherFishingMod.Framework
 {
-    internal class FishHelper(Func<ModConfig> config, IMonitor monitor, IReflectionHelper reflectionHelper)
+    internal class FishHelper(Func<ModConfig> config)
     {
         private readonly PerScreen<SBobberBar> _bobberBar = new();
         private readonly PerScreen<SFishingRod> _fishingRod = new();
@@ -39,7 +38,7 @@ namespace YetAnotherFishingMod.Framework
         public void ApplyFishingMiniGameBuffs()
         {
             if (config().AlwaysPerfect)
-                this._bobberBar.Value.Perfect = true;
+                this._bobberBar.Value.Instance.perfect = true;
         }
 
         private void ResetFishingRod()
@@ -101,7 +100,7 @@ namespace YetAnotherFishingMod.Framework
         public void OnFishingMiniGameStart(BobberBar bobberBar)
         {
             this.IsInFishingMiniGame.Value = true;
-            this._bobberBar.Value = new(bobberBar, reflectionHelper);
+            this._bobberBar.Value = new(bobberBar);
 
             this.ApplyBobberBarBuffs();
         }
@@ -111,12 +110,12 @@ namespace YetAnotherFishingMod.Framework
             SBobberBar bobberBar = this._bobberBar.Value;
             ModConfig config_ = config();
 
-            bobberBar.Difficulty *= config_.DifficultyMultiplier;
+            bobberBar.Instance.difficulty *= config_.DifficultyMultiplier;
 
-            if ((config_.InstantCatchTreasure && bobberBar.Treasure) || config_.AlwaysCatchTreasure)
-                bobberBar.TreasureCaught = true;
+            if ((config_.InstantCatchTreasure && bobberBar.Instance.treasure) || config_.AlwaysCatchTreasure)
+                bobberBar.Instance.treasureCaught = true;
             if (config_.InstantCatchFish)
-                bobberBar.DistanceFromCatching = 1.0f;
+                bobberBar.Instance.distanceFromCatching = 1.0f;
         }
 
         public void OnFishingMiniGameEnd()
