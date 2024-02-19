@@ -2,55 +2,48 @@
 using StardewValley.Menus;
 using StardewValley.Tools;
 using System;
-using SObject = StardewValley.Object;
 
 namespace YetAnotherFishingMod.Framework
 {
     internal class FishHelper(Func<ModConfig> config)
     {
-        private readonly PerScreen<SBobberBar> _bobberBar = new();
+        private readonly PerScreen<BobberBar> _bobberBar = new();
         private readonly PerScreen<SFishingRod> _fishingRod = new();
         public readonly PerScreen<bool> IsInFishingMiniGame = new();
 
-        public void ApplyFishingRodBuffs()
+        private void ApplyFishingRodBuffs()
         {
             ModConfig config_ = config();
             SFishingRod fishingRod = this._fishingRod.Value;
 
-            SObject bait = fishingRod.Instance.GetBait();
-            if (config_.InfiniteBait && bait is not null)
-                bait.Stack = bait.maximumStackSize();
+            if (config_.InfiniteBait)
+                fishingRod.InfiniteBait();
 
-            SObject tackle = fishingRod.Instance.GetTackle();
-            if (config_.InfiniteTackle && tackle is not null)
-                tackle.uses.Value = 0;
+            if (config_.InfiniteTackle)
+                fishingRod.InfiniteTackle();
 
             if (config_.AlwaysMaxCastingPower)
                 fishingRod.Instance.castingPower = 1.01f;
-            if (config_.InstantBite && fishingRod.Instance.timeUntilFishingBite > 0)
-                fishingRod.Instance.timeUntilFishingBite = 0f;
-            if (config_.AutoHook && fishingRod.CanHook())
+
+            if (config_.InstantBite)
+                fishingRod.InstantBite();
+
+            if (config_.AutoHook)
                 fishingRod.AutoHook();
+
             if (config_.AlwaysCatchDouble)
                 fishingRod.Instance.caughtDoubleFish = true;
         }
 
         public void ApplyFishingMiniGameBuffs()
         {
+            BobberBar bobberBar = this._bobberBar.Value;
+
+            if (bobberBar is null)
+                return;
+
             if (config().AlwaysPerfect)
-                this._bobberBar.Value.Instance.perfect = true;
-        }
-
-        private void ResetFishingRod()
-        {
-            SFishingRod fishingRod = this._fishingRod.Value;
-
-            if (fishingRod.Instance.AttachmentSlotsCount >= 1)
-                fishingRod.Instance.attachments[0] = fishingRod.InitialBait;
-            if (fishingRod.Instance.AttachmentSlotsCount >= 2)
-                fishingRod.Instance.attachments[1] = fishingRod.InitialTackle;
-
-            fishingRod.Instance.AttachmentSlotsCount = fishingRod.InitialAttachmentSlotsCount;
+                bobberBar.perfect = true;
         }
 
         private void CreateFishingRod(FishingRod fishingRod)
@@ -70,14 +63,13 @@ namespace YetAnotherFishingMod.Framework
         public void OnFishingRodEquipped(FishingRod fishingRod)
         {
             if (this._fishingRod.Value is null)
-            {
                 this.CreateFishingRod(fishingRod);
-            }
             else if (this._fishingRod.Value.Instance != fishingRod)
             {
                 ModConfig config_ = config();
+
                 if (config_.ResetAttachmentsWhenNotEquipped)
-                    this.ResetFishingRod();
+                    this._fishingRod.Value.ResetAttachments();
 
                 this.CreateFishingRod(fishingRod);
             }
@@ -90,8 +82,9 @@ namespace YetAnotherFishingMod.Framework
             if (this._fishingRod.Value is not null)
             {
                 ModConfig config_ = config();
+
                 if (config_.ResetAttachmentsWhenNotEquipped)
-                    this.ResetFishingRod();
+                    this._fishingRod.Value.ResetAttachments();
 
                 this._fishingRod.Value = null;
             }
@@ -100,22 +93,22 @@ namespace YetAnotherFishingMod.Framework
         public void OnFishingMiniGameStart(BobberBar bobberBar)
         {
             this.IsInFishingMiniGame.Value = true;
-            this._bobberBar.Value = new(bobberBar);
+            this._bobberBar.Value = bobberBar;
 
             this.ApplyBobberBarBuffs();
         }
 
         private void ApplyBobberBarBuffs()
         {
-            SBobberBar bobberBar = this._bobberBar.Value;
+            BobberBar bobberBar = this._bobberBar.Value;
             ModConfig config_ = config();
 
-            bobberBar.Instance.difficulty *= config_.DifficultyMultiplier;
+            bobberBar.difficulty *= config_.DifficultyMultiplier;
 
-            if ((config_.InstantCatchTreasure && bobberBar.Instance.treasure) || config_.AlwaysCatchTreasure)
-                bobberBar.Instance.treasureCaught = true;
+            if ((config_.InstantCatchTreasure && bobberBar.treasure) || config_.AlwaysCatchTreasure)
+                bobberBar.treasureCaught = true;
             if (config_.InstantCatchFish)
-                bobberBar.Instance.distanceFromCatching = 1.0f;
+                bobberBar.distanceFromCatching = 1.0f;
         }
 
         public void OnFishingMiniGameEnd()
