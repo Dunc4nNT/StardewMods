@@ -1,4 +1,5 @@
 ﻿using StardewModdingAPI.Utilities;
+using StardewValley.Enchantments;
 using StardewValley.Menus;
 using StardewValley.Tools;
 using System;
@@ -61,6 +62,18 @@ namespace YetAnotherFishingMod.Framework
                 this._fishingRod.Value.SpawnBait((int)config_.SpawnWhichBait);
             if (config_.SpawnTackleWhenEquipped)
                 this._fishingRod.Value.SpawnTackle((int)config_.SpawnWhichTackle);
+
+            if (config_.DoAddEnchantments)
+            {
+                if (!fishingRod.hasEnchantmentOfType<AutoHookEnchantment>() && (config_.AddAllEnchantments || config_.AddAutoHookEnchantment))
+                    this._fishingRod.Value.AddEnchantment(new AutoHookEnchantment());
+                if (!fishingRod.hasEnchantmentOfType<EfficientToolEnchantment>() && (config_.AddAllEnchantments || config_.AddEfficientEnchantment))
+                    this._fishingRod.Value.AddEnchantment(new EfficientToolEnchantment());
+                if (!fishingRod.hasEnchantmentOfType<MasterEnchantment>() && (config_.AddAllEnchantments || config_.AddMasterEnchantment))
+                    this._fishingRod.Value.AddEnchantment(new MasterEnchantment());
+                if (!fishingRod.hasEnchantmentOfType<PreservingEnchantment>() && (config_.AddAllEnchantments || config_.AddPreservingEnchantment))
+                    this._fishingRod.Value.AddEnchantment(new PreservingEnchantment());
+            }
         }
 
         public void OnFishingRodEquipped(FishingRod fishingRod)
@@ -69,11 +82,7 @@ namespace YetAnotherFishingMod.Framework
                 this.CreateFishingRod(fishingRod);
             else if (this._fishingRod.Value.Instance != fishingRod)
             {
-                ModConfig config_ = config();
-
-                if (config_.ResetAttachmentsWhenNotEquipped)
-                    this._fishingRod.Value.ResetAttachments();
-
+                this.OnFishingRodNotEquipped();
                 this.CreateFishingRod(fishingRod);
             }
 
@@ -82,12 +91,17 @@ namespace YetAnotherFishingMod.Framework
 
         public void OnFishingRodNotEquipped()
         {
-            if (this._fishingRod.Value is not null)
+            SFishingRod fishingRod = this._fishingRod.Value;
+
+            if (fishingRod is not null)
             {
                 ModConfig config_ = config();
 
                 if (config_.ResetAttachmentsWhenNotEquipped)
-                    this._fishingRod.Value.ResetAttachments();
+                    fishingRod.ResetAttachments();
+
+                if (config_.ResetEnchantmentsWhenNotEquipped)
+                    fishingRod.ResetEnchantments();
 
                 this._fishingRod.Value = null;
             }

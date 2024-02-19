@@ -1,5 +1,7 @@
 ﻿using StardewValley;
+using StardewValley.Enchantments;
 using StardewValley.Tools;
+using System.Collections.Generic;
 using SObject = StardewValley.Object;
 
 namespace YetAnotherFishingMod.Framework
@@ -8,11 +10,13 @@ namespace YetAnotherFishingMod.Framework
     {
         public FishingRod Instance { get; set; } = instance;
 
-        public int InitialAttachmentSlotsCount { get; } = instance.AttachmentSlotsCount;
+        private readonly int _initialAttachmentSlotsCount = instance.AttachmentSlotsCount;
 
-        public SObject InitialBait { get; } = instance.GetBait();
+        private readonly SObject _initialBait = instance.GetBait();
 
-        public SObject InitialTackle { get; } = instance.GetTackle();
+        private readonly SObject _initialTackle = instance.GetTackle();
+
+        private IList<BaseEnchantment> _addedEnchantments = [];
 
         private bool CanHook()
         {
@@ -50,11 +54,23 @@ namespace YetAnotherFishingMod.Framework
         public void ResetAttachments()
         {
             if (this.Instance.AttachmentSlotsCount >= 1)
-                this.Instance.attachments[0] = this.InitialBait;
+                this.Instance.attachments[0] = this._initialBait;
             if (this.Instance.AttachmentSlotsCount >= 2)
-                this.Instance.attachments[1] = this.InitialTackle;
+                this.Instance.attachments[1] = this._initialTackle;
 
-            this.Instance.AttachmentSlotsCount = this.InitialAttachmentSlotsCount;
+            this.Instance.AttachmentSlotsCount = this._initialAttachmentSlotsCount;
+        }
+
+        public void AddEnchantment(BaseEnchantment enchantment)
+        {
+            this.Instance.enchantments.Add(enchantment);
+            this._addedEnchantments.Add(enchantment);
+        }
+
+        public void ResetEnchantments()
+        {
+            foreach (BaseEnchantment enchantment in this._addedEnchantments)
+                this.Instance.enchantments.Remove(enchantment);
         }
 
         public void InfiniteBait()
