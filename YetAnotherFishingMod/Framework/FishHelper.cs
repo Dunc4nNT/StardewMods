@@ -1,4 +1,5 @@
 ﻿using StardewModdingAPI.Utilities;
+using StardewValley;
 using StardewValley.Enchantments;
 using StardewValley.Menus;
 using StardewValley.Tools;
@@ -127,7 +128,11 @@ namespace YetAnotherFishingMod.Framework
             if ((config_.InstantCatchTreasure && bobberBar.treasure) || config_.AlwaysCatchTreasure)
                 bobberBar.treasureCaught = true;
             if (config_.InstantCatchFish)
-                bobberBar.distanceFromCatching = 1.0f;
+            {
+                this._fishingRod.Value.Instance.pullFishFromWater(bobberBar.whichFish, bobberBar.fishSize, bobberBar.fishQuality, (int)bobberBar.difficulty, bobberBar.treasureCaught, bobberBar.perfect, bobberBar.fromFishPond, bobberBar.setFlagOnCatch, bobberBar.bossFish, this._fishingRod.Value.Instance.caughtDoubleFish);
+                if (Game1.activeClickableMenu is BobberBar)
+                    Game1.exitActiveMenu();
+            }
         }
 
         public void OnFishingMiniGameEnd()
