@@ -16,6 +16,9 @@ namespace YetAnotherFishingMod.Framework
             ModConfig config_ = config();
             SFishingRod fishingRod = this._fishingRod.Value;
 
+            if (config_.FishQuality != ModConfig.Quality.Any && fishingRod.Instance.fishSize > 0)
+                fishingRod.Instance.fishQuality = (int)config_.FishQuality;
+
             if (config_.InfiniteBait)
                 fishingRod.InfiniteBait();
 
@@ -105,6 +108,8 @@ namespace YetAnotherFishingMod.Framework
 
             bobberBar.difficulty *= config_.DifficultyMultiplier;
 
+            if (bobberBar.fishQuality < (int)config_.MinimumFishQuality)
+                bobberBar.fishQuality = (int)config_.MinimumFishQuality;
             if ((config_.InstantCatchTreasure && bobberBar.treasure) || config_.AlwaysCatchTreasure)
                 bobberBar.treasureCaught = true;
             if (config_.InstantCatchFish)

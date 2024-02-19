@@ -22,7 +22,7 @@
 
         public bool SpawnBaitWhenEquipped { get; set; } = true;
 
-        internal enum Quality { Any = -1, None = 0, Silver = 1, Gold = 2, Iridium = 4 }
+        public enum Quality { Any = -1, None = 0, Silver = 1, Gold = 2, Iridium = 4 }
 
         public Quality FishQuality { get; set; } = Quality.Iridium;
 
