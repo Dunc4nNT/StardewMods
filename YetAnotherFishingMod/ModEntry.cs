@@ -5,7 +5,6 @@ using StardewValley.Menus;
 using StardewValley.Tools;
 using YetAnotherFishingMod.Framework;
 
-
 namespace YetAnotherFishingMod
 {
     internal sealed class ModEntry : Mod
@@ -21,7 +20,7 @@ namespace YetAnotherFishingMod
             I18n.Init(helper.Translation);
 
             this.Config = helper.ReadConfig<ModConfig>();
-            this.FishHelper = new(() => this.Config);
+            this.FishHelper = new(() => this.Config, this.Monitor);
 
             helper.Events.GameLoop.UpdateTicked += this.OnUpdateTicked;
             helper.Events.Display.MenuChanged += this.OnMenuChanged;
@@ -48,6 +47,9 @@ namespace YetAnotherFishingMod
                 this.FishHelper.OnFishingMiniGameStart(bobberBar);
             else if (e.OldMenu is BobberBar)
                 this.FishHelper.OnFishingMiniGameEnd();
+
+            if (e.NewMenu is ItemGrabMenu itemGrabMenu && itemGrabMenu.source == ItemGrabMenu.source_fishingChest)
+                this.FishHelper.OnTreasureMenuOpen(itemGrabMenu);
         }
 
         private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)

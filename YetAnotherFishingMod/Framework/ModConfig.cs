@@ -46,6 +46,8 @@
 
         public bool InfiniteTackle { get; set; } = true;
 
+        public bool AutoLootTreasure { get; set; } = true;
+
         public bool AutoEquipBait { get; set; } = true;
 
         public Bait AutoEquipWhichBait { get; set; } = Bait.Bait;

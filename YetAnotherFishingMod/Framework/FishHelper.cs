@@ -1,13 +1,17 @@
-﻿using StardewModdingAPI.Utilities;
+﻿using Common;
+using StardewModdingAPI;
+using StardewModdingAPI.Utilities;
 using StardewValley;
 using StardewValley.Enchantments;
 using StardewValley.Menus;
 using StardewValley.Tools;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace YetAnotherFishingMod.Framework
 {
-    internal class FishHelper(Func<ModConfig> config)
+    internal class FishHelper(Func<ModConfig> config, IMonitor monitor)
     {
         private readonly PerScreen<BobberBar> _bobberBar = new();
         private readonly PerScreen<SFishingRod> _fishingRod = new();
@@ -38,6 +42,24 @@ namespace YetAnotherFishingMod.Framework
 
             if (config_.AlwaysCatchDouble)
                 fishingRod.Instance.caughtDoubleFish = true;
+        }
+
+        public void OnTreasureMenuOpen(ItemGrabMenu itemGrabMenu)
+        {
+            ModConfig config_ = config();
+
+            if (config_.AutoLootTreasure)
+            {
+                IList<Item> actualInventory = itemGrabMenu.ItemsToGrabMenu.actualInventory;
+                for (int i = actualInventory.Count - 1; i >= 0; i--)
+                    if (Game1.player.addItemToInventoryBool(actualInventory.ElementAt(i)))
+                        actualInventory.RemoveAt(i);
+
+                if (actualInventory.Count == 0)
+                    itemGrabMenu.exitThisMenu();
+                else
+                    Notifier.DisplayHudNotification(I18n.Message_InventoryFull(), logLevel: LogLevel.Warn);
+            }
         }
 
         public void ApplyFishingMiniGameBuffs()

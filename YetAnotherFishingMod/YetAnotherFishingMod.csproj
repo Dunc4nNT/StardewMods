@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="i18n\default.json" />
+    <AdditionalFiles Remove="i18n\default.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,5 +16,7 @@
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties manifest_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+  <Import Project="..\Common\Common.projitems" Label="Shared" />
 
 </Project>
