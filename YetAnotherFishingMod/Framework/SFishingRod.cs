@@ -16,7 +16,7 @@ namespace YetAnotherFishingMod.Framework
 
         private readonly SObject _initialTackle = instance.GetTackle();
 
-        private readonly IList<BaseEnchantment> _addedEnchantments = [];
+        private readonly List<BaseEnchantment> _addedEnchantments = [];
 
         private bool CanHook()
         {
