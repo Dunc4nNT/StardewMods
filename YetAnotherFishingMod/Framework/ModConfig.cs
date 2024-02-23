@@ -22,19 +22,13 @@
 
         public bool SpawnBaitWhenEquipped { get; set; } = true;
 
-        public enum Quality { Any = -1, None = 0, Silver = 1, Gold = 2, Iridium = 4 }
-
         public Quality FishQuality { get; set; } = Quality.Iridium;
 
         public Quality MinimumFishQuality { get; set; } = Quality.Gold;
 
-        internal enum Bait { Bait = 685, WildBait = 774, MagicBait = 908 }
-
-        public Bait SpawnWhichBait { get; set; } = Bait.Bait;
+        public Bait SpawnWhichBait { get; set; } = Bait.MagicBait;
 
         public bool SpawnTackleWhenEquipped { get; set; } = true;
-
-        internal enum Tackle { TreasureHunter = 166, Spinner = 686, DressedSpinner = 687, BarbedHook = 691, LeadBobber = 692, TrapBobber = 694, CorkBobber = 695, CuriosityLure = 856, QualityBobber = 877 }
 
         public Tackle SpawnWhichTackle { get; set; } = Tackle.TrapBobber;
 

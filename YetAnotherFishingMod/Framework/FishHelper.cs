@@ -22,7 +22,7 @@ namespace YetAnotherFishingMod.Framework
             ModConfig config_ = config();
             SFishingRod fishingRod = this._fishingRod.Value;
 
-            if (config_.FishQuality != ModConfig.Quality.Any && fishingRod.Instance.fishSize > 0)
+            if (config_.FishQuality != Quality.Any && fishingRod.Instance.fishSize > 0)
                 fishingRod.Instance.fishQuality = (int)config_.FishQuality;
 
             if (config_.InfiniteBait)
