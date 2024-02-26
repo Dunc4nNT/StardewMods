@@ -1,6 +1,6 @@
 ﻿using StardewModdingAPI.Utilities;
 
-namespace YetAnotherFishingMod.Framework
+namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 {
     internal class ModConfigKeys
     {
@@ -17,5 +17,9 @@ namespace YetAnotherFishingMod.Framework
         public KeybindList ResetDifficultyMultiplier { get; set; }
 
         public KeybindList ToggleEnchantments { get; set; }
+
+        public KeybindList ToggleInfiniteBait { get; set; }
+
+        public KeybindList ToggleInfiniteTackle { get; set; }
     }
 }

@@ -6,9 +6,10 @@
     <SharedGUID>399ee2cb-fc83-44e1-9820-78c0f29aa2bf</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>Common</Import_RootNamespace>
+    <Import_RootNamespace>NeverToxic.StardewMods.Common</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)IGenericModConfigMenuApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Notifier.cs" />
   </ItemGroup>
 </Project>

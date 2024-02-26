@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using NeverToxic.StardewMods.Common;
 using StardewModdingAPI;
 using StardewModdingAPI.Utilities;
 using StardewValley;
@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace YetAnotherFishingMod.Framework
+namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 {
     internal class FishHelper(Func<ModConfig> config, IMonitor monitor)
     {
@@ -147,7 +147,7 @@ namespace YetAnotherFishingMod.Framework
 
             if (bobberBar.fishQuality < (int)config_.MinimumFishQuality)
                 bobberBar.fishQuality = (int)config_.MinimumFishQuality;
-            if ((config_.InstantCatchTreasure && bobberBar.treasure) || config_.AlwaysCatchTreasure)
+            if (config_.InstantCatchTreasure && bobberBar.treasure || config_.AlwaysCatchTreasure)
                 bobberBar.treasureCaught = true;
             if (config_.InstantCatchFish)
             {

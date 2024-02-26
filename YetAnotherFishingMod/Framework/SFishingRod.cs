@@ -4,7 +4,7 @@ using StardewValley.Tools;
 using System.Collections.Generic;
 using SObject = StardewValley.Object;
 
-namespace YetAnotherFishingMod.Framework
+namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 {
     internal class SFishingRod(FishingRod instance)
     {
