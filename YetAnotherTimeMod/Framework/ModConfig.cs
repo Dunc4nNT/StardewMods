@@ -1,4 +1,4 @@
-﻿namespace YetAnotherTimeMod.Framework
+﻿namespace NeverToxic.StardewMods.YetAnotherTimeMod.Framework
 {
     internal class ModConfig
     {

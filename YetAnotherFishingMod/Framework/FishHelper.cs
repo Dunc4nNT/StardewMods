@@ -1,68 +1,160 @@
-﻿using StardewModdingAPI;
+﻿using NeverToxic.StardewMods.Common;
+using StardewModdingAPI;
 using StardewModdingAPI.Utilities;
 using StardewValley;
+using StardewValley.Enchantments;
 using StardewValley.Menus;
 using StardewValley.Tools;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace YetAnotherFishingMod.Framework
+namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 {
-    internal class FishHelper(Func<ModConfig> config, IMonitor monitor, IReflectionHelper reflectionHelper)
+    internal class FishHelper(Func<ModConfig> config, IMonitor monitor)
     {
-        private readonly PerScreen<SBobberBar> _bobberBar = new();
+        private readonly PerScreen<BobberBar> _bobberBar = new();
         private readonly PerScreen<SFishingRod> _fishingRod = new();
         public readonly PerScreen<bool> IsInFishingMiniGame = new();
 
-        public void ApplyFishingRodBuffs()
+        private void ApplyFishingRodBuffs()
         {
             ModConfig config_ = config();
             SFishingRod fishingRod = this._fishingRod.Value;
 
+            if (config_.FishQuality != Quality.Any && fishingRod.Instance.fishSize > 0)
+                fishingRod.Instance.fishQuality = (int)config_.FishQuality;
+
+            if (config_.InfiniteBait)
+                fishingRod.InfiniteBait();
+
+            if (config_.InfiniteTackle)
+                fishingRod.InfiniteTackle();
+
             if (config_.AlwaysMaxCastingPower)
-                fishingRod.CastingPower = 1.01f;
+                fishingRod.Instance.castingPower = 1.01f;
+
+            if (config_.InstantBite)
+                fishingRod.InstantBite();
+
+            if (config_.AutoHook)
+                fishingRod.AutoHook();
+
             if (config_.AlwaysCatchDouble)
-                fishingRod.CaughtDoubleFish = true;
-            if (config_.InstantBite && fishingRod.TimeUntilFishingBite > 0)
-                fishingRod.TimeUntilFishingBite = 0f;
-            if (config_.AutoHook && fishingRod.IsNibbling && !fishingRod.Hit && !fishingRod.IsReeling && !fishingRod.PullingOutOfWater && !fishingRod.FishCaught && !fishingRod.ShowingTreasure)
+                fishingRod.Instance.caughtDoubleFish = true;
+        }
+
+        public void OnTreasureMenuOpen(ItemGrabMenu itemGrabMenu)
+        {
+            ModConfig config_ = config();
+
+            if (config_.AutoLootTreasure)
             {
-                fishingRod.TimePerBobberBob = 1f;
-                fishingRod.TimeUntilFishingNibbleDone = FishingRod.maxTimeToNibble;
-                reflectionHelper.GetMethod(fishingRod.Instance, "DoFunction").Invoke(Game1.player.currentLocation, (int)fishingRod.Instance.bobber.X, (int)fishingRod.Instance.bobber.Y, 1, Game1.player);
-                Rumble.rumble(0.95f, 200f);
+                IList<Item> actualInventory = itemGrabMenu.ItemsToGrabMenu.actualInventory;
+                for (int i = actualInventory.Count - 1; i >= 0; i--)
+                    if (Game1.player.addItemToInventoryBool(actualInventory.ElementAt(i)))
+                        actualInventory.RemoveAt(i);
+
+                if (actualInventory.Count == 0)
+                    itemGrabMenu.exitThisMenu();
+                else
+                    Notifier.DisplayHudNotification(I18n.Message_InventoryFull(), logLevel: LogLevel.Warn);
             }
         }
 
         public void ApplyFishingMiniGameBuffs()
         {
+            BobberBar bobberBar = this._bobberBar.Value;
+
+            if (bobberBar is null)
+                return;
+
             if (config().AlwaysPerfect)
-                this._bobberBar.Value.Perfect = true;
+                bobberBar.perfect = true;
+        }
+
+        private void CreateFishingRod(FishingRod fishingRod)
+        {
+            ModConfig config_ = config();
+            this._fishingRod.Value = new(fishingRod);
+
+            if (config_.OverrideAttachmentLimit)
+                this._fishingRod.Value.Instance.AttachmentSlotsCount = 2;
+
+            if (config_.SpawnBaitWhenEquipped)
+                this._fishingRod.Value.SpawnBait((int)config_.SpawnWhichBait);
+            if (config_.SpawnTackleWhenEquipped)
+                this._fishingRod.Value.SpawnTackle((int)config_.SpawnWhichTackle);
+
+            if (config_.DoAddEnchantments)
+            {
+                if (!fishingRod.hasEnchantmentOfType<AutoHookEnchantment>() && (config_.AddAllEnchantments || config_.AddAutoHookEnchantment))
+                    this._fishingRod.Value.AddEnchantment(new AutoHookEnchantment());
+                if (!fishingRod.hasEnchantmentOfType<EfficientToolEnchantment>() && (config_.AddAllEnchantments || config_.AddEfficientToolEnchantment))
+                    this._fishingRod.Value.AddEnchantment(new EfficientToolEnchantment());
+                if (!fishingRod.hasEnchantmentOfType<MasterEnchantment>() && (config_.AddAllEnchantments || config_.AddMasterEnchantment))
+                    this._fishingRod.Value.AddEnchantment(new MasterEnchantment());
+                if (!fishingRod.hasEnchantmentOfType<PreservingEnchantment>() && (config_.AddAllEnchantments || config_.AddPreservingEnchantment))
+                    this._fishingRod.Value.AddEnchantment(new PreservingEnchantment());
+            }
         }
 
         public void OnFishingRodEquipped(FishingRod fishingRod)
         {
-            if (this._fishingRod.Value == null)
-                this._fishingRod.Value = new(fishingRod, reflectionHelper);
+            if (this._fishingRod.Value is null)
+                this.CreateFishingRod(fishingRod);
+            else if (this._fishingRod.Value.Instance != fishingRod)
+            {
+                this.OnFishingRodNotEquipped();
+                this.CreateFishingRod(fishingRod);
+            }
 
             this.ApplyFishingRodBuffs();
         }
 
         public void OnFishingRodNotEquipped()
         {
-            this._fishingRod.Value = null;
+            SFishingRod fishingRod = this._fishingRod.Value;
+
+            if (fishingRod is not null)
+            {
+                ModConfig config_ = config();
+
+                if (config_.ResetAttachmentsWhenNotEquipped)
+                    fishingRod.ResetAttachments();
+
+                if (config_.ResetEnchantmentsWhenNotEquipped)
+                    fishingRod.ResetEnchantments();
+
+                this._fishingRod.Value = null;
+            }
         }
 
         public void OnFishingMiniGameStart(BobberBar bobberBar)
         {
             this.IsInFishingMiniGame.Value = true;
-            this._bobberBar.Value = new(bobberBar, reflectionHelper);
+            this._bobberBar.Value = bobberBar;
 
+            this.ApplyBobberBarBuffs();
+        }
+
+        private void ApplyBobberBarBuffs()
+        {
+            BobberBar bobberBar = this._bobberBar.Value;
             ModConfig config_ = config();
 
-            if ((config_.InstantCatchTreasure && this._bobberBar.Value.Treasure) || config_.AlwaysCatchTreasure)
-                this._bobberBar.Value.TreasureCaught = true;
+            bobberBar.difficulty *= config_.DifficultyMultiplier;
+
+            if (bobberBar.fishQuality < (int)config_.MinimumFishQuality)
+                bobberBar.fishQuality = (int)config_.MinimumFishQuality;
+            if (config_.InstantCatchTreasure && bobberBar.treasure || config_.AlwaysCatchTreasure)
+                bobberBar.treasureCaught = true;
             if (config_.InstantCatchFish)
-                this._bobberBar.Value.DistanceFromCatching = 1.0f;
+            {
+                this._fishingRod.Value.Instance.pullFishFromWater(bobberBar.whichFish, bobberBar.fishSize, bobberBar.fishQuality, (int)bobberBar.difficulty, bobberBar.treasureCaught, bobberBar.perfect, bobberBar.fromFishPond, bobberBar.setFlagOnCatch, bobberBar.bossFish, this._fishingRod.Value.Instance.caughtDoubleFish);
+                if (Game1.activeClickableMenu is BobberBar)
+                    Game1.exitActiveMenu();
+            }
         }
 
         public void OnFishingMiniGameEnd()

@@ -1,8 +1,8 @@
-﻿using StardewModdingAPI;
+﻿using NeverToxic.StardewMods.YetAnotherTimeMod.Framework;
+using StardewModdingAPI;
 using StardewModdingAPI.Events;
-using YetAnotherTimeMod.Framework;
 
-namespace YetAnotherTimeMod
+namespace NeverToxic.StardewMods.YetAnotherTimeMod
 {
     internal class ModEntry : Mod
     {

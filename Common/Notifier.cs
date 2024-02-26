@@ -1,7 +1,7 @@
 ﻿using StardewModdingAPI;
 using StardewValley;
 
-namespace Common
+namespace NeverToxic.StardewMods.Common
 {
     public class Notifier
     {

@@ -1,12 +1,11 @@
-﻿using StardewModdingAPI;
+﻿using NeverToxic.StardewMods.YetAnotherFishingMod.Framework;
+using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Menus;
 using StardewValley.Tools;
-using YetAnotherFishingMod.Framework;
 
-
-namespace YetAnotherFishingMod
+namespace NeverToxic.StardewMods.YetAnotherFishingMod
 {
     internal sealed class ModEntry : Mod
     {
@@ -21,11 +20,17 @@ namespace YetAnotherFishingMod
             I18n.Init(helper.Translation);
 
             this.Config = helper.ReadConfig<ModConfig>();
-            this.FishHelper = new(() => this.Config, this.Monitor, helper.Reflection);
+            this.FishHelper = new(() => this.Config, this.Monitor);
 
+            helper.Events.GameLoop.GameLaunched += this.OnGameLaunched;
             helper.Events.GameLoop.UpdateTicked += this.OnUpdateTicked;
             helper.Events.Display.MenuChanged += this.OnMenuChanged;
             helper.Events.Input.ButtonsChanged += this.OnButtonsChanged;
+        }
+
+        private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
+        {
+            new GenericModConfigMenu(this.Helper.ModRegistry, this.ModManifest, this.Monitor, () => this.Config, () => this.Config = new ModConfig(), () => this.Helper.WriteConfig(this.Config)).Register();
         }
 
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
@@ -48,6 +53,9 @@ namespace YetAnotherFishingMod
                 this.FishHelper.OnFishingMiniGameStart(bobberBar);
             else if (e.OldMenu is BobberBar)
                 this.FishHelper.OnFishingMiniGameEnd();
+
+            if (e.NewMenu is ItemGrabMenu itemGrabMenu && itemGrabMenu.source == ItemGrabMenu.source_fishingChest)
+                this.FishHelper.OnTreasureMenuOpen(itemGrabMenu);
         }
 
         private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)

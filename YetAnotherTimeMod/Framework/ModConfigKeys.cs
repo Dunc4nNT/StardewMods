@@ -1,6 +1,6 @@
 ﻿using StardewModdingAPI.Utilities;
 
-namespace YetAnotherTimeMod.Framework
+namespace NeverToxic.StardewMods.YetAnotherTimeMod.Framework
 {
     internal class ModConfigKeys
     {

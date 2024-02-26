@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <RootNamespace>NeverToxic.$(SolutionName.Replace(" ", "_")).$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

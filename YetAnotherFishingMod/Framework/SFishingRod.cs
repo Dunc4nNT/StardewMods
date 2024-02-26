@@ -1,64 +1,96 @@
-﻿using StardewModdingAPI;
+﻿using StardewValley;
+using StardewValley.Enchantments;
 using StardewValley.Tools;
+using System.Collections.Generic;
+using SObject = StardewValley.Object;
 
-namespace YetAnotherFishingMod.Framework
+namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 {
-    internal class SFishingRod(FishingRod instance, IReflectionHelper reflection)
+    internal class SFishingRod(FishingRod instance)
     {
-        private readonly IReflectedField<float> _castingPower = reflection.GetField<float>(instance, "castingPower");
-        private readonly IReflectedField<bool> _caughtDoubleFish = reflection.GetField<bool>(instance, "caughtDoubleFish");
-        private readonly IReflectedField<float> _timeUntilFishingBite = reflection.GetField<float>(instance, "timeUntilFishingBite");
-        private readonly IReflectedField<bool> _isNibbling = reflection.GetField<bool>(instance, "isNibbling");
-        private readonly IReflectedField<bool> _hit = reflection.GetField<bool>(instance, "hit");
-        private readonly IReflectedField<bool> _isReeling = reflection.GetField<bool>(instance, "isReeling");
-        private readonly IReflectedField<bool> _pullingOutOfWater = reflection.GetField<bool>(instance, "pullingOutOfWater");
-        private readonly IReflectedField<bool> _fishCaught = reflection.GetField<bool>(instance, "fishCaught");
-        private readonly IReflectedField<bool> _showingTreasure = reflection.GetField<bool>(instance, "showingTreasure");
-        private readonly IReflectedField<float> _timePerBobberBob = reflection.GetField<float>(instance, "timePerBobberBob");
-        private readonly IReflectedField<float> _timeUntilFishingNibbleDone = reflection.GetField<float>(instance, "timeUntilFishingNibbleDone");
-
         public FishingRod Instance { get; set; } = instance;
 
-        public float CastingPower
+        private readonly int _initialAttachmentSlotsCount = instance.AttachmentSlotsCount;
+
+        private readonly SObject _initialBait = instance.GetBait();
+
+        private readonly SObject _initialTackle = instance.GetTackle();
+
+        private readonly List<BaseEnchantment> _addedEnchantments = [];
+
+        private bool CanHook()
         {
-            get => this._castingPower.GetValue();
-            set => this._castingPower.SetValue(value);
+            return
+                this.Instance.isNibbling &&
+                !this.Instance.hit &&
+                !this.Instance.isReeling &&
+                !this.Instance.pullingOutOfWater &&
+                !this.Instance.fishCaught &&
+                !this.Instance.showingTreasure
+            ;
         }
 
-        public bool CaughtDoubleFish
+        public void AutoHook()
         {
-            get => this._caughtDoubleFish.GetValue();
-            set => this._caughtDoubleFish.SetValue(value);
+            if (this.CanHook())
+            {
+                this.Instance.timePerBobberBob = 1f;
+                this.Instance.timeUntilFishingNibbleDone = FishingRod.maxTimeToNibble;
+                this.Instance.DoFunction(Game1.player.currentLocation, (int)this.Instance.bobber.X, (int)this.Instance.bobber.Y, 1, Game1.player);
+                Rumble.rumble(0.95f, 200f);
+            }
         }
 
-        public float TimeUntilFishingBite
+        public void SpawnBait(int baitId)
         {
-            get => this._timeUntilFishingBite.GetValue();
-            set => this._timeUntilFishingBite.SetValue(value);
+            this.Instance.attachments[0] = ItemRegistry.Create<SObject>($"(O){baitId}");
         }
 
-        public bool IsNibbling => this._isNibbling.GetValue();
-
-        public bool Hit => this._hit.GetValue();
-
-        public bool IsReeling => this._isReeling.GetValue();
-
-        public bool PullingOutOfWater => this._pullingOutOfWater.GetValue();
-
-        public bool FishCaught => this._fishCaught.GetValue();
-
-        public bool ShowingTreasure => this._showingTreasure.GetValue();
-
-        public float TimePerBobberBob
+        public void SpawnTackle(int tackleId)
         {
-            get => this._timePerBobberBob.GetValue();
-            set => this._timePerBobberBob.SetValue(value);
+            this.Instance.attachments[1] = ItemRegistry.Create<SObject>($"(O){tackleId}");
         }
 
-        public float TimeUntilFishingNibbleDone
+        public void ResetAttachments()
         {
-            get => this._timeUntilFishingNibbleDone.GetValue();
-            set => this._timeUntilFishingNibbleDone.SetValue(value);
+            if (this.Instance.AttachmentSlotsCount >= 1)
+                this.Instance.attachments[0] = this._initialBait;
+            if (this.Instance.AttachmentSlotsCount >= 2)
+                this.Instance.attachments[1] = this._initialTackle;
+
+            this.Instance.AttachmentSlotsCount = this._initialAttachmentSlotsCount;
+        }
+
+        public void AddEnchantment(BaseEnchantment enchantment)
+        {
+            this.Instance.enchantments.Add(enchantment);
+            this._addedEnchantments.Add(enchantment);
+        }
+
+        public void ResetEnchantments()
+        {
+            foreach (BaseEnchantment enchantment in this._addedEnchantments)
+                this.Instance.enchantments.Remove(enchantment);
+        }
+
+        public void InfiniteBait()
+        {
+            SObject bait = this.Instance.GetBait();
+            if (bait is not null)
+                bait.Stack = bait.maximumStackSize();
+        }
+
+        public void InfiniteTackle()
+        {
+            SObject tackle = this.Instance.GetTackle();
+            if (tackle is not null)
+                tackle.uses.Value = 0;
+        }
+
+        public void InstantBite()
+        {
+            if (this.Instance.timeUntilFishingBite > 0)
+                this.Instance.timeUntilFishingBite = 0f;
         }
     }
 }
