@@ -1,8 +1,8 @@
-﻿using Common;
+﻿using NeverToxic.StardewMods.Common;
 using StardewModdingAPI;
 using StardewValley;
 
-namespace YetAnotherTimeMod.Framework
+namespace NeverToxic.StardewMods.YetAnotherTimeMod.Framework
 {
     internal class TimeHelper(ModConfig config, IMonitor monitor)
     {
@@ -43,7 +43,7 @@ namespace YetAnotherTimeMod.Framework
             if (Game1.gameTimeInterval < this._lastTimeInterval)
                 this._lastTimeInterval = 0;
 
-            Game1.gameTimeInterval = this._lastTimeInterval + ((Game1.gameTimeInterval - this._lastTimeInterval) * this.SpeedPercentage / 100);
+            Game1.gameTimeInterval = this._lastTimeInterval + (Game1.gameTimeInterval - this._lastTimeInterval) * this.SpeedPercentage / 100;
             this._lastTimeInterval = Game1.gameTimeInterval;
         }
 

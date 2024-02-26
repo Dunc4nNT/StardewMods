@@ -5,6 +5,6 @@
   "Description": "Manipulate game time.",
   "UniqueID": "NeverToxic.YetAnotherTimeMod",
   "EntryDll": "YetAnotherTimeMod.dll",
-  "MinimumApiVersion": "3.0.0",
+  "MinimumApiVersion": "4.0.0-alpha",
   "UpdateKeys": []
 }
