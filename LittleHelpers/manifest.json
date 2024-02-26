@@ -1,0 +1,17 @@
+{
+  "Name": "Farm Helpers",
+  "Author": "NeverToxic",
+  "Version": "0.0.1-alpha",
+  "Description": "Adds helpers to the farm that harvest, water and replant crops, gather foragables and more.",
+  "UniqueID": "NeverToxic.FarmHelpers",
+  "EntryDll": "FarmHelpers.dll",
+  "MinimumApiVersion": "4.0.0-alpha",
+  "UpdateKeys": [],
+  "Dependencies": [
+    {
+      "UniqueID": "NeverToxic.FarmHelpersAssets",
+      "MinimumVersion": "0.0.1-alpha",
+      "IsRequired":  true
+    }
+  ]
+}

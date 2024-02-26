@@ -1,0 +1,18 @@
+{
+  "Name": "Farm Helpers",
+  "Author": "NeverToxic",
+  "Version": "0.0.1-alpha",
+  "Description": "Assets for the Farm Helpers mod.",
+  "UniqueID": "NeverToxic.FarmHelpersAssets",
+  "UpdateKeys": [],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher"
+  },
+  "Dependencies": [
+    {
+      "UniqueID": "NeverToxic.FarmHelpers",
+      "MinimumVersion": "0.0.1-alpha",
+      "IsRequired": false
+    }
+  ]
+}
