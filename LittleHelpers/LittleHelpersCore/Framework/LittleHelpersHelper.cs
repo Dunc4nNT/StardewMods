@@ -1,7 +1,7 @@
-﻿using NeverToxic.StardewMods.LittleHelpers.Framework.Buildings;
+﻿using NeverToxic.StardewMods.LittleHelpersCore.Framework.Buildings;
 using System.Collections.Generic;
 
-namespace NeverToxic.StardewMods.LittleHelpers.Framework
+namespace NeverToxic.StardewMods.LittleHelpersCore.Framework
 {
     internal class LittleHelpersHelper
     {
@@ -10,9 +10,7 @@ namespace NeverToxic.StardewMods.LittleHelpers.Framework
         public void OnDayChanged()
         {
             foreach (BaseBuilding building in this.Buildings)
-            {
                 building.ExecuteCommands();
-            }
         }
     }
 }

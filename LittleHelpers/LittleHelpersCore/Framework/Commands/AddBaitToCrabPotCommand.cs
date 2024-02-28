@@ -1,6 +1,6 @@
-﻿namespace NeverToxic.StardewMods.LittleHelpers.Framework.Commands
+﻿namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Commands
 {
-    internal class DigArtifactCommand : BaseCommand
+    internal class AddBaitToCrabPotCommand : BaseCommand
     {
         public override bool CanExecute(int tile)
         {

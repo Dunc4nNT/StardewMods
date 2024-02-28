@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YetAnotherTimeMod", "YetAno
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Common", "Common\Common.shproj", "{399EE2CB-FC83-44E1-9820-78C0F29AA2BF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleHelpers", "LittleHelpers\LittleHelpers\LittleHelpers.csproj", "{3D3403AE-BFF8-48DB-8FA0-2DEF6E37440F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleHelpersCore", "LittleHelpers\LittleHelpersCore\LittleHelpersCore.csproj", "{3D3403AE-BFF8-48DB-8FA0-2DEF6E37440F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

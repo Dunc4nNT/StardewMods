@@ -1,4 +1,4 @@
-﻿namespace NeverToxic.StardewMods.LittleHelpers.Framework.Validators
+﻿namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Validators
 {
     internal class MapValidator : ILocationValidator
     {

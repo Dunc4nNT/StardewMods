@@ -1,6 +1,6 @@
-﻿namespace NeverToxic.StardewMods.LittleHelpers.Framework.Commands
+﻿namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Commands
 {
-    internal class GatherTruffleCommand : BaseCommand
+    internal class GatherForagableCommand : BaseCommand
     {
         public override bool CanExecute(int tile)
         {

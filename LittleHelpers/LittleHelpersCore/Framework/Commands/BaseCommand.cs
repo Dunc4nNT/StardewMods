@@ -1,4 +1,4 @@
-﻿namespace NeverToxic.StardewMods.LittleHelpers.Framework.Commands
+﻿namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Commands
 {
     internal abstract class BaseCommand : ICommand
     {

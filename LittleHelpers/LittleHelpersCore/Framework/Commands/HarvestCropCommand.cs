@@ -1,6 +1,6 @@
-﻿namespace NeverToxic.StardewMods.LittleHelpers.Framework.Commands
+﻿namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Commands
 {
-    internal class CollectFromCrabPotCommand : BaseCommand
+    internal class HarvestCropCommand : BaseCommand
     {
         public override bool CanExecute(int tile)
         {

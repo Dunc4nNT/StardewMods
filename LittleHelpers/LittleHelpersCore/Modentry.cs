@@ -1,6 +1,6 @@
 ﻿using StardewModdingAPI;
 
-namespace NeverToxic.StardewMods.LittleHelpers
+namespace NeverToxic.StardewMods.LittleHelpersCore
 {
     internal class Modentry : Mod
     {

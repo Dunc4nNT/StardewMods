@@ -1,8 +1,8 @@
-﻿using NeverToxic.StardewMods.LittleHelpers.Framework.Commands;
-using NeverToxic.StardewMods.LittleHelpers.Framework.Validators;
+﻿using NeverToxic.StardewMods.LittleHelpersCore.Framework.Commands;
+using NeverToxic.StardewMods.LittleHelpersCore.Framework.Validators;
 using System.Collections.Generic;
 
-namespace NeverToxic.StardewMods.LittleHelpers.Framework.Buildings
+namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Buildings
 {
     internal interface IBuilding
     {
