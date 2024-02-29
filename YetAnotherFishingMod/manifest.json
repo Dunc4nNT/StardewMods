@@ -6,5 +6,12 @@
   "UniqueID": "NeverToxic.YetAnotherFishingMod",
   "EntryDll": "YetAnotherFishingMod.dll",
   "MinimumApiVersion": "4.0.0-alpha",
-  "UpdateKeys": []
+  "UpdateKeys": [],
+  "Dependencies": [
+    {
+      "UniqueID": "spacechase0.GenericModConfigMenu",
+      "MinimumVersion": "1.12.0-sdvalpha.20240222",
+      "IsRequired": false
+    }
+  ]
 }
