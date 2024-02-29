@@ -30,11 +30,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 pageId: "NeverToxic.YetAnotherFishingMod.Enchantments",
                 text: () => "Enchantments"
             );
-            configMenu.AddPageLink(
-                mod: manifest,
-                pageId: "NeverToxic.YetAnotherFishingMod.Keybinds",
-                text: () => "Keybinds"
-            );
 
             configMenu.AddPage(
                 mod: manifest,
@@ -134,24 +129,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 tooltip: () => "Always gets fish of the set quality or better.",
                 getValue: () => (int)config().MinimumFishQuality,
                 setValue: value => config().MinimumFishQuality = (Quality)value
-            );
-            configMenu.AddSectionTitle(
-                mod: manifest,
-                text: () => "Stamina Options"
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: () => "Always Refund Stamina",
-                tooltip: () => "Refunds the stamina used after casting your fishing rod. Does not stack.",
-                getValue: () => config().AlwaysRefundStamina,
-                setValue: value => config().AlwaysRefundStamina = value
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: () => "Refund Stamina on Maximum Cast",
-                tooltip: () => "Refunds stamina after you got a maximum cast. Does not stack.",
-                getValue: () => config().RefundStaminaOnMaxCast,
-                setValue: value => config().RefundStaminaOnMaxCast = value
             );
 
             configMenu.AddPage(
@@ -289,87 +266,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 tooltip: () => "Adds the preserving enchantment when equipping a fishing rod.",
                 getValue: () => config().AddPreservingEnchantment,
                 setValue: value => config().AddPreservingEnchantment = value
-            );
-
-            configMenu.AddPage(
-                mod: manifest,
-                pageId: "NeverToxic.YetAnotherFishingMod.Keybinds",
-                pageTitle: () => "Keybinds"
-            );
-            configMenu.AddSectionTitle(
-                mod: manifest,
-                text: () => "General"
-            );
-            configMenu.AddKeybindList(
-                mod: manifest,
-                name: () => "Reload Config",
-                tooltip: () => "Reloads the configuration file if manually edited.",
-                getValue: () => config().Keys.ReloadConfig,
-                setValue: value => config().Keys.ReloadConfig = value
-            );
-            configMenu.AddSectionTitle(
-                mod: manifest,
-                text: () => "Attachments & Enchantments"
-            );
-            configMenu.AddKeybindList(
-                mod: manifest,
-                name: () => "Spawn Bait",
-                tooltip: () => "Spawn bait on equipped fishing rod when pressed.",
-                getValue: () => config().Keys.SpawnBait,
-                setValue: value => config().Keys.SpawnBait = value
-            );
-            configMenu.AddKeybindList(
-                mod: manifest,
-                name: () => "Infinite Bait Toggle",
-                tooltip: () => "Toggle for infinite bait.",
-                getValue: () => config().Keys.ToggleInfiniteBait,
-                setValue: value => config().Keys.ToggleInfiniteBait = value
-            );
-            configMenu.AddKeybindList(
-                mod: manifest,
-                name: () => "Spawn Tackle",
-                tooltip: () => "Spawn tackle on equipped fishing rod when pressed.",
-                getValue: () => config().Keys.SpawnTackle,
-                setValue: value => config().Keys.SpawnTackle = value
-            );
-            configMenu.AddKeybindList(
-                mod: manifest,
-                name: () => "Infinite Tackle Toggle",
-                tooltip: () => "Toggle for infinite tackle.",
-                getValue: () => config().Keys.ToggleInfiniteTackle,
-                setValue: value => config().Keys.ToggleInfiniteTackle = value
-            );
-            configMenu.AddKeybindList(
-                mod: manifest,
-                name: () => "Enchantments Toggle",
-                tooltip: () => "Toggles enchantments on and off.",
-                getValue: () => config().Keys.ToggleEnchantments,
-                setValue: value => config().Keys.ToggleEnchantments = value
-            );
-            configMenu.AddSectionTitle(
-                mod: manifest,
-                text: () => "Difficulty Multiplier"
-            );
-            configMenu.AddKeybindList(
-                mod: manifest,
-                name: () => "Increase Difficulty",
-                tooltip: () => "Increases the difficulty multiplier by 0.1.",
-                getValue: () => config().Keys.IncreaseDifficultyMultiplier,
-                setValue: value => config().Keys.IncreaseDifficultyMultiplier = value
-            );
-            configMenu.AddKeybindList(
-                mod: manifest,
-                name: () => "Decrease Difficulty",
-                tooltip: () => "Decrease the difficulty multiplier by 0.1.",
-                getValue: () => config().Keys.DecreaseDifficultyMultiplier,
-                setValue: value => config().Keys.DecreaseDifficultyMultiplier = value
-            );
-            configMenu.AddKeybindList(
-                mod: manifest,
-                name: () => "Reset Difficulty",
-                tooltip: () => "Resets the difficulty to what it is in vanilla.",
-                getValue: () => config().Keys.ResetDifficultyMultiplier,
-                setValue: value => config().Keys.ResetDifficultyMultiplier = value
             );
         }
     }
