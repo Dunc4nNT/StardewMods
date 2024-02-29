@@ -42,10 +42,6 @@
 
         public bool AutoLootTreasure { get; set; } = false;
 
-        public bool AlwaysRefundStamina { get; set; } = false;
-
-        public bool RefundStaminaOnMaxCast { get; set; } = false;
-
         public float DifficultyMultiplier { get; set; } = 1.0f;
 
         public bool DoAddEnchantments { get; set; } = false;

@@ -147,7 +147,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
             if (bobberBar.fishQuality < (int)config_.MinimumFishQuality)
                 bobberBar.fishQuality = (int)config_.MinimumFishQuality;
-            if (config_.InstantCatchTreasure && bobberBar.treasure || config_.AlwaysCatchTreasure)
+            if ((config_.InstantCatchTreasure && bobberBar.treasure) || config_.AlwaysCatchTreasure)
                 bobberBar.treasureCaught = true;
             if (config_.InstantCatchFish)
             {
