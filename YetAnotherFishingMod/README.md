@@ -80,7 +80,7 @@ This mod is made for Stardew Valley 1.6 using SMAPI 4.0. This mod will **not** w
 
 Both singleplayer and multiplayer should work. I have yet to test split screen, but did try to made it compatible.
 
-Likely to conflict with mods that try to do the same thing. Due to every option in this mod being configurable it should not be likely to cause issues, as you can simply turn the conflicting option off. Though, feel free to report any mods that do conflict by [opening an issue][gh-issues], updating the README and [sending a pull request][gh-pr]] or [comment on the NexusMods page][nexus-comments].
+Likely to conflict with mods that try to do the same thing. Due to every option in this mod being configurable it should not be likely to cause issues, as you can simply turn the conflicting option off. Though, feel free to report any mods that do conflict by [opening an issue][gh-issues], updating the README and [sending a pull request][gh-pr] or [comment on the NexusMods page][nexus-comments].
 
 ## Translations
 
