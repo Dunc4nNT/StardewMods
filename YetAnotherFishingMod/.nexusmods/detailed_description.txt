@@ -24,7 +24,7 @@ Mandatory and optional requirements for use of this mod.
 [/list]
 [size=5][b]Configuration[/b][/size]
 
-The mod's configurable options can be found below. These can either be adjusted through [url=http://https://www.nexusmods.com/stardewvalley/mods/5098]Generic Mod Configuration Menu (GMCM)[/url] or the [u]config.json[/u] file. Editing the options using GMCM is recommended. GMCM will also provide descriptive tooltips if the option itself is not clear.
+The mod's configurable options can be found below. These can either be adjusted through [url=https://www.nexusmods.com/stardewvalley/mods/5098]GMCM[/url] or the [u]config.json[/u] file. Editing the options using GMCM is recommended. GMCM will also provide descriptive tooltips if the option itself is not clear.
 
 By default, instantly catch fish is the only option turned on.****
 
