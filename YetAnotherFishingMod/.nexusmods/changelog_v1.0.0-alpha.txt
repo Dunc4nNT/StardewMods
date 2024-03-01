@@ -1,7 +1,7 @@
 Version 1.0.0-alpha
 
 - Instantly catch fish and treasure
-- Always cast with maximum power, score perfect, catch treasure and double fish
+- Always cast with maximum power, score perfect and catch double fish
 - Fish instantly bite
 - Automatically hook fish once they bite
 - Automatically loot treasure
@@ -12,3 +12,7 @@ Version 1.0.0-alpha
 - Infinite bait and tackle
 - Reset attachments and enchantments on unequip
 - GMCM integration 
+- Dynamically generate available bait and tackles on game launch
+- Changed bait, tackle and quality options to be a dropdown menu
+- Allow for i18n of the config menu added by GMCM
+- Replace AlwaysCatchTreasure with an option that allows to adjust treasure appearance rate to vanilla, never or always
