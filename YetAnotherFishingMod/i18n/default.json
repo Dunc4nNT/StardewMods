@@ -1,4 +1,10 @@
 {
+  "config.quality-any": "Any",
+  "config.quality-none": "None",
+  "config.quality-silver": "Silver",
+  "config.quality-gold": "Gold",
+  "config.quality-iridium": "Iridium",
+
   "message.config-reloaded": "Configuration file reloaded.",
   "message.inventory-full": "Your inventory is full."
 }

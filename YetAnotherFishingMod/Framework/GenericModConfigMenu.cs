@@ -118,19 +118,23 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 mod: manifest,
                 text: () => "Quality Options"
             );
-            configMenu.AddNumberOption(
+            configMenu.AddTextOption(
                 mod: manifest,
                 name: () => "Fish Quality",
                 tooltip: () => "Always catch fish with the set quality.",
-                getValue: () => (int)config().FishQuality,
-                setValue: value => config().FishQuality = (Quality)value
+                getValue: () => config().FishQuality.ToString(),
+                setValue: value => config().FishQuality = (Quality)Enum.Parse(typeof(Quality), value),
+                allowedValues: Enum.GetNames(typeof(Quality)),
+                formatAllowedValue: value => I18n.GetByKey($"config.quality-{value}")
             );
-            configMenu.AddNumberOption(
+            configMenu.AddTextOption(
                 mod: manifest,
                 name: () => "Minimum Fish Quality",
                 tooltip: () => "Always gets fish of the set quality or better.",
-                getValue: () => (int)config().MinimumFishQuality,
-                setValue: value => config().MinimumFishQuality = (Quality)value
+                getValue: () => config().MinimumFishQuality.ToString(),
+                setValue: value => config().MinimumFishQuality = (Quality)Enum.Parse(typeof(Quality), value),
+                allowedValues: Enum.GetNames(typeof(Quality)),
+                formatAllowedValue: value => I18n.GetByKey($"config.quality-{value}")
             );
 
             configMenu.AddPage(
