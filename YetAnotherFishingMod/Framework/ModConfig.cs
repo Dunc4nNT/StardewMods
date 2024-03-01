@@ -26,11 +26,11 @@
 
         public Quality MinimumFishQuality { get; set; } = Quality.None;
 
-        public Bait SpawnWhichBait { get; set; } = Bait.Bait;
+        public string SpawnWhichBait { get; set; } = "(O)685";
 
         public bool SpawnTackleWhenEquipped { get; set; } = false;
 
-        public Tackle SpawnWhichTackle { get; set; } = Tackle.DressedSpinner;
+        public string SpawnWhichTackle { get; set; } = "(O)686";
 
         public bool OverrideAttachmentLimit { get; set; } = false;
 

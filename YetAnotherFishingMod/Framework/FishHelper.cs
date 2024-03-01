@@ -82,9 +82,9 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 this._fishingRod.Value.Instance.AttachmentSlotsCount = 2;
 
             if (config_.SpawnBaitWhenEquipped)
-                this._fishingRod.Value.SpawnBait((int)config_.SpawnWhichBait);
+                this._fishingRod.Value.SpawnBait(config_.SpawnWhichBait);
             if (config_.SpawnTackleWhenEquipped)
-                this._fishingRod.Value.SpawnTackle((int)config_.SpawnWhichTackle);
+                this._fishingRod.Value.SpawnTackle(config_.SpawnWhichTackle);
 
             if (config_.DoAddEnchantments)
             {

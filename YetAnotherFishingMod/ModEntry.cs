@@ -2,8 +2,11 @@
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
+using StardewValley.GameData.Objects;
 using StardewValley.Menus;
 using StardewValley.Tools;
+using System.Collections.Generic;
+using SObject = StardewValley.Object;
 
 namespace NeverToxic.StardewMods.YetAnotherFishingMod
 {
@@ -14,6 +17,10 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod
         private ModConfigKeys Keys => this.Config.Keys;
 
         private FishHelper FishHelper { get; set; }
+
+        private readonly List<string> _baitList = [];
+
+        private readonly List<string> _tackleList = [];
 
         public override void Entry(IModHelper helper)
         {
@@ -30,7 +37,15 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
-            new GenericModConfigMenu(this.Helper.ModRegistry, this.ModManifest, this.Monitor, () => this.Config, () => this.Config = new ModConfig(), () => this.Helper.WriteConfig(this.Config)).Register();
+            foreach (KeyValuePair<string, ObjectData> item in Game1.objectData)
+            {
+                if (item.Value.Category == SObject.baitCategory)
+                    this._baitList.Add(ItemRegistry.QualifyItemId(item.Key));
+                else if (item.Value.Category == SObject.tackleCategory)
+                    this._tackleList.Add(ItemRegistry.QualifyItemId(item.Key));
+            }
+
+            new GenericModConfigMenu(this.Helper.ModRegistry, this.ModManifest, this.Monitor, () => this.Config, () => this.Config = new ModConfig(), () => this.Helper.WriteConfig(this.Config), this._baitList, this._tackleList).Register();
         }
 
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)

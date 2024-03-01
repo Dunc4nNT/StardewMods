@@ -41,14 +41,14 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             }
         }
 
-        public void SpawnBait(int baitId)
+        public void SpawnBait(string baitId)
         {
-            this.Instance.attachments[0] = ItemRegistry.Create<SObject>($"(O){baitId}");
+            this.Instance.attachments[0] = ItemRegistry.Create<SObject>(baitId);
         }
 
-        public void SpawnTackle(int tackleId)
+        public void SpawnTackle(string tackleId)
         {
-            this.Instance.attachments[1] = ItemRegistry.Create<SObject>($"(O){tackleId}");
+            this.Instance.attachments[1] = ItemRegistry.Create<SObject>(tackleId);
         }
 
         public void ResetAttachments()

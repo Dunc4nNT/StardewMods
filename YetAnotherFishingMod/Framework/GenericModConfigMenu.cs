@@ -1,10 +1,12 @@
 ﻿using NeverToxic.StardewMods.Common;
 using StardewModdingAPI;
+using StardewValley;
 using System;
+using System.Collections.Generic;
 
 namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 {
-    internal class GenericModConfigMenu(IModRegistry modRegistry, IManifest manifest, IMonitor monitor, Func<ModConfig> config, Action reset, Action save)
+    internal class GenericModConfigMenu(IModRegistry modRegistry, IManifest manifest, IMonitor monitor, Func<ModConfig> config, Action reset, Action save, List<string> baitList, List<string> tackeList)
     {
         public void Register()
         {
@@ -165,12 +167,14 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().SpawnBaitWhenEquipped,
                 setValue: value => config().SpawnBaitWhenEquipped = value
             );
-            configMenu.AddNumberOption(
+            configMenu.AddTextOption(
                 mod: manifest,
                 name: () => "Bait to Spawn",
                 tooltip: () => "Which bait to automatically spawn when fishing rod is equipped.",
-                getValue: () => (int)config().SpawnWhichBait,
-                setValue: value => config().SpawnWhichBait = (Bait)value
+                getValue: () => config().SpawnWhichBait,
+                setValue: value => config().SpawnWhichBait = value,
+                allowedValues: [.. baitList],
+                formatAllowedValue: value => ItemRegistry.GetData(value).DisplayName
             );
             configMenu.AddBoolOption(
                 mod: manifest,
@@ -190,12 +194,14 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().SpawnTackleWhenEquipped,
                 setValue: value => config().SpawnTackleWhenEquipped = value
             );
-            configMenu.AddNumberOption(
+            configMenu.AddTextOption(
                 mod: manifest,
                 name: () => "Tackle to Spawn",
                 tooltip: () => "Which tackle to automatically spawn when fishing rod is equipped.",
-                getValue: () => (int)config().SpawnWhichTackle,
-                setValue: value => config().SpawnWhichTackle = (Tackle)value
+                getValue: () => config().SpawnWhichTackle,
+                setValue: value => config().SpawnWhichTackle = value,
+                allowedValues: [.. tackeList],
+                formatAllowedValue: value => ItemRegistry.GetData(value).DisplayName
             );
             configMenu.AddBoolOption(
                 mod: manifest,
