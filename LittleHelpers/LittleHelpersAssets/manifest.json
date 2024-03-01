@@ -1,0 +1,18 @@
+{
+  "Name": "Little Helpers Assets",
+  "Author": "NeverToxic",
+  "Version": "0.0.1-alpha",
+  "Description": "Assets for the Little Helpers mod.",
+  "UniqueID": "NeverToxic.LittleHelpersAssets",
+  "UpdateKeys": [],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher"
+  },
+  "Dependencies": [
+    {
+      "UniqueID": "NeverToxic.LittleHelpersCore",
+      "MinimumVersion": "0.0.1-alpha",
+      "IsRequired": false
+    }
+  ]
+}
