@@ -103,6 +103,12 @@ If you'd like another language to be supported and would like to help, please ch
 
 [b]I may take a while to see a comment on nexus, you can try contacting me through Discord DMs or the SDV server (never.toxic) if that's the case, or incase of an urgent issue.[/b]
 
+[size=5][b]Links[/b][/size]
+
+[list]
+[*][url=https://www.nexusmods.com/stardewvalley/mods/20391]NexusMods page for this mod[/url]﻿
+[*][url=https://github.com/Dunc4nNT/StardewMods]GitHub mono repo with all my mods[/url]﻿
+[/list]
 [size=5][b]To Do[/b][/size]
 
 List of things I'd like to add at some point. However, this mod is mostly just for myself, to get fimiliar with C# and Stardew modding. I'm uncertain how many of these I'll actually end up doing.
