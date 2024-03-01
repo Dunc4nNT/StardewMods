@@ -13,6 +13,22 @@ Mandatory and optional requirements for use of this mod.
 - [SMAPI 4.0](https://www.nexusmods.com/stardewvalley/mods/2400) (required)
 - [GMCM 1.12](https://www.nexusmods.com/stardewvalley/mods/5098) (optional)
 
+## Table of Contents
+
+- Prerequisites
+- Installation
+- Configuration
+  - General
+  - Attachments
+  - Enchantments
+- How to Use
+- Compatibility
+- Translations
+- Contact
+- Links
+- To Do
+- Licensing
+
 ## Installation
 
 1. Download and install the required prerequisites.
@@ -90,6 +106,11 @@ If you'd like another language to be supported and would like to help, please ch
 **Like to request a new feature or addition to an existing feature?** Please open an [issue](https://github.com/Dunc4nNT/StardewMods/issues) using the feature request template and add the appropriate mod label.
 
 **I may take a while to see a comment on nexus, you can try contacting me through Discord DMs or the SDV server (never.toxic) if that's the case, or incase of an urgent issue.**
+
+## Links
+
+- [NexusMods page for this mod](https://www.nexusmods.com/stardewvalley/mods/20391)
+- [GitHub mono repo with all my mods](https://github.com/Dunc4nNT/StardewMods)
 
 ## To Do
 

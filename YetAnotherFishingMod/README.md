@@ -8,6 +8,22 @@ Having difficulty fishing? Or finding it too easy? This is yet another mod that 
 
 This mod is made for Stardew Valley 1.6 using SMAPI 4.0. As of writing this, neither are publicly released yet, thus will only work on the alpha versions. This mod will **not** work on versions prior to those mentioned.
 
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+  - [General](#general)
+  - [Attachments](#attachments)
+  - [Enchantments](#enchantments)
+- [How to Use](#how-to-use)
+- [Compatibility](#compatibility)
+- [Translations](#translations)
+- [Contact](#contact)
+- [Links](#links)
+- [To Do](#to-do)
+- [Licensing](#licensing)
+
 ## Prerequisites
 
 Mandatory and optional requirements for use of this mod.
@@ -99,6 +115,11 @@ If you'd like another language to be supported and would like to help, please ch
 **Like to request a new feature or addition to an existing feature?** Please open an [issue][gh-issues] using the feature request template and add the appropriate mod label.
 
 **I may take a while to see a comment on nexus, you can try contacting me through Discord DMs or the SDV server (never.toxic) if that's the case, or incase of an urgent issue.**
+
+## Links
+
+- [NexusMods page for this mod](https://www.nexusmods.com/stardewvalley/mods/20391)
+- [GitHub mono repo with all my mods](https://github.com/Dunc4nNT/StardewMods)
 
 ## To Do
 
