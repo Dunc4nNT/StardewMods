@@ -1,12 +1,14 @@
 {
   "Name": "Yet Another Fishing Mod",
   "Author": "NeverToxic",
-  "Version": "1.0.0-alpha",
+  "Version": "1.0.0-alpha.20240301.3",
   "Description": "Automatically catch fish and treasure.",
   "UniqueID": "NeverToxic.YetAnotherFishingMod",
   "EntryDll": "YetAnotherFishingMod.dll",
   "MinimumApiVersion": "4.0.0-alpha",
-  "UpdateKeys": [],
+  "UpdateKeys": [
+    "Nexus:20391"
+  ],
   "Dependencies": [
     {
       "UniqueID": "spacechase0.GenericModConfigMenu",

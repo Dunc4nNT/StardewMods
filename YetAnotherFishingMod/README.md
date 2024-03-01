@@ -2,6 +2,8 @@
 
 Having difficulty fishing? Or finding it too easy? This is yet another mod that allows you to adjust various fishing-related options.
 
+![Header image showing a bamboo pole with all enchantments, infinite bait and tackle](./.nexusmods/header_image.jpg)
+
 ## Notice
 
 This mod is made for Stardew Valley 1.6 using SMAPI 4.0. As of writing this, neither are publicly released yet, thus will only work on the alpha versions. This mod will **not** work on versions prior to those mentioned.
@@ -10,19 +12,19 @@ This mod is made for Stardew Valley 1.6 using SMAPI 4.0. As of writing this, nei
 
 Mandatory and optional requirements for use of this mod.
 
-- [SMAPI](https://www.nexusmods.com/stardewvalley/mods/2400) (required)
-- [GMCM][GMCM-nexus] (optional)
+- [SMAPI 4.0](https://www.nexusmods.com/stardewvalley/mods/2400) (required)
+- [GMCM 1.12][GMCM-nexus] (optional)
 
 ## Installation
 
 1. Download and install the required prerequisites.
-2. Download the latest version of this mod through [NexusMods]() or [GitHub releases]().
+2. Download the latest version of this mod through [NexusMods](https://www.nexusmods.com/stardewvalley/mods/20391?tab=files) or [GitHub releases](https://github.com/Dunc4nNT/StardewMods/releases).
 3. Unzip the downloaded file into the `Stardew Valley/Mods` directory.
 4. Launch the game using SMAPI.
 
 ## Configuration
 
-The mod's configurable options can be found below. These can either be adjusted through [Generic Mod Configuration Menu (GMCM)][GMCM-nexus] or the `config.json` file. Editing the options using GMCM is recommended. GMCM will also provide decriptive tooltips if the option itself is not clear.
+The mod's configurable options can be found below. These can either be adjusted through [Generic Mod Configuration Menu (GMCM)][GMCM-nexus] or the `config.json` file. Editing the options using GMCM is recommended. GMCM will also provide descriptive tooltips if the option itself is not clear.
 
 By default, instantly catch fish is the only option turned on.\*\*\*\*
 
@@ -84,7 +86,7 @@ Likely to conflict with mods that try to do the same thing. Due to every option 
 
 ## Translations
 
-Currently, only English is available. However, once this mod releases, Dutch should be available as well.
+Currently, only English is supported. However, once this mod releases, Dutch should be available as well.
 
 If you'd like another language to be supported and would like to help, please check the [modding translations wiki](https://stardewvalleywiki.com/Modding:Translations) and send a [pull request][gh-pr].
 
@@ -118,8 +120,8 @@ Copyright © 2024 Dunc4nNT
 This project is licensed under the Mozilla Public License 2.0 (MPL 2.0). See [LICENSE](../LICENSE) for more information.
 
 [GMCM-nexus]: https://www.nexusmods.com/stardewvalley/mods/5098
-[nexus-comments]: https://www.nexusmods.com
-[nexus-bugs]: https://www.nexusmods.com
+[nexus-comments]: https://www.nexusmods.com/stardewvalley/mods/20391?tab=posts
+[nexus-bugs]: https://www.nexusmods.com/stardewvalley/mods/20391?tab=bugs
 [smapi-log]: https://smapi.io/log
 [gh-issues]: https://github.com/Dunc4nNT/StardewMods/issues
 [gh-pr]: https://github.com/Dunc4nNT/StardewMods/pulls

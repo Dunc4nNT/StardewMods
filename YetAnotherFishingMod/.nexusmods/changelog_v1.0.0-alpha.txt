@@ -1,0 +1,14 @@
+Version 1.0.0-alpha
+
+- Instantly catch fish and treasure
+- Always cast with maximum power, score perfect, catch treasure and double fish
+- Fish instantly bite
+- Automatically hook fish once they bite
+- Automatically loot treasure
+- Difficulty multiplier
+- Set fish quality, and minimum fish quality
+- Override attachment limit
+- Spawn bait, tackle and enchantments
+- Infinite bait and tackle
+- Reset attachments and enchantments on unequip
+- GMCM integration 
