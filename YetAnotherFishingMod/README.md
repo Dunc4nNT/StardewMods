@@ -45,8 +45,6 @@ Mandatory and optional requirements for use of this mod.
 
 The mod's configurable options can be found below. These can either be adjusted through [Generic Mod Configuration Menu (GMCM)][GMCM-nexus] or the `config.json` file. Editing the options using GMCM is recommended. GMCM will also provide descriptive tooltips if the option itself is not clear.
 
-By default, instantly catch fish is the only option turned on.\*\*\*\*
-
 ### General
 
 - Instantly Catch Fish
@@ -67,10 +65,10 @@ By default, instantly catch fish is the only option turned on.\*\*\*\*
 - Override Attachment Limit
 - Reset Attachments
 - Spawn Bait When Equipped
-- Bait to Spawn\*\*
+- Bait to Spawn
 - Infinite Bait
 - Spawn Tackle When Equipped
-- Tackle to Spawn\*\*\*
+- Tackle to Spawn
 - Infinite Tackle
 
 ### Enchantments
@@ -84,12 +82,6 @@ By default, instantly catch fish is the only option turned on.\*\*\*\*
 
 
 \* Fish quality: set to -1 for any, 0 for none, 1 for silver, 2 for gold, 4 for iridium
-
-\*\* Bait: Bait = 685, Wild Bait = 774, Magic Bait = 908
-
-\*\*\* Tackles: Treasure Hunter = 693, Spinner = 686, Dressed Spinner = 687, Barbed Hook = 691, Lead Bobber = 692, Trap Bobber = 694, Cork Bobber = 695, Curiosity Lure = 856, Quality Bobber = 877
-
-\*\*\*\* Yes I know technically resetting attachments and enchantments is on as well by default, but these options won't do anything on their own :)
 
 ## How to Use
 
@@ -134,8 +126,7 @@ List of things I'd like to add at some point. However, this mod is mostly just f
 - Skip fish catch animation
 - Automatically loot caught fish and trash
 - Skip treasure opening animation
-- Allow for use of custom bait and tackles
-- Set bait, tackle and quality by name rather than an integer value
+- Set quality by name rather than an integer value
 
 ## Licensing
 
