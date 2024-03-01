@@ -1,0 +1,11 @@
+{
+  "Name": "Stardew Nederlands (Dutch Localisation)",
+  "Author": "NeverToxic",
+  "Version": "0.0.1-alpha",
+  "Description": "Nederlandse vertalingen voor het spel (Dutch translations).",
+  "UniqueID": "NeverToxic.DutchLocalisation",
+  "UpdateKeys": [],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher"
+  }
+}
