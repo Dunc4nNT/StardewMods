@@ -20,95 +20,95 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             configMenu.AddPageLink(
                 mod: manifest,
                 pageId: "NeverToxic.YetAnotherFishingMod.General",
-                text: () => "General"
+                text: () => I18n.Config_General_PageTitle()
             );
             configMenu.AddPageLink(
                 mod: manifest,
                 pageId: "NeverToxic.YetAnotherFishingMod.Attachments",
-                text: () => "Attachments"
+                text: () => I18n.Config_Attachments_PageTitle()
             );
             configMenu.AddPageLink(
                 mod: manifest,
                 pageId: "NeverToxic.YetAnotherFishingMod.Enchantments",
-                text: () => "Enchantments"
+                text: () => I18n.Config_Enchantments_PageTitle()
             );
 
             configMenu.AddPage(
                 mod: manifest,
                 pageId: "NeverToxic.YetAnotherFishingMod.General",
-                pageTitle: () => "General"
+                pageTitle: () => I18n.Config_General_PageTitle()
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
-                text: () => "General"
+                text: () => I18n.Config_General_GeneralSection()
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Instantly Catch Fish",
-                tooltip: () => "Skips the fishing minigame.",
+                name: () => I18n.Config_General_InstantCatchFish_Name(),
+                tooltip: () => I18n.Config_General_InstantCatchFish_Tooltip(),
                 getValue: () => config().InstantCatchFish,
                 setValue: value => config().InstantCatchFish = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Instantly Catch Treasure",
-                tooltip: () => "If there are any treasures in the fishing minigame, instantly catch them even if you missed them.",
+                name: () => I18n.Config_General_InstantCatchTreasure_Name(),
+                tooltip: () => I18n.Config_General_InstantCatchTreasure_Tooltip(),
                 getValue: () => config().InstantCatchTreasure,
                 setValue: value => config().InstantCatchTreasure = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Always Maximum Casting Power",
-                tooltip: () => "Always casts the fishing rod with maximum power, no matter how long you held the button.",
+                name: () => I18n.Config_General_AlwaysMaxCastingPower_Name(),
+                tooltip: () => I18n.Config_General_AlwaysMaxCastingPower_Tooltip(),
                 getValue: () => config().AlwaysMaxCastingPower,
                 setValue: value => config().AlwaysMaxCastingPower = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Always Perfect",
-                tooltip: () => "Always get a perfect after catching a fish, even if you did not.",
+                name: () => I18n.Config_General_AlwaysPerfect_Name(),
+                tooltip: () => I18n.Config_General_AlwaysPerfect_Tooltip(),
                 getValue: () => config().AlwaysPerfect,
                 setValue: value => config().AlwaysPerfect = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Always Catch Treasure",
-                tooltip: () => "Always catches a treasure chest, even if there were none.",
+                name: () => I18n.Config_General_AlwaysCatchTreasure_Name(),
+                tooltip: () => I18n.Config_General_AlwaysCatchTreasure_Tooltip(),
                 getValue: () => config().AlwaysCatchTreasure,
                 setValue: value => config().AlwaysCatchTreasure = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Always Catch Double",
-                tooltip: () => "Always catches double fish, even if you did not have the correct bait.",
+                name: () => I18n.Config_General_AlwaysCatchDouble_Name(),
+                tooltip: () => I18n.Config_General_AlwaysCatchDouble_Tooltip(),
                 getValue: () => config().AlwaysCatchDouble,
                 setValue: value => config().AlwaysCatchDouble = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Instant Bite",
-                tooltip: () => "Fish instantly bite after casting your fishing rod.",
+                name: () => I18n.Config_General_InstantBite_Name(),
+                tooltip: () => I18n.Config_General_InstantBite_Tooltip(),
                 getValue: () => config().InstantBite,
                 setValue: value => config().InstantBite = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Automatically Hook",
-                tooltip: () => "Automatically starts reeling in your fish after one bites.",
+                name: () => I18n.Config_General_AutoHook_Name(),
+                tooltip: () => I18n.Config_General_AutoHook_Tooltip(),
                 getValue: () => config().AutoHook,
                 setValue: value => config().AutoHook = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Automatically Loot Treasure",
-                tooltip: () => "Automatically loot and close the treasure menu popup after catching treasure.",
+                name: () => I18n.Config_General_AutoLootTreasure_Name(),
+                tooltip: () => I18n.Config_General_AutoLootTreasure_Tooltip(),
                 getValue: () => config().AutoLootTreasure,
                 setValue: value => config().AutoLootTreasure = value
             );
             configMenu.AddNumberOption(
                 mod: manifest,
-                name: () => "Difficulty Multiplier",
-                tooltip: () => "Value with which the standard fishing difficulty is multiplied.",
+                name: () => I18n.Config_General_DifficultyMultiplier_Name(),
+                tooltip: () => I18n.Config_General_DifficultyMultiplier_Tooltip(),
                 getValue: () => (int)config().DifficultyMultiplier,
                 setValue: value => config().DifficultyMultiplier = value,
                 min: (float)0.1,
@@ -116,12 +116,12 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
-                text: () => "Quality Options"
+                text: () => I18n.Config_General_QualitySection()
             );
             configMenu.AddTextOption(
                 mod: manifest,
-                name: () => "Fish Quality",
-                tooltip: () => "Always catch fish with the set quality.",
+                name: () => I18n.Config_General_FishQuality_Name(),
+                tooltip: () => I18n.Config_General_FishQuality_Tooltip(),
                 getValue: () => config().FishQuality.ToString(),
                 setValue: value => config().FishQuality = (Quality)Enum.Parse(typeof(Quality), value),
                 allowedValues: Enum.GetNames(typeof(Quality)),
@@ -129,8 +129,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddTextOption(
                 mod: manifest,
-                name: () => "Minimum Fish Quality",
-                tooltip: () => "Always gets fish of the set quality or better.",
+                name: () => I18n.Config_General_MinimumFishQuality_Name(),
+                tooltip: () => I18n.Config_General_MinimumFishQuality_Tooltip(),
                 getValue: () => config().MinimumFishQuality.ToString(),
                 setValue: value => config().MinimumFishQuality = (Quality)Enum.Parse(typeof(Quality), value),
                 allowedValues: Enum.GetNames(typeof(Quality)),
@@ -140,41 +140,41 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             configMenu.AddPage(
                 mod: manifest,
                 pageId: "NeverToxic.YetAnotherFishingMod.Attachments",
-                pageTitle: () => "Attachments"
+                pageTitle: () => I18n.Config_Attachments_PageTitle()
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
-                text: () => "General"
+                text: () => I18n.Config_Attachments_GeneralSection()
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Override Attachment Limit",
-                tooltip: () => "Overrides the fishing rod's attachment limit when spawning bait and tackle.",
+                name: () => I18n.Config_Attachments_OverrideAttachmentLimit_Name(),
+                tooltip: () => I18n.Config_Attachments_OverrideAttachmentLimit_Tooltip(),
                 getValue: () => config().OverrideAttachmentLimit,
                 setValue: value => config().OverrideAttachmentLimit = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Reset Attachments",
-                tooltip: () => "Resets spawned attachments and slots when fishing rod is unequipped.",
+                name: () => I18n.Config_Attachments_ResetAttachments_Name(),
+                tooltip: () => I18n.Config_Attachments_ResetAttachments_Tooltip(),
                 getValue: () => config().ResetAttachmentsWhenNotEquipped,
                 setValue: value => config().ResetAttachmentsWhenNotEquipped = value
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
-                text: () => "Bait"
+                text: () => I18n.Config_Attachments_BaitSection()
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Spawn Bait When Equipped",
-                tooltip: () => "Spawns the below selected bait item whenever you equip your fishing rod.",
+                name: () => I18n.Config_Attachments_SpawnBaitWhenEquipped_Name(),
+                tooltip: () => I18n.Config_Attachments_SpawnBaitWhenEquipped_Tooltip(),
                 getValue: () => config().SpawnBaitWhenEquipped,
                 setValue: value => config().SpawnBaitWhenEquipped = value
             );
             configMenu.AddTextOption(
                 mod: manifest,
-                name: () => "Bait to Spawn",
-                tooltip: () => "Which bait to automatically spawn when fishing rod is equipped.",
+                name: () => I18n.Config_Attachments_SpawnWhichBait_Name(),
+                tooltip: () => I18n.Config_Attachments_SpawnWhichBait_Tooltip(),
                 getValue: () => config().SpawnWhichBait,
                 setValue: value => config().SpawnWhichBait = value,
                 allowedValues: [.. baitList],
@@ -182,26 +182,26 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Infinite Bait",
-                tooltip: () => "Never run out of bait.",
+                name: () => I18n.Config_Attachments_InfiniteBait_Name(),
+                tooltip: () => I18n.Config_Attachments_InfiniteBait_Tooltip(),
                 getValue: () => config().InfiniteBait,
                 setValue: value => config().InfiniteBait = value
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
-                text: () => "Tackles"
+                text: () => I18n.Config_Attachments_TacklesSection()
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Spawn Tackle When Equipped",
-                tooltip: () => "Spawns the below selected tackle item whenever you equip your fishing rod.",
+                name: () => I18n.Config_Attachments_SpawnTackleWhenEquipped_Name(),
+                tooltip: () => I18n.Config_Attachments_SpawnTackleWhenEquipped_Tooltip(),
                 getValue: () => config().SpawnTackleWhenEquipped,
                 setValue: value => config().SpawnTackleWhenEquipped = value
             );
             configMenu.AddTextOption(
                 mod: manifest,
-                name: () => "Tackle to Spawn",
-                tooltip: () => "Which tackle to automatically spawn when fishing rod is equipped.",
+                name: () => I18n.Config_Attachments_SpawnWhichTackle_Name(),
+                tooltip: () => I18n.Config_Attachments_SpawnWhichTackle_Tooltip(),
                 getValue: () => config().SpawnWhichTackle,
                 setValue: value => config().SpawnWhichTackle = value,
                 allowedValues: [.. tackeList],
@@ -209,8 +209,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Infinite Tackle",
-                tooltip: () => "Tackle never wears out.",
+                name: () => I18n.Config_Attachments_InfiniteTackle_Name(),
+                tooltip: () => I18n.Config_Attachments_InfiniteTackle_Tooltip(),
                 getValue: () => config().InfiniteTackle,
                 setValue: value => config().InfiniteTackle = value
             );
@@ -218,62 +218,62 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             configMenu.AddPage(
                 mod: manifest,
                 pageId: "NeverToxic.YetAnotherFishingMod.Enchantments",
-                pageTitle: () => "Enchantments"
+                pageTitle: () => I18n.Config_Enchantments_PageTitle()
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
-                text: () => "General"
+                text: () => I18n.Config_Enchantments_GeneralSection()
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Enable Adding Enchantments",
-                tooltip: () => "Adds enchantments as set below when checked.",
+                name: () => I18n.Config_Enchantments_DoAddEnchantments_Name(),
+                tooltip: () => I18n.Config_Enchantments_DoAddEnchantments_Tooltip(),
                 getValue: () => config().DoAddEnchantments,
                 setValue: value => config().DoAddEnchantments = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Reset Enchantments",
-                tooltip: () => "Resets enchantments to what they were before after unequipping the fishing rod.",
+                name: () => I18n.Config_Enchantments_ResetEnchantments_Name(),
+                tooltip: () => I18n.Config_Enchantments_ResetEnchantments_Tooltip(),
                 getValue: () => config().ResetEnchantmentsWhenNotEquipped,
                 setValue: value => config().ResetEnchantmentsWhenNotEquipped = value
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
-                text: () => "Enchantments"
+                text: () => I18n.Config_Enchantments_EnchantmentsSection()
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Add All Enchantments",
-                tooltip: () => "Adds all available enchantments when you equip a fishing rod.",
+                name: () => I18n.Config_Enchantments_AddAllEnchantments_Name(),
+                tooltip: () => I18n.Config_Enchantments_AddAllEnchantments_Tooltip(),
                 getValue: () => config().AddAllEnchantments,
                 setValue: value => config().AddAllEnchantments = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Add Autohook Enchantment",
-                tooltip: () => "Adds the autohook enchantment when equipping a fishing rod.",
+                name: () => I18n.Config_Enchantments_AddAutoHookEnchantment_Name(),
+                tooltip: () => I18n.Config_Enchantments_AddAutoHookEnchantment_Tooltip(),
                 getValue: () => config().AddAutoHookEnchantment,
                 setValue: value => config().AddAutoHookEnchantment = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Add Efficient Tool Enchantment",
-                tooltip: () => "Adds the efficient tool enchantment when equipping a fishing rod.",
+                name: () => I18n.Config_Enchantments_AddEfficientToolEnchantment_Name(),
+                tooltip: () => I18n.Config_Enchantments_AddEfficientToolEnchantment_Tooltip(),
                 getValue: () => config().AddEfficientToolEnchantment,
                 setValue: value => config().AddEfficientToolEnchantment = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Add Master Enchantment",
-                tooltip: () => "Adds the master enchantment when equipping a fishing rod.",
+                name: () => I18n.Config_Enchantments_AddMasterEnchantment_Name(),
+                tooltip: () => I18n.Config_Enchantments_AddMasterEnchantment_Tooltip(),
                 getValue: () => config().AddMasterEnchantment,
                 setValue: value => config().AddMasterEnchantment = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Add Preserving Enchantment",
-                tooltip: () => "Adds the preserving enchantment when equipping a fishing rod.",
+                name: () => I18n.Config_Enchantments_AddPreservingEnchantment_Name(),
+                tooltip: () => I18n.Config_Enchantments_AddPreservingEnchantment_Tooltip(),
                 getValue: () => config().AddPreservingEnchantment,
                 setValue: value => config().AddPreservingEnchantment = value
             );
