@@ -51,8 +51,8 @@ The mod's configurable options can be found below. These can either be adjusted 
 - Automatically Hook
 - Automatically Loot Treasure
 - Difficulty Multiplier
-- Fish Quality*
-- Minimum Fish Quality*
+- Fish Quality
+- Minimum Fish Quality
 
 ### Attachments
 - Override Attachment Limit
@@ -71,8 +71,6 @@ The mod's configurable options can be found below. These can either be adjusted 
 - Add Efficient Tool Enchantment
 - Add Master Enchantment
 - Add Preserving Enchantment
-
-* Fish quality: set to -1 for any, 0 for none, 1 for silver, 2 for gold, 4 for iridium
 
 ## How to Use
 
@@ -117,7 +115,6 @@ List of things I'd like to add at some point. However, this mod is mostly just f
 - Skip fish catch animation
 - Automatically loot caught fish and trash
 - Skip treasure opening animation
-- Set quality by name rather than an integer value
 
 ## Licensing
 

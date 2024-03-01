@@ -1,4 +1,4 @@
 Version 1.0.1-alpha
 
 - Dynamically generate available bait and tackles on game launch
-- Changed bait and tackle option to be a dropdown menu
+- Changed bait, tackle and quality options to be a dropdown menu
