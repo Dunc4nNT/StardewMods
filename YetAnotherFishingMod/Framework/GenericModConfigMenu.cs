@@ -91,7 +91,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: () => "Autohook",
+                name: () => "Automatically Hook",
                 tooltip: () => "Automatically starts reeling in your fish after one bites.",
                 getValue: () => config().AutoHook,
                 setValue: value => config().AutoHook = value

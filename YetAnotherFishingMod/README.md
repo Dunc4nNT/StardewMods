@@ -1,0 +1,124 @@
+# Yet Another Fishing Mod
+
+Having difficulty fishing? Or finding it too easy? This is yet another mod that allows you to adjust various fishing-related options.
+
+## Notice
+
+This mod is made for Stardew Valley 1.6 using SMAPI 4.0. As of writing this, neither are publicly released yet, thus will only work on the alpha versions. This mod will **not** work on versions prior to those mentioned.
+
+## Prerequisites
+
+Mandatory and optional requirements for use of this mod.
+
+- [SMAPI](https://www.nexusmods.com/stardewvalley/mods/2400) (required)
+- [GMCM][GMCM-nexus] (optional)
+
+## Installation
+
+1. Download and install the required prerequisites.
+2. Download the latest version of this mod through [NexusMods]() or [GitHub releases]().
+3. Unzip the downloaded file into the `Stardew Valley/Mods` directory.
+4. Launch the game using SMAPI.
+
+## Configuration
+
+The mod's configurable options can be found below. These can either be adjusted through [Generic Mod Configuration Menu (GMCM)][GMCM-nexus] or the `config.json` file. Editing the options using GMCM is recommended. GMCM will also provide decriptive tooltips if the option itself is not clear.
+
+By default, instantly catch fish is the only option turned on.\*\*\*\*
+
+### General
+
+- Instantly Catch Fish
+- Instantly Catch Treasure
+- Always Maximum Casting Power
+- Always Perfect
+- Always Catch Treasure
+- Always Catch Double
+- Instant Bite
+- Automatically Hook
+- Automatically Loot Treasure
+- Difficulty Multiplier
+- Fish Quality\*
+- Minimum Fish Quality\*
+
+### Attachments
+
+- Override Attachment Limit
+- Reset Attachments
+- Spawn Bait When Equipped
+- Bait to Spawn\*\*
+- Infinite Bait
+- Spawn Tackle When Equipped
+- Tackle to Spawn\*\*\*
+- Infinite Tackle
+
+### Enchantments
+
+- Reset Enchantments
+- Add All Enchantments
+- Add Autohook Enchantment
+- Add Efficient Tool Enchantment
+- Add Master Enchantment
+- Add Preserving Enchantment
+
+
+\* Fish quality: set to -1 for any, 0 for none, 1 for silver, 2 for gold, 4 for iridium
+
+\*\* Bait: Bait = 685, Wild Bait = 774, Magic Bait = 908
+
+\*\*\* Tackles: Treasure Hunter = 693, Spinner = 686, Dressed Spinner = 687, Barbed Hook = 691, Lead Bobber = 692, Trap Bobber = 694, Cork Bobber = 695, Curiosity Lure = 856, Quality Bobber = 877
+
+\*\*\*\* Yes I know technically resetting attachments and enchantments is on as well by default, but these options won't do anything on their own :)
+
+## How to Use
+
+Once you've configured the mod the way you want, simply equip a fishing rod and start fishing!
+
+## Compatibility
+
+This mod is made for Stardew Valley 1.6 using SMAPI 4.0. This mod will **not** work on versions prior to those mentioned.
+
+Both singleplayer and multiplayer should work. I have yet to test split screen, but did try to made it compatible.
+
+Likely to conflict with mods that try to do the same thing. Due to every option in this mod being configurable it should not be likely to cause issues, as you can simply turn the conflicting option off. Though, feel free to report any mods that do conflict by [opening an issue][gh-issues], updating the README and [sending a pull request][gh-pr]] or [comment on the NexusMods page][nexus-comments].
+
+## Translations
+
+Currently, only English is available. However, once this mod releases, Dutch should be available as well.
+
+If you'd like another language to be supported and would like to help, please check the [modding translations wiki](https://stardewvalleywiki.com/Modding:Translations) and send a [pull request][gh-pr].
+
+## Contact
+
+**Having issues with installing or using the mod?** Leave a comment on the [NexusMods page][nexus-comments] detailing which steps you've done, which step you're failing at and if SMAPI is giving an error, please include a link to your [SMAPI log][smapi-log].
+
+**Certain you've found a bug?** Please open an [issue][gh-issues] using the bug report template and add the appropriate mod label. If you prefer using Nexus, you can leave a report on the [bug reports page][nexus-bugs]. **Uncertain?** Leave a [comment][nexus-comments] first detailing what you've run into, including a link to your [SMAPI log][smapi-log]. **Know what you're doing?** Feel free to send a PR if you'd like.
+
+**Like to request a new feature or addition to an existing feature?** Please open an [issue][gh-issues] using the feature request template and add the appropriate mod label.
+
+**I may take a while to see a comment on nexus, you can try contacting me through Discord DMs or the SDV server (never.toxic) if that's the case, or incase of an urgent issue.**
+
+## To Do
+
+List of things I'd like to add at some point. However, this mod is mostly just for myself, to get fimiliar with C# and Stardew modding. I'm uncertain how many of these I'll actually end up doing.
+
+- I18n for GMCM
+- Refund stamina on maximum cast
+- Skip fish catch animation
+- Automatically loot caught fish and trash
+- Skip treasure opening animation
+- Allow for use of custom bait and tackles
+- Set bait, tackle and quality by name rather than an integer value
+
+## Licensing
+
+Copyright © 2024 Dunc4nNT
+
+This project is licensed under the Mozilla Public License 2.0 (MPL 2.0). See [LICENSE](../LICENSE) for more information.
+
+[GMCM-nexus]: https://www.nexusmods.com/stardewvalley/mods/5098
+[nexus-comments]: https://www.nexusmods.com
+[nexus-bugs]: https://www.nexusmods.com
+[smapi-log]: https://smapi.io/log
+[gh-issues]: https://github.com/Dunc4nNT/StardewMods/issues
+[gh-pr]: https://github.com/Dunc4nNT/StardewMods/pulls

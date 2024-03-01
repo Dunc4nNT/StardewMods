@@ -56,6 +56,6 @@
 
         public bool AddPreservingEnchantment { get; set; } = false;
 
-        public bool ResetEnchantmentsWhenNotEquipped { get; set; } = false;
+        public bool ResetEnchantmentsWhenNotEquipped { get; set; } = true;
     }
 }
