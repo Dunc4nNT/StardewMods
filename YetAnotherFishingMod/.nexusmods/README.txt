@@ -109,8 +109,6 @@ If you'd like another language to be supported and would like to help, please ch
 
 List of things I'd like to add at some point. However, this mod is mostly just for myself, to get fimiliar with C# and Stardew modding. I'm uncertain how many of these I'll actually end up doing.
 
-- I18n for GMCM
-- Shorten some of the GMCM config options so they don't overlap
 - Refund stamina on maximum cast
 - Skip fish catch animation
 - Automatically loot caught fish and trash
