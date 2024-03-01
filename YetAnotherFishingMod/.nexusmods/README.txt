@@ -1,4 +1,4 @@
-# Yet Another Fishing Mod - 1.0.0-alpha
+# Yet Another Fishing Mod - 1.0.1-alpha
 
 Having difficulty fishing? Or finding it too easy? This is yet another mod that allows you to adjust various fishing-related options.
 
