@@ -10,19 +10,22 @@ This mod is made for Stardew Valley 1.6 using SMAPI 4.0. As of writing this, nei
 
 ## Table of Contents
 
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-  - [General](#general)
-  - [Attachments](#attachments)
-  - [Enchantments](#enchantments)
-- [How to Use](#how-to-use)
-- [Compatibility](#compatibility)
-- [Translations](#translations)
-- [Contact](#contact)
-- [Links](#links)
-- [To Do](#to-do)
-- [Licensing](#licensing)
+- [Yet Another Fishing Mod](#yet-another-fishing-mod)
+  - [Notice](#notice)
+  - [Table of Contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+    - [General](#general)
+    - [Attachments](#attachments)
+    - [Enchantments](#enchantments)
+  - [How to Use](#how-to-use)
+  - [Compatibility](#compatibility)
+  - [Translations](#translations)
+  - [Contact](#contact)
+  - [Links](#links)
+  - [To Do](#to-do)
+  - [Licensing](#licensing)
 
 ## Prerequisites
 
@@ -96,7 +99,7 @@ Once you've configured the mod the way you want, simply equip a fishing rod and 
 
 This mod is made for Stardew Valley 1.6 using SMAPI 4.0. This mod will **not** work on versions prior to those mentioned.
 
-Both singleplayer and multiplayer should work. I have yet to test split screen, but did try to made it compatible.
+Both singleplayer and multiplayer should work. I have yet to test split screen, but did try to make it compatible.
 
 Likely to conflict with mods that try to do the same thing. Due to every option in this mod being configurable it should not be likely to cause issues, as you can simply turn the conflicting option off. Though, feel free to report any mods that do conflict by [opening an issue][gh-issues], updating the README and [sending a pull request][gh-pr] or [comment on the NexusMods page][nexus-comments].
 
