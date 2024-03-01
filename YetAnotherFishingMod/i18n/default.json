@@ -9,8 +9,8 @@
   "config.general.always-max-casting-power.tooltip": "Always casts the fishing rod with maximum power, no matter how long you held the button.",
   "config.general.always-perfect.name": "Always Perfect",
   "config.general.always-perfect.tooltip": "Always get a perfect after catching a fish, even if you did not.",
-  "config.general.always-catch-treasure.name": "Always Catch Treasure",
-  "config.general.always-catch-treasure.tooltip": "Always catches a treasure chest, even if there were none.",
+  "config.general.treasure-appearance.name": "Treasure Appearance Rate",
+  "config.general.treasure-appearance.tooltip": "Adjust how often treasure chests appear when catching fish.",
   "config.general.always-catch-double.name": "Always Catch Double",
   "config.general.always-catch-double.tooltip": "Always catches double fish, even if you did not have the correct bait.",
   "config.general.instant-bite.name": "Instant Bite",
@@ -65,6 +65,10 @@
   "config.enchantments.add-master-enchantment.tooltip": "Adds the master enchantment when equipping a fishing rod.",
   "config.enchantments.add-preserving-enchantment.name": "Add Preserving Enchantment",
   "config.enchantments.add-preserving-enchantment.tooltip": "Adds the preserving enchantment when equipping a fishing rod.",
+
+  "config.treasure-appearance-vanilla": "Vanilla",
+  "config.treasure-appearance-never": "Never",
+  "config.treasure-appearance-always": "Always",
 
   "config.quality-any": "Any",
   "config.quality-none": "None",

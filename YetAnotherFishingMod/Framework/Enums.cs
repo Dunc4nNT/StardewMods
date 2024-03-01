@@ -8,4 +8,11 @@
         Gold = 2,
         Iridium = 4
     }
+
+    internal enum TreasureAppearanceSettings
+    {
+        Vanilla,
+        Never,
+        Always
+    }
 }

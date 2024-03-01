@@ -147,8 +147,15 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
             if (bobberBar.fishQuality < (int)config_.MinimumFishQuality)
                 bobberBar.fishQuality = (int)config_.MinimumFishQuality;
-            if ((config_.InstantCatchTreasure && bobberBar.treasure) || config_.AlwaysCatchTreasure)
+
+            if (config_.TreasureAppearence is TreasureAppearanceSettings.Never)
+            {
+                bobberBar.treasure = false;
+                bobberBar.treasureCaught = false;
+            }
+            else if ((config_.InstantCatchTreasure && bobberBar.treasure && config_.TreasureAppearence is TreasureAppearanceSettings.Vanilla) || config_.TreasureAppearence is TreasureAppearanceSettings.Always)
                 bobberBar.treasureCaught = true;
+
             if (config_.InstantCatchFish)
             {
                 this._fishingRod.Value.Instance.pullFishFromWater(bobberBar.whichFish, bobberBar.fishSize, bobberBar.fishQuality, (int)bobberBar.difficulty, bobberBar.treasureCaught, bobberBar.perfect, bobberBar.fromFishPond, bobberBar.setFlagOnCatch, bobberBar.bossFish, this._fishingRod.Value.Instance.caughtDoubleFish);

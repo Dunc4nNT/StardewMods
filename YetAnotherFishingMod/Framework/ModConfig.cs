@@ -12,7 +12,7 @@
 
         public bool AlwaysPerfect { get; set; } = false;
 
-        public bool AlwaysCatchTreasure { get; set; } = false;
+        public TreasureAppearanceSettings TreasureAppearence { get; set; } = TreasureAppearanceSettings.Vanilla;
 
         public bool AlwaysCatchDouble { get; set; } = false;
 

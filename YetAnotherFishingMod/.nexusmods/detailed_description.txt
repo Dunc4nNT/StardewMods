@@ -33,7 +33,7 @@ The mod's configurable options can be found below. These can either be adjusted 
 [*]Instantly Catch Treasure
 [*]Always Maximum Casting Power
 [*]Always Perfect
-[*]Always Catch Treasure
+[*]Adjust how often treasure appears (vanilla, never or always)
 [*]Always Catch Double
 [*]Instant Bite
 [*]Automatically Hook

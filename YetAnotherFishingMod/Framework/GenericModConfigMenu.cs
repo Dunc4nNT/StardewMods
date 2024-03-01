@@ -70,12 +70,14 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().AlwaysPerfect,
                 setValue: value => config().AlwaysPerfect = value
             );
-            configMenu.AddBoolOption(
+            configMenu.AddTextOption(
                 mod: manifest,
-                name: () => I18n.Config_General_AlwaysCatchTreasure_Name(),
-                tooltip: () => I18n.Config_General_AlwaysCatchTreasure_Tooltip(),
-                getValue: () => config().AlwaysCatchTreasure,
-                setValue: value => config().AlwaysCatchTreasure = value
+                name: () => I18n.Config_General_TreasureAppearance_Name(),
+                tooltip: () => I18n.Config_General_TreasureAppearance_Tooltip(),
+                getValue: () => config().TreasureAppearence.ToString(),
+                setValue: value => config().TreasureAppearence = (TreasureAppearanceSettings)Enum.Parse(typeof(TreasureAppearanceSettings), value),
+                allowedValues: Enum.GetNames(typeof(TreasureAppearanceSettings)),
+                formatAllowedValue: value => I18n.GetByKey($"config.treasure-appearance-{value}")
             );
             configMenu.AddBoolOption(
                 mod: manifest,
