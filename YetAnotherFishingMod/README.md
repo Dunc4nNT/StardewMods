@@ -10,22 +10,19 @@ This mod is made for Stardew Valley 1.6 using SMAPI 4.0. As of writing this, nei
 
 ## Table of Contents
 
-- [Yet Another Fishing Mod](#yet-another-fishing-mod)
-  - [Notice](#notice)
-  - [Table of Contents](#table-of-contents)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Configuration](#configuration)
-    - [General](#general)
-    - [Attachments](#attachments)
-    - [Enchantments](#enchantments)
-  - [How to Use](#how-to-use)
-  - [Compatibility](#compatibility)
-  - [Translations](#translations)
-  - [Contact](#contact)
-  - [Links](#links)
-  - [To Do](#to-do)
-  - [Licensing](#licensing)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+  - [General](#general)
+  - [Attachments](#attachments)
+  - [Enchantments](#enchantments)
+- [How to Use](#how-to-use)
+- [Compatibility](#compatibility)
+- [Translations](#translations)
+- [Contact](#contact)
+- [Links](#links)
+- [To Do](#to-do)
+- [Licensing](#licensing)
 
 ## Prerequisites
 
@@ -47,6 +44,7 @@ The mod's configurable options can be found below. These can either be adjusted 
 
 ### General
 
+- Increase Chance of Catching Fish
 - Instantly Catch Fish
 - Instantly Catch Treasure
 - Always Maximum Casting Power
