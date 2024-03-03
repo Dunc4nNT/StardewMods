@@ -4,6 +4,8 @@
     {
         public ModConfigKeys Keys { get; set; } = new();
 
+        public int CatchFishRetries { get; set; } = 0;
+
         public bool InstantCatchFish { get; set; } = true;
 
         public bool InstantCatchTreasure { get; set; } = false;
