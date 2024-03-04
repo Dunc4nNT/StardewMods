@@ -1,12 +1,12 @@
-﻿using NeverToxic.StardewMods.LittleHelpersCore.Framework.Commands;
-using NeverToxic.StardewMods.LittleHelpersCore.Framework.Validators;
+﻿using NeverToxic.StardewMods.LittleHelpersCore.Framework.Actions;
+using NeverToxic.StardewMods.LittleHelpersCore.Framework.Checks;
 using System.Collections.Generic;
 
 namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Buildings
 {
     internal interface IBuilding
     {
-        List<BaseCommand> Commands { get; set; }
+        List<BaseAction> Actions { get; set; }
 
         List<int> Tiles { get; }
 
@@ -16,8 +16,8 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Buildings
 
         int? Location { get; set; }
 
-        ILocationValidator LocationValidator { get; set; }
+        ILocationCheck LocationCheck { get; set; }
 
-        void ExecuteCommands();
+        void ExecuteActions();
     }
 }

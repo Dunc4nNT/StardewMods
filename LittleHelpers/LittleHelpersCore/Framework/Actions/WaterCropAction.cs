@@ -1,6 +1,6 @@
-﻿namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Commands
+﻿namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Actions
 {
-    internal class CollectFromTreeCommand : BaseCommand
+    internal class WaterCropAction : BaseAction
     {
         public override bool CanExecute(int tile)
         {

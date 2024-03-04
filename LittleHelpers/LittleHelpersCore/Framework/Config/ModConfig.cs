@@ -2,5 +2,6 @@
 {
     internal class ModConfig
     {
+        public ModConfigKeys Keys { get; set; } = new();
     }
 }

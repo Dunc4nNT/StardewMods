@@ -1,6 +1,6 @@
-﻿namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Commands
+﻿namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Actions
 {
-    internal abstract class BaseCommand : ICommand
+    internal abstract class BaseAction : IAction
     {
         public abstract bool CanExecute(int tile);
 
