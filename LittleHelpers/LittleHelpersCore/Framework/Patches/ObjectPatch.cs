@@ -3,8 +3,8 @@ using Microsoft.Xna.Framework;
 using NeverToxic.StardewMods.LittleHelpersCore.Framework.Config;
 using StardewModdingAPI;
 using StardewValley;
-using StardewValley.Menus;
 using StardewValley.Objects;
+using StardewValley.Tools;
 using System;
 using SObject = StardewValley.Object;
 
@@ -43,6 +43,11 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
                 original: AccessTools.Method(typeof(SObject), nameof(SObject.minutesElapsed)),
                 prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(MinutesElapsedPatch))
             );
+
+            s_harmony.Patch(
+                original: AccessTools.Method(typeof(SObject), nameof(SObject.performToolAction)),
+                prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(PerformToolActionPatch))
+            );
         }
 
 
@@ -56,6 +61,8 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
                     location.objects.Add(new Vector2(x / 64, y / 64), littleHelperBuilding);
                     littleHelperBuilding.heldObject.Value = new Chest();
                     littleHelperBuilding.readyForHarvest.Value = false;
+                    Chest chest = (Chest)littleHelperBuilding.heldObject.Value;
+                    chest.addItem(ItemRegistry.Create("(O)680"));
                     __result = true;
                     return false;
                 }
@@ -79,7 +86,7 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
                         __result = true;
                     else if (__instance.heldObject.Value is Chest chest)
                     {
-                        Game1.activeClickableMenu = new ItemGrabMenu(chest.Items);
+                        chest.ShowMenu();
                         __result = true;
                     }
                     __result = false;
@@ -111,7 +118,35 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
             }
             catch (Exception e)
             {
-                s_monitor.Log($"Failed in {nameof(PlacementActionPatch)}:\n{e}", LogLevel.Error);
+                s_monitor.Log($"Failed in {nameof(MinutesElapsedPatch)}:\n{e}", LogLevel.Error);
+                return true;
+            }
+        }
+
+        private static bool PerformToolActionPatch(ref SObject __instance, Tool t, bool __result)
+        {
+            try
+            {
+                if (__instance.QualifiedItemId == "(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0" && __instance.heldObject.Value is Chest chest && !chest.isEmpty())
+                {
+                    chest.clearNulls();
+
+                    if (t is not null && t.isHeavyHitter() && !(t is MeleeWeapon))
+                    {
+                        __instance.playNearbySoundAll("hammer");
+                        __instance.shakeTimer = 100;
+                    }
+
+                    __result = false;
+
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                s_monitor.Log($"Failed in {nameof(PerformToolActionPatch)}:\n{e}", LogLevel.Error);
                 return true;
             }
         }
