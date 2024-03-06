@@ -1,7 +1,10 @@
 ﻿using HarmonyLib;
+using Microsoft.Xna.Framework;
 using NeverToxic.StardewMods.LittleHelpersCore.Framework.Config;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Menus;
+using StardewValley.Objects;
 using System;
 using SObject = StardewValley.Object;
 
@@ -28,16 +31,83 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
         {
             s_harmony.Patch(
                 original: AccessTools.Method(typeof(SObject), nameof(SObject.placementAction)),
-                prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(ObjectPatch.PlacementActionPatch))
+                prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(PlacementActionPatch))
+            );
+
+            s_harmony.Patch(
+                original: AccessTools.Method(typeof(SObject), nameof(SObject.checkForAction)),
+                prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(CheckForActionPatch))
+            );
+
+            s_harmony.Patch(
+                original: AccessTools.Method(typeof(SObject), nameof(SObject.minutesElapsed)),
+                prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(MinutesElapsedPatch))
             );
         }
 
 
-        private static bool PlacementActionPatch(ref GameLocation __instance, GameLocation location, int x, int y, Farmer who, ref bool __result)
+        private static bool PlacementActionPatch(ref SObject __instance, GameLocation location, int x, int y, Farmer who, ref bool __result)
         {
             try
             {
-                return false;
+                if (__instance.QualifiedItemId == "(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0")
+                {
+                    SObject littleHelperBuilding = ItemRegistry.Create<SObject>("(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0");
+                    location.objects.Add(new Vector2(x / 64, y / 64), littleHelperBuilding);
+                    littleHelperBuilding.heldObject.Value = new Chest();
+                    littleHelperBuilding.readyForHarvest.Value = false;
+                    __result = true;
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                s_monitor.Log($"Failed in {nameof(PlacementActionPatch)}:\n{e}", LogLevel.Error);
+                return true;
+            }
+        }
+
+        private static bool CheckForActionPatch(ref SObject __instance, Farmer who, bool justCheckingForActivity, ref bool __result)
+        {
+            try
+            {
+                if (__instance.QualifiedItemId == "(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0")
+                {
+                    if (justCheckingForActivity)
+                        __result = true;
+                    else if (__instance.heldObject.Value is Chest chest)
+                    {
+                        Game1.activeClickableMenu = new ItemGrabMenu(chest.Items);
+                        __result = true;
+                    }
+                    __result = false;
+
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                s_monitor.Log($"Failed in {nameof(PlacementActionPatch)}:\n{e}", LogLevel.Error);
+                return true;
+            }
+        }
+
+        private static bool MinutesElapsedPatch(ref SObject __instance, bool __result)
+        {
+            try
+            {
+                if (__instance.QualifiedItemId == "(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0")
+                {
+                    __result = false;
+
+                    return false;
+                }
+
+                return true;
             }
             catch (Exception e)
             {
