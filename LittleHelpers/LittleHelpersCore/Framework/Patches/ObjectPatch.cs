@@ -30,6 +30,11 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
         private static void ApplyPatches()
         {
             s_harmony.Patch(
+                original: AccessTools.Method(typeof(SObject), nameof(SObject.canBePlacedHere)),
+                prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(CanBePlacedHerePatch))
+            );
+
+            s_harmony.Patch(
                 original: AccessTools.Method(typeof(SObject), nameof(SObject.placementAction)),
                 prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(PlacementActionPatch))
             );
@@ -55,6 +60,26 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
             );
         }
 
+        private static bool CanBePlacedHerePatch(ref SObject __instance, GameLocation l, Vector2 tile, ref bool __result)
+        {
+            try
+            {
+                if (__instance.QualifiedItemId == "(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0")
+                {
+                    // TODO: add placement validation checks here
+                    __result = true;
+
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                s_monitor.Log($"Failed in {nameof(CanBePlacedHerePatch)}:\n{e}", LogLevel.Error);
+                return true;
+            }
+        }
 
         private static bool PlacementActionPatch(ref SObject __instance, GameLocation location, int x, int y, Farmer who, ref bool __result)
         {
