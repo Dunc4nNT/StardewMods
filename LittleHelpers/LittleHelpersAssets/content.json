@@ -1,5 +1,26 @@
 {
   "$schema": "https://smapi.io/schemas/content-patcher.json",
-  "Format": "2.0.0-alpha",
-  "Changes": []
+  "Format": "2.0.0",
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/BigCraftables",
+      "Entries": {
+        "{{ModId}}_JunimoHelperBuilding_0": {
+          "Name": "{{ModId}}_JunimoHelperBuilding_0",
+          "DisplayName": "Basic Junimo Helper Building",
+          "Description": "does stuff",
+          "Price": 0,
+          "Fragility": 0,
+          "CanBePlacedOutdoors": true,
+          "CanBePlacedIndoors": true,
+          "IsLamp": false,
+          "Texture": null,
+          "SpriteIndex": 0,
+          "ContextTags": null,
+          "CustomFields": null
+        },
+      }
+    }
+  ]
 }
