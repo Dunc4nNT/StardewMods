@@ -48,6 +48,11 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
                 original: AccessTools.Method(typeof(SObject), nameof(SObject.performToolAction)),
                 prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(PerformToolActionPatch))
             );
+
+            s_harmony.Patch(
+                original: AccessTools.Method(typeof(SObject), nameof(SObject.performRemoveAction)),
+                postfix: new HarmonyMethod(typeof(ObjectPatch), nameof(PerformRemoveActionPatch))
+            );
         }
 
 
@@ -61,8 +66,7 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
                     location.objects.Add(new Vector2(x / 64, y / 64), littleHelperBuilding);
                     littleHelperBuilding.heldObject.Value = new Chest();
                     littleHelperBuilding.readyForHarvest.Value = false;
-                    Chest chest = (Chest)littleHelperBuilding.heldObject.Value;
-                    chest.addItem(ItemRegistry.Create("(O)680"));
+
                     __result = true;
                     return false;
                 }
@@ -103,7 +107,7 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
             }
         }
 
-        private static bool MinutesElapsedPatch(ref SObject __instance, bool __result)
+        private static bool MinutesElapsedPatch(ref SObject __instance, ref bool __result)
         {
             try
             {
@@ -123,7 +127,7 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
             }
         }
 
-        private static bool PerformToolActionPatch(ref SObject __instance, Tool t, bool __result)
+        private static bool PerformToolActionPatch(ref SObject __instance, Tool t, ref bool __result)
         {
             try
             {
@@ -148,6 +152,21 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
             {
                 s_monitor.Log($"Failed in {nameof(PerformToolActionPatch)}:\n{e}", LogLevel.Error);
                 return true;
+            }
+        }
+
+        private static void PerformRemoveActionPatch(ref SObject __instance)
+        {
+            try
+            {
+                if (__instance.QualifiedItemId == "(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0")
+                {
+                    __instance.heldObject.Value = null;
+                }
+            }
+            catch (Exception e)
+            {
+                s_monitor.Log($"Failed in {nameof(PerformRemoveActionPatch)}:\n{e}", LogLevel.Error);
             }
         }
     }
