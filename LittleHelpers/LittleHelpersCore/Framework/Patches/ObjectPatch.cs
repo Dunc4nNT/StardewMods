@@ -62,10 +62,9 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
             {
                 if (__instance.QualifiedItemId == "(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0")
                 {
-                    SObject littleHelperBuilding = ItemRegistry.Create<SObject>("(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0");
-                    location.objects.Add(new Vector2(x / 64, y / 64), littleHelperBuilding);
-                    littleHelperBuilding.heldObject.Value = new Chest();
-                    littleHelperBuilding.readyForHarvest.Value = false;
+                    location.objects.Add(new Vector2(x / 64, y / 64), __instance);
+                    __instance.heldObject.Value = new Chest();
+                    __instance.readyForHarvest.Value = false;
 
                     __result = true;
                     return false;
