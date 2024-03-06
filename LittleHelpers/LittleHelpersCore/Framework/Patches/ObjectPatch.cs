@@ -58,6 +58,11 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
                 original: AccessTools.Method(typeof(SObject), nameof(SObject.performRemoveAction)),
                 postfix: new HarmonyMethod(typeof(ObjectPatch), nameof(PerformRemoveActionPatch))
             );
+
+            s_harmony.Patch(
+                original: AccessTools.Method(typeof(SObject), nameof(SObject.DayUpdate)),
+                postfix: new HarmonyMethod(typeof(ObjectPatch), nameof(DayUpdatePatch))
+            );
         }
 
         private static bool CanBePlacedHerePatch(ref SObject __instance, GameLocation l, Vector2 tile, ref bool __result)
@@ -67,9 +72,7 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
                 if (__instance.QualifiedItemId == "(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0")
                 {
                     // TODO: add placement validation checks here
-                    __result = true;
-
-                    return false;
+                    return true;
                 }
 
                 return true;
@@ -87,9 +90,10 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
             {
                 if (__instance.QualifiedItemId == "(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0")
                 {
-                    location.objects.Add(new Vector2(x / 64, y / 64), __instance);
-                    __instance.heldObject.Value = new Chest();
-                    __instance.readyForHarvest.Value = false;
+                    SObject littleHelperBuilding = ItemRegistry.Create<SObject>("(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0");
+                    location.objects.Add(new Vector2(x / 64, y / 64), littleHelperBuilding);
+                    littleHelperBuilding.heldObject.Value = new Chest();
+                    littleHelperBuilding.readyForHarvest.Value = false;
 
                     __result = true;
                     return false;
@@ -126,7 +130,7 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
             }
             catch (Exception e)
             {
-                s_monitor.Log($"Failed in {nameof(PlacementActionPatch)}:\n{e}", LogLevel.Error);
+                s_monitor.Log($"Failed in {nameof(CheckForActionPatch)}:\n{e}", LogLevel.Error);
                 return true;
             }
         }
@@ -191,6 +195,22 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Patches
             catch (Exception e)
             {
                 s_monitor.Log($"Failed in {nameof(PerformRemoveActionPatch)}:\n{e}", LogLevel.Error);
+            }
+        }
+
+        private static void DayUpdatePatch(ref SObject __instance)
+        {
+            try
+            {
+                if (__instance.QualifiedItemId == "(BC)NeverToxic.LittleHelpersAssets_JunimoHelperBuilding_0")
+                {
+                    // TODO: execute assigned actions
+                    s_monitor.Log("Performed action during night.");
+                }
+            }
+            catch (Exception e)
+            {
+                s_monitor.Log($"Failed in {nameof(DayUpdatePatch)}:\n{e}", LogLevel.Error);
             }
         }
     }
