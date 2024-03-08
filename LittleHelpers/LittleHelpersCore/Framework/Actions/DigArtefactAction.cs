@@ -1,6 +1,6 @@
 ﻿namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Actions
 {
-    internal class CollectFromCrabPotAction : BaseAction
+    internal class DigArtefactAction : BaseAction
     {
         public override bool CanExecute(int tile)
         {

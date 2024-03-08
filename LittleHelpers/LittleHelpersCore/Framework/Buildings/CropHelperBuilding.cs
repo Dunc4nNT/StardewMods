@@ -6,7 +6,7 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Buildings
 {
     internal class CropHelperBuilding(int helperCapacity, ILocationCheck locationCheck, int radius, int? location = null, bool canScareCrows = false, bool canReplantCrops = false) : BaseBuilding(helperCapacity, locationCheck, radius: radius, location: location)
     {
-        public override List<BaseAction> Actions { get; set; } = [new HarvestCropAction(), new CollectFromTreeAction()];
+        public override List<BaseAction> Actions { get; set; } = [new HarvestCropAction(), new HarvestTreeAction()];
 
         public bool CanScareCrows { get; } = canScareCrows;
 

@@ -15,13 +15,15 @@ namespace NeverToxic.StardewMods.LittleHelpersCore
 
         private LittleHelpersHelper LittleHelpersHelper { get; set; }
 
+        public const string AssetsModId = "NeverToxic.LittleHelpersAssets";
+
         public override void Entry(IModHelper helper)
         {
             I18n.Init(helper.Translation);
 
             this.Config = helper.ReadConfig<ModConfig>();
             Harmony harmony = new(this.ModManifest.UniqueID);
-            ObjectPatch.Initialise(harmony, this.Monitor, () => this.Config, this.Helper.Reflection);
+            ObjectPatch.Initialise(harmony, AssetsModId, this.Monitor, () => this.Config, this.Helper.Reflection);
             this.LittleHelpersHelper = new(() => this.Config, this.Monitor);
 
             helper.Events.GameLoop.GameLaunched += this.OnGameLaunched;

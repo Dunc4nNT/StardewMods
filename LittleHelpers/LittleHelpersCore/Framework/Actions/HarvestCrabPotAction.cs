@@ -1,6 +1,6 @@
 ﻿namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Actions
 {
-    internal class CollectFromTreeAction : BaseAction
+    internal class HarvestCrabPotAction : BaseAction
     {
         public override bool CanExecute(int tile)
         {
