@@ -1,0 +1,30 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/BigCraftables",
+      "Entries": {
+        "{{ModId}}_MagpieHelperBuilding_0": {
+          "Name": "{{ModId}}_MagpieHelperBuilding_0",
+          "DisplayName": "Basic Magpie Helper Building",
+          "Description": "does stuff",
+          "Price": 0,
+          "Fragility": 0,
+          "CanBePlacedOutdoors": true,
+          "CanBePlacedIndoors": true,
+          "IsLamp": false,
+          "Texture": null,
+          "SpriteIndex": 0,
+          "ContextTags": null,
+          "CustomFields": {
+            "{{ModId}}.Radius": 0,
+            "{{ModId}}.HelperAmount": 1,
+            "{{ModId}}.LocationCheck": "Map",
+            "{{ModId}}.DigArtefacts": true,
+          }
+        }
+      }
+    }
+  ]
+}
