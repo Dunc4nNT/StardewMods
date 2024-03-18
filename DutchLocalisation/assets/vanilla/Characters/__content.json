@@ -3,7 +3,7 @@
   "Changes": [
     {
       "Action": "Include",
-      "FromFile": "assets/Characters/Dialogue/__content.json"
+      "FromFile": "assets/vanilla/Characters/Dialogue/__content.json"
     },
   ]
 }

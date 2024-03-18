@@ -3,11 +3,11 @@
   "Changes": [
     {
       "Action": "Include",
-      "FromFile": "assets/Data/TV/CookingChannel.nl-NL.json"
+      "FromFile": "assets/vanilla/Fonts/SmallFont.nl-NL.json"
     },
     {
       "Action": "Include",
-      "FromFile": "assets/Data/TV/TipChannel.nl-NL.json"
+      "FromFile": "assets/vanilla/Fonts/SpriteFont1.nl-NL.json"
     },
   ]
 }

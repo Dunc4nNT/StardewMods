@@ -1,0 +1,125 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Abigail.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Alex.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Caroline.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Clint.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Demetrius.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Elliott.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Emily.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Evelyn.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/George.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Gus.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Haley.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Harvey.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Jas.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Jodi.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Leah.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Leo.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Lewis.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Linus.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Marnie.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Maru.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Pam.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Penny.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Pierre.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Robin.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Sam.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Sandy.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Sebastian.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Shane.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Vincent.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/schedules/Willy.nl-NL.json"
+    },
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Characters/__content.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/__content.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Fonts/__content.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/LooseSprites/__content.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Maps/__content.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Minigames/__content.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/__content.json"
+    },
+  ]
+}

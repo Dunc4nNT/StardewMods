@@ -1,0 +1,13 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/TV/CookingChannel.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/TV/TipChannel.nl-NL.json"
+    },
+  ]
+}

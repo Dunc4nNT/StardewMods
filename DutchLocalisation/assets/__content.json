@@ -3,27 +3,7 @@
   "Changes": [
     {
       "Action": "Include",
-      "FromFile": "assets/Characters/__content.json"
-    },
-    {
-      "Action": "Include",
-      "FromFile": "assets/Data/__content.json"
-    },
-    {
-      "Action": "Include",
-      "FromFile": "assets/LooseSprites/__content.json"
-    },
-    {
-      "Action": "Include",
-      "FromFile": "assets/Maps/__content.json"
-    },
-    {
-      "Action": "Include",
-      "FromFile": "assets/Minigames/__content.json"
-    },
-    {
-      "Action": "Include",
-      "FromFile": "assets/Strings/__content.json"
+      "FromFile": "assets/vanilla/__content.json"
     },
   ]
 }

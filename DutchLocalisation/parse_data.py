@@ -4,25 +4,28 @@ from pathlib import Path
 
 
 def parse() -> None:
-    input_path = Path("./data/input")
+    input_path = Path("./data/input/vanilla")
     german_data = list(input_path.glob("**/*.de-DE.*"))
 
     current_date = datetime.datetime.now(datetime.UTC)
     folderdate = f"{current_date.year}-{current_date.month}-{current_date.day}"
 
+    Path(f"./data/output-{folderdate}/assets/vanilla/").mkdir(parents=True, exist_ok=True)
+    outputpath_vanilla = Path(f"./data/output-{folderdate}/assets/vanilla/")
+
     for file in german_data:
-        gamefilepath = str(file.parent)[10:].replace("\\", "/")
+        gamefilepath = str(file.parent).replace("data\\input\\vanilla\\", "").replace("\\", "/")
 
         if gamefilepath == "/Fonts":
             continue
 
-        _ = Path(f"./data/output-{folderdate}/{gamefilepath}").mkdir(parents=True, exist_ok=True),
+        _ = Path(f"{outputpath_vanilla}/{gamefilepath}").mkdir(parents=True, exist_ok=True),
         shutil.copy(
             Path(str(file).replace(".de-DE", "")),
-            Path(f"./data/output-{folderdate}/{gamefilepath}/{file.name.replace(".de-DE", ".nl-NL")}"),
+            Path(f"{outputpath_vanilla}/{gamefilepath}/{file.name.replace(".de-DE", ".nl-NL")}"),
         )
 
-    outputpath = Path(f"./data/output-{folderdate}")
+    outputpath = Path(f"./data/output-{folderdate}/assets/")
     outputpath_folders = list(outputpath.glob("**/"))
     
     for path in outputpath_folders:
@@ -55,7 +58,6 @@ def parse() -> None:
                 ])
             
             fw.writelines(["  ]\n", "}\n"])
-
 
 
 if __name__ == "__main__":

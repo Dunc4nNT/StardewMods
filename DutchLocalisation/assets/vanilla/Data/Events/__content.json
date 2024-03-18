@@ -1,0 +1,177 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/AbandonedJojaMart.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/AnimalShop.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/ArchaeologyHouse.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Backwoods.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/BathHouse_Pool.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Beach.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/BoatTunnel.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/BusStop.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/CommunityCenter.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/ElliottHouse.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Farm.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/FarmHouse.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/FishShop.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Forest.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/HaleyHouse.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/HarveyRoom.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Hospital.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/IslandHut.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/IslandNorth.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/IslandSouth.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/IslandWest.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/JoshHouse.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/LeahHouse.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/ManorHouse.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Mine.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Mountain.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/QiNutRoom.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Railroad.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Saloon.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/SamHouse.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/SandyHouse.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/ScienceHouse.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/SebastianRoom.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/SeedShop.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Sewer.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Sunroom.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Temp.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Tent.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Town.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Trailer.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Trailer_Big.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/WizardHouse.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/Woods.nl-NL.json"
+    },
+  ]
+}
