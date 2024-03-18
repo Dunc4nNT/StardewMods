@@ -1,0 +1,121 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/schedules/__content.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/animationDescriptions.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/BigCraftables.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Buildings.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/BundleNames.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Characters.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/credits.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/EnchantmentNames.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Events.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/FarmAnimals.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Furniture.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Lexicon.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Locations.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/MovieConcessions.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/MovieReactions.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Movies.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Notes.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/NPCNames.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Objects.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Pants.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Quests.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Shirts.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/SpecialOrderStrings.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/SpeechBubbles.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/StringsFromCSFiles.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/StringsFromMaps.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/UI.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/Weapons.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Strings/WorldMap.nl-NL.json"
+    },
+  ]
+}

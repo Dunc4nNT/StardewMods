@@ -1,0 +1,41 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "Action": "Include",
+      "FromFile": "assets/Data/Festivals/fall16.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Data/Festivals/fall27.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Data/Festivals/FestivalDates.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Data/Festivals/spring13.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Data/Festivals/spring24.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Data/Festivals/summer11.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Data/Festivals/summer28.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Data/Festivals/winter25.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Data/Festivals/winter8.nl-NL.json"
+    },
+  ]
+}

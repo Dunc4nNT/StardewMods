@@ -1,5 +1,33 @@
 {
   "$schema": "https://smapi.io/schemas/content-patcher.json",
-  "Format": "2.0.0-alpha",
-  "Changes": []
+  "Format": "2.0.0",
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/AdditionalLanguages",
+      "Entries": {
+        "{{ModId}}": {
+          "ID": "{{ModId}}",
+          "LanguageCode": "nl-NL",
+          "ButtonTexture": "Mods/{{ModId}}/Button",
+          "UseLatinFont": true,
+          "TimeFormat": "[HOURS_24_00]:[MINUTES]",
+          "ClockTimeFormat": "[HOURS_24_00]:[MINUTES]",
+          "ClockDateFormat": "[DAY_OF_WEEK] [DAY_OF_MONTH]"
+        }
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Mods/{{ModId}}/Button",
+      "FromFile": "assets/button.nl-NL.png"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/__content.json",
+      "When": {
+        "Language": "nl-NL"
+      }
+    },
+  ]
 }

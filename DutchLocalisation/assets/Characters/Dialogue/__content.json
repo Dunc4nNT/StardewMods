@@ -1,0 +1,213 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Abigail.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Alex.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Caroline.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Clint.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Demetrius.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Dwarf.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Elliott.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Emily.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Evelyn.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/George.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Gil.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Gus.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Haley.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Harvey.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Jas.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Jodi.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Kent.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Krobus.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Leah.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Leo.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/LeoMainland.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Lewis.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Linus.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Marnie.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogue.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogueAbigail.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogueAlex.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogueElliott.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogueEmily.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogueHaley.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogueHarvey.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogueKrobus.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogueLeah.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogueMaru.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialoguePenny.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogueSam.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogueSebastian.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/MarriageDialogueShane.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Maru.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Mister Qi.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Pam.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Penny.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Pierre.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/rainy.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Robin.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Sam.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Sandy.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Sebastian.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Shane.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Vincent.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Willy.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/Characters/Dialogue/Wizard.nl-NL.json"
+    },
+  ]
+}
