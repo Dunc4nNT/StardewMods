@@ -14,7 +14,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
         private readonly SObject _initialBait = instance.GetBait();
 
-        private readonly SObject _initialTackle = instance.GetTackle();
+        private readonly List<SObject> _initialTackles = instance.GetTackle();
 
         private readonly List<BaseEnchantment> _addedEnchantments = [];
 
@@ -53,10 +53,24 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
         public void ResetAttachments()
         {
+            // quick dirty fix to get it working with SV 1.6
+            // TODO: make this not garbage :)
+            if (this._initialAttachmentSlotsCount <= 1)
+            {
+                this.Instance.attachments[1] = null;
+            }
+
             if (this.Instance.AttachmentSlotsCount >= 1)
                 this.Instance.attachments[0] = this._initialBait;
             if (this.Instance.AttachmentSlotsCount >= 2)
-                this.Instance.attachments[1] = this._initialTackle;
+            {
+                int i = 1;
+                foreach (SObject tackle in this._initialTackles)
+                {
+                    this.Instance.attachments[i] = tackle;
+                    i++;
+                }
+            }
 
             this.Instance.AttachmentSlotsCount = this._initialAttachmentSlotsCount;
         }
@@ -82,9 +96,9 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
         public void InfiniteTackle()
         {
-            SObject tackle = this.Instance.GetTackle();
-            if (tackle is not null)
-                tackle.uses.Value = 0;
+            foreach (SObject tackle in this.Instance.GetTackle())
+                if (tackle is not null)
+                    tackle.uses.Value = 0;
         }
 
         public void InstantBite()
