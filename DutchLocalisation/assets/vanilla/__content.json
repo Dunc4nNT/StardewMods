@@ -11,10 +11,6 @@
     },
     {
       "Action": "Include",
-      "FromFile": "assets/vanilla/Fonts/__content.json"
-    },
-    {
-      "Action": "Include",
       "FromFile": "assets/vanilla/LooseSprites/__content.json"
     },
     {

@@ -39,6 +39,10 @@
     },
     {
       "Action": "Include",
+      "FromFile": "assets/vanilla/Data/Events/DesertFestival.nl-NL.json"
+    },
+    {
+      "Action": "Include",
       "FromFile": "assets/vanilla/Data/Events/ElliottHouse.nl-NL.json"
     },
     {

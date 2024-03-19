@@ -7,6 +7,10 @@
     },
     {
       "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/1_6_Strings.nl-NL.json"
+    },
+    {
+      "Action": "Include",
       "FromFile": "assets/vanilla/Strings/animationDescriptions.nl-NL.json"
     },
     {
@@ -88,6 +92,10 @@
     {
       "Action": "Include",
       "FromFile": "assets/vanilla/Strings/Shirts.nl-NL.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/vanilla/Strings/SimpleNonVillagerDialogues.nl-NL.json"
     },
     {
       "Action": "Include",
