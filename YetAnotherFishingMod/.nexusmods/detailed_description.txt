@@ -3,16 +3,13 @@
 Having difficulty fishing? Or finding it too easy? This is yet another mod that allows you to adjust various fishing-related options.
 
 [img]https://staticdelivery.nexusmods.com/mods/1303/images/headers/20391_1709272109.jpg[/img]
-[size=5][b]Notice[/b][/size]
-
-This mod is made for Stardew Valley 1.6 using SMAPI 4.0. As of writing this, neither are publicly released yet, thus will only work on the alpha versions. This mod will [b]not[/b] work on versions prior to those mentioned.
 
 [size=5][b]Prerequisites[/b][/size]
 
 Mandatory and optional requirements for use of this mod.
 
 - [url=https://www.nexusmods.com/stardewvalley/mods/2400]SMAPI 4.0[/url] (required)
-- [url=https://www.nexusmods.com/stardewvalley/mods/5098]GMCM 1.12[/url] (optional)
+- [url=https://www.nexusmods.com/stardewvalley/mods/5098]GMCM 1.12[/url] (optional, but highly recommended)
 
 [size=5][b]Installation[/b][/size]
 
@@ -78,9 +75,13 @@ Both singleplayer and multiplayer should work. I have yet to test split screen, 
 
 Likely to conflict with mods that try to do the same thing. Due to every option in this mod being configurable it should not be likely to cause issues, as you can simply turn the conflicting option off. Though, feel free to report any mods that do conflict by opening an [url=https://github.com/Dunc4nNT/StardewMods/issues]issue[/url], updating the README and [url=https://github.com/Dunc4nNT/StardewMods/pulls]sending a pull request[/url] or [url=https://www.nexusmods.com/stardewvalley/mods/20391?tab=posts]comment on the NexusMods page[/url].
 
+Should be compatible with mods that add custom bait and or hooks, I've yet to test this, but as long as the category for the custom item was set correctly, this mod should detect them.
+
+This mod won't work with custom enchantments at the moment. I'm looking to add support for this in the future.
+
 [size=5][b]Translations[/b][/size]
 
-Currently, only English is supported. However, once this mod releases, Dutch should be available as well.
+Currently, only English is supported.
 
 If you'd like another language to be supported and would like to help, please check the [url=https://stardewvalleywiki.com/Modding:Translations]modding translations wiki[/url] and send a [url=https://github.com/Dunc4nNT/StardewMods/pulls]pull request[/url].
 [size=5]
@@ -104,10 +105,16 @@ If you'd like another language to be supported and would like to help, please ch
 
 List of things I'd like to add at some point. However, this mod is mostly just for myself, to get fimiliar with C# and Stardew modding. I'm uncertain how many of these I'll actually end up doing.
 
-- Refund stamina on maximum cast
-- Skip fish catch animation
-- Automatically loot caught fish and trash
-- Skip treasure opening animation
+[list]
+[*]Configure how many fish to catch (update from catch double)
+[*]Look into spawning multiple tackles
+[*]Dutch translations
+[*]Support for custom enchantments
+[*]Refund stamina on maximum cast
+[*]Skip fish catch animation
+[*]Automatically loot caught fish and trash
+[*]Skip treasure opening animation
+[/list]
 
 [size=5][b]Licensing[/b][/size]
 
