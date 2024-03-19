@@ -16,7 +16,7 @@ def parse() -> None:
     for file in german_data:
         gamefilepath = str(file.parent).replace("data\\input\\vanilla\\", "").replace("\\", "/")
 
-        if gamefilepath == "/Fonts":
+        if gamefilepath == "Fonts":
             continue
 
         _ = Path(f"{outputpath_vanilla}/{gamefilepath}").mkdir(parents=True, exist_ok=True),
