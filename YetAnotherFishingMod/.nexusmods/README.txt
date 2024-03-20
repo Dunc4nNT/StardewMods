@@ -77,13 +77,17 @@ Once you've configured the mod the way you want, simply equip a fishing rod and 
 
 This mod is made for Stardew Valley 1.6 using SMAPI 4.0. This mod will **not** work on versions prior to those mentioned.
 
-Both singleplayer and multiplayer should work. I have yet to test split screen, but did try to make it compatible.
+Both singleplayer and multiplayer should work. If you are having issues with multiplayer, make sure you've downloaded at least version 1.0.1 of the mod as this included a multiplayer hotfix.
+
+I have yet to test split screen, but did try to make it compatible.
+
+This mod does not change fish spawns, so it *should* work with mods adding custom fish.
+
+*Should* be compatible with mods that add custom bait and or hooks, I've yet to test this, but as long as the category for the custom item was set correctly, this mod should detect them.
+
+This mod will **not** work with custom enchantments at the moment. I'm looking to add support for this in the future.
 
 Likely to conflict with mods that try to do the same thing. Due to every option in this mod being configurable it should not be likely to cause issues, as you can simply turn the conflicting option off. Though, feel free to report any mods that do conflict by [opening an issue](https://github.com/Dunc4nNT/StardewMods/issues), updating the README and [sending a pull request](https://github.com/Dunc4nNT/StardewMods/pulls) or [comment on the NexusMods page](https://www.nexusmods.com/stardewvalley/mods/20391?tab=posts).
-
-Should be compatible with mods that add custom bait and or hooks, I've yet to test this, but as long as the category for the custom item was set correctly, this mod should detect them.
-
-This mod won't work with custom enchantments at the moment. I'm looking to add support for this in the future.
 
 ## Translations
 

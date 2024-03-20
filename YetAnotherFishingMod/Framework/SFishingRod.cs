@@ -10,7 +10,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
     {
         public FishingRod Instance { get; set; } = instance;
 
-        private readonly int _initialAttachmentSlotsCount = instance.AttachmentSlotsCount;
+        private readonly int _initialNumAttachmentSlots = instance.numAttachmentSlots.Value;
 
         private readonly SObject _initialBait = instance.GetBait();
 
@@ -55,14 +55,14 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         {
             // quick dirty fix to get it working with SV 1.6
             // TODO: make this not garbage :)
-            if (this._initialAttachmentSlotsCount <= 1)
+            if (this._initialNumAttachmentSlots <= 1)
             {
                 this.Instance.attachments[1] = null;
             }
 
-            if (this.Instance.AttachmentSlotsCount >= 1)
+            if (this.Instance.numAttachmentSlots.Value >= 1)
                 this.Instance.attachments[0] = this._initialBait;
-            if (this.Instance.AttachmentSlotsCount >= 2)
+            if (this.Instance.numAttachmentSlots.Value >= 2)
             {
                 int i = 1;
                 foreach (SObject tackle in this._initialTackles)
@@ -72,7 +72,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 }
             }
 
-            this.Instance.AttachmentSlotsCount = this._initialAttachmentSlotsCount;
+            this.Instance.numAttachmentSlots.Value = this._initialNumAttachmentSlots;
         }
 
         public void AddEnchantment(BaseEnchantment enchantment)
