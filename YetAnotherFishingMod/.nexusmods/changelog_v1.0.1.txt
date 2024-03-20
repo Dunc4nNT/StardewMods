@@ -1,0 +1,3 @@
+Version 1.0.0
+
+- Hotfix to fix a multiplayer bug which would spam the SMAPI log with OnUpdateTicked messages leading to a bug in ResetEnchantments()
