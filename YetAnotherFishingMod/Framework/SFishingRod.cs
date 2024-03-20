@@ -51,18 +51,18 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             this.Instance.attachments[1] = ItemRegistry.Create<SObject>(tackleId);
         }
 
-        public void ResetAttachments()
+        public void ResetAttachments(bool resetBait, bool resetTackles)
         {
             // quick dirty fix to get it working with SV 1.6
             // TODO: make this not garbage :)
-            if (this._initialNumAttachmentSlots <= 1)
+            if (this._initialNumAttachmentSlots <= 1 && resetTackles)
             {
                 this.Instance.attachments[1] = null;
             }
 
-            if (this.Instance.numAttachmentSlots.Value >= 1)
+            if (this.Instance.numAttachmentSlots.Value >= 1 && resetBait)
                 this.Instance.attachments[0] = this._initialBait;
-            if (this.Instance.numAttachmentSlots.Value >= 2)
+            if (this.Instance.numAttachmentSlots.Value >= 2 && resetTackles)
             {
                 int i = 1;
                 foreach (SObject tackle in this._initialTackles)

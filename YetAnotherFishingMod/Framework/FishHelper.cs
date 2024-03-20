@@ -121,7 +121,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 ModConfig config_ = config();
 
                 if (config_.ResetAttachmentsWhenNotEquipped)
-                    fishingRod.ResetAttachments();
+                    fishingRod.ResetAttachments(config_.SpawnBaitWhenEquipped, config_.SpawnTackleWhenEquipped);
 
                 if (config_.ResetEnchantmentsWhenNotEquipped)
                     fishingRod.ResetEnchantments();
