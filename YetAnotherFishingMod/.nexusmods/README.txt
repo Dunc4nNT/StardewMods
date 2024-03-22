@@ -37,10 +37,10 @@ Mandatory and optional requirements for use of this mod.
 The mod's configurable options can be found below. These can either be adjusted through [Generic Mod Configuration Menu (GMCM)](https://www.nexusmods.com/stardewvalley/mods/5098) or the `config.json` file. Editing the options using GMCM is recommended. GMCM will also provide descriptive tooltips if the option itself is not clear.
 
 ### General
-- Increase Chance of Catching Fish
-- Instantly Catch Fish
-- Instantly Catch Treasure
-- Always Maximum Casting Power
+- Increase Chance of Catching Fish (Nearly guarantee catching fish in locations you can catch things other than trash)
+- Instantly Catch Fish (Skip fishing minigame)
+- Instantly Catch Treasure (Automatically catches treasure for you, even if you missed it)
+- Always Maximum Casting Power (Casts your line the maximum distance)
 - Always Perfect
 - Adjust how often treasure appears (vanilla, never or always)
 - Always Catch Double
@@ -49,7 +49,7 @@ The mod's configurable options can be found below. These can either be adjusted 
 - Automatically Loot Treasure
 - Difficulty Multiplier
 - Fish Quality
-- Minimum Fish Quality
+- Minimum Fish Quality (Is trumped by fish quality)
 
 ### Attachments
 - Override Attachment Limit
@@ -75,17 +75,17 @@ Once you've configured the mod the way you want, simply equip a fishing rod and 
 
 ## Compatibility
 
-This mod is made for Stardew Valley 1.6 using SMAPI 4.0. This mod will **not** work on versions prior to those mentioned.
+This mod is made for **Stardew Valley 1.6** using **SMAPI 4.0**. This mod will **not** work on versions prior to those mentioned.
 
-Both singleplayer and multiplayer should work. If you are having issues with multiplayer, make sure you've downloaded at least version 1.0.1 of the mod as this included a multiplayer hotfix.
+Both **singleplayer** and **multiplayer** should work. If you are having issues with multiplayer, make sure you've downloaded at least version 1.0.1 of the mod as this included a multiplayer hotfix.
 
-I have yet to test split screen, but did try to make it compatible.
+I have yet to test **split screen**, but did try to make it compatible.
 
-This mod does not change fish spawns, so it *should* work with mods adding custom fish.
+This mod does not change fish spawns, so it *should* work with mods adding **custom fish**.
 
-*Should* be compatible with mods that add custom bait and or hooks, I've yet to test this, but as long as the category for the custom item was set correctly, this mod should detect them.
+*Should* be compatible with mods that add **custom bait and or hooks**, I've yet to test this, but as long as the category for the custom item was set correctly, this mod should detect them.
 
-This mod will **not** work with custom enchantments at the moment. I'm looking to add support for this in the future.
+This mod will **not** work with **custom enchantments** at the moment. I'm looking to add support for this in the future.
 
 Likely to conflict with mods that try to do the same thing. Due to every option in this mod being configurable it should not be likely to cause issues, as you can simply turn the conflicting option off. Though, feel free to report any mods that do conflict by [opening an issue](https://github.com/Dunc4nNT/StardewMods/issues), updating the README and [sending a pull request](https://github.com/Dunc4nNT/StardewMods/pulls) or [comment on the NexusMods page](https://www.nexusmods.com/stardewvalley/mods/20391?tab=posts).
 
@@ -112,16 +112,28 @@ If you'd like another language to be supported and would like to help, please ch
 
 ## To Do
 
-List of things I'd like to add at some point. However, this mod is mostly just for myself, to get fimiliar with C# and Stardew modding. I'm uncertain how many of these I'll actually end up doing.
+List of things I'd like to add at some point. I'm uncertain how many of these I'll actually end up doing. List in no specific order.
 
-- Configure how many fish to catch (update from catch double)
-- Look into spawning multiple tackles
+- ~~Look into potential bug with the new bait (not catching 3 fish)~~ fixed in next release
+- ~~Set InstantCatchTreasure to true by default~~ fixed in next release
+- Look into difficulty value changing XP gained
+- Rewrite attachment/enchantment logic
+- Allow for custom enchantments
+- Remove the "do add bait/tackle/enchantment" option and simply have a "None" option in the dropdown menu
+- Allow 2 tackle slots (as per 1.6 content update)
+- Allow users to set the amount of fish to catch (so allow a custom amount to be entered), make sure this works well with bait items so ideally have a "vanilla" option
+- Have a percentage slider for the "always perfect" setting (as well as allowing vanilla settings)
+- Have a percentage slider for the "catch treasure" setting (as well as allowing vanilla settings)
+- Set instantly catch treasure to true by default
+- Refund stamina on max cast option
+- Skip treasure opening animation
+- Reorganise GMCM options as some are vaguely worded and it's unclear what they do. Also possibly difficult to navigate once i add some of the above options as well
+- Make sliders increment by values of say 0.05 so it's possible to set it back to 1.0 and not 1.00000001
+- Look into an auto cast/recast option, configurable keybind for it as well
+- Gradually learn catching fish, so say after catching 5 of a certain fish the amount of time it takes to catch the next one decreases, all the way till it's instant.
 - Dutch translations
-- Support for custom enchantments
-- Refund stamina on maximum cast
 - Skip fish catch animation
 - Automatically loot caught fish and trash
-- Skip treasure opening animation
 
 ## Licensing
 
