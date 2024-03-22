@@ -120,10 +120,11 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 mod: manifest,
                 name: () => I18n.Config_General_DifficultyMultiplier_Name(),
                 tooltip: () => I18n.Config_General_DifficultyMultiplier_Tooltip(),
-                getValue: () => (int)config().DifficultyMultiplier,
+                getValue: () => config().DifficultyMultiplier,
                 setValue: value => config().DifficultyMultiplier = value,
                 min: (float)0.1,
-                max: (float)5.0
+                max: (float)2.0,
+                interval: (float)0.1
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
