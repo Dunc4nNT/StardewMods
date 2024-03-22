@@ -112,8 +112,8 @@ If you'd like another language to be supported and would like to help, please ch
 List of things I'd like to add at some point. I'm uncertain how many of these I'll actually end up doing. List in no specific order.
 
 [list]
-[*]~~Look into potential bug with the new bait (not catching 3 fish)~~ fixed in next release
-[*]~~Set InstantCatchTreasure to true by default~~ fixed in next release
+[*][s]Look into potential bug with the new bait (not catching 3 fish)[/s] fixed in next release
+[*][s]Set InstantCatchTreasure to true by default[/s] fixed in next release
 [*]Look into difficulty value changing XP gained
 [*]Rewrite attachment/enchantment logic
 [*]Allow for custom enchantments
