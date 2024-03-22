@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Tools;
 using System;
 using SObject = StardewValley.Object;
 
@@ -28,7 +29,11 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         {
             s_harmony.Patch(
                 original: AccessTools.Method(typeof(GameLocation), nameof(GameLocation.getFish)),
-                postfix: new HarmonyMethod(typeof(Patches), nameof(Patches.GetFishPatch))
+                postfix: new HarmonyMethod(typeof(Patches), nameof(GetFishPatch))
+            );
+            s_harmony.Patch(
+                original: AccessTools.Method(typeof(FishingRod), nameof(FishingRod.doneFishing)),
+                prefix: new HarmonyMethod(typeof(Patches), nameof(DoneFishingPatch))
             );
         }
 
@@ -54,6 +59,24 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             catch (Exception e)
             {
                 s_monitor.Log($"Failed in {nameof(GetFishPatch)}:\n{e}", LogLevel.Error);
+            }
+        }
+
+        private static bool DoneFishingPatch(ref bool consumeBaitAndTackle)
+        {
+            try
+            {
+                ModConfig config = s_config();
+
+                if (config.InfiniteBaitAndTackle)
+                    consumeBaitAndTackle = false;
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                s_monitor.Log($"Failed in {nameof(DoneFishingPatch)}:\n{e}", LogLevel.Error);
+                return true;
             }
         }
     }

@@ -87,20 +87,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 this.Instance.enchantments.Remove(enchantment);
         }
 
-        public void InfiniteBait()
-        {
-            SObject bait = this.Instance.GetBait();
-            if (bait is not null)
-                bait.Stack = bait.maximumStackSize();
-        }
-
-        public void InfiniteTackle()
-        {
-            foreach (SObject tackle in this.Instance.GetTackle())
-                if (tackle is not null)
-                    tackle.uses.Value = 0;
-        }
-
         public void InstantBite()
         {
             if (this.Instance.timeUntilFishingBite > 0)
