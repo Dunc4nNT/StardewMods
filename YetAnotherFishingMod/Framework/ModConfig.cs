@@ -8,7 +8,7 @@
 
         public bool InstantCatchFish { get; set; } = true;
 
-        public bool InstantCatchTreasure { get; set; } = false;
+        public bool InstantCatchTreasure { get; set; } = true;
 
         public bool AlwaysMaxCastingPower { get; set; } = false;
 
