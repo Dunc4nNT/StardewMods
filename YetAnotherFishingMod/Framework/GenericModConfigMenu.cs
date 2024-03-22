@@ -172,6 +172,13 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().ResetAttachmentsWhenNotEquipped,
                 setValue: value => config().ResetAttachmentsWhenNotEquipped = value
             );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Attachments_InfiniteBaitAndTackle_Name,
+                tooltip: I18n.Config_Attachments_InfiniteBaitAndTackle_Tooltip,
+                getValue: () => config().InfiniteBaitAndTackle,
+                setValue: value => config().InfiniteBaitAndTackle = value
+            );
             configMenu.AddSectionTitle(
                 mod: manifest,
                 text: I18n.Config_Attachments_BaitSection
@@ -192,13 +199,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 allowedValues: [.. baitList],
                 formatAllowedValue: value => ItemRegistry.GetData(value).DisplayName
             );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_Attachments_InfiniteBait_Name,
-                tooltip: I18n.Config_Attachments_InfiniteBait_Tooltip,
-                getValue: () => config().InfiniteBait,
-                setValue: value => config().InfiniteBait = value
-            );
             configMenu.AddSectionTitle(
                 mod: manifest,
                 text: I18n.Config_Attachments_TacklesSection
@@ -218,13 +218,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 setValue: value => config().SpawnWhichTackle = value,
                 allowedValues: [.. tackeList],
                 formatAllowedValue: value => ItemRegistry.GetData(value).DisplayName
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_Attachments_InfiniteTackle_Name,
-                tooltip: I18n.Config_Attachments_InfiniteTackle_Tooltip,
-                getValue: () => config().InfiniteTackle,
-                setValue: value => config().InfiniteTackle = value
             );
 
             configMenu.AddPage(

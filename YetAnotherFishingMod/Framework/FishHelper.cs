@@ -25,12 +25,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             if (config_.FishQuality != Quality.Any && fishingRod.Instance.fishSize > 0)
                 fishingRod.Instance.fishQuality = (int)config_.FishQuality;
 
-            if (config_.InfiniteBait)
-                fishingRod.InfiniteBait();
-
-            if (config_.InfiniteTackle)
-                fishingRod.InfiniteTackle();
-
             if (config_.AlwaysMaxCastingPower)
                 fishingRod.Instance.castingPower = 1.01f;
 

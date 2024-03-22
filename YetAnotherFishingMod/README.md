@@ -60,10 +60,9 @@ The mod's configurable options can be found below. These can either be adjusted 
 - Reset Attachments
 - Spawn Bait When Equipped
 - Bait to Spawn
-- Infinite Bait
+- Infinite Bait and Tackles
 - Spawn Tackle When Equipped
 - Tackle to Spawn
-- Infinite Tackle
 
 ### Enchantments
 
