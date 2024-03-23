@@ -6,7 +6,9 @@
 
         public bool IncreaseChanceOfFish { get; set; } = false;
 
-        public bool InstantCatchFish { get; set; } = true;
+        public bool SkipFishingMinigame { get; set; } = true;
+
+        public int SkipFishingMinigameCatchesRequired { get; set; } = 0;
 
         public bool InstantCatchTreasure { get; set; } = true;
 

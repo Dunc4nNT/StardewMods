@@ -149,13 +149,32 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             else if ((config_.InstantCatchTreasure && bobberBar.treasure && config_.TreasureAppearence is TreasureAppearanceSettings.Vanilla) || config_.TreasureAppearence is TreasureAppearanceSettings.Always)
                 bobberBar.treasureCaught = true;
 
-            if (config_.InstantCatchFish)
-            {
-                bobberBar.fadeOut = true;
-                bobberBar.scale = 0f;
-                bobberBar.distanceFromCatching = 1f;
-            }
+            if (this.ShouldSkipMinigame(config_.SkipFishingMinigame, config_.SkipFishingMinigameCatchesRequired))
+                this.SkipMinigame();
         }
+
+        private bool ShouldSkipMinigame(bool maySkipFishingMiniGame, int minimumCatchesRequired)
+        {
+            if (!maySkipFishingMiniGame)
+                return false;
+
+            if (minimumCatchesRequired == 0)
+                return true;
+            else if (Game1.player.fishCaught.TryGetValue(ItemRegistry.GetData(this._bobberBar.Value.whichFish)?.QualifiedItemId, out int[] fishCaughtInfo) && fishCaughtInfo.Length > 0 && fishCaughtInfo[0] >= minimumCatchesRequired)
+                return true;
+            else
+                return false;
+        }
+
+        private void SkipMinigame()
+        {
+            BobberBar bobberBar = this._bobberBar.Value;
+
+            bobberBar.fadeOut = true;
+            bobberBar.scale = 0f;
+            bobberBar.distanceFromCatching = 1f;
+        }
+
 
         public void OnFishingMiniGameEnd()
         {
