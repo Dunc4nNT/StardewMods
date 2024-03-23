@@ -22,10 +22,10 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             ModConfig config_ = config();
             SFishingRod fishingRod = this._fishingRod.Value;
 
-            if (config_.FishQuality != Quality.Any)
-                fishingRod.Instance.fishQuality = (int)config_.FishQuality;
-            else if ((int)config_.MinimumFishQuality > fishingRod.Instance.fishQuality)
+            if ((int)config_.MinimumFishQuality > fishingRod.Instance.fishQuality)
                 fishingRod.Instance.fishQuality = (int)config_.MinimumFishQuality;
+            else if (config_.FishQuality != Quality.Any)
+                fishingRod.Instance.fishQuality = (int)config_.FishQuality;
 
             if (config_.AlwaysMaxCastingPower)
                 fishingRod.Instance.castingPower = 1.01f;

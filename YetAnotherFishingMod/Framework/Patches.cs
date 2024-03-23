@@ -35,6 +35,9 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 original: AccessTools.Method(typeof(FishingRod), nameof(FishingRod.doneFishing)),
                 prefix: new HarmonyMethod(typeof(Patches), nameof(DoneFishingPatch))
             );
+            s_harmony.Patch(AccessTools.Method(typeof(FishingRod), nameof(FishingRod.pullFishFromWater)),
+                prefix: new HarmonyMethod(typeof(Patches), nameof(PullFishFromWaterPatch))
+            );
         }
 
         private static void GetFishPatch(ref GameLocation __instance, ref Item __result, Farmer who, int waterDepth, Vector2 bobberTile)
@@ -70,6 +73,24 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
                 if (config.InfiniteBaitAndTackle)
                     consumeBaitAndTackle = false;
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                s_monitor.Log($"Failed in {nameof(DoneFishingPatch)}:\n{e}", LogLevel.Error);
+                return true;
+            }
+        }
+
+        private static bool PullFishFromWaterPatch(ref int fishDifficulty)
+        {
+            try
+            {
+                ModConfig config = s_config();
+
+                if (!config.AdjustXpGainDifficulty && config.DifficultyMultiplier > 0)
+                    fishDifficulty = (int)(fishDifficulty / config.DifficultyMultiplier);
 
                 return true;
             }
