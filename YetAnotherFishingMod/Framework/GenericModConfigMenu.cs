@@ -88,12 +88,14 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 allowedValues: Enum.GetNames(typeof(TreasureAppearanceSettings)),
                 formatAllowedValue: value => I18n.GetByKey($"config.treasure-appearance-{value}")
             );
-            configMenu.AddBoolOption(
+            configMenu.AddNumberOption(
                 mod: manifest,
-                name: I18n.Config_General_AlwaysCatchDouble_Name,
-                tooltip: I18n.Config_General_AlwaysCatchDouble_Tooltip,
-                getValue: () => config().AlwaysCatchDouble,
-                setValue: value => config().AlwaysCatchDouble = value
+                name: I18n.Config_General_NumberOfFishCaught_Name,
+                tooltip: I18n.Config_General_NumberOfFishCaught_Tooltip,
+                getValue: () => config().NumberOfFishCaught,
+                setValue: value => config().NumberOfFishCaught = value,
+                min: 1,
+                max: 100
             );
             configMenu.AddBoolOption(
                 mod: manifest,

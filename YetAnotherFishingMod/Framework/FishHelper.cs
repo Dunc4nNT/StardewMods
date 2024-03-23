@@ -34,8 +34,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             if (config_.AutoHook)
                 fishingRod.AutoHook();
 
-            if (config_.AlwaysCatchDouble)
-                fishingRod.Instance.numberOfFishCaught = 2;
+            if (config_.NumberOfFishCaught > fishingRod.Instance.numberOfFishCaught)
+                fishingRod.Instance.numberOfFishCaught = config_.NumberOfFishCaught;
         }
 
         public void OnTreasureMenuOpen(ItemGrabMenu itemGrabMenu)
@@ -152,11 +152,9 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
             if (config_.InstantCatchFish)
             {
-                if (bobberBar.challengeBaitFishes > 0 && !config_.AlwaysCatchDouble)
-                    this._fishingRod.Value.Instance.numberOfFishCaught = bobberBar.challengeBaitFishes;
-                this._fishingRod.Value.Instance.pullFishFromWater(bobberBar.whichFish, bobberBar.fishSize, bobberBar.fishQuality, (int)bobberBar.difficulty, bobberBar.treasureCaught, bobberBar.perfect, bobberBar.fromFishPond, bobberBar.setFlagOnCatch, bobberBar.bossFish, this._fishingRod.Value.Instance.numberOfFishCaught);
-                if (Game1.activeClickableMenu is BobberBar)
-                    Game1.exitActiveMenu();
+                bobberBar.fadeOut = true;
+                bobberBar.scale = 0f;
+                bobberBar.distanceFromCatching = 1f;
             }
         }
 
