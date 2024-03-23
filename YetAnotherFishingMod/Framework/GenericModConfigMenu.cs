@@ -65,20 +65,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().InstantCatchTreasure,
                 setValue: value => config().InstantCatchTreasure = value
             );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_General_AlwaysMaxCastingPower_Name,
-                tooltip: I18n.Config_General_AlwaysMaxCastingPower_Tooltip,
-                getValue: () => config().AlwaysMaxCastingPower,
-                setValue: value => config().AlwaysMaxCastingPower = value
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_General_AlwaysPerfect_Name,
-                tooltip: I18n.Config_General_AlwaysPerfect_Tooltip,
-                getValue: () => config().AlwaysPerfect,
-                setValue: value => config().AlwaysPerfect = value
-            );
             configMenu.AddTextOption(
                 mod: manifest,
                 name: I18n.Config_General_TreasureAppearance_Name,
@@ -118,6 +104,10 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().AutoLootTreasure,
                 setValue: value => config().AutoLootTreasure = value
             );
+            configMenu.AddSectionTitle(
+                mod: manifest,
+                text: I18n.Config_General_DifficultySection
+            );
             configMenu.AddNumberOption(
                 mod: manifest,
                 name: I18n.Config_General_DifficultyMultiplier_Name,
@@ -127,6 +117,27 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 min: (float)0.1,
                 max: (float)2.0,
                 interval: (float)0.1
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_AdjustXpGainDifficulty_Name,
+                tooltip: I18n.Config_General_AdjustXpGainDifficulty_Tooltip,
+                getValue: () => config().AdjustXpGainDifficulty,
+                setValue: value => config().AdjustXpGainDifficulty = value
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_AlwaysMaxCastingPower_Name,
+                tooltip: I18n.Config_General_AlwaysMaxCastingPower_Tooltip,
+                getValue: () => config().AlwaysMaxCastingPower,
+                setValue: value => config().AlwaysMaxCastingPower = value
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_AlwaysPerfect_Name,
+                tooltip: I18n.Config_General_AlwaysPerfect_Tooltip,
+                getValue: () => config().AlwaysPerfect,
+                setValue: value => config().AlwaysPerfect = value
             );
             configMenu.AddSectionTitle(
                 mod: manifest,

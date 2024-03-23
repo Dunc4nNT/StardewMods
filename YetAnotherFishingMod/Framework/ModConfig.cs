@@ -44,6 +44,8 @@
 
         public float DifficultyMultiplier { get; set; } = 1.0f;
 
+        public bool AdjustXpGainDifficulty { get; set; } = true;
+
         public bool DoAddEnchantments { get; set; } = false;
 
         public bool AddAllEnchantments { get; set; } = false;
