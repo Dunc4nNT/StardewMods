@@ -98,7 +98,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             }
             catch (Exception e)
             {
-                s_monitor.Log($"Failed in {nameof(DoneFishingPatch)}:\n{e}", LogLevel.Error);
+                s_monitor.Log($"Failed in {nameof(PullFishFromWaterPatch)}:\n{e}", LogLevel.Error);
                 return true;
             }
         }
