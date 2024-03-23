@@ -42,14 +42,12 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 mod: manifest,
                 text: I18n.Config_General_GeneralSection
             );
-            configMenu.AddNumberOption(
+            configMenu.AddBoolOption(
                 mod: manifest,
-                name: I18n.Config_General_CatchFishRetries_Name,
-                tooltip: I18n.Config_General_CatchFishRetries_Tooltip,
-                getValue: () => config().CatchFishRetries,
-                setValue: value => config().CatchFishRetries = value,
-                min: 0,
-                max: 100
+                name: I18n.Config_General_IncreaseChanceOfFish_Name,
+                tooltip: I18n.Config_General_IncreaseChanceOfFish_Tooltip,
+                getValue: () => config().IncreaseChanceOfFish,
+                setValue: value => config().IncreaseChanceOfFish = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
