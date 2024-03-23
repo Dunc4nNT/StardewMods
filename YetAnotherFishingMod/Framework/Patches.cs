@@ -15,6 +15,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         private static Func<ModConfig> s_config;
         private static IReflectionHelper s_reflectionHelper;
 
+        private static readonly int s_retry_catch_fish_amount = 100;
+
         internal static void Initialise(Harmony harmony, IMonitor monitor, Func<ModConfig> config, IReflectionHelper reflectionHelper)
         {
             s_harmony = harmony;
@@ -46,12 +48,12 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             {
                 ModConfig config = s_config();
 
-                if (__result.Category == SObject.FishCategory || !(config.CatchFishRetries >= 0))
+                if (__result.Category == SObject.FishCategory || !config.IncreaseChanceOfFish)
                     return;
 
                 bool isTutorialCatch = who.fishCaught.Length == 0;
 
-                for (int i = 0; i < config.CatchFishRetries; i++)
+                for (int i = 0; i < s_retry_catch_fish_amount; i++)
                 {
                     __result = GameLocation.GetFishFromLocationData(__instance.Name, bobberTile, waterDepth, who, isTutorialCatch, isInherited: false, __instance);
 
