@@ -16,7 +16,7 @@
 
         public TreasureAppearanceSettings TreasureAppearence { get; set; } = TreasureAppearanceSettings.Vanilla;
 
-        public bool AlwaysCatchDouble { get; set; } = false;
+        public int NumberOfFishCaught { get; set; } = 1;
 
         public bool InstantBite { get; set; } = false;
 
