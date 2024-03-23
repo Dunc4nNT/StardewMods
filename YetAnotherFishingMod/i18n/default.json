@@ -24,10 +24,10 @@
   "config.general.difficulty-multiplier.name": "Difficulty Multiplier",
   "config.general.difficulty-multiplier.tooltip": "Value with which the standard fishing difficulty is multiplied.",
   "config.general.quality-section": "Quality Options",
-  "config.general.fish-quality.name": "Fish Quality",
-  "config.general.fish-quality.tooltip": "Always catch fish with the set quality.",
+  "config.general.fish-quality.name": "Set Fish Quality",
+  "config.general.fish-quality.tooltip": "Always catch fish with the set quality. Trumps the minimum fish quality option.",
   "config.general.minimum-fish-quality.name": "Minimum Fish Quality",
-  "config.general.minimum-fish-quality.tooltip": "Always gets fish of the set quality or better.",
+  "config.general.minimum-fish-quality.tooltip": "Always gets fish of the set quality or better. Trumped by the fish quality option.",
 
   "config.attachments.page-title": "Attachments",
   "config.attachments.general-section": "General",
