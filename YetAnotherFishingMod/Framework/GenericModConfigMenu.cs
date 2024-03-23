@@ -51,13 +51,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: I18n.Config_General_InstantCatchFish_Name,
-                tooltip: I18n.Config_General_InstantCatchFish_Tooltip,
-                getValue: () => config().InstantCatchFish,
-                setValue: value => config().InstantCatchFish = value
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
                 name: I18n.Config_General_InstantCatchTreasure_Name,
                 tooltip: I18n.Config_General_InstantCatchTreasure_Tooltip,
                 getValue: () => config().InstantCatchTreasure,
@@ -101,6 +94,27 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 tooltip: I18n.Config_General_AutoLootTreasure_Tooltip,
                 getValue: () => config().AutoLootTreasure,
                 setValue: value => config().AutoLootTreasure = value
+            );
+            configMenu.AddSectionTitle(
+                mod: manifest,
+                text: I18n.Config_General_MinigameSection
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_SkipFishingMinigame_Name,
+                tooltip: I18n.Config_General_SkipFishingMinigame_Tooltip,
+                getValue: () => config().SkipFishingMinigame,
+                setValue: value => config().SkipFishingMinigame = value
+            );
+            configMenu.AddNumberOption(
+                mod: manifest,
+                name: I18n.Config_General_SkipFishingMinigameCatchesRequired_Name,
+                tooltip: I18n.Config_General_SkipFishingMinigameCatchesRequired_Tooltip,
+                getValue: () => config().SkipFishingMinigameCatchesRequired,
+                setValue: value => config().SkipFishingMinigameCatchesRequired = value,
+                min: 0,
+                max: 100,
+                interval: 5
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
