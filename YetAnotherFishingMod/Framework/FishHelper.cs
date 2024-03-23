@@ -22,8 +22,10 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             ModConfig config_ = config();
             SFishingRod fishingRod = this._fishingRod.Value;
 
-            if (config_.FishQuality != Quality.Any && fishingRod.Instance.fishSize > 0)
+            if (config_.FishQuality != Quality.Any)
                 fishingRod.Instance.fishQuality = (int)config_.FishQuality;
+            else if ((int)config_.MinimumFishQuality > fishingRod.Instance.fishQuality)
+                fishingRod.Instance.fishQuality = (int)config_.MinimumFishQuality;
 
             if (config_.AlwaysMaxCastingPower)
                 fishingRod.Instance.castingPower = 1.01f;
@@ -138,9 +140,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             ModConfig config_ = config();
 
             bobberBar.difficulty *= config_.DifficultyMultiplier;
-
-            if (bobberBar.fishQuality < (int)config_.MinimumFishQuality)
-                bobberBar.fishQuality = (int)config_.MinimumFishQuality;
 
             if (config_.TreasureAppearence is TreasureAppearanceSettings.Never)
             {
