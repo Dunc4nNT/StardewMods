@@ -116,6 +116,16 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 max: 100,
                 interval: 5
             );
+            configMenu.AddNumberOption(
+                mod: manifest,
+                name: I18n.Config_General_SkipFishingMinigamePerfectChance_Name,
+                tooltip: I18n.Config_General_SkipFishingMinigamePerfectChance_Tooltip,
+                getValue: () => config().SkipFishingMinigamePerfectChance,
+                setValue: value => config().SkipFishingMinigamePerfectChance = value,
+                min: 0f,
+                max: 1f,
+                interval: 0.01f
+            );
             configMenu.AddSectionTitle(
                 mod: manifest,
                 text: I18n.Config_General_DifficultySection
@@ -126,9 +136,9 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 tooltip: I18n.Config_General_DifficultyMultiplier_Tooltip,
                 getValue: () => config().DifficultyMultiplier,
                 setValue: value => config().DifficultyMultiplier = value,
-                min: (float)0.1,
-                max: (float)2.0,
-                interval: (float)0.1
+                min: 0.1f,
+                max: 2.0f,
+                interval: 0.1f
             );
             configMenu.AddBoolOption(
                 mod: manifest,

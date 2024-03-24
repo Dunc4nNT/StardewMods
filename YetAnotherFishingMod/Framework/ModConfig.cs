@@ -10,6 +10,8 @@
 
         public int SkipFishingMinigameCatchesRequired { get; set; } = 0;
 
+        public float SkipFishingMinigamePerfectChance { get; set; } = 1f;
+
         public bool InstantCatchTreasure { get; set; } = true;
 
         public bool AlwaysMaxCastingPower { get; set; } = false;
