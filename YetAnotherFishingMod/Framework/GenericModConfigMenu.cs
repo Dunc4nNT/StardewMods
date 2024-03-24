@@ -49,22 +49,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().IncreaseChanceOfFish,
                 setValue: value => config().IncreaseChanceOfFish = value
             );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_General_InstantCatchTreasure_Name,
-                tooltip: I18n.Config_General_InstantCatchTreasure_Tooltip,
-                getValue: () => config().InstantCatchTreasure,
-                setValue: value => config().InstantCatchTreasure = value
-            );
-            configMenu.AddTextOption(
-                mod: manifest,
-                name: I18n.Config_General_TreasureAppearance_Name,
-                tooltip: I18n.Config_General_TreasureAppearance_Tooltip,
-                getValue: () => config().TreasureAppearence.ToString(),
-                setValue: value => config().TreasureAppearence = (TreasureAppearanceSettings)Enum.Parse(typeof(TreasureAppearanceSettings), value),
-                allowedValues: Enum.GetNames(typeof(TreasureAppearanceSettings)),
-                formatAllowedValue: value => I18n.GetByKey($"config.treasure-appearance-{value}")
-            );
             configMenu.AddNumberOption(
                 mod: manifest,
                 name: I18n.Config_General_NumberOfFishCaught_Name,
@@ -87,13 +71,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 tooltip: I18n.Config_General_AutoHook_Tooltip,
                 getValue: () => config().AutoHook,
                 setValue: value => config().AutoHook = value
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_General_AutoLootTreasure_Name,
-                tooltip: I18n.Config_General_AutoLootTreasure_Tooltip,
-                getValue: () => config().AutoLootTreasure,
-                setValue: value => config().AutoLootTreasure = value
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
@@ -192,6 +169,42 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 setValue: value => config().MinimumFishQuality = (Quality)Enum.Parse(typeof(Quality), value),
                 allowedValues: Enum.GetNames(typeof(Quality)),
                 formatAllowedValue: value => I18n.GetByKey($"config.quality-{value}")
+            );
+            configMenu.AddSectionTitle(
+                mod: manifest,
+                text: I18n.Config_General_TreasureSection
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_InstantCatchTreasure_Name,
+                tooltip: I18n.Config_General_InstantCatchTreasure_Tooltip,
+                getValue: () => config().InstantCatchTreasure,
+                setValue: value => config().InstantCatchTreasure = value
+            );
+            configMenu.AddTextOption(
+                mod: manifest,
+                name: I18n.Config_General_TreasureAppearance_Name,
+                tooltip: I18n.Config_General_TreasureAppearance_Tooltip,
+                getValue: () => config().TreasureAppearence.ToString(),
+                setValue: value => config().TreasureAppearence = (TreasureAppearanceSettings)Enum.Parse(typeof(TreasureAppearanceSettings), value),
+                allowedValues: Enum.GetNames(typeof(TreasureAppearanceSettings)),
+                formatAllowedValue: value => I18n.GetByKey($"config.treasure-appearance-{value}")
+            );
+            configMenu.AddTextOption(
+                mod: manifest,
+                name: I18n.Config_General_TreasureAppearance_Name,
+                tooltip: I18n.Config_General_TreasureAppearance_Tooltip,
+                getValue: () => config().GoldenTreasureAppearance.ToString(),
+                setValue: value => config().GoldenTreasureAppearance = (TreasureAppearanceSettings)Enum.Parse(typeof(TreasureAppearanceSettings), value),
+                allowedValues: Enum.GetNames(typeof(TreasureAppearanceSettings)),
+                formatAllowedValue: value => I18n.GetByKey($"config.treasure-appearance-{value}")
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_AutoLootTreasure_Name,
+                tooltip: I18n.Config_General_AutoLootTreasure_Tooltip,
+                getValue: () => config().AutoLootTreasure,
+                setValue: value => config().AutoLootTreasure = value
             );
 
             configMenu.AddPage(

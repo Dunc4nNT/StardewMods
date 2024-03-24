@@ -141,10 +141,15 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
             bobberBar.difficulty *= config_.DifficultyMultiplier;
 
-            if (config_.TreasureAppearence is TreasureAppearanceSettings.Never)
+            if (config_.TreasureAppearence == TreasureAppearanceSettings.Never)
                 bobberBar.treasure = false;
-            else if (config_.TreasureAppearence is TreasureAppearanceSettings.Always)
+            else if (config_.TreasureAppearence == TreasureAppearanceSettings.Always)
                 bobberBar.treasure = true;
+
+            if (config_.GoldenTreasureAppearance == TreasureAppearanceSettings.Never)
+                bobberBar.goldenTreasure = false;
+            else if (bobberBar.treasure && config_.GoldenTreasureAppearance == TreasureAppearanceSettings.Always)
+                bobberBar.goldenTreasure = true;
 
             if ((config_.InstantCatchTreasure && bobberBar.treasure))
                 bobberBar.treasureCaught = true;
