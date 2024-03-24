@@ -22,6 +22,8 @@
 
         public TreasureAppearanceSettings TreasureAppearence { get; set; } = TreasureAppearanceSettings.Vanilla;
 
+        public TreasureAppearanceSettings GoldenTreasureAppearance { get; set; } = TreasureAppearanceSettings.Vanilla;
+
         public int NumberOfFishCaught { get; set; } = 1;
 
         public bool InstantBite { get; set; } = false;
