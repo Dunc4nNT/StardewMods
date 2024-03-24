@@ -170,11 +170,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         {
             BobberBar bobberBar = this._bobberBar.Value;
 
-            bobberBar.fadeOut = true;
-            bobberBar.scale = 0f;
             bobberBar.distanceFromCatching = 1f;
         }
-
 
         public void OnFishingMiniGameEnd()
         {
