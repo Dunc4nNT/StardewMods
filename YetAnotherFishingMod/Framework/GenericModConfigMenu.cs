@@ -126,6 +126,16 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 max: 1f,
                 interval: 0.01f
             );
+            configMenu.AddNumberOption(
+                mod: manifest,
+                name: I18n.Config_General_SkipFishingMinigameTreasureChance_Name,
+                tooltip: I18n.Config_General_SkipFishingMinigameTreasureChance_Tooltip,
+                getValue: () => config().SkipFishingMinigameTreasureChance,
+                setValue: value => config().SkipFishingMinigameTreasureChance = value,
+                min: 0f,
+                max: 1f,
+                interval: 0.01f
+            );
             configMenu.AddSectionTitle(
                 mod: manifest,
                 text: I18n.Config_General_DifficultySection

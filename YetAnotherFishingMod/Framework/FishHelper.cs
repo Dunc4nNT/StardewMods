@@ -144,13 +144,15 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             if (config_.TreasureAppearence is TreasureAppearanceSettings.Never)
             {
                 bobberBar.treasure = false;
-                bobberBar.treasureCaught = false;
             }
-            else if ((config_.InstantCatchTreasure && bobberBar.treasure && config_.TreasureAppearence is TreasureAppearanceSettings.Vanilla) || config_.TreasureAppearence is TreasureAppearanceSettings.Always)
+            else if (config_.TreasureAppearence is TreasureAppearanceSettings.Always)
+                bobberBar.treasure = true;
+
+            if ((config_.InstantCatchTreasure && bobberBar.treasure))
                 bobberBar.treasureCaught = true;
 
             if (this.ShouldSkipMinigame(config_.SkipFishingMinigame, config_.SkipFishingMinigameCatchesRequired))
-                this.SkipMinigame(config_.SkipFishingMinigamePerfectChance, config_.AlwaysPerfect);
+                this.SkipMinigame(config_.SkipFishingMinigameTreasureChance, config_.InstantCatchTreasure, config_.SkipFishingMinigamePerfectChance, config_.AlwaysPerfect);
         }
 
         private bool ShouldSkipMinigame(bool maySkipFishingMiniGame, int minimumCatchesRequired)
@@ -166,9 +168,12 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 return false;
         }
 
-        private void SkipMinigame(float perfectChance, bool alwaysPerfect)
+        private void SkipMinigame(float treasureChance, bool instantCatchTreasure, float perfectChance, bool alwaysPerfect)
         {
             BobberBar bobberBar = this._bobberBar.Value;
+
+            if (bobberBar.treasure && (Game1.random.NextDouble() < treasureChance || instantCatchTreasure))
+                bobberBar.treasureCaught = true;
 
             if (Game1.random.NextDouble() > perfectChance && !alwaysPerfect)
                 bobberBar.perfect = false;

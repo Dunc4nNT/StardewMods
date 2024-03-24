@@ -12,6 +12,8 @@
 
         public float SkipFishingMinigamePerfectChance { get; set; } = 1f;
 
+        public float SkipFishingMinigameTreasureChance { get; set; } = 1f;
+
         public bool InstantCatchTreasure { get; set; } = true;
 
         public bool AlwaysMaxCastingPower { get; set; } = false;
