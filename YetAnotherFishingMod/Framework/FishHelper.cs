@@ -142,9 +142,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             bobberBar.difficulty *= config_.DifficultyMultiplier;
 
             if (config_.TreasureAppearence is TreasureAppearanceSettings.Never)
-            {
                 bobberBar.treasure = false;
-            }
             else if (config_.TreasureAppearence is TreasureAppearanceSettings.Always)
                 bobberBar.treasure = true;
 
