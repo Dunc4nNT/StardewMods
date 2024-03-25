@@ -18,18 +18,14 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                     Game1.player.toolBeingUpgraded.Value = null;
                     Game1.player.hasReceivedToolUpgradeMessageYet = false;
                     Game1.player.holdUpItemThenMessage(tool);
+
                     if (tool is GenericTool)
-                    {
                         tool.actionWhenClaimed();
-                    }
                     else
-                    {
                         Game1.player.addItemToInventoryBool(tool);
-                    }
+
                     if (Game1.player.team.useSeparateWallets.Value && tool.UpgradeLevel == 4)
-                    {
                         Game1.Multiplayer.globalChatInfoMessage("IridiumToolUpgrade", Game1.player.Name, TokenStringBuilder.ToolName(tool.QualifiedItemId, tool.UpgradeLevel));
-                    }
                 }
                 else
                 {
@@ -66,47 +62,36 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
             if (Game1.player.daysUntilHouseUpgrade.Value < 0 && !Game1.IsThereABuildingUnderConstruction())
             {
                 List<Response> options = [new Response("Shop", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_Shop"))];
+
                 if (Game1.IsMasterGame)
                 {
                     if (Game1.player.HouseUpgradeLevel < 3)
-                    {
                         options.Add(new Response("Upgrade", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_UpgradeHouse")));
-                    }
                     else if ((Game1.MasterPlayer.mailReceived.Contains("ccIsComplete") || Game1.MasterPlayer.mailReceived.Contains("JojaMember") || Game1.MasterPlayer.hasCompletedCommunityCenter()) && Game1.RequireLocation<Town>("Town").daysUntilCommunityUpgrade.Value <= 0)
                     {
                         if (!Game1.MasterPlayer.mailReceived.Contains("pamHouseUpgrade"))
-                        {
                             options.Add(new Response("CommunityUpgrade", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_CommunityUpgrade")));
-                        }
                         else if (!Game1.MasterPlayer.mailReceived.Contains("communityUpgradeShortcuts"))
-                        {
                             options.Add(new Response("CommunityUpgrade", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_CommunityUpgrade")));
-                        }
                     }
                 }
                 else if (Game1.player.HouseUpgradeLevel < 3)
-                {
                     options.Add(new Response("Upgrade", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_UpgradeCabin")));
-                }
                 if (Game1.player.HouseUpgradeLevel >= 2)
                 {
                     if (Game1.IsMasterGame)
-                    {
                         options.Add(new Response("Renovate", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_RenovateHouse")));
-                    }
                     else
-                    {
                         options.Add(new Response("Renovate", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_RenovateCabin")));
-                    }
                 }
+
                 options.Add(new Response("Construct", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_Construct")));
                 options.Add(new Response("Leave", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_Leave")));
+
                 location.createQuestionDialogue(Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu"), [.. options], "carpenter");
             }
             else
-            {
                 Utility.TryOpenShopMenu("Carpenter", location, forceOpen: true);
-            }
         }
 
         public static void OpenAnimalSuppliesShop(GameLocation location)
@@ -114,14 +99,12 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
             List<Response> options =
             [
                 new ("Supplies", Game1.content.LoadString("Strings\\Locations:AnimalShop_Marnie_Supplies")),
-                        new ("Purchase", Game1.content.LoadString("Strings\\Locations:AnimalShop_Marnie_Animals")),
-                        new ("Leave", Game1.content.LoadString("Strings\\Locations:AnimalShop_Marnie_Leave"))
+                new ("Purchase", Game1.content.LoadString("Strings\\Locations:AnimalShop_Marnie_Animals")),
+                new ("Leave", Game1.content.LoadString("Strings\\Locations:AnimalShop_Marnie_Leave"))
             ];
 
             if (Game1.player.mailReceived.Contains("MarniePetAdoption") || Game1.player.mailReceived.Contains("MarniePetRejectedAdoption"))
-            {
                 options.Insert(2, new Response("Adopt", Game1.content.LoadString("Strings\\1_6_Strings:AdoptPets")));
-            }
 
             location.createQuestionDialogue("", [.. options], "Marnie");
         }
@@ -130,18 +113,14 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
         {
 
             if (Game1.player.mailReceived.Contains("read_a_book"))
-            {
                 location.createQuestionDialogue(Game1.content.LoadString("Strings\\1_6_Strings:books_welcome"),
                 [
-                            new Response("Buy", Game1.content.LoadString("Strings\\1_6_Strings:buy_books")),
-                            new Response("Trade", Game1.content.LoadString("Strings\\1_6_Strings:trade_books")),
-                            new Response("Leave", Game1.content.LoadString("Strings\\1_6_Strings:Leave"))
+                    new Response("Buy", Game1.content.LoadString("Strings\\1_6_Strings:buy_books")),
+                    new Response("Trade", Game1.content.LoadString("Strings\\1_6_Strings:trade_books")),
+                    new Response("Leave", Game1.content.LoadString("Strings\\1_6_Strings:Leave"))
                 ], "Bookseller");
-            }
             else
-            {
                 Utility.TryOpenShopMenu(Game1.shop_bookseller, location, forceOpen: true);
-            }
         }
     }
 }
