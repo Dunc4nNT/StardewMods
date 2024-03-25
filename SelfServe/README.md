@@ -27,7 +27,7 @@ Mandatory and optional requirements for use of this mod.
 ## Installation
 
 1. Download and install the required prerequisites.
-2. Download the latest version of this mod through [NexusMods]() or [GitHub releases](https://github.com/Dunc4nNT/StardewMods/releases).
+2. Download the latest version of this mod through [NexusMods](https://www.nexusmods.com/stardewvalley/mods/20985?tab=files) or [GitHub releases](https://github.com/Dunc4nNT/StardewMods/releases).
 3. Unzip the downloaded file into the `Stardew Valley/Mods` directory.
 4. Launch the game using SMAPI.
 
@@ -73,7 +73,7 @@ If you'd like another language to be supported and would like to help, please ch
 
 ## Links
 
-- [NexusMods page for this mod](https://www.nexusmods.com/stardewvalley/mods/20391)
+- [NexusMods page for this mod](https://www.nexusmods.com/stardewvalley/mods/20985)
 - [GitHub mono repo with all my mods](https://github.com/Dunc4nNT/StardewMods)
 
 ## Credits
@@ -87,8 +87,8 @@ Copyright © 2024 Dunc4nNT
 This project is licensed under the Mozilla Public License 2.0 (MPL 2.0). See [LICENSE](../LICENSE) for more information.
 
 [GMCM-nexus]: https://www.nexusmods.com/stardewvalley/mods/5098
-[nexus-comments]: https://www.nexusmods.com/stardewvalley/mods/
-[nexus-bugs]: https://www.nexusmods.com/stardewvalley/mods/
+[nexus-comments]: https://www.nexusmods.com/stardewvalley/mods/20985?tab=posts
+[nexus-bugs]: https://www.nexusmods.com/stardewvalley/mods/20985?tab=bugs
 [smapi-log]: https://smapi.io/log
 [gh-issues]: https://github.com/Dunc4nNT/StardewMods/issues
 [gh-pr]: https://github.com/Dunc4nNT/StardewMods/pulls
