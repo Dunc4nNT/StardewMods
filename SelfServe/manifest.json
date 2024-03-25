@@ -1,7 +1,7 @@
 {
   "Name": "Self Serve",
   "Author": "NeverToxic",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "Description": "Shops don't close.",
   "UniqueID": "NeverToxic.SelfServe",
   "EntryDll": "SelfServe.dll",

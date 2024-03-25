@@ -33,6 +33,7 @@ The mod's configurable options can be found below. These can either be adjusted 
 [*]Bookseller's Shop
 [*]Traveling Merchant
 [*]Resort Bar
+[*]Sandy's Oasis
 [/list]
 [b][size=5]How to Use[/size][/b]
 

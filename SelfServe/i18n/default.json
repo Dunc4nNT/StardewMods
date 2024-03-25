@@ -23,5 +23,7 @@
   "config.shops.traveling-merchant-shop.name": "Traveling Merchant",
   "config.shops.traveling-merchant-shop.tooltip": "Whether the traveling merchant is always open (only when the cart is in the forest).",
   "config.shops.resort-bar-shop.name": "Resort Bar",
-  "config.shops.resort-bar-shop.tooltip": "Whether the resort bar is always open."
+  "config.shops.resort-bar-shop.tooltip": "Whether the resort bar is always open.",
+  "config.shops.sandy-oasis-shop.name": "The Oasis",
+  "config.shops.sandy-oasis-shop.tooltip": "Whether Sandy's Oasis is always open."
 }

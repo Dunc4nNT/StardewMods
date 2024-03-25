@@ -73,6 +73,13 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                                 Utility.TryOpenShopMenu(Game1.shop_fish, __instance, forceOpen: true);
                                 __result = true;
                                 return false;
+                            case "SandyShop":
+                                if (!config.SandyOasisShop)
+                                    return true;
+
+                                Utility.TryOpenShopMenu(Game1.shop_sandy, __instance, forceOpen: true);
+                                __result = true;
+                                return false;
                         }
                         return true;
 
