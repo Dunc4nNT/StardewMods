@@ -28,15 +28,15 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
 
         private static void ApplyPatches()
         {
-            _ = s_harmony.Patch(
+            s_harmony.Patch(
                 original: AccessTools.Method(typeof(GameLocation), nameof(GameLocation.performAction), [typeof(string[]), typeof(Farmer), typeof(Location)]),
                 prefix: new HarmonyMethod(typeof(Patches), nameof(GameLocationPerformActionPatch))
             );
-            _ = s_harmony.Patch(
+            s_harmony.Patch(
                original: AccessTools.Method(typeof(Forest), nameof(Forest.checkAction), [typeof(Location), typeof(Rectangle), typeof(Farmer)]),
                prefix: new HarmonyMethod(typeof(Patches), nameof(ForestCheckActionPatch))
             );
-            _ = s_harmony.Patch(
+            s_harmony.Patch(
                original: AccessTools.Method(typeof(IslandSouth), nameof(IslandSouth.checkAction), [typeof(Location), typeof(Rectangle), typeof(Farmer)]),
                prefix: new HarmonyMethod(typeof(Patches), nameof(IslandSouthCheckActionPatch))
             );
@@ -63,14 +63,14 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                                 if (!config.PierresGeneralShop)
                                     return true;
 
-                                _ = Utility.TryOpenShopMenu(Game1.shop_generalStore, __instance, forceOpen: true);
+                                Utility.TryOpenShopMenu(Game1.shop_generalStore, __instance, forceOpen: true);
                                 __result = true;
                                 return false;
                             case "Fish":
                                 if (!config.WillysFishShop)
                                     return true;
 
-                                _ = Utility.TryOpenShopMenu(Game1.shop_fish, __instance, forceOpen: true);
+                                Utility.TryOpenShopMenu(Game1.shop_fish, __instance, forceOpen: true);
                                 __result = true;
                                 return false;
                         }
@@ -80,7 +80,7 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                         if (!config.IceCreamShop)
                             return true;
 
-                        _ = Utility.TryOpenShopMenu(actionType, __instance, forceOpen: true);
+                        Utility.TryOpenShopMenu(actionType, __instance, forceOpen: true);
                         __result = true;
                         return false;
                     case Game1.shop_blacksmith:
@@ -108,14 +108,14 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                         if (!config.HospitalShop)
                             return true;
 
-                        _ = Utility.TryOpenShopMenu(Game1.shop_hospital, __instance, forceOpen: true);
+                        Utility.TryOpenShopMenu(Game1.shop_hospital, __instance, forceOpen: true);
                         __result = true;
                         return false;
                     case Game1.shop_saloon:
                         if (!config.SaloonShop)
                             return true;
 
-                        _ = Utility.TryOpenShopMenu(actionType, __instance, forceOpen: true);
+                        Utility.TryOpenShopMenu(actionType, __instance, forceOpen: true);
                         __result = true;
                         return false;
                     case Game1.shop_bookseller:
@@ -151,7 +151,7 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                     Point cartTile = __instance.GetTravelingMerchantCartTile();
                     if (tileLocation.X == cartTile.X + 4 && tileLocation.Y == cartTile.Y + 1)
                     {
-                        _ = Utility.TryOpenShopMenu(Game1.shop_travelingCart, __instance, forceOpen: true);
+                        Utility.TryOpenShopMenu(Game1.shop_travelingCart, __instance, forceOpen: true);
                         __result = true;
                         return false;
                     }
@@ -177,7 +177,7 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
 
                 if (tileLocation.X == 14 && tileLocation.Y == 22)
                 {
-                    _ = Utility.TryOpenShopMenu(Game1.shop_resortBar, __instance, forceOpen: true);
+                    Utility.TryOpenShopMenu(Game1.shop_resortBar, __instance, forceOpen: true);
                     __result = true;
                     return false;
                 }
