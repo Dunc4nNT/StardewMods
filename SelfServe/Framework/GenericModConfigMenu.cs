@@ -18,7 +18,7 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
 
             configMenu.AddSectionTitle(
                 mod: manifest,
-                text: I18n.Config_Shops_ShopSection
+                text: I18n.Config_Shops_TownSection
             );
             configMenu.AddBoolOption(
                 mod: manifest,
@@ -29,45 +29,10 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: I18n.Config_Shops_WillysFishShop_Name,
-                tooltip: I18n.Config_Shops_WillysFishShop_Tooltip,
-                getValue: () => config().WillysFishShop,
-                setValue: value => config().WillysFishShop = value
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_Shops_IceCreamShop_Name,
-                tooltip: I18n.Config_Shops_IceCreamShop_Tooltip,
-                getValue: () => config().IceCreamShop,
-                setValue: value => config().IceCreamShop = value
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
                 name: I18n.Config_Shops_BlacksmithShop_Name,
                 tooltip: I18n.Config_Shops_BlacksmithShop_Tooltip,
                 getValue: () => config().BlacksmithShop,
                 setValue: value => config().BlacksmithShop = value
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_Shops_CarpentersShop_Name,
-                tooltip: I18n.Config_Shops_CarpentersShop_Tooltip,
-                getValue: () => config().CarpentersShop,
-                setValue: value => config().CarpentersShop = value
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_Shops_MarniesAnimalShop_Name,
-                tooltip: I18n.Config_Shops_MarniesAnimalShop_Tooltip,
-                getValue: () => config().MarniesAnimalShop,
-                setValue: value => config().MarniesAnimalShop = value
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_Shops_HospitalShop_Name,
-                tooltip: I18n.Config_Shops_HospitalShop_Tooltip,
-                getValue: () => config().HospitalShop,
-                setValue: value => config().HospitalShop = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
@@ -78,10 +43,60 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
             );
             configMenu.AddBoolOption(
                 mod: manifest,
+                name: I18n.Config_Shops_HospitalShop_Name,
+                tooltip: I18n.Config_Shops_HospitalShop_Tooltip,
+                getValue: () => config().HospitalShop,
+                setValue: value => config().HospitalShop = value
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Shops_IceCreamShop_Name,
+                tooltip: I18n.Config_Shops_IceCreamShop_Tooltip,
+                getValue: () => config().IceCreamShop,
+                setValue: value => config().IceCreamShop = value
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
                 name: I18n.Config_Shops_BooksellerShop_Name,
                 tooltip: I18n.Config_Shops_BooksellerShop_Tooltip,
                 getValue: () => config().BooksellerShop,
                 setValue: value => config().BooksellerShop = value
+            );
+
+            configMenu.AddSectionTitle(
+                mod: manifest,
+                text: I18n.Config_Shops_BeachSection
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Shops_WillysFishShop_Name,
+                tooltip: I18n.Config_Shops_WillysFishShop_Tooltip,
+                getValue: () => config().WillysFishShop,
+                setValue: value => config().WillysFishShop = value
+            );
+
+            configMenu.AddSectionTitle(
+                mod: manifest,
+                text: I18n.Config_Shops_MountainSection
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Shops_CarpentersShop_Name,
+                tooltip: I18n.Config_Shops_CarpentersShop_Tooltip,
+                getValue: () => config().CarpentersShop,
+                setValue: value => config().CarpentersShop = value
+            );
+
+            configMenu.AddSectionTitle(
+                mod: manifest,
+                text: I18n.Config_Shops_ForestSection
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Shops_MarniesAnimalShop_Name,
+                tooltip: I18n.Config_Shops_MarniesAnimalShop_Tooltip,
+                getValue: () => config().MarniesAnimalShop,
+                setValue: value => config().MarniesAnimalShop = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
@@ -90,12 +105,10 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                 getValue: () => config().TravelingMerchantShop,
                 setValue: value => config().TravelingMerchantShop = value
             );
-            configMenu.AddBoolOption(
+
+            configMenu.AddSectionTitle(
                 mod: manifest,
-                name: I18n.Config_Shops_ResortBarShop_Name,
-                tooltip: I18n.Config_Shops_ResortBarShop_Tooltip,
-                getValue: () => config().ResortBarShop,
-                setValue: value => config().ResortBarShop = value
+                text: I18n.Config_Shops_DesertSection
             );
             configMenu.AddBoolOption(
                 mod: manifest,
@@ -110,6 +123,23 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                 tooltip: I18n.Config_Shops_DesertTraderShop_Tooltip,
                 getValue: () => config().DesertTraderShop,
                 setValue: value => config().DesertTraderShop = value
+            );
+
+            configMenu.AddSectionTitle(
+                mod: manifest,
+                text: I18n.Config_Shops_GingerIslandSection
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Shops_ResortBarShop_Name,
+                tooltip: I18n.Config_Shops_ResortBarShop_Tooltip,
+                getValue: () => config().ResortBarShop,
+                setValue: value => config().ResortBarShop = value
+            );
+
+            configMenu.AddSectionTitle(
+                mod: manifest,
+                text: I18n.Config_Shops_NightMarketSection
             );
             configMenu.AddBoolOption(
                 mod: manifest,
