@@ -104,6 +104,13 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                 getValue: () => config().SandyOasisShop,
                 setValue: value => config().SandyOasisShop = value
             );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Shops_DesertTraderShop_Name,
+                tooltip: I18n.Config_Shops_DesertTraderShop_Tooltip,
+                getValue: () => config().DesertTraderShop,
+                setValue: value => config().DesertTraderShop = value
+            );
         }
     }
 }

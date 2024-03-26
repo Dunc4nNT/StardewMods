@@ -29,6 +29,8 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
         public bool ResortBarShop { get; set; } = true;
 
         public bool SandyOasisShop { get; set; } = true;
+
+        public bool DesertTraderShop { get; set; } = true;
     }
 
     internal class ModConfigKeys

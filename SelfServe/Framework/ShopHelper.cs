@@ -28,9 +28,7 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                         Game1.Multiplayer.globalChatInfoMessage("IridiumToolUpgrade", Game1.player.Name, TokenStringBuilder.ToolName(tool.QualifiedItemId, tool.UpgradeLevel));
                 }
                 else
-                {
                     Game1.DrawDialogue(Game1.getCharacterFromName("Clint"), "Data\\ExtraDialogue:Clint_NoInventorySpace");
-                }
             }
             else
             {
@@ -61,34 +59,35 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
         {
             if (Game1.player.daysUntilHouseUpgrade.Value < 0 && !Game1.IsThereABuildingUnderConstruction())
             {
-                List<Response> options = [new Response("Shop", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_Shop"))];
+                List<Response> responses = [new Response("Shop", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_Shop"))];
 
                 if (Game1.IsMasterGame)
                 {
                     if (Game1.player.HouseUpgradeLevel < 3)
-                        options.Add(new Response("Upgrade", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_UpgradeHouse")));
+                        responses.Add(new Response("Upgrade", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_UpgradeHouse")));
                     else if ((Game1.MasterPlayer.mailReceived.Contains("ccIsComplete") || Game1.MasterPlayer.mailReceived.Contains("JojaMember") || Game1.MasterPlayer.hasCompletedCommunityCenter()) && Game1.RequireLocation<Town>("Town").daysUntilCommunityUpgrade.Value <= 0)
                     {
                         if (!Game1.MasterPlayer.mailReceived.Contains("pamHouseUpgrade"))
-                            options.Add(new Response("CommunityUpgrade", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_CommunityUpgrade")));
+                            responses.Add(new Response("CommunityUpgrade", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_CommunityUpgrade")));
                         else if (!Game1.MasterPlayer.mailReceived.Contains("communityUpgradeShortcuts"))
-                            options.Add(new Response("CommunityUpgrade", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_CommunityUpgrade")));
+                            responses.Add(new Response("CommunityUpgrade", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_CommunityUpgrade")));
                     }
                 }
                 else if (Game1.player.HouseUpgradeLevel < 3)
-                    options.Add(new Response("Upgrade", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_UpgradeCabin")));
+                    responses.Add(new Response("Upgrade", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_UpgradeCabin")));
+
                 if (Game1.player.HouseUpgradeLevel >= 2)
                 {
                     if (Game1.IsMasterGame)
-                        options.Add(new Response("Renovate", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_RenovateHouse")));
+                        responses.Add(new Response("Renovate", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_RenovateHouse")));
                     else
-                        options.Add(new Response("Renovate", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_RenovateCabin")));
+                        responses.Add(new Response("Renovate", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_RenovateCabin")));
                 }
 
-                options.Add(new Response("Construct", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_Construct")));
-                options.Add(new Response("Leave", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_Leave")));
+                responses.Add(new Response("Construct", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_Construct")));
+                responses.Add(new Response("Leave", Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu_Leave")));
 
-                location.createQuestionDialogue(Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu"), [.. options], "carpenter");
+                location.createQuestionDialogue(Game1.content.LoadString("Strings\\Locations:ScienceHouse_CarpenterMenu"), [.. responses], "carpenter");
             }
             else
                 Utility.TryOpenShopMenu("Carpenter", location, forceOpen: true);
@@ -96,7 +95,7 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
 
         public static void OpenAnimalSuppliesShop(GameLocation location)
         {
-            List<Response> options =
+            List<Response> responses =
             [
                 new ("Supplies", Game1.content.LoadString("Strings\\Locations:AnimalShop_Marnie_Supplies")),
                 new ("Purchase", Game1.content.LoadString("Strings\\Locations:AnimalShop_Marnie_Animals")),
@@ -104,9 +103,9 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
             ];
 
             if (Game1.player.mailReceived.Contains("MarniePetAdoption") || Game1.player.mailReceived.Contains("MarniePetRejectedAdoption"))
-                options.Insert(2, new Response("Adopt", Game1.content.LoadString("Strings\\1_6_Strings:AdoptPets")));
+                responses.Insert(2, new Response("Adopt", Game1.content.LoadString("Strings\\1_6_Strings:AdoptPets")));
 
-            location.createQuestionDialogue("", [.. options], "Marnie");
+            location.createQuestionDialogue("", [.. responses], "Marnie");
         }
 
         public static void OpenBookSellerShop(GameLocation location)

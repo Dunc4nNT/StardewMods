@@ -25,5 +25,7 @@
   "config.shops.resort-bar-shop.name": "Resort Bar",
   "config.shops.resort-bar-shop.tooltip": "Whether the resort bar is always open.",
   "config.shops.sandy-oasis-shop.name": "The Oasis",
-  "config.shops.sandy-oasis-shop.tooltip": "Whether Sandy's Oasis is always open."
+  "config.shops.sandy-oasis-shop.tooltip": "Whether Sandy's Oasis is always open.",
+  "config.shops.desert-trader-shop.name": "Desert Trader",
+  "config.shops.desert-trader-shop.tooltip": "Whether the desert trader's shop is always open."
 }

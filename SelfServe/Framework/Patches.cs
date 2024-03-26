@@ -40,6 +40,10 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                original: AccessTools.Method(typeof(IslandSouth), nameof(IslandSouth.checkAction), [typeof(Location), typeof(Rectangle), typeof(Farmer)]),
                prefix: new HarmonyMethod(typeof(Patches), nameof(IslandSouthCheckActionPatch))
             );
+            s_harmony.Patch(
+               original: AccessTools.Method(typeof(Desert), nameof(Desert.OnDesertTrader)),
+               prefix: new HarmonyMethod(typeof(Patches), nameof(DesertOnDesertTraderPatch))
+            );
         }
 
         private static bool GameLocationPerformActionPatch(ref GameLocation __instance, string[] action, ref bool __result)
@@ -194,6 +198,25 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
             catch (Exception e)
             {
                 s_monitor.Log($"Failed in {nameof(IslandSouthCheckActionPatch)}:\n{e}", LogLevel.Error);
+                return true;
+            }
+        }
+
+        private static bool DesertOnDesertTraderPatch(ref Desert __instance)
+        {
+            try
+            {
+                ModConfig config = s_config();
+
+                if (!config.DesertTraderShop)
+                    return true;
+
+                Utility.TryOpenShopMenu(Game1.shop_desertTrader, __instance, forceOpen: true);
+                return false;
+            }
+            catch (Exception e)
+            {
+                s_monitor.Log($"Failed in {nameof(DesertOnDesertTraderPatch)}:\n{e}", LogLevel.Error);
                 return true;
             }
         }
