@@ -253,7 +253,6 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                         __result = true;
                         return false;
                     case 399:
-                        s_monitor.Log(config.NightMarketTravelingMerchantShop.ToString());
                         if (!config.NightMarketTravelingMerchantShop)
                             return true;
 
