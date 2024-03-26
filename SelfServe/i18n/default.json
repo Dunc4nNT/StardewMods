@@ -21,11 +21,19 @@
   "config.shops.bookseller-shop.name": "Bookseller's Shop",
   "config.shops.bookseller-shop.tooltip": "Whether the bookseller's shop is always open.",
   "config.shops.traveling-merchant-shop.name": "Traveling Merchant",
-  "config.shops.traveling-merchant-shop.tooltip": "Whether the traveling merchant is always open (only when the cart is in the forest).",
+  "config.shops.traveling-merchant-shop.tooltip": "Whether the traveling merchant is always open when the cart is in the forest.",
   "config.shops.resort-bar-shop.name": "Resort Bar",
   "config.shops.resort-bar-shop.tooltip": "Whether the resort bar is always open.",
   "config.shops.sandy-oasis-shop.name": "The Oasis",
   "config.shops.sandy-oasis-shop.tooltip": "Whether Sandy's Oasis is always open.",
   "config.shops.desert-trader-shop.name": "Desert Trader",
-  "config.shops.desert-trader-shop.tooltip": "Whether the desert trader's shop is always open."
+  "config.shops.desert-trader-shop.tooltip": "Whether the desert trader's shop is always open.",
+  "config.shops.night-market-painter-shop.name": "Painter",
+  "config.shops.night-market-painter-shop.tooltip": "Whether the painter's shop is always open.",
+  "config.shops.night-market-magic-boat-shop.name": "Magic Boat",
+  "config.shops.night-market-magic-boat-shop.tooltip": "Whether the magic boat shop is always open.",
+  "config.shops.night-market-traveling-marchant-shop.name": "Traveling Merchant",
+  "config.shops.night-market-traveling-marchant-shop.tooltip": "Whether the traveling merchant is always open when the cart is at the beach.",
+  "config.shops.night-market-decoration-boat-shop.name": "Decoration Boat",
+  "config.shops.night-market-decoration-boat-shop.tooltip": "Whether the decoration boat shop is always open."
 }

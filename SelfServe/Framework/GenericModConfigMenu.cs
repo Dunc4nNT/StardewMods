@@ -111,6 +111,34 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                 getValue: () => config().DesertTraderShop,
                 setValue: value => config().DesertTraderShop = value
             );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Shops_NightMarketPainterShop_Name,
+                tooltip: I18n.Config_Shops_NightMarketPainterShop_Tooltip,
+                getValue: () => config().NightMarketPainterShop,
+                setValue: value => config().NightMarketPainterShop = value
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Shops_NightMarketMagicBoatShop_Name,
+                tooltip: I18n.Config_Shops_NightMarketMagicBoatShop_Tooltip,
+                getValue: () => config().NightMarketMagicBoatShop,
+                setValue: value => config().NightMarketMagicBoatShop = value
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Shops_NightMarketTravelingMarchantShop_Name,
+                tooltip: I18n.Config_Shops_NightMarketTravelingMarchantShop_Tooltip,
+                getValue: () => config().NightMarketTravelingMerchantShop,
+                setValue: value => config().NightMarketTravelingMerchantShop = value
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Shops_NightMarketDecorationBoatShop_Name,
+                tooltip: I18n.Config_Shops_NightMarketDecorationBoatShop_Tooltip,
+                getValue: () => config().NightMarketDecorationBoatShop,
+                setValue: value => config().NightMarketDecorationBoatShop = value
+            );
         }
     }
 }

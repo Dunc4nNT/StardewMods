@@ -44,6 +44,10 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                original: AccessTools.Method(typeof(Desert), nameof(Desert.OnDesertTrader)),
                prefix: new HarmonyMethod(typeof(Patches), nameof(DesertOnDesertTraderPatch))
             );
+            s_harmony.Patch(
+               original: AccessTools.Method(typeof(BeachNightMarket), nameof(BeachNightMarket.checkAction)),
+               prefix: new HarmonyMethod(typeof(Patches), nameof(BeachNightMarketCheckActionPatch))
+            );
         }
 
         private static bool GameLocationPerformActionPatch(ref GameLocation __instance, string[] action, ref bool __result)
@@ -217,6 +221,61 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
             catch (Exception e)
             {
                 s_monitor.Log($"Failed in {nameof(DesertOnDesertTraderPatch)}:\n{e}", LogLevel.Error);
+                return true;
+            }
+        }
+
+        private static bool BeachNightMarketCheckActionPatch(ref BeachNightMarket __instance, Location tileLocation, ref bool __result)
+        {
+            try
+            {
+                ModConfig config = s_config();
+
+                switch (__instance.getTileIndexAt(tileLocation, "Buildings"))
+                {
+                    case 68:
+                        if (!config.NightMarketPainterShop)
+                            return true;
+
+                        if (Game1.player.mailReceived.Contains(s_reflectionHelper.GetField<string>(__instance, "paintingMailKey").GetValue()))
+                            Game1.drawObjectDialogue(Game1.content.LoadString("Strings\\Locations:BeachNightMarket_PainterSold"));
+                        else
+                            __instance.createQuestionDialogue(Game1.content.LoadString("Strings\\Locations:BeachNightMarket_PainterQuestion"), __instance.createYesNoResponses(), "PainterQuestion");
+
+                        __result = true;
+                        return false;
+                    case 70:
+                        if (!config.NightMarketMagicBoatShop)
+                            return true;
+
+                        Utility.TryOpenShopMenu("Festival_NightMarket_MagicBoat_Day" + __instance.getDayOfNightMarket(), __instance, forceOpen: true);
+
+                        __result = true;
+                        return false;
+                    case 399:
+                        s_monitor.Log(config.NightMarketTravelingMerchantShop.ToString());
+                        if (!config.NightMarketTravelingMerchantShop)
+                            return true;
+
+                        Utility.TryOpenShopMenu(Game1.shop_travelingCart, __instance, forceOpen: true);
+
+                        __result = true;
+                        return false;
+                    case 595:
+                        if (!config.NightMarketDecorationBoatShop)
+                            return true;
+
+                        Utility.TryOpenShopMenu("Festival_NightMarket_DecorationBoat", __instance, forceOpen: true);
+
+                        __result = true;
+                        return false;
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                s_monitor.Log($"Failed in {nameof(BeachNightMarketCheckActionPatch)}:\n{e}", LogLevel.Error);
                 return true;
             }
         }

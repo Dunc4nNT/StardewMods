@@ -31,6 +31,16 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
         public bool SandyOasisShop { get; set; } = true;
 
         public bool DesertTraderShop { get; set; } = true;
+
+        public bool NightMarketPainterShop { get; set; } = true;
+
+        public bool NightMarketMagicBoatShop { get; set; } = true;
+
+        public bool NightMarketTravelingMerchantShop { get; set; } = true;
+
+        public bool NightMarketDecorationBoatShop { get; set; } = true;
+
+
     }
 
     internal class ModConfigKeys
