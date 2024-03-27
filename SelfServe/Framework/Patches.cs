@@ -158,13 +158,10 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
             {
                 ModConfig config = s_config();
 
-                if (!config.TravelingMerchantShop)
-                    return true;
-
                 if (__instance.travelingMerchantDay)
                 {
                     Point cartTile = __instance.GetTravelingMerchantCartTile();
-                    if (tileLocation.X == cartTile.X + 4 && tileLocation.Y == cartTile.Y + 1)
+                    if (tileLocation.X == cartTile.X + 4 && tileLocation.Y == cartTile.Y + 1 && config.TravelingMerchantShop)
                     {
                         Utility.TryOpenShopMenu(Game1.shop_travelingCart, __instance, forceOpen: true);
                         __result = true;
@@ -187,10 +184,7 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
             {
                 ModConfig config = s_config();
 
-                if (!config.ResortBarShop)
-                    return true;
-
-                if (tileLocation.X == 14 && tileLocation.Y == 22)
+                if (tileLocation.X == 14 && tileLocation.Y == 22 && config.ResortBarShop)
                 {
                     Utility.TryOpenShopMenu(Game1.shop_resortBar, __instance, forceOpen: true);
                     __result = true;
@@ -212,11 +206,13 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
             {
                 ModConfig config = s_config();
 
-                if (!config.DesertTraderShop)
-                    return true;
+                if (config.DesertTraderShop)
+                {
+                    Utility.TryOpenShopMenu(Game1.shop_desertTrader, __instance, forceOpen: true);
+                    return false;
+                }
 
-                Utility.TryOpenShopMenu(Game1.shop_desertTrader, __instance, forceOpen: true);
-                return false;
+                return true;
             }
             catch (Exception e)
             {
