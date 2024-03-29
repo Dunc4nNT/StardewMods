@@ -124,7 +124,17 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().DifficultyMultiplier,
                 setValue: value => config().DifficultyMultiplier = value,
                 min: 0.1f,
-                max: 2.0f,
+                max: 2f,
+                interval: 0.1f
+            );
+            configMenu.AddNumberOption(
+                mod: manifest,
+                name: I18n.Config_General_FishNotInBarPenaltyMultiplier_Name,
+                tooltip: I18n.Config_General_FishNotInBarPenaltyMultiplier_Tooltip,
+                getValue: () => config().FishNotInBarPenaltyMultiplier,
+                setValue: value => config().FishNotInBarPenaltyMultiplier = value,
+                min: 0f,
+                max: 2f,
                 interval: 0.1f
             );
             configMenu.AddBoolOption(
