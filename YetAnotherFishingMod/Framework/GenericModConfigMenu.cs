@@ -1,6 +1,7 @@
 ﻿using NeverToxic.StardewMods.Common;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Tools;
 using System;
 using System.Collections.Generic;
 
@@ -261,43 +262,47 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 mod: manifest,
                 text: I18n.Config_Attachments_BaitSection
             );
-            configMenu.AddTextOption(
-                mod: manifest,
-                name: I18n.Config_Attachments_SpawnWhichBait_Name,
-                tooltip: I18n.Config_Attachments_SpawnWhichBait_Tooltip,
-                getValue: () => config().BaitToSpawn[0],
-                setValue: value => config().BaitToSpawn[0] = value,
-                allowedValues: [.. baitList],
-                formatAllowedValue: value => ItemRegistry.GetData(value)?.DisplayName
-            );
+
+            for (int i = FishingRod.BaitIndex; i < FishingRod.TackleIndex; i++)
+            {
+                int baitIndex = i;
+
+                configMenu.AddTextOption(
+                    mod: manifest,
+                    name: () => I18n.Config_Attachments_SpawnWhichBait_Name() + $" ({i + 1})",
+                    tooltip: I18n.Config_Attachments_SpawnWhichBait_Tooltip,
+                    getValue: () => config().BaitToSpawn[baitIndex],
+                    setValue: value => config().BaitToSpawn[baitIndex] = value,
+                    allowedValues: [.. baitList],
+                    formatAllowedValue: value => ItemRegistry.GetData(value)?.DisplayName
+                );
+            }
+
             configMenu.AddSectionTitle(
                 mod: manifest,
                 text: I18n.Config_Attachments_TacklesSection
             );
-            configMenu.AddTextOption(
-                mod: manifest,
-                name: () => I18n.Config_Attachments_SpawnWhichTackle_Name() + " (1)",
-                tooltip: I18n.Config_Attachments_SpawnWhichTackle_Tooltip,
-                getValue: () => config().TacklesToSpawn[0],
-                setValue: value => config().TacklesToSpawn[0] = value,
-                allowedValues: [.. tackeList],
-                formatAllowedValue: value => ItemRegistry.GetData(value)?.DisplayName
-            );
-            configMenu.AddTextOption(
-                mod: manifest,
-                name: () => I18n.Config_Attachments_SpawnWhichTackle_Name() + " (2)",
-                tooltip: I18n.Config_Attachments_SpawnWhichTackle_Tooltip,
-                getValue: () => config().TacklesToSpawn[1],
-                setValue: value => config().TacklesToSpawn[1] = value,
-                allowedValues: [.. tackeList],
-                formatAllowedValue: value => ItemRegistry.GetData(value)?.DisplayName
-            );
+
+            for (int i = FishingRod.TackleIndex; i < FishingRod.TackleIndex + 2; i++)
+            {
+                int tackleIndex = i - FishingRod.TackleIndex;
+
+                configMenu.AddTextOption(
+                    mod: manifest,
+                    name: () => I18n.Config_Attachments_SpawnWhichTackle_Name() + $" ({tackleIndex + 1})",
+                    tooltip: I18n.Config_Attachments_SpawnWhichTackle_Tooltip,
+                    getValue: () => config().TacklesToSpawn[tackleIndex],
+                    setValue: value => config().TacklesToSpawn[tackleIndex] = value,
+                    allowedValues: [.. tackeList],
+                    formatAllowedValue: value => ItemRegistry.GetData(value)?.DisplayName
+                );
+            }
 
             configMenu.AddPage(
                 mod: manifest,
-                pageId: "NeverToxic.YetAnotherFishingMod.Enchantments",
-                pageTitle: I18n.Config_Enchantments_PageTitle
-            );
+                    pageId: "NeverToxic.YetAnotherFishingMod.Enchantments",
+                    pageTitle: I18n.Config_Enchantments_PageTitle
+                );
             configMenu.AddSectionTitle(
                 mod: manifest,
                 text: I18n.Config_Enchantments_GeneralSection
