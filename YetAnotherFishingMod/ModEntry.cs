@@ -20,9 +20,9 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod
 
         private FishHelper FishHelper { get; set; }
 
-        private readonly List<string> _baitList = [];
+        private readonly List<string> _baitList = [""];
 
-        private readonly List<string> _tackleList = [];
+        private readonly List<string> _tackleList = [""];
 
         public override void Entry(IModHelper helper)
         {

@@ -2,6 +2,7 @@
 using StardewValley.Enchantments;
 using StardewValley.Tools;
 using System.Collections.Generic;
+using System.Linq;
 using SObject = StardewValley.Object;
 
 namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
@@ -10,11 +11,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
     {
         public FishingRod Instance { get; set; } = instance;
 
-        private readonly int _initialNumAttachmentSlots = instance.numAttachmentSlots.Value;
-
-        private readonly SObject _initialBait = instance.GetBait();
-
-        private readonly List<SObject> _initialTackles = instance.GetTackle();
+        private readonly int _initialAttachmentSlotsCount = instance.AttachmentSlotsCount;
 
         private readonly List<BaseEnchantment> _addedEnchantments = [];
 
@@ -41,40 +38,51 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             }
         }
 
-        public void SpawnBait(string baitId)
+        public void SpawnBait(List<string> baitIds, int amountOfBait = 1, bool overrideAttachmentLimit = false)
         {
-            if (this.Instance.numAttachmentSlots.Value >= 1)
-                this.Instance.attachments[0] = ItemRegistry.Create<SObject>(baitId);
+            for (int i = FishingRod.BaitIndex; i < FishingRod.TackleIndex; i++)
+            {
+                string baitId = baitIds.ElementAtOrDefault(i);
+
+                if (baitId == null || baitId == "" || ItemRegistry.GetDataOrErrorItem(baitId).InternalName == ItemRegistry.GetErrorItemName())
+                    continue;
+
+                if (overrideAttachmentLimit && this.Instance.AttachmentSlotsCount < i + 1)
+                    this.Instance.AttachmentSlotsCount = i + 1;
+
+                if (this.Instance.AttachmentSlotsCount > i && this.Instance.attachments.ElementAt(i) == null)
+                    this.Instance.attachments[i] = ItemRegistry.Create<SObject>(baitId, amountOfBait);
+            }
         }
 
-        public void SpawnTackle(string tackleId)
+        public void SpawnTackles(List<string> tackleIds, bool overrideAttachmentLimit = false)
         {
-            if (this.Instance.numAttachmentSlots.Value >= 2)
-                this.Instance.attachments[1] = ItemRegistry.Create<SObject>(tackleId);
+            for (int i = FishingRod.TackleIndex; i < FishingRod.TackleIndex + 2; i++)
+            {
+                string tackleId = tackleIds.ElementAtOrDefault(i - FishingRod.TackleIndex);
+
+                if (tackleId == null || tackleId == "" || ItemRegistry.GetDataOrErrorItem(tackleId).InternalName == ItemRegistry.GetErrorItemName())
+                    continue;
+
+                if (overrideAttachmentLimit && this.Instance.AttachmentSlotsCount < i + 1)
+                    this.Instance.AttachmentSlotsCount = i + 1;
+
+                if (this.Instance.AttachmentSlotsCount > i && this.Instance.attachments.ElementAt(i) == null)
+                    this.Instance.attachments[i] = ItemRegistry.Create<SObject>(tackleId);
+            }
         }
 
-        public void ResetAttachments(bool resetBait, bool resetTackles)
+        public void ResetAttachmentsLimit()
         {
-            // quick dirty fix to get it working with SV 1.6
-            // TODO: make this not garbage :)
-            if (this._initialNumAttachmentSlots <= 1 && resetTackles)
+            if (this._initialAttachmentSlotsCount == this.Instance.AttachmentSlotsCount)
+                return;
+
+            for (int i = this.Instance.AttachmentSlotsCount; i > this._initialAttachmentSlotsCount; i--)
             {
-                this.Instance.attachments[1] = null;
+                this.Instance.attachments[i - 1] = null;
             }
 
-            if (this.Instance.numAttachmentSlots.Value >= 1 && resetBait)
-                this.Instance.attachments[0] = this._initialBait;
-            if (this.Instance.numAttachmentSlots.Value >= 2 && resetTackles)
-            {
-                int i = 1;
-                foreach (SObject tackle in this._initialTackles)
-                {
-                    this.Instance.attachments[i] = tackle;
-                    i++;
-                }
-            }
-
-            this.Instance.numAttachmentSlots.Value = this._initialNumAttachmentSlots;
+            this.Instance.AttachmentSlotsCount = this._initialAttachmentSlotsCount;
         }
 
         public void AddEnchantment(BaseEnchantment enchantment)

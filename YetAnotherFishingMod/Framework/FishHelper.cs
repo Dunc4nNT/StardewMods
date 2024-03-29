@@ -74,13 +74,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             ModConfig config_ = config();
             this._fishingRod.Value = new(fishingRod);
 
-            if (config_.OverrideAttachmentLimit)
-                this._fishingRod.Value.Instance.numAttachmentSlots.Value = 2;
-
-            if (config_.SpawnBaitWhenEquipped)
-                this._fishingRod.Value.SpawnBait(config_.SpawnWhichBait);
-            if (config_.SpawnTackleWhenEquipped)
-                this._fishingRod.Value.SpawnTackle(config_.SpawnWhichTackle);
+            this._fishingRod.Value.SpawnBait(config_.BaitToSpawn, overrideAttachmentLimit: config_.OverrideAttachmentLimit);
+            this._fishingRod.Value.SpawnTackles(config_.TacklesToSpawn, overrideAttachmentLimit: config_.OverrideAttachmentLimit);
 
             if (config_.DoAddEnchantments)
             {
@@ -116,8 +111,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             {
                 ModConfig config_ = config();
 
-                if (config_.ResetAttachmentsWhenNotEquipped)
-                    fishingRod.ResetAttachments(config_.SpawnBaitWhenEquipped, config_.SpawnTackleWhenEquipped);
+                if (config_.ResetAttachmentsLimitWhenNotEquipped)
+                    fishingRod.ResetAttachmentsLimit();
 
                 if (config_.ResetEnchantmentsWhenNotEquipped)
                     fishingRod.ResetEnchantments();
