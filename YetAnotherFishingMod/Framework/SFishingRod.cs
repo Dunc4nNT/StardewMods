@@ -44,7 +44,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             {
                 string baitId = baitIds.ElementAtOrDefault(i);
 
-                if (baitId == null || baitId == "" || ItemRegistry.GetDataOrErrorItem(baitId).InternalName == ItemRegistry.GetErrorItemName())
+                if (baitId == null || baitId == "" || ItemRegistry.GetDataOrErrorItem(baitId).IsErrorItem)
                     continue;
 
                 if (overrideAttachmentLimit && this.Instance.AttachmentSlotsCount < i + 1)
@@ -61,7 +61,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             {
                 string tackleId = tackleIds.ElementAtOrDefault(i - FishingRod.TackleIndex);
 
-                if (tackleId == null || tackleId == "" || ItemRegistry.GetDataOrErrorItem(tackleId).InternalName == ItemRegistry.GetErrorItemName())
+                if (tackleId == null || tackleId == "" || ItemRegistry.GetDataOrErrorItem(tackleId).IsErrorItem)
                     continue;
 
                 if (overrideAttachmentLimit && this.Instance.AttachmentSlotsCount < i + 1)
