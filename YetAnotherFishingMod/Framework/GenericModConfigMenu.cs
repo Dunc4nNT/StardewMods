@@ -41,40 +41,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
-                text: I18n.Config_General_GeneralSection
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_General_IncreaseChanceOfFish_Name,
-                tooltip: I18n.Config_General_IncreaseChanceOfFish_Tooltip,
-                getValue: () => config().IncreaseChanceOfFish,
-                setValue: value => config().IncreaseChanceOfFish = value
-            );
-            configMenu.AddNumberOption(
-                mod: manifest,
-                name: I18n.Config_General_NumberOfFishCaught_Name,
-                tooltip: I18n.Config_General_NumberOfFishCaught_Tooltip,
-                getValue: () => config().NumberOfFishCaught,
-                setValue: value => config().NumberOfFishCaught = value,
-                min: 1,
-                max: 100
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_General_InstantBite_Name,
-                tooltip: I18n.Config_General_InstantBite_Tooltip,
-                getValue: () => config().InstantBite,
-                setValue: value => config().InstantBite = value
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_General_AutoHook_Name,
-                tooltip: I18n.Config_General_AutoHook_Tooltip,
-                getValue: () => config().AutoHook,
-                setValue: value => config().AutoHook = value
-            );
-            configMenu.AddSectionTitle(
-                mod: manifest,
                 text: I18n.Config_General_MinigameSection
             );
             configMenu.AddBoolOption(
@@ -164,6 +130,13 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddBoolOption(
                 mod: manifest,
+                name: I18n.Config_General_AutoHook_Name,
+                tooltip: I18n.Config_General_AutoHook_Tooltip,
+                getValue: () => config().AutoHook,
+                setValue: value => config().AutoHook = value
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
                 name: I18n.Config_General_AlwaysPerfect_Name,
                 tooltip: I18n.Config_General_AlwaysPerfect_Tooltip,
                 getValue: () => config().AlwaysPerfect,
@@ -171,7 +144,37 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
-                text: I18n.Config_General_QualitySection
+                text: I18n.Config_General_FishingLootSection
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_AllowCatchingFish_Name,
+                tooltip: I18n.Config_General_AllowCatchingFish_Tooltip,
+                getValue: () => config().AllowCatchingFish,
+                setValue: value => config().AllowCatchingFish = value
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_AllowCatchingRubbish_Name,
+                tooltip: I18n.Config_General_AllowCatchingRubbish_Tooltip,
+                getValue: () => config().AllowCatchingRubbish,
+                setValue: value => config().AllowCatchingRubbish = value
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_AllowCatchingOther_Name,
+                tooltip: I18n.Config_General_AllowCatchingOther_Tooltip,
+                getValue: () => config().AllowCatchingOther,
+                setValue: value => config().AllowCatchingOther = value
+            );
+            configMenu.AddNumberOption(
+                mod: manifest,
+                name: I18n.Config_General_NumberOfFishCaught_Name,
+                tooltip: I18n.Config_General_NumberOfFishCaught_Tooltip,
+                getValue: () => config().NumberOfFishCaught,
+                setValue: value => config().NumberOfFishCaught = value,
+                min: 1,
+                max: 100
             );
             configMenu.AddTextOption(
                 mod: manifest,
@@ -219,6 +222,17 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 setValue: value => config().GoldenTreasureAppearance = (TreasureAppearanceSettings)Enum.Parse(typeof(TreasureAppearanceSettings), value),
                 allowedValues: Enum.GetNames(typeof(TreasureAppearanceSettings)),
                 formatAllowedValue: value => I18n.GetByKey($"config.treasure-appearance-{value}")
+            );
+            configMenu.AddSectionTitle(
+                mod: manifest,
+                text: I18n.Config_General_FasterPleaseSection
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_InstantBite_Name,
+                tooltip: I18n.Config_General_InstantBite_Tooltip,
+                getValue: () => config().InstantBite,
+                setValue: value => config().InstantBite = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
@@ -269,7 +283,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
                 configMenu.AddTextOption(
                     mod: manifest,
-                    name: () => I18n.Config_Attachments_SpawnWhichBait_Name() + $" ({i + 1})",
+                    name: () => I18n.Config_Attachments_SpawnWhichBait_Name() + $" ({baitIndex + 1})",
                     tooltip: I18n.Config_Attachments_SpawnWhichBait_Tooltip,
                     getValue: () => config().BaitToSpawn[baitIndex],
                     setValue: value => config().BaitToSpawn[baitIndex] = value,
