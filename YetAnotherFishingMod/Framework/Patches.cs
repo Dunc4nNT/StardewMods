@@ -48,7 +48,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             {
                 ModConfig config = s_config();
 
-                if (__result.Category == SObject.FishCategory || !config.IncreaseChanceOfFish)
+                if (IsFishInPreferredCategory(__result))
                     return;
 
                 bool isTutorialCatch = who.fishCaught.Length == 0;
@@ -57,7 +57,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 {
                     __result = GameLocation.GetFishFromLocationData(__instance.Name, bobberTile, waterDepth, who, isTutorialCatch, isInherited: false, __instance);
 
-                    if (__result.Category == SObject.FishCategory)
+                    if (IsFishInPreferredCategory(__result))
                         return;
                 }
             }
@@ -65,6 +65,21 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             {
                 s_monitor.Log($"Failed in {nameof(GetFishPatch)}:\n{e}", LogLevel.Error);
             }
+        }
+
+        private static bool IsFishInPreferredCategory(Item item)
+        {
+            ModConfig config = s_config();
+
+            if (!config.AllowCatchingFish && !config.AllowCatchingRubbish && !config.AllowCatchingOther)
+                return true;
+
+            if ((item.Category == SObject.FishCategory && config.AllowCatchingFish) ||
+                ((item.Category == SObject.junkCategory || item == null) && config.AllowCatchingRubbish) ||
+                (item.Category == 0 && config.AllowCatchingOther))
+                return true;
+
+            return false;
         }
 
         private static bool DoneFishingPatch(ref bool consumeBaitAndTackle)

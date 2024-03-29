@@ -10,7 +10,11 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
         public float BarSizeMultiplier { get; set; } = 1f;
 
-        public bool IncreaseChanceOfFish { get; set; } = false;
+        public bool AllowCatchingFish { get; set; } = true;
+
+        public bool AllowCatchingRubbish { get; set; } = true;
+
+        public bool AllowCatchingOther { get; set; } = true;
 
         public bool SkipFishingMinigame { get; set; } = true;
 
