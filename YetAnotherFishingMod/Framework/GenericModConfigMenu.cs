@@ -127,6 +127,13 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 max: 2f,
                 interval: 0.1f
             );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_AdjustXpGainDifficulty_Name,
+                tooltip: I18n.Config_General_AdjustXpGainDifficulty_Tooltip,
+                getValue: () => config().AdjustXpGainDifficulty,
+                setValue: value => config().AdjustXpGainDifficulty = value
+            );
             configMenu.AddNumberOption(
                 mod: manifest,
                 name: I18n.Config_General_FishNotInBarPenaltyMultiplier_Name,
@@ -137,12 +144,15 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 max: 2f,
                 interval: 0.1f
             );
-            configMenu.AddBoolOption(
+            configMenu.AddNumberOption(
                 mod: manifest,
-                name: I18n.Config_General_AdjustXpGainDifficulty_Name,
-                tooltip: I18n.Config_General_AdjustXpGainDifficulty_Tooltip,
-                getValue: () => config().AdjustXpGainDifficulty,
-                setValue: value => config().AdjustXpGainDifficulty = value
+                name: I18n.Config_General_BarSizeMultiplier_Name,
+                tooltip: I18n.Config_General_BarSizeMultiplier_Tooltip,
+                getValue: () => config().BarSizeMultiplier,
+                setValue: value => config().BarSizeMultiplier = value,
+                min: 0.5f,
+                max: 2f,
+                interval: 0.1f
             );
             configMenu.AddBoolOption(
                 mod: manifest,

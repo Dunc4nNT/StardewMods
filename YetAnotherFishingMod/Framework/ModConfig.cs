@@ -6,6 +6,8 @@
 
         public float FishNotInBarPenaltyMultiplier { get; set; } = 1f;
 
+        public float BarSizeMultiplier { get; set; } = 1f;
+
         public bool IncreaseChanceOfFish { get; set; } = false;
 
         public bool SkipFishingMinigame { get; set; } = true;
