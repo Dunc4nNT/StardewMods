@@ -21,6 +21,8 @@
   "config.general.difficulty-section": "Difficulty",
   "config.general.difficulty-multiplier.name": "Difficulty Multiplier",
   "config.general.difficulty-multiplier.tooltip": "Value with which the standard fishing difficulty is multiplied.",
+  "config.general.fish-not-in-bar-penalty-multiplier.name": "Fish Escape Multiplier",
+  "config.general.fish-not-in-bar-penalty-multiplier.tooltip": "A multiplier for the penalty given when the fish is outside of the green bar. The higher the value, the quicker the fish escapes.",
   "config.general.adjust-xp-gain-difficulty.name": "Adjust XP Gain",
   "config.general.adjust-xp-gain-difficulty.tooltip": "Adjust the XP gained based on the fish difficulty set above.",
   "config.general.always-max-casting-power.name": "Always Max Casting Power",

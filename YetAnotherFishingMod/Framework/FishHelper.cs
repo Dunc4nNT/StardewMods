@@ -140,6 +140,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             ModConfig config_ = config();
 
             bobberBar.difficulty *= config_.DifficultyMultiplier;
+            bobberBar.distanceFromCatchPenaltyModifier = config_.FishNotInBarPenaltyMultiplier;
 
             if (config_.TreasureAppearence == TreasureAppearanceSettings.Never)
                 bobberBar.treasure = false;
