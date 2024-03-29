@@ -74,7 +74,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             ModConfig config_ = config();
             this._fishingRod.Value = new(fishingRod);
 
-            this._fishingRod.Value.SpawnBait(config_.BaitToSpawn, overrideAttachmentLimit: config_.OverrideAttachmentLimit);
+            this._fishingRod.Value.SpawnBait(config_.BaitToSpawn, amountOfBait: config_.AmountOfBait, overrideAttachmentLimit: config_.OverrideAttachmentLimit);
             this._fishingRod.Value.SpawnTackles(config_.TacklesToSpawn, overrideAttachmentLimit: config_.OverrideAttachmentLimit);
 
             if (config_.DoAddEnchantments)

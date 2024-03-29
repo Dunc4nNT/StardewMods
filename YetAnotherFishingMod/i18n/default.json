@@ -61,6 +61,8 @@
   "config.attachments.bait-section": "Bait",
   "config.attachments.spawn-bait-when-equipped.name": "Spawn Bait When Equipped",
   "config.attachments.spawn-bait-when-equipped.tooltip": "Spawns the below selected bait item whenever you equip your fishing rod.",
+  "config.attachments.amount-of-bait.name": "Amount of Bait",
+  "config.attachments.amount-of-bait.tooltip": "How much bait to spawn.",
   "config.attachments.spawn-which-bait.name": "Bait to Spawn",
   "config.attachments.spawn-which-bait.tooltip": "Which bait to automatically spawn when fishing rod is equipped.",
   "config.attachments.tackles-section": "Tackles",

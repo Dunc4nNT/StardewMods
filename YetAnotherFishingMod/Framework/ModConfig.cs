@@ -46,6 +46,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
         public List<string> BaitToSpawn { get; set; } = [""];
 
+        public int AmountOfBait { get; set; } = 1;
+
         public List<string> TacklesToSpawn { get; set; } = ["", ""];
 
         public bool OverrideAttachmentLimit { get; set; } = false;
