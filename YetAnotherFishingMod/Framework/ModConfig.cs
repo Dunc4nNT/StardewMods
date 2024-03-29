@@ -20,7 +20,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
         public float SkipFishingMinigameTreasureChance { get; set; } = 1f;
 
-        public bool InstantCatchTreasure { get; set; } = true;
+        public bool InstantCatchTreasure { get; set; } = false;
 
         public bool AlwaysMaxCastingPower { get; set; } = false;
 
