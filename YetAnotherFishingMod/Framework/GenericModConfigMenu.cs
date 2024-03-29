@@ -245,10 +245,10 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddBoolOption(
                 mod: manifest,
-                name: I18n.Config_Attachments_ResetAttachments_Name,
-                tooltip: I18n.Config_Attachments_ResetAttachments_Tooltip,
-                getValue: () => config().ResetAttachmentsWhenNotEquipped,
-                setValue: value => config().ResetAttachmentsWhenNotEquipped = value
+                name: I18n.Config_Attachments_ResetAttachmentsLimitWhenNotEquipped_Name,
+                tooltip: I18n.Config_Attachments_ResetAttachmentsLimitWhenNotEquipped_Tooltip,
+                getValue: () => config().ResetAttachmentsLimitWhenNotEquipped,
+                setValue: value => config().ResetAttachmentsLimitWhenNotEquipped = value
             );
             configMenu.AddBoolOption(
                 mod: manifest,
@@ -261,41 +261,36 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 mod: manifest,
                 text: I18n.Config_Attachments_BaitSection
             );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_Attachments_SpawnBaitWhenEquipped_Name,
-                tooltip: I18n.Config_Attachments_SpawnBaitWhenEquipped_Tooltip,
-                getValue: () => config().SpawnBaitWhenEquipped,
-                setValue: value => config().SpawnBaitWhenEquipped = value
-            );
             configMenu.AddTextOption(
                 mod: manifest,
                 name: I18n.Config_Attachments_SpawnWhichBait_Name,
                 tooltip: I18n.Config_Attachments_SpawnWhichBait_Tooltip,
-                getValue: () => config().SpawnWhichBait,
-                setValue: value => config().SpawnWhichBait = value,
+                getValue: () => config().BaitToSpawn[0],
+                setValue: value => config().BaitToSpawn[0] = value,
                 allowedValues: [.. baitList],
-                formatAllowedValue: value => ItemRegistry.GetData(value).DisplayName
+                formatAllowedValue: value => ItemRegistry.GetData(value)?.DisplayName
             );
             configMenu.AddSectionTitle(
                 mod: manifest,
                 text: I18n.Config_Attachments_TacklesSection
             );
-            configMenu.AddBoolOption(
+            configMenu.AddTextOption(
                 mod: manifest,
-                name: I18n.Config_Attachments_SpawnTackleWhenEquipped_Name,
-                tooltip: I18n.Config_Attachments_SpawnTackleWhenEquipped_Tooltip,
-                getValue: () => config().SpawnTackleWhenEquipped,
-                setValue: value => config().SpawnTackleWhenEquipped = value
+                name: () => I18n.Config_Attachments_SpawnWhichTackle_Name() + " (1)",
+                tooltip: I18n.Config_Attachments_SpawnWhichTackle_Tooltip,
+                getValue: () => config().TacklesToSpawn[0],
+                setValue: value => config().TacklesToSpawn[0] = value,
+                allowedValues: [.. tackeList],
+                formatAllowedValue: value => ItemRegistry.GetData(value)?.DisplayName
             );
             configMenu.AddTextOption(
                 mod: manifest,
-                name: I18n.Config_Attachments_SpawnWhichTackle_Name,
+                name: () => I18n.Config_Attachments_SpawnWhichTackle_Name() + " (2)",
                 tooltip: I18n.Config_Attachments_SpawnWhichTackle_Tooltip,
-                getValue: () => config().SpawnWhichTackle,
-                setValue: value => config().SpawnWhichTackle = value,
+                getValue: () => config().TacklesToSpawn[1],
+                setValue: value => config().TacklesToSpawn[1] = value,
                 allowedValues: [.. tackeList],
-                formatAllowedValue: value => ItemRegistry.GetData(value).DisplayName
+                formatAllowedValue: value => ItemRegistry.GetData(value)?.DisplayName
             );
 
             configMenu.AddPage(

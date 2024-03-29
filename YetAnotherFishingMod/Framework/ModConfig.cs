@@ -1,4 +1,6 @@
-﻿namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
+﻿using System.Collections.Generic;
+
+namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 {
     internal class ModConfig
     {
@@ -34,21 +36,17 @@
 
         public bool AutoHook { get; set; } = false;
 
-        public bool SpawnBaitWhenEquipped { get; set; } = false;
-
         public Quality FishQuality { get; set; } = Quality.Any;
 
         public Quality MinimumFishQuality { get; set; } = Quality.None;
 
-        public string SpawnWhichBait { get; set; } = "(O)685";
+        public List<string> BaitToSpawn { get; set; } = [""];
 
-        public bool SpawnTackleWhenEquipped { get; set; } = false;
-
-        public string SpawnWhichTackle { get; set; } = "(O)686";
+        public List<string> TacklesToSpawn { get; set; } = ["", ""];
 
         public bool OverrideAttachmentLimit { get; set; } = false;
 
-        public bool ResetAttachmentsWhenNotEquipped { get; set; } = true;
+        public bool ResetAttachmentsLimitWhenNotEquipped { get; set; } = true;
 
         public bool InfiniteBaitAndTackle { get; set; } = false;
 
