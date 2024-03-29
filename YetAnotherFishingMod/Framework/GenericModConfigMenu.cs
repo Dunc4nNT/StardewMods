@@ -292,6 +292,17 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 );
             }
 
+            configMenu.AddNumberOption(
+                mod: manifest,
+                name: I18n.Config_Attachments_AmountOfBait_Name,
+                tooltip: I18n.Config_Attachments_AmountOfBait_Tooltip,
+                getValue: () => config().AmountOfBait,
+                setValue: value => config().AmountOfBait = value,
+                min: 9,
+                max: 999,
+                interval: 9
+            );
+
             configMenu.AddSectionTitle(
                 mod: manifest,
                 text: I18n.Config_Attachments_TacklesSection
