@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using StardewModdingAPI.Utilities;
+using System.Collections.Generic;
 
 namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 {
@@ -77,5 +78,10 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         public bool AddPreservingEnchantment { get; set; } = false;
 
         public bool ResetEnchantmentsWhenNotEquipped { get; set; } = true;
+    }
+
+    internal class ModConfigKeys
+    {
+        public KeybindList ReloadConfig { get; set; } = new();
     }
 }
