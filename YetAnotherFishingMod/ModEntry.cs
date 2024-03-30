@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using NeverToxic.StardewMods.Common;
 using NeverToxic.StardewMods.YetAnotherFishingMod.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
@@ -37,6 +38,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod
             helper.Events.GameLoop.UpdateTicked += this.OnUpdateTicked;
             helper.Events.Display.MenuChanged += this.OnMenuChanged;
             helper.Events.Input.ButtonsChanged += this.OnButtonsChanged;
+            helper.Events.GameLoop.OneSecondUpdateTicked += this.OnSecondUpdateTicked;
         }
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
@@ -50,6 +52,11 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod
             }
 
             new GenericModConfigMenu(this.Helper.ModRegistry, this.ModManifest, this.Monitor, () => this.Config, () => this.Config = new ModConfig(), () => this.Helper.WriteConfig(this.Config), this._baitList, this._tackleList).Register();
+        }
+
+        private void OnSecondUpdateTicked(object sender, OneSecondUpdateTickedEventArgs e)
+        {
+            this.FishHelper.AutoCast();
         }
 
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
@@ -86,12 +93,27 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod
 
             if (this.Keys.ReloadConfig.JustPressed())
                 this.ReloadConfig();
+            if (this.Keys.DoAutoCast.JustPressed())
+            {
+                this.FishHelper.DoAutoCast.Value = !this.FishHelper.DoAutoCast.Value;
+
+                if (this.FishHelper.DoAutoCast.Value)
+                {
+                    this.Monitor.Log(I18n.Message_DoAutoCastEnabled());
+                    Notifier.DisplayHudNotification(I18n.Message_DoAutoCastEnabled(), 1500);
+                }
+                else
+                {
+                    this.Monitor.Log(I18n.Message_DoAutoCastDisabled());
+                    Notifier.DisplayHudNotification(I18n.Message_DoAutoCastDisabled(), 1500);
+                }
+            }
         }
 
         private void ReloadConfig()
         {
             this.Config = this.Helper.ReadConfig<ModConfig>();
-            this.Monitor.Log(I18n.Message_ConfigReloaded(), LogLevel.Info);
+            this.Monitor.Log(I18n.Message_ConfigReloaded());
         }
     }
 }

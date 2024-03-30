@@ -43,6 +43,13 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 mod: manifest,
                 text: I18n.Config_General_MinigameSection
             );
+            configMenu.AddKeybindList(
+                mod: manifest,
+                name: I18n.Config_General_DoAutoCast_Name,
+                tooltip: I18n.Config_General_DoAutoCast_Tooltip,
+                getValue: () => config().Keys.DoAutoCast,
+                setValue: value => config().Keys.DoAutoCast = value
+            );
             configMenu.AddBoolOption(
                 mod: manifest,
                 name: I18n.Config_General_SkipFishingMinigame_Name,
