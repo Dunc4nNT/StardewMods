@@ -218,7 +218,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             if (!this.DoAutoCast.Value)
                 return;
 
-            if (Game1.player.CurrentTool is FishingRod { isCasting: false, isReeling: false, fishCaught: false, showingTreasure: false, isFishing: false } && !Game1.player.UsingTool && Game1.activeClickableMenu is not ItemGrabMenu)
+            if (Game1.player.CurrentTool is FishingRod { isCasting: false, isReeling: false, fishCaught: false, showingTreasure: false, isFishing: false } && !Game1.player.UsingTool && Game1.activeClickableMenu is null && Game1.player.CanMove)
             {
                 Game1.pressUseToolButton();
             }
