@@ -216,8 +216,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddTextOption(
                 mod: manifest,
-                name: I18n.Config_General_TreasureAppearance_Name,
-                tooltip: I18n.Config_General_TreasureAppearance_Tooltip,
+                name: I18n.Config_General_GoldenTreasureAppearance_Name,
+                tooltip: I18n.Config_General_GoldenTreasureAppearance_Tooltip,
                 getValue: () => config().GoldenTreasureAppearance.ToString(),
                 setValue: value => config().GoldenTreasureAppearance = (TreasureAppearanceSettings)Enum.Parse(typeof(TreasureAppearanceSettings), value),
                 allowedValues: Enum.GetNames(typeof(TreasureAppearanceSettings)),
