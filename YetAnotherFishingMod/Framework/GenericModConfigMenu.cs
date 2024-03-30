@@ -236,6 +236,13 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddBoolOption(
                 mod: manifest,
+                name: I18n.Config_General_AutoLootFish_Name,
+                tooltip: I18n.Config_General_AutoLootFish_Tooltip,
+                getValue: () => config().AutoLootFish,
+                setValue: value => config().AutoLootFish = value
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
                 name: I18n.Config_General_AutoLootTreasure_Name,
                 tooltip: I18n.Config_General_AutoLootTreasure_Tooltip,
                 getValue: () => config().AutoLootTreasure,

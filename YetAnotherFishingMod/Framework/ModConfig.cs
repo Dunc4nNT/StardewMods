@@ -6,6 +6,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
     {
         public ModConfigKeys Keys { get; set; } = new();
 
+        public bool AutoLootFish { get; set; } = false;
+
         public float FishNotInBarPenaltyMultiplier { get; set; } = 1f;
 
         public float BarSizeMultiplier { get; set; } = 1f;

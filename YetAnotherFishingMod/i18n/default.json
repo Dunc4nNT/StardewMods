@@ -47,6 +47,8 @@
   "config.general.faster-please-section": "Faster Please",
   "config.general.instant-bite.name": "Instant Bite",
   "config.general.instant-bite.tooltip": "Fish instantly bite after casting your fishing rod.",
+  "config.general.auto-loot-fish.name": "Automatically Loot Fish",
+  "config.general.auto-loot-fish.tooltip": "Automatically loot and close the fish popup after catching a fish.",
   "config.general.auto-loot-treasure.name": "Automatically Loot Treasure",
   "config.general.auto-loot-treasure.tooltip": "Automatically loot and close the treasure menu popup after catching treasure.",
 
