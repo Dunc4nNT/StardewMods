@@ -17,6 +17,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         private readonly PerScreen<BobberBar> _bobberBar = new();
         private readonly PerScreen<SFishingRod> _fishingRod = new();
         public readonly PerScreen<bool> IsInFishingMiniGame = new();
+        public readonly PerScreen<bool> DoAutoCast = new();
 
         private void ApplyFishingRodBuffs()
         {
@@ -209,6 +210,17 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
                 for (int i = 0; i < 10; i++)
                     sparkleText?.update(Game1.currentGameTime);
+            }
+        }
+
+        public void AutoCast()
+        {
+            if (!this.DoAutoCast.Value)
+                return;
+
+            if (Game1.player.CurrentTool is FishingRod { isCasting: false, isReeling: false, fishCaught: false, showingTreasure: false, isFishing: false } && !Game1.player.UsingTool && Game1.activeClickableMenu is not ItemGrabMenu)
+            {
+                Game1.pressUseToolButton();
             }
         }
 

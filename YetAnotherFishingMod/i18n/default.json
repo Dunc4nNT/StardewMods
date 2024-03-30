@@ -1,6 +1,8 @@
 {
   "config.general.page-title": "General",
   "config.general.minigame-section": "Minigame Skip",
+  "config.general.do-auto-cast.name": "Automatically Cast",
+  "config.general.do-auto-cast.tooltip": "Keybind to toggle automatically casting your fishing rod. Will try casting every second if enabled.",
   "config.general.skip-fishing-minigame.name": "Skip Minigame",
   "config.general.skip-fishing-minigame.tooltip": "Skips the fishing minigame. Amount of catches required before skip can be changed below.",
   "config.general.skip-fishing-minigame-catches-required.name": "Catches Required",
@@ -104,5 +106,7 @@
   "config.quality-iridium": "Iridium",
 
   "message.config-reloaded": "Configuration file reloaded.",
-  "message.inventory-full": "Your inventory is full."
+  "message.inventory-full": "Your inventory is full.",
+  "message.do-auto-cast-enabled": "Automatic casting is now enabled.",
+  "message.do-auto-cast-disabled": "Automatic casting is now disabled."
 }
