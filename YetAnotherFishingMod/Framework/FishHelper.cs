@@ -2,6 +2,7 @@
 using StardewModdingAPI;
 using StardewModdingAPI.Utilities;
 using StardewValley;
+using StardewValley.BellsAndWhistles;
 using StardewValley.Enchantments;
 using StardewValley.Menus;
 using StardewValley.Tools;
@@ -11,7 +12,7 @@ using System.Linq;
 
 namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 {
-    internal class FishHelper(Func<ModConfig> config, IMonitor monitor)
+    internal class FishHelper(Func<ModConfig> config, IMonitor monitor, IReflectionHelper reflectionHelper)
     {
         private readonly PerScreen<BobberBar> _bobberBar = new();
         private readonly PerScreen<SFishingRod> _fishingRod = new();
@@ -180,6 +181,35 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 bobberBar.perfect = false;
 
             bobberBar.distanceFromCatching = 1f;
+        }
+
+        public void SpeedUpAnimations()
+        {
+            ModConfig config_ = config();
+
+            if (!config_.DoSpeedUpAnimations)
+                return;
+
+            if (Game1.player.UsingTool && Game1.player.CurrentTool is FishingRod { isTimingCast: false, isFishing: false })
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    Game1.player.Update(Game1.currentGameTime, Game1.player.currentLocation);
+                }
+            }
+
+            if (this.IsInFishingMiniGame.Value)
+            {
+
+                BobberBar bobberBar = this._bobberBar.Value;
+
+                bobberBar.everythingShakeTimer = 0f;
+
+                SparklingText sparkleText = reflectionHelper.GetField<SparklingText>(bobberBar, "sparkleText").GetValue();
+
+                for (int i = 0; i < 10; i++)
+                    sparkleText?.update(Game1.currentGameTime);
+            }
         }
 
         public void OnFishingMiniGameEnd()

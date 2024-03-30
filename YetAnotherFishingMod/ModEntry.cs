@@ -31,7 +31,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod
             this.Config = helper.ReadConfig<ModConfig>();
             Harmony harmony = new(this.ModManifest.UniqueID);
             Patches.Initialise(harmony, this.Monitor, () => this.Config, this.Helper.Reflection);
-            this.FishHelper = new(() => this.Config, this.Monitor);
+            this.FishHelper = new(() => this.Config, this.Monitor, this.Helper.Reflection);
 
             helper.Events.GameLoop.GameLaunched += this.OnGameLaunched;
             helper.Events.GameLoop.UpdateTicked += this.OnUpdateTicked;
@@ -64,6 +64,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod
 
             if (this.FishHelper.IsInFishingMiniGame.Value)
                 this.FishHelper.ApplyFishingMiniGameBuffs();
+
+            this.FishHelper.SpeedUpAnimations();
         }
 
         private void OnMenuChanged(object sender, MenuChangedEventArgs e)

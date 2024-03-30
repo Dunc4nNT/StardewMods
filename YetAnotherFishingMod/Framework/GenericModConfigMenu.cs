@@ -248,6 +248,13 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().AutoLootTreasure,
                 setValue: value => config().AutoLootTreasure = value
             );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_DoSpeedUpAnimations_Name,
+                tooltip: I18n.Config_General_DoSpeedUpAnimations_Tooltip,
+                getValue: () => config().DoSpeedUpAnimations,
+                setValue: value => config().DoSpeedUpAnimations = value
+            );
 
             configMenu.AddPage(
                 mod: manifest,
