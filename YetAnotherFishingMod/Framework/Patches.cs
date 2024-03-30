@@ -4,6 +4,8 @@ using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Tools;
 using System;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 using SObject = StardewValley.Object;
 
 namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
@@ -30,6 +32,10 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         private static void ApplyPatches()
         {
             s_harmony.Patch(
+                original: AccessTools.Method(typeof(FishingRod), nameof(FishingRod.tickUpdate)),
+                transpiler: new HarmonyMethod(typeof(Patches), nameof(FishingRodTickUpdatePatch))
+            );
+            s_harmony.Patch(
                 original: AccessTools.Method(typeof(GameLocation), nameof(GameLocation.getFish)),
                 postfix: new HarmonyMethod(typeof(Patches), nameof(GetFishPatch))
             );
@@ -40,6 +46,31 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             s_harmony.Patch(AccessTools.Method(typeof(FishingRod), nameof(FishingRod.pullFishFromWater)),
                 prefix: new HarmonyMethod(typeof(Patches), nameof(PullFishFromWaterPatch))
             );
+        }
+
+        private static IEnumerable<CodeInstruction> FishingRodTickUpdatePatch(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
+        {
+            List<CodeInstruction> output = [];
+
+            Label label = generator.DefineLabel();
+
+            foreach (CodeInstruction instruction in instructions)
+            {
+                if (instruction.opcode == OpCodes.Ldstr && (string)instruction.operand == "coin")
+                {
+                    output.Insert(output.Count - 17, new CodeInstruction(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => DoAutoLootFish())));
+                    output.Insert(output.Count - 17, new CodeInstruction(OpCodes.Brtrue, label));
+                    output[^2].labels.Add(label);
+                }
+                output.Add(instruction);
+            }
+
+            return output;
+        }
+
+        private static bool DoAutoLootFish()
+        {
+            return s_config().AutoLootFish;
         }
 
         private static void GetFishPatch(ref GameLocation __instance, ref Item __result, Farmer who, int waterDepth, Vector2 bobberTile)
