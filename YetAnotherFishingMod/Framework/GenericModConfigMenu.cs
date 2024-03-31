@@ -110,6 +110,16 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
             configMenu.AddNumberOption(
                 mod: manifest,
+                name: I18n.Config_General_FishInBarMultiplier_Name,
+                tooltip: I18n.Config_General_FishInBarMultiplier_Tooltip,
+                getValue: () => config().FishInBarMultiplier,
+                setValue: value => config().FishInBarMultiplier = value,
+                min: 0.1f,
+                max: 5f,
+                interval: 0.1f
+            );
+            configMenu.AddNumberOption(
+                mod: manifest,
                 name: I18n.Config_General_FishNotInBarPenaltyMultiplier_Name,
                 tooltip: I18n.Config_General_FishNotInBarPenaltyMultiplier_Tooltip,
                 getValue: () => config().FishNotInBarPenaltyMultiplier,

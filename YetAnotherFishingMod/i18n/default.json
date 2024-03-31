@@ -16,6 +16,8 @@
   "config.general.difficulty-multiplier.tooltip": "Value with which the standard fishing difficulty is multiplied.",
   "config.general.adjust-xp-gain-difficulty.name": "Adjust XP Gain",
   "config.general.adjust-xp-gain-difficulty.tooltip": "Adjust the XP gained based on the fish difficulty set above.",
+  "config.general.fish-in-bar-multiplier.name": "Fish Catch Multiplier",
+  "config.general.fish-in-bar-multiplier.tooltip": "A multiplier for the increase given when the fish is inside the green bar. The higher the value, the quicker the fish is caught.",
   "config.general.fish-not-in-bar-penalty-multiplier.name": "Fish Escape Multiplier",
   "config.general.fish-not-in-bar-penalty-multiplier.tooltip": "A multiplier for the penalty given when the fish is outside of the green bar. The higher the value, the quicker the fish escapes.",
   "config.general.bar-size-multiplier.name": "Bar Size Multiplier",
