@@ -73,18 +73,22 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             return output;
         }
 
-        private static IEnumerable<CodeInstruction> BobberBar_Update_Transpiler(IEnumerable<CodeInstruction> instructions)
+        private static IEnumerable<CodeInstruction> BobberBar_Update_Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
         {
-            CodeMatcher codeMatcher = new CodeMatcher(instructions)
-                .MatchStartForward(
-                    new CodeMatch(OpCodes.Ldfld, typeof(BobberBar).GetField(nameof(BobberBar.distanceFromCatching))),
-                    new CodeMatch(OpCodes.Ldc_R4, 0.002f),
-                    new CodeMatch(OpCodes.Add),
-                    new CodeMatch(OpCodes.Stfld, typeof(BobberBar).GetField(nameof(BobberBar.distanceFromCatching)))
+            CodeMatcher codeMatcher = new(instructions, generator);
+
+            codeMatcher.MatchStartForward(
+                    new(OpCodes.Ldfld, typeof(BobberBar).GetField(nameof(BobberBar.distanceFromCatching))),
+                    new(OpCodes.Ldc_R4, 0.002f),
+                    new(OpCodes.Add),
+                    new(OpCodes.Stfld, typeof(BobberBar).GetField(nameof(BobberBar.distanceFromCatching)))
                 );
 
             if (!codeMatcher.IsValid)
+            {
                 s_monitor.Log($"Failed to patch {nameof(BobberBar_Update_Transpiler)}. Match for \"distanceFromCatching\" was invalid.", LogLevel.Error);
+                return null;
+            }
 
             codeMatcher
                 .Advance(1)
@@ -93,7 +97,34 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                     new CodeInstruction(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => FishInBarMultiplier()))
                 );
 
+            codeMatcher.Start();
+
+            codeMatcher.MatchStartForward(
+                    new(OpCodes.Ldfld, typeof(BobberBar).GetField(nameof(BobberBar.treasureCatchLevel))),
+                    new(OpCodes.Ldc_R4, 0.0135f),
+                    new(OpCodes.Add),
+                    new(OpCodes.Stfld, typeof(BobberBar).GetField(nameof(BobberBar.treasureCatchLevel)))
+                );
+
+            if (!codeMatcher.IsValid)
+            {
+                s_monitor.Log($"Failed to patch {nameof(BobberBar_Update_Transpiler)}. Match for \"treasureCatchLevel\" was invalid.", LogLevel.Error);
+                return null;
+            }
+
+            codeMatcher
+                .Advance(1)
+                .RemoveInstruction()
+                .Insert(
+                    new CodeInstruction(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => TreasureInBarMultiplier()))
+                );
+
             return codeMatcher.InstructionEnumeration();
+        }
+
+        private static float TreasureInBarMultiplier()
+        {
+            return 0.0135f * s_config().TreasureInBarMultiplier;
         }
 
         private static float FishInBarMultiplier()

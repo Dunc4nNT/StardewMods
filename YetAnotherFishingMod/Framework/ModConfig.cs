@@ -7,6 +7,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
     {
         public ModConfigKeys Keys { get; set; } = new();
 
+        public float TreasureInBarMultiplier { get; set; } = 1f;
+
         public float FishInBarMultiplier { get; set; } = 1f;
 
         public bool DoSpeedUpAnimations { get; set; } = false;
