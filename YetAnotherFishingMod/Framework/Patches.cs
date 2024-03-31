@@ -78,11 +78,11 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             CodeMatcher codeMatcher = new(instructions, generator);
 
             codeMatcher.MatchStartForward(
-                    new(OpCodes.Ldfld, typeof(BobberBar).GetField(nameof(BobberBar.distanceFromCatching))),
-                    new(OpCodes.Ldc_R4, 0.002f),
-                    new(OpCodes.Add),
-                    new(OpCodes.Stfld, typeof(BobberBar).GetField(nameof(BobberBar.distanceFromCatching)))
-                );
+                new(OpCodes.Ldfld, typeof(BobberBar).GetField(nameof(BobberBar.distanceFromCatching))),
+                new(OpCodes.Ldc_R4, 0.002f),
+                new(OpCodes.Add),
+                new(OpCodes.Stfld, typeof(BobberBar).GetField(nameof(BobberBar.distanceFromCatching)))
+            );
 
             if (!codeMatcher.IsValid)
             {
@@ -100,11 +100,11 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             codeMatcher.Start();
 
             codeMatcher.MatchStartForward(
-                    new(OpCodes.Ldfld, typeof(BobberBar).GetField(nameof(BobberBar.treasureCatchLevel))),
-                    new(OpCodes.Ldc_R4, 0.0135f),
-                    new(OpCodes.Add),
-                    new(OpCodes.Stfld, typeof(BobberBar).GetField(nameof(BobberBar.treasureCatchLevel)))
-                );
+                new(OpCodes.Ldfld, typeof(BobberBar).GetField(nameof(BobberBar.treasureCatchLevel))),
+                new(OpCodes.Ldc_R4, 0.0135f),
+                new(OpCodes.Add),
+                new(OpCodes.Stfld, typeof(BobberBar).GetField(nameof(BobberBar.treasureCatchLevel)))
+            );
 
             if (!codeMatcher.IsValid)
             {
