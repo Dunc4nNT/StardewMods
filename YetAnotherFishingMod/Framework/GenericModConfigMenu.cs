@@ -159,6 +159,23 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().AlwaysPerfect,
                 setValue: value => config().AlwaysPerfect = value
             );
+            configMenu.AddNumberOption(
+                mod: manifest,
+                name: I18n.Config_General_TreasureInBarMultiplier_Name,
+                tooltip: I18n.Config_General_TreasureInBarMultiplier_Tooltip,
+                getValue: () => config().TreasureInBarMultiplier,
+                setValue: value => config().TreasureInBarMultiplier = value,
+                min: 0.1f,
+                max: 5f,
+                interval: 0.1f
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_InstantCatchTreasure_Name,
+                tooltip: I18n.Config_General_InstantCatchTreasure_Tooltip,
+                getValue: () => config().InstantCatchTreasure,
+                setValue: value => config().InstantCatchTreasure = value
+            );
             configMenu.AddSectionTitle(
                 mod: manifest,
                 text: I18n.Config_General_FishingLootSection
@@ -210,17 +227,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 setValue: value => config().MinimumFishQuality = (Quality)Enum.Parse(typeof(Quality), value),
                 allowedValues: Enum.GetNames(typeof(Quality)),
                 formatAllowedValue: value => I18n.GetByKey($"config.quality-{value}")
-            );
-            configMenu.AddSectionTitle(
-                mod: manifest,
-                text: I18n.Config_General_TreasureSection
-            );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_General_InstantCatchTreasure_Name,
-                tooltip: I18n.Config_General_InstantCatchTreasure_Tooltip,
-                getValue: () => config().InstantCatchTreasure,
-                setValue: value => config().InstantCatchTreasure = value
             );
             configMenu.AddTextOption(
                 mod: manifest,
