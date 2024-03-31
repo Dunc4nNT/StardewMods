@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Menus;
 using StardewValley.Tools;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,10 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 transpiler: new HarmonyMethod(typeof(Patches), nameof(FishingRodTickUpdatePatch))
             );
             s_harmony.Patch(
+                original: AccessTools.Method(typeof(BobberBar), nameof(BobberBar.update)),
+                transpiler: new HarmonyMethod(typeof(Patches), nameof(BobberBar_Update_Transpiler))
+            );
+            s_harmony.Patch(
                 original: AccessTools.Method(typeof(GameLocation), nameof(GameLocation.getFish)),
                 postfix: new HarmonyMethod(typeof(Patches), nameof(GetFishPatch))
             );
@@ -66,6 +71,34 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             }
 
             return output;
+        }
+
+        private static IEnumerable<CodeInstruction> BobberBar_Update_Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            CodeMatcher codeMatcher = new CodeMatcher(instructions)
+                .MatchStartForward(
+                    new CodeMatch(OpCodes.Ldfld, typeof(BobberBar).GetField(nameof(BobberBar.distanceFromCatching))),
+                    new CodeMatch(OpCodes.Ldc_R4, 0.002f),
+                    new CodeMatch(OpCodes.Add),
+                    new CodeMatch(OpCodes.Stfld, typeof(BobberBar).GetField(nameof(BobberBar.distanceFromCatching)))
+                );
+
+            if (!codeMatcher.IsValid)
+                s_monitor.Log($"Failed to patch {nameof(BobberBar_Update_Transpiler)}. Match for \"distanceFromCatching\" was invalid.", LogLevel.Error);
+
+            codeMatcher
+                .Advance(1)
+                .RemoveInstruction()
+                .Insert(
+                    new CodeInstruction(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => FishInBarMultiplier()))
+                );
+
+            return codeMatcher.InstructionEnumeration();
+        }
+
+        private static float FishInBarMultiplier()
+        {
+            return 0.002f * s_config().FishInBarMultiplier;
         }
 
         private static bool DoAutoLootFish()
