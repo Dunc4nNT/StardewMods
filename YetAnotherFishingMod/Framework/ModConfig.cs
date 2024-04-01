@@ -63,7 +63,9 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
         public bool ResetAttachmentsLimitWhenNotEquipped { get; set; } = true;
 
-        public bool InfiniteBaitAndTackle { get; set; } = false;
+        public bool InfiniteBait { get; set; } = false;
+
+        public bool InfiniteTackle { get; set; } = false;
 
         public bool AutoLootTreasure { get; set; } = false;
 
