@@ -126,6 +126,9 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         {
             CodeMatcher codeMatcher = new(instructions, generator);
 
+            Label infiniteBaitLabel = generator.DefineLabel();
+            Label infiniteTackleLabel = generator.DefineLabel();
+
             codeMatcher.MatchStartForward(
                 new(OpCodes.Ldloc_2),
                 new(OpCodes.Dup),
@@ -141,8 +144,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. Match for bait entry point was invalid.", LogLevel.Error);
                 return null;
             }
-
-            Label infiniteBaitLabel = generator.DefineLabel();
 
             codeMatcher.Insert(
                 new(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => HasInfiniteBait())),
@@ -164,16 +165,12 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 return null;
             }
 
-            codeMatcher.AddLabels(new[] { infiniteBaitLabel });
-
-            Label infiniteTackleLabel = generator.DefineLabel();
-
-            codeMatcher.Advance(6);
-
             codeMatcher.Insert(
                 new(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => HasInfiniteTackle())),
                 new(OpCodes.Brtrue, infiniteTackleLabel)
             );
+
+            codeMatcher.AddLabels(new[] { infiniteBaitLabel });
 
             codeMatcher.MatchStartForward(
                 new(OpCodes.Ldloc_0),
