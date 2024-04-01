@@ -2,10 +2,14 @@
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.GameData.Locations;
+using StardewValley.Internal;
+using StardewValley.ItemTypeDefinitions;
 using StardewValley.Menus;
 using StardewValley.Tools;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection.Emit;
 using SObject = StardewValley.Object;
 
@@ -45,8 +49,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 transpiler: new HarmonyMethod(typeof(Patches), nameof(FishingRod_DoDoneFishing_Transpiler))
             );
             s_harmony.Patch(
-                original: AccessTools.Method(typeof(GameLocation), nameof(GameLocation.getFish)),
-                postfix: new HarmonyMethod(typeof(Patches), nameof(GetFishPatch))
+                original: AccessTools.Method(typeof(GameLocation), "GetFishFromLocationData", [typeof(string), typeof(Vector2), typeof(int), typeof(Farmer), typeof(bool), typeof(bool), typeof(GameLocation), typeof(ItemQueryContext)]),
+                transpiler: new HarmonyMethod(typeof(Patches), nameof(GameLocation_GetFishFromLocationData_Transpiler))
             );
             s_harmony.Patch(AccessTools.Method(typeof(FishingRod), nameof(FishingRod.pullFishFromWater)),
                 prefix: new HarmonyMethod(typeof(Patches), nameof(PullFishFromWaterPatch))
@@ -191,6 +195,66 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             return codeMatcher.InstructionEnumeration();
         }
 
+        private static IEnumerable<CodeInstruction> GameLocation_GetFishFromLocationData_Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
+        {
+            CodeMatcher codeMatcher = new(instructions, generator);
+
+            codeMatcher.MatchEndForward(
+                new CodeMatch(OpCodes.Ldloc_S),
+                new(OpCodes.Callvirt, typeof(IEnumerable<SpawnFishData>).GetMethod(nameof(IEnumerable<SpawnFishData>.GetEnumerator))),
+                new(OpCodes.Stloc_S)
+            );
+
+            if (!codeMatcher.IsValid)
+            {
+                s_monitor.Log($"Failed to patch {nameof(GameLocation_GetFishFromLocationData_Transpiler)}. Match for possibleFish entry point was invalid.", LogLevel.Error);
+                return null;
+            }
+
+            codeMatcher.Advance(-1);
+
+            codeMatcher.RemoveInstruction();
+
+            codeMatcher.Insert(
+                new(OpCodes.Call, typeof(Patches).GetMethod(nameof(FilterPossibleFish))),
+                new(OpCodes.Callvirt, typeof(IEnumerable<SpawnFishData>).GetMethod(nameof(IEnumerable<SpawnFishData>.GetEnumerator)))
+            );
+
+            return codeMatcher.InstructionEnumeration();
+        }
+
+        public static IEnumerable<SpawnFishData> FilterPossibleFish(IEnumerable<SpawnFishData> possibleFish)
+        {
+            List<SpawnFishData> filteredPossibleFish = [];
+
+            foreach (SpawnFishData fish in possibleFish)
+            {
+                if (IsFishInPreferredCategory(ItemRegistry.GetData(fish.ItemId)))
+                    filteredPossibleFish.Add(fish);
+            }
+
+            return filteredPossibleFish.AsEnumerable();
+        }
+
+        private static bool IsFishInPreferredCategory(ParsedItemData fish)
+        {
+            ModConfig config = s_config();
+
+            if (fish == null && config.AllowCatchingRubbish)
+                return true;
+            else if (!config.AllowCatchingFish && !config.AllowCatchingRubbish && !config.AllowCatchingOther)
+                return true;
+            else if (fish == null)
+                return false;
+
+            if ((fish.Category == SObject.FishCategory && config.AllowCatchingFish) ||
+                ((fish.Category == SObject.junkCategory) && config.AllowCatchingRubbish) ||
+                (fish.Category == 0 && config.AllowCatchingOther))
+                return true;
+
+            return false;
+        }
+
         private static bool HasInfiniteTackle()
         {
             return s_config().InfiniteTackle;
@@ -214,46 +278,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         private static bool DoAutoLootFish()
         {
             return s_config().AutoLootFish;
-        }
-
-        private static void GetFishPatch(ref GameLocation __instance, ref Item __result, Farmer who, int waterDepth, Vector2 bobberTile)
-        {
-            try
-            {
-                ModConfig config = s_config();
-
-                if (IsFishInPreferredCategory(__result))
-                    return;
-
-                bool isTutorialCatch = who.fishCaught.Length == 0;
-
-                for (int i = 0; i < s_retry_catch_fish_amount; i++)
-                {
-                    __result = GameLocation.GetFishFromLocationData(__instance.Name, bobberTile, waterDepth, who, isTutorialCatch, isInherited: false, __instance);
-
-                    if (IsFishInPreferredCategory(__result))
-                        return;
-                }
-            }
-            catch (Exception e)
-            {
-                s_monitor.Log($"Failed in {nameof(GetFishPatch)}:\n{e}", LogLevel.Error);
-            }
-        }
-
-        private static bool IsFishInPreferredCategory(Item item)
-        {
-            ModConfig config = s_config();
-
-            if (!config.AllowCatchingFish && !config.AllowCatchingRubbish && !config.AllowCatchingOther)
-                return true;
-
-            if ((item.Category == SObject.FishCategory && config.AllowCatchingFish) ||
-                ((item.Category == SObject.junkCategory || item == null) && config.AllowCatchingRubbish) ||
-                (item.Category == 0 && config.AllowCatchingOther))
-                return true;
-
-            return false;
         }
 
         private static bool PullFishFromWaterPatch(ref int fishDifficulty)
