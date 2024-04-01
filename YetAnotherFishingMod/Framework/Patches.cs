@@ -41,12 +41,12 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 transpiler: new HarmonyMethod(typeof(Patches), nameof(BobberBar_Update_Transpiler))
             );
             s_harmony.Patch(
-                original: AccessTools.Method(typeof(GameLocation), nameof(GameLocation.getFish)),
-                postfix: new HarmonyMethod(typeof(Patches), nameof(GetFishPatch))
+                original: AccessTools.Method(typeof(FishingRod), "doDoneFishing"),
+                transpiler: new HarmonyMethod(typeof(Patches), nameof(FishingRod_DoDoneFishing_Transpiler))
             );
             s_harmony.Patch(
-                original: AccessTools.Method(typeof(FishingRod), nameof(FishingRod.doneFishing)),
-                prefix: new HarmonyMethod(typeof(Patches), nameof(DoneFishingPatch))
+                original: AccessTools.Method(typeof(GameLocation), nameof(GameLocation.getFish)),
+                postfix: new HarmonyMethod(typeof(Patches), nameof(GetFishPatch))
             );
             s_harmony.Patch(AccessTools.Method(typeof(FishingRod), nameof(FishingRod.pullFishFromWater)),
                 prefix: new HarmonyMethod(typeof(Patches), nameof(PullFishFromWaterPatch))
@@ -122,6 +122,88 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             return codeMatcher.InstructionEnumeration();
         }
 
+        private static IEnumerable<CodeInstruction> FishingRod_DoDoneFishing_Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
+        {
+            CodeMatcher codeMatcher = new(instructions, generator);
+
+            codeMatcher.MatchStartForward(
+                new(OpCodes.Ldloc_2),
+                new(OpCodes.Dup),
+                new(OpCodes.Callvirt, typeof(Item).GetProperty(nameof(Item.Stack)).GetMethod),
+                new(OpCodes.Stloc_S),
+                new(OpCodes.Ldloc_S),
+                new(OpCodes.Ldc_I4_1),
+                new(OpCodes.Sub)
+            );
+
+            if (!codeMatcher.IsValid)
+            {
+                s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. Match for bait entry point was invalid.", LogLevel.Error);
+                return null;
+            }
+
+            Label infiniteBaitLabel = generator.DefineLabel();
+
+            codeMatcher.Insert(
+                new(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => HasInfiniteBait())),
+                new(OpCodes.Brtrue, infiniteBaitLabel)
+            );
+
+            codeMatcher.MatchStartForward(
+                new(OpCodes.Ldc_I4_1),
+                new(OpCodes.Stloc_3),
+                new(OpCodes.Ldarg_0),
+                new(OpCodes.Call, typeof(FishingRod).GetMethod(nameof(FishingRod.GetTackle))),
+                new(OpCodes.Callvirt, typeof(List<SObject>).GetMethod(nameof(List<SObject>.GetEnumerator))),
+                new(OpCodes.Stloc_S)
+            );
+
+            if (!codeMatcher.IsValid)
+            {
+                s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. Match for tackle entry point was invalid.", LogLevel.Error);
+                return null;
+            }
+
+            codeMatcher.AddLabels(new[] { infiniteBaitLabel });
+
+            Label infiniteTackleLabel = generator.DefineLabel();
+
+            codeMatcher.Advance(6);
+
+            codeMatcher.Insert(
+                new(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => HasInfiniteTackle())),
+                new(OpCodes.Brtrue, infiniteTackleLabel)
+            );
+
+            codeMatcher.MatchStartForward(
+                new(OpCodes.Ldloc_0),
+                new(OpCodes.Brfalse_S),
+                new(OpCodes.Ldloc_0),
+                new(OpCodes.Callvirt, typeof(Farmer).GetProperty(nameof(Farmer.IsLocalPlayer)).GetMethod),
+                new(OpCodes.Brfalse_S)
+            );
+
+            if (!codeMatcher.IsValid)
+            {
+                s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. Match for tackle jump point was invalid.", LogLevel.Error);
+                return null;
+            }
+
+            codeMatcher.AddLabels(new[] { infiniteTackleLabel });
+
+            return codeMatcher.InstructionEnumeration();
+        }
+
+        private static bool HasInfiniteTackle()
+        {
+            return s_config().InfiniteTackle;
+        }
+
+        private static bool HasInfiniteBait()
+        {
+            return s_config().InfiniteBait;
+        }
+
         private static float TreasureInBarMultiplier()
         {
             return 0.0135f * s_config().TreasureInBarMultiplier;
@@ -175,24 +257,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 return true;
 
             return false;
-        }
-
-        private static bool DoneFishingPatch(ref bool consumeBaitAndTackle)
-        {
-            try
-            {
-                ModConfig config = s_config();
-
-                if (config.InfiniteBaitAndTackle)
-                    consumeBaitAndTackle = false;
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                s_monitor.Log($"Failed in {nameof(DoneFishingPatch)}:\n{e}", LogLevel.Error);
-                return true;
-            }
         }
 
         private static bool PullFishFromWaterPatch(ref int fishDifficulty)

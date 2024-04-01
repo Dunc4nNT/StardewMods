@@ -302,16 +302,17 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().ResetAttachmentsLimitWhenNotEquipped,
                 setValue: value => config().ResetAttachmentsLimitWhenNotEquipped = value
             );
-            configMenu.AddBoolOption(
-                mod: manifest,
-                name: I18n.Config_Attachments_InfiniteBaitAndTackle_Name,
-                tooltip: I18n.Config_Attachments_InfiniteBaitAndTackle_Tooltip,
-                getValue: () => config().InfiniteBaitAndTackle,
-                setValue: value => config().InfiniteBaitAndTackle = value
-            );
             configMenu.AddSectionTitle(
                 mod: manifest,
                 text: I18n.Config_Attachments_BaitSection
+            );
+
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Attachments_InfiniteBait_Name,
+                tooltip: I18n.Config_Attachments_InfiniteBait_Tooltip,
+                getValue: () => config().InfiniteBait,
+                setValue: value => config().InfiniteBait = value
             );
 
             for (int i = FishingRod.BaitIndex; i < FishingRod.TackleIndex; i++)
@@ -343,6 +344,14 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             configMenu.AddSectionTitle(
                 mod: manifest,
                 text: I18n.Config_Attachments_TacklesSection
+            );
+
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Attachments_InfiniteTackle_Name,
+                tooltip: I18n.Config_Attachments_InfiniteTackle_Tooltip,
+                getValue: () => config().InfiniteTackle,
+                setValue: value => config().InfiniteTackle = value
             );
 
             for (int i = FishingRod.TackleIndex; i < FishingRod.TackleIndex + 2; i++)
