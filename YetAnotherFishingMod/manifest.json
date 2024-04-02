@@ -7,7 +7,8 @@
   "EntryDll": "YetAnotherFishingMod.dll",
   "MinimumApiVersion": "4.0.0",
   "UpdateKeys": [
-    "Nexus:20391"
+    "Nexus:20391",
+    "CurseForge:996759"
   ],
   "Dependencies": [
     {
