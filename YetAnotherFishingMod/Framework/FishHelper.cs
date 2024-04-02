@@ -134,6 +134,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         private void ApplyBobberBarBuffs()
         {
             BobberBar bobberBar = this._bobberBar.Value;
+            SFishingRod fishingRod = this._fishingRod.Value;
             ModConfig config_ = config();
 
             bobberBar.difficulty *= config_.DifficultyMultiplier;
@@ -147,9 +148,15 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 bobberBar.treasure = true;
 
             if (config_.GoldenTreasureAppearance == TreasureAppearanceSettings.Never)
+            {
+                fishingRod.Instance.goldenTreasure = false;
                 bobberBar.goldenTreasure = false;
+            }
             else if (bobberBar.treasure && config_.GoldenTreasureAppearance == TreasureAppearanceSettings.Always)
+            {
+                fishingRod.Instance.goldenTreasure = true;
                 bobberBar.goldenTreasure = true;
+            }
 
             if ((config_.InstantCatchTreasure && bobberBar.treasure))
                 bobberBar.treasureCaught = true;
