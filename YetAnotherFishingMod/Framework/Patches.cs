@@ -79,6 +79,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         {
             CodeMatcher codeMatcher = new(instructions, generator);
 
+            Label skipVibrationsLabel = generator.DefineLabel();
+
             codeMatcher.MatchStartForward(
                 new(OpCodes.Ldfld, typeof(BobberBar).GetField(nameof(BobberBar.distanceFromCatching))),
                 new(OpCodes.Ldc_R4, 0.002f),
@@ -120,6 +122,29 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 .Insert(
                     new CodeInstruction(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => TreasureInBarMultiplier()))
                 );
+
+            codeMatcher.Start();
+
+            codeMatcher.MatchStartForward(
+                new(OpCodes.Ldc_R4),
+                new(OpCodes.Ldc_R4),
+                new(OpCodes.Call, AccessTools.Method(typeof(Rumble), nameof(Rumble.rumble), [typeof(float), typeof(float)]))
+            );
+
+            if (!codeMatcher.IsValid)
+            {
+                s_monitor.Log($"Failed to patch {nameof(BobberBar_Update_Transpiler)}. Match for \"Rumble.rumble\" was invalid.", LogLevel.Error);
+                return null;
+            }
+
+            codeMatcher.InsertAndAdvance(
+                new(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => DoSkipVibration())),
+                new(OpCodes.Brtrue, skipVibrationsLabel)
+            );
+
+            codeMatcher.Advance(3);
+
+            codeMatcher.AddLabels(new[] { skipVibrationsLabel });
 
             return codeMatcher.InstructionEnumeration();
         }
@@ -251,6 +276,11 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 return true;
 
             return false;
+        }
+
+        private static bool DoSkipVibration()
+        {
+            return s_config().DisableVibrations;
         }
 
         private static bool HasInfiniteTackle()

@@ -43,7 +43,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 fishingRod.InstantBite();
 
             if (config_.AutoHook)
-                fishingRod.AutoHook();
+                fishingRod.AutoHook(!config_.DisableVibrations);
         }
 
         public void OnTreasureMenuOpen(ItemGrabMenu itemGrabMenu)

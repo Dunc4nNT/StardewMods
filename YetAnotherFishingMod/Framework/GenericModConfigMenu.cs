@@ -278,6 +278,13 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().DoSpeedUpAnimations,
                 setValue: value => config().DoSpeedUpAnimations = value
             );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_DisableVibrations_Name,
+                tooltip: I18n.Config_General_DisableVibrations_Tooltip,
+                getValue: () => config().DisableVibrations,
+                setValue: value => config().DisableVibrations = value
+            );
 
             configMenu.AddPage(
                 mod: manifest,

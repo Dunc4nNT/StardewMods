@@ -27,14 +27,16 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             ;
         }
 
-        public void AutoHook()
+        public void AutoHook(bool doVibrate)
         {
             if (this.CanHook())
             {
                 this.Instance.timePerBobberBob = 1f;
                 this.Instance.timeUntilFishingNibbleDone = FishingRod.maxTimeToNibble;
                 this.Instance.DoFunction(Game1.player.currentLocation, (int)this.Instance.bobber.X, (int)this.Instance.bobber.Y, 1, Game1.player);
-                Rumble.rumble(0.95f, 200f);
+
+                if (doVibrate)
+                    Rumble.rumble(0.95f, 200f);
             }
         }
 

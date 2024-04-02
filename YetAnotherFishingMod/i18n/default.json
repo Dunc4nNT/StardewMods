@@ -58,6 +58,8 @@
   "config.general.auto-loot-treasure.tooltip": "Automatically loot and close the treasure menu popup after catching treasure.",
   "config.general.do-speed-up-animations.name": "Faster Animations",
   "config.general.do-speed-up-animations.tooltip": "Various animations are quicker. These include the casting, reeling and treasure opening animations.",
+  "config.general.disable-vibrations.name": "Disable Vibrations",
+  "config.general.disable-vibrations.tooltip": "Disables various controller vibrations while fishing.",
 
   "config.attachments.page-title": "Attachments",
   "config.attachments.general-section": "General",
