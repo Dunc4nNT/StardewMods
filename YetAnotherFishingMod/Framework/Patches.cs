@@ -22,8 +22,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         private static Func<ModConfig> s_config;
         private static IReflectionHelper s_reflectionHelper;
 
-        private static readonly int s_retry_catch_fish_amount = 100;
-
         internal static void Initialise(Harmony harmony, IMonitor monitor, Func<ModConfig> config, IReflectionHelper reflectionHelper)
         {
             s_harmony = harmony;
