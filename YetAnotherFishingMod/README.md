@@ -218,6 +218,7 @@ If you have a question regarding translations (whether it's about how to transla
 
 - [NexusMods page for this mod](https://www.nexusmods.com/stardewvalley/mods/20391)
 - [GitHub mono repo with all my mods](https://github.com/Dunc4nNT/StardewMods)
+- [CurseForge page for this mod](https://legacy.curseforge.com/stardewvalley/mods/yet-another-fishing-mod)
 
 ## To Do
 
