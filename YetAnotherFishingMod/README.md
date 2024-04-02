@@ -9,9 +9,6 @@ Having difficulty fishing? Or finding it too easy? This is yet another mod that 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration](#configuration)
-  - [General](#general)
-  - [Attachments](#attachments)
-  - [Enchantments](#enchantments)
 - [How to Use](#how-to-use)
 - [Compatibility](#compatibility)
 - [Translations](#translations)
@@ -38,40 +35,146 @@ Mandatory and optional requirements for use of this mod.
 
 The mod's configurable options can be found below. These can either be adjusted through [Generic Mod Configuration Menu (GMCM)][GMCM-nexus] or the `config.json` file. Editing the options using GMCM is recommended. GMCM will also provide descriptive tooltips if the option itself is not clear.
 
-### General
+### Minigame Skip
 
-- Increase Chance of Catching Fish (Nearly guarantee catching fish in locations you can catch things other than trash)
-- Instantly Catch Fish (Skip fishing minigame)
-- Instantly Catch Treasure (Automatically catches treasure for you, even if you missed it)
-- Always Maximum Casting Power (Casts your line the maximum distance)
-- Always Perfect
-- Adjust how often treasure appears (vanilla, never or always)
-- Always Catch Double
-- Instant Bite
-- Automatically Hook
-- Automatically Loot Treasure
-- Difficulty Multiplier
-- Fish Quality
-- Minimum Fish Quality (Is trumped by fish quality)
+#### Automatically Cast
+Keybind to toggle automatically casting your fishing rod. Will try casting every second if enabled.
+
+#### Skip Minigame
+Skips the fishing minigame. Amount of catches required before skip can be changed below.
+
+#### Catches Required
+Amount of catches required before it skips the minigame. The "Skip Minigame" option must be enabled.
+
+#### Chance of Perfect
+The chance that the minigame skip causes a perfect catch. "Always Perfect" trumps this option. The "Skip Minigame" option must be enabled.
+
+#### Treasure Catch Chance
+The chance that the skip minigame catches treasure, if there was one. "Instant Catch Treasure" trumps this option. The "Skip Minigame" option must be enabled.
+
+### Difficulty
+
+#### Difficulty Multiplier
+Value with which the standard fishing difficulty is multiplied.
+
+#### Adjust XP Gain
+Adjust the XP gained based on the fish difficulty set above.
+
+#### Fish Catch Multiplier
+A multiplier for the increase given when the fish is inside the green bar. The higher the value, the quicker the fish is caught.
+
+#### Fish Escape Multiplier
+A multiplier for the penalty given when the fish is outside of the green bar. The higher the value, the quicker the fish escapes.
+
+#### Bar Size Multiplier
+A multiplier for the size of the bar in the fishing minigame. The higher the value, the larger the bar.
+
+#### Always Max Casting Power
+Always casts the fishing rod with maximum power, no matter how long you held the button.
+
+#### Automatically Hook
+Automatically starts reeling in your fish after one bites.
+
+#### Always Perfect
+Always get a perfect after catching a fish, even if you did not.
+
+#### Instantly Catch Treasure
+If there are any treasures in the fishing minigame, instantly catch them even if you missed them.
+
+#### Treasure Catch Multiplier
+A multiplier for the increase given when a treasure is inside the green bar. The higher the value, the quicker the treasure is caught.
+
+### Fishing Loot
+
+#### Fish
+Increases the chance of catching fish when enabled.
+
+#### Rubbish
+Increases the chance of catching rubbish when enabled.
+
+#### Other
+Increases the chance of catching other items when enabled. This includes items such as seaweed and algae.
+
+#### Amount of Fish
+Catch the set amount of fish. Using bait may override this amount. Whichever is highest.
+
+#### Minimum Fish Quality
+Always gets fish of the set quality or better. Trumps the "Fish Quality" option.
+
+#### Set Fish Quality
+Always catch fish with the set quality. Trumped by the "Minimum Fish Quality" option.
+
+#### Treasure Probability
+Adjust how often treasure chests appear. (vanilla, always, never)
+
+#### Golden Treasure Probability
+Adjust how often a treasure chest is a golden treasure chest. (vanilla, always, never)
+
+### Faster Please
+
+#### Instant Bite
+Fish instantly bite after casting your fishing rod.
+
+#### Automatically Loot Fish
+Automatically loot and close the fish popup after catching a fish.
+
+#### Automatically Loot Treasure
+Automatically loot and close the treasure menu popup after catching treasure.
+
+#### Faster Animations
+Various animations are quicker. These include the casting, reeling and treasure opening animations.
 
 ### Attachments
 
-- Override Attachment Limit
-- Reset Attachments
-- Spawn Bait When Equipped
-- Bait to Spawn
-- Infinite Bait and Tackles
-- Spawn Tackle When Equipped
-- Tackle to Spawn
+#### Override Attachment Limit
+Overrides the fishing rod's attachment limit when spawning bait and tackle.
+
+#### Reset Attachments Limit
+Resets attachment limit back to the default when unequipping the fishing rod. **WARNING: If you have any attachments in an overriden slot, they will be deleted.**
+
+#### Infinite Bait
+Never run out of bait.
+
+#### Spawn Bait When Equipped
+Spawns the below selected bait item whenever you equip your fishing rod.
+
+#### Amount of Bait
+How much bait to spawn.
+
+#### Bait to Spawn
+Which bait to automatically spawn when fishing rod is equipped.
+
+#### Infinite Tackles
+Your tackle never wears out.
+
+#### Spawn Tackle When Equipped
+Spawns the below selected tackle item whenever you equip your fishing rod.
+
+#### Tackle to Spawn
+Which tackle to automatically spawn when fishing rod is equipped.
 
 ### Enchantments
 
-- Reset Enchantments
-- Add All Enchantments
-- Add Autohook Enchantment
-- Add Efficient Tool Enchantment
-- Add Master Enchantment
-- Add Preserving Enchantment
+#### Enable Adding Enchantments
+Adds enchantments as set below when checked.
+
+#### Reset Enchantments
+Resets enchantments to what they were before after unequipping the fishing rod.
+
+#### Add All Enchantments
+Adds all available enchantments when you equip a fishing rod.
+
+#### Add Auto-Hook Enchantment
+Adds the auto-hook enchantment when equipping a fishing rod.
+
+#### Add Efficient Enchantment
+Adds the efficient tool enchantment when equipping a fishing rod.
+
+#### Add Master Enchantment
+Adds the master enchantment when equipping a fishing rod.
+
+#### Add Preserving Enchantment
+Adds the preserving enchantment when equipping a fishing rod.
 
 ## How to Use
 
@@ -95,19 +198,21 @@ Likely to conflict with mods that try to do the same thing. Due to every option 
 
 ## Translations
 
-Currently, only English is supported.
+English is the only language fully supported by me, and guaranteed to be up to date.
 
-If you'd like another language to be supported and would like to help, please check the [modding translations wiki](https://stardewvalleywiki.com/Modding:Translations) and send a [pull request][gh-pr].
+There are various languages that have translations available to download and use on NexusMods. Do note that these may not always be up to date, as I can't guarantee support for those languages myself.
+
+If the language you'd like to see has no translation, or it's outdated, feel free to create your own translations and publish them as a mod translation on NexusMods. **Please only upload the translation file and nothing else.** You can either upload it inside of a `Yet Another Fishing Mod/i18n/` folder or as just the file. For extra information, take a look at the [translation wiki](https://stardewvalleywiki.com/Modding:Translations).
+
+Due to me not being able to guarantee whether other languages are up to date, I prefer they be uploaded separately from this mod (so a mod translation on NexusMods). For players this means you'll have to look at the "Translations" tab on Nexus and check if the language you speak is on there. For translators this means you'll have to publish your translations on Nexus and publish updates after new releases yourself.
+
+If you have a question regarding translations (whether it's about how to translate, how to upload them etc), feel free to contact me any way.
 
 ## Contact
 
-**Having issues with installing or using the mod?** Leave a comment on the [NexusMods page][nexus-comments] detailing which steps you've done, which step you're failing at and if SMAPI is giving an error, please include a link to your [SMAPI log][smapi-log].
+**In almost all cases** please leave a comment on the [NexusMods page][nexus-comments] detailing your issue. **Always** include a link to your [SMAPI log][smapi-log]. **Without** this log it may be impossible for me to solve the problem you're having. If you prefer, you could send a DM on Nexus.
 
-**Certain you've found a bug?** Please open an [issue][gh-issues] using the bug report template and add the appropriate mod label. If you prefer using Nexus, you can leave a report on the [bug reports page][nexus-bugs]. **Uncertain?** Leave a [comment][nexus-comments] first detailing what you've run into, including a link to your [SMAPI log][smapi-log]. **Know what you're doing?** Feel free to send a PR if you'd like.
-
-**Like to request a new feature or addition to an existing feature?** Please open an [issue][gh-issues] using the feature request template and add the appropriate mod label.
-
-**I may take a while to see a comment on nexus, you can try contacting me through Discord DMs or the SDV server (never.toxic) if that's the case, or incase of an urgent issue.**
+**Only after receiving permission**, may you try contacting me through Discord DMs or the SDV server (never.toxic). I likely won't respond otherwise.
 
 ## Links
 
@@ -118,26 +223,19 @@ If you'd like another language to be supported and would like to help, please ch
 
 List of things I'd like to add at some point. I'm uncertain how many of these I'll actually end up doing. List in no specific order.
 
-- ~~Look into potential bug with the new bait (not catching 3 fish)~~ fixed in next release
-- ~~Set InstantCatchTreasure to true by default~~ fixed in next release
-- Look into difficulty value changing XP gained
-- Rewrite attachment/enchantment logic
-- Allow for custom enchantments
-- Remove the "do add bait/tackle/enchantment" option and simply have a "None" option in the dropdown menu
-- Allow 2 tackle slots (as per 1.6 content update)
-- Allow users to set the amount of fish to catch (so allow a custom amount to be entered), make sure this works well with bait items so ideally have a "vanilla" option
-- Have a percentage slider for the "always perfect" setting (as well as allowing vanilla settings)
-- Have a percentage slider for the "catch treasure" setting (as well as allowing vanilla settings)
-- Set instantly catch treasure to true by default
-- Refund stamina on max cast option
-- Skip treasure opening animation
-- Reorganise GMCM options as some are vaguely worded and it's unclear what they do. Also possibly difficult to navigate once i add some of the above options as well
-- Make sliders increment by values of say 0.05 so it's possible to set it back to 1.0 and not 1.00000001
-- Look into an auto cast/recast option, configurable keybind for it as well
+- Rewrite enchantment logic.
+- Allow for custom enchantments.
+- Add a transpiler for catching fish in the mines. Currently it's just vanilla settings, so you'll mostly catch rubbish.
+- Look into fish probability more in depth, currently if you just enable catching "Other", you won't catch jellies, and you'll catch rubbish in certain cases.
+- For spawning bait and tackles, allow switching them without having to remove them from your rod.
+- Option to apply fishing related buffs, such as luck and fishing.
+- Refund stamina on max cast option.
 - Gradually learn catching fish, so say after catching 5 of a certain fish the amount of time it takes to catch the next one decreases, all the way till it's instant.
-- Dutch translations
-- Skip fish catch animation
-- Automatically loot caught fish and trash
+- Allow requiring a certain amount of perfect catches before the minigame gets skipped.
+- Split animation skip up into separate options.
+- Add a slider to change animation speed (say from vanilla speed, up to 100% speed increase)
+- Per fish override settings, e.g. have red snappers never appear or change difficulty for that fish specifically.
+- Dutch translations.
 
 ## Licensing
 
