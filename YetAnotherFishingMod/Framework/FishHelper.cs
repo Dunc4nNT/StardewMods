@@ -9,6 +9,7 @@ using StardewValley.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SObject = StardewValley.Object;
 
 namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 {
@@ -24,10 +25,16 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             ModConfig config_ = config();
             SFishingRod fishingRod = this._fishingRod.Value;
 
-            if ((int)config_.MinimumFishQuality > fishingRod.Instance.fishQuality)
-                fishingRod.Instance.fishQuality = (int)config_.MinimumFishQuality;
-            else if (config_.FishQuality != Quality.Any)
-                fishingRod.Instance.fishQuality = (int)config_.FishQuality;
+            if (ItemRegistry.GetData(fishingRod.Instance.whichFish?.QualifiedItemId)?.Category == SObject.FishCategory)
+            {
+                if ((int)config_.MinimumFishQuality > fishingRod.Instance.fishQuality)
+                    fishingRod.Instance.fishQuality = (int)config_.MinimumFishQuality;
+                else if (config_.FishQuality != Quality.Any)
+                    fishingRod.Instance.fishQuality = (int)config_.FishQuality;
+
+                if (config_.NumberOfFishCaught > fishingRod.Instance.numberOfFishCaught)
+                    fishingRod.Instance.numberOfFishCaught = config_.NumberOfFishCaught;
+            }
 
             if (config_.AlwaysMaxCastingPower)
                 fishingRod.Instance.castingPower = 1.01f;
@@ -37,9 +44,6 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
             if (config_.AutoHook)
                 fishingRod.AutoHook();
-
-            if (config_.NumberOfFishCaught > fishingRod.Instance.numberOfFishCaught)
-                fishingRod.Instance.numberOfFishCaught = config_.NumberOfFishCaught;
         }
 
         public void OnTreasureMenuOpen(ItemGrabMenu itemGrabMenu)
