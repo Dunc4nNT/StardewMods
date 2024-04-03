@@ -51,8 +51,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
                 if (overrideAttachmentLimit && this.Instance.AttachmentSlotsCount < i + 1)
                 {
-                    if (Game1.IsMultiplayer)
-                        break;
+                    if (Game1.server != null)
+                        return;
 
                     this.Instance.AttachmentSlotsCount = i + 1;
                 }
@@ -72,8 +72,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
                 if (overrideAttachmentLimit && this.Instance.AttachmentSlotsCount < i + 1)
                 {
-                    if (Game1.IsMultiplayer)
-                        break;
+                    if (Game1.server != null)
+                        return;
 
                     this.Instance.AttachmentSlotsCount = i + 1;
                 }

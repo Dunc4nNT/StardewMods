@@ -1,7 +1,7 @@
 {
   "Name": "Yet Another Fishing Mod",
   "Author": "NeverToxic",
-  "Version": "1.1.1-alpha",
+  "Version": "1.1.2-alpha",
   "Description": "Automatically catch fish and treasure.",
   "UniqueID": "NeverToxic.YetAnotherFishingMod",
   "EntryDll": "YetAnotherFishingMod.dll",
