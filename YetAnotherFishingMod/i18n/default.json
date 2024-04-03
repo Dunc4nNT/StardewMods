@@ -64,7 +64,7 @@
   "config.attachments.page-title": "Attachments",
   "config.attachments.general-section": "General",
   "config.attachments.override-attachment-limit.name": "Override Attachment Limit",
-  "config.attachments.override-attachment-limit.tooltip": "Overrides the fishing rod's attachment limit when spawning bait and tackle.",
+  "config.attachments.override-attachment-limit.tooltip": "Overrides the fishing rod's attachment limit when spawning bait and tackle. WARNING: does not work in multiplayer.",
   "config.attachments.reset-attachments-limit-when-not-equipped.name": "Reset Attachments Limit",
   "config.attachments.reset-attachments-limit-when-not-equipped.tooltip": "Resets attachment limit back to the default when unequipping the fishing rod. WARNING: If you have any attachments in an overriden slot, they will be deleted.",
   "config.attachments.bait-section": "Bait",
