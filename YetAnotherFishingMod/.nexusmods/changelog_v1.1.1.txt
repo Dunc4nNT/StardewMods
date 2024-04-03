@@ -2,3 +2,5 @@ Version 1.1.1
 
 - Fixed golden treasure not appearing correctly.
 - Fixed changing fish quality also applying to rubbish and other items.
+- Multiplayer fix.
+
