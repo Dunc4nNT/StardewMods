@@ -50,8 +50,12 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                     continue;
 
                 if (overrideAttachmentLimit && this.Instance.AttachmentSlotsCount < i + 1)
-                    this.Instance.AttachmentSlotsCount = i + 1;
+                {
+                    if (Game1.IsMultiplayer)
+                        break;
 
+                    this.Instance.AttachmentSlotsCount = i + 1;
+                }
                 if (this.Instance.AttachmentSlotsCount > i && this.Instance.attachments.ElementAt(i) == null)
                     this.Instance.attachments[i] = ItemRegistry.Create<SObject>(baitId, amountOfBait);
             }
@@ -67,7 +71,12 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                     continue;
 
                 if (overrideAttachmentLimit && this.Instance.AttachmentSlotsCount < i + 1)
+                {
+                    if (Game1.IsMultiplayer)
+                        break;
+
                     this.Instance.AttachmentSlotsCount = i + 1;
+                }
 
                 if (this.Instance.AttachmentSlotsCount > i && this.Instance.attachments.ElementAt(i) == null)
                     this.Instance.attachments[i] = ItemRegistry.Create<SObject>(tackleId);
