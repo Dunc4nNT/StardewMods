@@ -57,6 +57,13 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().SkipFishingMinigame,
                 setValue: value => config().SkipFishingMinigame = value
             );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_SkipMinigamePopup_Name,
+                tooltip: I18n.Config_General_SkipMinigamePopup_Tooltip,
+                getValue: () => config().SkipMinigamePopup,
+                setValue: value => config().SkipMinigamePopup = value
+            );
             configMenu.AddNumberOption(
                 mod: manifest,
                 name: I18n.Config_General_SkipFishingMinigameCatchesRequired_Name,

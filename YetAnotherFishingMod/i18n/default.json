@@ -5,6 +5,8 @@
   "config.general.do-auto-cast.tooltip": "Keybind to toggle automatically casting your fishing rod. Will try casting every second if enabled.",
   "config.general.skip-fishing-minigame.name": "Skip Minigame",
   "config.general.skip-fishing-minigame.tooltip": "Skips the fishing minigame. Amount of catches required before skip can be changed below.",
+  "config.general.skip-minigame-popup.name": "Skip Pop-up",
+  "config.general.skip-minigame-popup.tooltip": "Stops the minigame from popping up before automatically catching the fish.",
   "config.general.skip-fishing-minigame-catches-required.name": "Catches Required",
   "config.general.skip-fishing-minigame-catches-required.tooltip": "Amount of catches required before it skips the minigame. The \"Skip Minigame\" option must be enabled.",
   "config.general.skip-fishing-minigame-perfect-chance.name": "Chance of Perfect",

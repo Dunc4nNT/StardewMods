@@ -193,6 +193,11 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 bobberBar.perfect = false;
 
             bobberBar.distanceFromCatching = 1f;
+
+            for (int i = 0; i < 250; i++)
+            {
+                bobberBar?.update(Game1.currentGameTime);
+            }
         }
 
         public void SpeedUpAnimations()
