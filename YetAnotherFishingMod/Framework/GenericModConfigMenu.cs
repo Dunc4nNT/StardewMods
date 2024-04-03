@@ -57,6 +57,13 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 getValue: () => config().SkipFishingMinigame,
                 setValue: value => config().SkipFishingMinigame = value
             );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_SkipMinigamePopup_Name,
+                tooltip: I18n.Config_General_SkipMinigamePopup_Tooltip,
+                getValue: () => config().SkipMinigamePopup,
+                setValue: value => config().SkipMinigamePopup = value
+            );
             configMenu.AddNumberOption(
                 mod: manifest,
                 name: I18n.Config_General_SkipFishingMinigameCatchesRequired_Name,
@@ -277,6 +284,13 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 tooltip: I18n.Config_General_DoSpeedUpAnimations_Tooltip,
                 getValue: () => config().DoSpeedUpAnimations,
                 setValue: value => config().DoSpeedUpAnimations = value
+            );
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_General_DisableVibrations_Name,
+                tooltip: I18n.Config_General_DisableVibrations_Tooltip,
+                getValue: () => config().DisableVibrations,
+                setValue: value => config().DisableVibrations = value
             );
 
             configMenu.AddPage(

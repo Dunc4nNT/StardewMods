@@ -43,7 +43,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 fishingRod.InstantBite();
 
             if (config_.AutoHook)
-                fishingRod.AutoHook();
+                fishingRod.AutoHook(!config_.DisableVibrations);
         }
 
         public void OnTreasureMenuOpen(ItemGrabMenu itemGrabMenu)
@@ -193,6 +193,11 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 bobberBar.perfect = false;
 
             bobberBar.distanceFromCatching = 1f;
+
+            for (int i = 0; i < 250; i++)
+            {
+                bobberBar?.update(Game1.currentGameTime);
+            }
         }
 
         public void SpeedUpAnimations()
