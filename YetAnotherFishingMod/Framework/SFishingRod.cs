@@ -53,7 +53,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 {
                     if (Game1.server != null)
                         return;
-
+                  
                     this.Instance.AttachmentSlotsCount = i + 1;
                 }
                 if (this.Instance.AttachmentSlotsCount > i && this.Instance.attachments.ElementAt(i) == null)
