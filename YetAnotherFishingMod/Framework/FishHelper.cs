@@ -166,7 +166,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 bobberBar.treasureCaught = true;
 
             if (this.ShouldSkipMinigame(config_.SkipFishingMinigame, config_.SkipFishingMinigameCatchesRequired))
-                this.SkipMinigame(config_.SkipFishingMinigameTreasureChance, config_.InstantCatchTreasure, config_.SkipFishingMinigamePerfectChance, config_.AlwaysPerfect);
+                this.SkipMinigame(config_.SkipFishingMinigameTreasureChance, config_.InstantCatchTreasure, config_.SkipFishingMinigamePerfectChance, config_.AlwaysPerfect, config_.SkipMinigamePopup);
         }
 
         private bool ShouldSkipMinigame(bool maySkipFishingMiniGame, int minimumCatchesRequired)
@@ -182,7 +182,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 return false;
         }
 
-        private void SkipMinigame(float treasureChance, bool instantCatchTreasure, float perfectChance, bool alwaysPerfect)
+        private void SkipMinigame(float treasureChance, bool instantCatchTreasure, float perfectChance, bool alwaysPerfect, bool skipPopup)
         {
             BobberBar bobberBar = this._bobberBar.Value;
 
@@ -194,9 +194,10 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
             bobberBar.distanceFromCatching = 1f;
 
-            for (int i = 0; i < 250; i++)
+            if (skipPopup)
             {
-                bobberBar?.update(Game1.currentGameTime);
+                for (int i = 0; i < 250; i++)
+                    bobberBar?.update(Game1.currentGameTime);
             }
         }
 
