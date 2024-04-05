@@ -65,7 +65,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             {
                 if (instruction.opcode == OpCodes.Ldstr && (string)instruction.operand == "coin")
                 {
-                    output.Insert(output.Count - 17, new CodeInstruction(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => DoAutoLootFish())));
+                    output.Insert(output.Count - 17, new CodeInstruction(OpCodes.Call, typeof(Patches).GetMethod(nameof(DoAutoLootFish))));
                     output.Insert(output.Count - 17, new CodeInstruction(OpCodes.Brtrue, label));
                     output[^2].labels.Add(label);
                 }
@@ -98,7 +98,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 .Advance(1)
                 .RemoveInstruction()
                 .Insert(
-                    new CodeInstruction(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => FishInBarMultiplier()))
+                    new CodeInstruction(OpCodes.Call, typeof(Patches).GetMethod(nameof(FishInBarMultiplier)))
                 );
 
             codeMatcher.Start();
@@ -120,7 +120,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
                 .Advance(1)
                 .RemoveInstruction()
                 .Insert(
-                    new CodeInstruction(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => TreasureInBarMultiplier()))
+                    new CodeInstruction(OpCodes.Call, typeof(Patches).GetMethod(nameof(TreasureInBarMultiplier)))
                 );
 
             codeMatcher.Start();
@@ -138,7 +138,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             }
 
             codeMatcher.InsertAndAdvance(
-                new(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => DoSkipVibration())),
+                new(OpCodes.Call, typeof(Patches).GetMethod(nameof(DoSkipVibration))),
                 new(OpCodes.Brtrue, skipVibrationsLabel)
             );
 
@@ -173,7 +173,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             }
 
             codeMatcher.Insert(
-                new(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => HasInfiniteBait())),
+                new(OpCodes.Call, typeof(Patches).GetMethod(nameof(HasInfiniteBait))),
                 new(OpCodes.Brtrue, infiniteBaitLabel)
             );
 
@@ -193,7 +193,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             }
 
             codeMatcher.Insert(
-                new(OpCodes.Call, SymbolExtensions.GetMethodInfo(() => HasInfiniteTackle())),
+                new(OpCodes.Call, typeof(Patches).GetMethod(nameof(HasInfiniteTackle))),
                 new(OpCodes.Brtrue, infiniteTackleLabel)
             );
 
