@@ -32,7 +32,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             ApplyPatches();
         }
 
-        private static void ApplyPatches()
+        public static void ApplyPatches()
         {
             s_harmony.Patch(
                 original: AccessTools.Method(typeof(FishingRod), nameof(FishingRod.tickUpdate)),
@@ -55,7 +55,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             );
         }
 
-        private static IEnumerable<CodeInstruction> FishingRodTickUpdatePatch(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
+        public static IEnumerable<CodeInstruction> FishingRodTickUpdatePatch(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
         {
             List<CodeInstruction> output = [];
 
@@ -75,7 +75,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             return output;
         }
 
-        private static IEnumerable<CodeInstruction> BobberBar_Update_Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
+        public static IEnumerable<CodeInstruction> BobberBar_Update_Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
         {
             CodeMatcher codeMatcher = new(instructions, generator);
 
@@ -149,7 +149,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             return codeMatcher.InstructionEnumeration();
         }
 
-        private static IEnumerable<CodeInstruction> FishingRod_DoDoneFishing_Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
+        public static IEnumerable<CodeInstruction> FishingRod_DoDoneFishing_Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
         {
             CodeMatcher codeMatcher = new(instructions, generator);
 
@@ -218,7 +218,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             return codeMatcher.InstructionEnumeration();
         }
 
-        private static IEnumerable<CodeInstruction> GameLocation_GetFishFromLocationData_Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
+        public static IEnumerable<CodeInstruction> GameLocation_GetFishFromLocationData_Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
         {
             CodeMatcher codeMatcher = new(instructions, generator);
 
@@ -259,7 +259,7 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             return filteredPossibleFish.AsEnumerable();
         }
 
-        private static bool IsFishInPreferredCategory(ParsedItemData fish)
+        public static bool IsFishInPreferredCategory(ParsedItemData fish)
         {
             ModConfig config = s_config();
 
@@ -278,37 +278,37 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             return false;
         }
 
-        private static bool DoSkipVibration()
+        public static bool DoSkipVibration()
         {
             return s_config().DisableVibrations;
         }
 
-        private static bool HasInfiniteTackle()
+        public static bool HasInfiniteTackle()
         {
             return s_config().InfiniteTackle;
         }
 
-        private static bool HasInfiniteBait()
+        public static bool HasInfiniteBait()
         {
             return s_config().InfiniteBait;
         }
 
-        private static float TreasureInBarMultiplier()
+        public static float TreasureInBarMultiplier()
         {
             return 0.0135f * s_config().TreasureInBarMultiplier;
         }
 
-        private static float FishInBarMultiplier()
+        public static float FishInBarMultiplier()
         {
             return 0.002f * s_config().FishInBarMultiplier;
         }
 
-        private static bool DoAutoLootFish()
+        public static bool DoAutoLootFish()
         {
             return s_config().AutoLootFish;
         }
 
-        private static bool PullFishFromWaterPatch(ref int fishDifficulty)
+        public static bool PullFishFromWaterPatch(ref int fishDifficulty)
         {
             try
             {
