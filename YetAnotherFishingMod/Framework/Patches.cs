@@ -151,6 +151,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
         public static IEnumerable<CodeInstruction> FishingRod_DoDoneFishing_Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
         {
+            s_monitor.Log("Patching FishingRod.doDoneFishing");
+
             CodeMatcher codeMatcher = new(instructions, generator);
 
             Label infiniteBaitLabel = generator.DefineLabel();
@@ -214,6 +216,8 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
             }
 
             codeMatcher.AddLabels(new[] { infiniteTackleLabel });
+
+            s_monitor.Log("Done patching FishingRod.doDoneFishing");
 
             return codeMatcher.InstructionEnumeration();
         }
@@ -285,11 +289,15 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
         public static bool HasInfiniteTackle()
         {
+            s_monitor.Log($"Applying infinite tackle: {s_config().InfiniteTackle}");
+
             return s_config().InfiniteTackle;
         }
 
         public static bool HasInfiniteBait()
         {
+            s_monitor.Log($"Applying infinite bait: {s_config().InfiniteBait}");
+
             return s_config().InfiniteBait;
         }
 
