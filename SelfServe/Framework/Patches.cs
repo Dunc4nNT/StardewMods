@@ -48,6 +48,43 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
                original: AccessTools.Method(typeof(BeachNightMarket), nameof(BeachNightMarket.checkAction)),
                prefix: new HarmonyMethod(typeof(Patches), nameof(BeachNightMarketCheckActionPatch))
             );
+            s_harmony.Patch(
+               original: AccessTools.Method(typeof(Utility), nameof(Utility.TryOpenShopMenu), [typeof(string), typeof(string), typeof(bool)]),
+               postfix: new HarmonyMethod(typeof(Patches), nameof(Utility_TryOpenShopMenu_PostFix))
+            );
+            s_harmony.Patch(
+               original: AccessTools.Method(typeof(Utility), nameof(Utility.TryOpenShopMenu), [typeof(string), typeof(GameLocation), typeof(Microsoft.Xna.Framework.Rectangle), typeof(int), typeof(bool), typeof(bool), typeof(Action<string>)]),
+               prefix: new HarmonyMethod(typeof(Patches), nameof(Utility_TryOpenShopMenu_Prefix))
+            );
+        }
+
+        public static void Utility_TryOpenShopMenu_PostFix(string shopId, ref bool __result)
+        {
+            if (__result)
+            {
+                return;
+            }
+
+            ModConfig config = s_config();
+
+            if (!config.OtherShops)
+            {
+                return;
+            }
+
+            __result = Utility.TryOpenShopMenu(shopId, Game1.player.currentLocation, forceOpen: true);
+        }
+
+        public static bool Utility_TryOpenShopMenu_Prefix(ref bool forceOpen)
+        {
+            ModConfig config = s_config();
+
+            if (config.OtherShops)
+            {
+                forceOpen = true;
+            }
+
+            return true;
         }
 
         private static bool GameLocationPerformActionPatch(ref GameLocation __instance, string[] action, ref bool __result)
