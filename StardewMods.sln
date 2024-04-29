@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleHelpersCore", "Little
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelfServe", "SelfServe\SelfServe.csproj", "{D29F6B85-A49C-488F-A7D3-982EDAB63687}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmapiTemplate", "SmapiTemplate\SmapiTemplate.csproj", "{F5DC03BA-134E-4C9D-B452-0AEE31438B60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmapiTemplate", "SmapiTemplate\SmapiTemplate.csproj", "{F5DC03BA-134E-4C9D-B452-0AEE31438B60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelevisionFramework", "TelevisionFramework\TelevisionFramework.csproj", "{F272B2B4-3999-4C20-AC0E-6C2EDD49AD1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelevisionFramework", "TelevisionFramework\TelevisionFramework.csproj", "{F272B2B4-3999-4C20-AC0E-6C2EDD49AD1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{26824807-5155-4D12-BEAB-9CE20F4D0BBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{399EE2CB-FC83-44E1-9820-78C0F29AA2BF} = {26824807-5155-4D12-BEAB-9CE20F4D0BBB}
+		{F5DC03BA-134E-4C9D-B452-0AEE31438B60} = {26824807-5155-4D12-BEAB-9CE20F4D0BBB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2EE2AF65-1966-4F25-9F0B-7206AFE6F4D9}
