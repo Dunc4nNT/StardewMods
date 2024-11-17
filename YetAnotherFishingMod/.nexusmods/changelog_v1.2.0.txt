@@ -1,0 +1,4 @@
+Version 1.2.0
+
+- Hotfix for Stardew Valley 1.6.9+ compatibility.
+- Infinite tackles option should now work as intended, the workaround of also enabling infinite bait is no longer necessary.

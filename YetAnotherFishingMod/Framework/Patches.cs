@@ -153,67 +153,102 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         {
             CodeMatcher codeMatcher = new(instructions, generator);
 
-            Label infiniteBaitLabel = generator.DefineLabel();
-            Label infiniteTackleLabel = generator.DefineLabel();
-
-            codeMatcher.MatchStartForward(
-                new(OpCodes.Ldloc_2),
-                new(OpCodes.Dup),
-                new(OpCodes.Callvirt, typeof(Item).GetProperty(nameof(Item.Stack)).GetMethod),
-                new(OpCodes.Stloc_S),
-                new(OpCodes.Ldloc_S),
-                new(OpCodes.Ldc_I4_1),
-                new(OpCodes.Sub)
-            );
-
-            if (!codeMatcher.IsValid)
-            {
-                s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. Match for bait entry point was invalid.", LogLevel.Error);
-                return null;
-            }
-
-            codeMatcher.Insert(
-                new(OpCodes.Call, typeof(Patches).GetMethod(nameof(HasInfiniteBait))),
-                new(OpCodes.Brtrue, infiniteBaitLabel)
-            );
-
-            codeMatcher.MatchStartForward(
-                new(OpCodes.Ldc_I4_1),
-                new(OpCodes.Stloc_3),
+            // To skip bait consumption when infinite bait is enabled, jump past the if statement wherein bait is consumed.
+            // Finds a unique matching point (GetBait() call), and copies the label from the brfalse (on bait != null).
+            codeMatcher.MatchEndForward(
                 new(OpCodes.Ldarg_0),
-                new(OpCodes.Call, typeof(FishingRod).GetMethod(nameof(FishingRod.GetTackle))),
-                new(OpCodes.Callvirt, typeof(List<SObject>).GetMethod(nameof(List<SObject>.GetEnumerator))),
-                new(OpCodes.Stloc_S)
-            );
-
-            if (!codeMatcher.IsValid)
-            {
-                s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. Match for tackle entry point was invalid.", LogLevel.Error);
-                return null;
-            }
-
-            codeMatcher.Insert(
-                new(OpCodes.Call, typeof(Patches).GetMethod(nameof(HasInfiniteTackle))),
-                new(OpCodes.Brtrue, infiniteTackleLabel)
-            );
-
-            codeMatcher.AddLabels(new[] { infiniteBaitLabel });
-
-            codeMatcher.MatchStartForward(
-                new(OpCodes.Ldloc_0),
-                new(OpCodes.Brfalse_S),
-                new(OpCodes.Ldloc_0),
-                new(OpCodes.Callvirt, typeof(Farmer).GetProperty(nameof(Farmer.IsLocalPlayer)).GetMethod),
+                new(OpCodes.Call, typeof(FishingRod).GetMethod(nameof(FishingRod.GetBait))),
+                new(OpCodes.Stloc_2),
+                new(OpCodes.Ldloc_2),
                 new(OpCodes.Brfalse_S)
             );
 
             if (!codeMatcher.IsValid)
             {
-                s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. Match for tackle jump point was invalid.", LogLevel.Error);
-                return null;
+                s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. Match for bait label entry point is invalid.", LogLevel.Error);
+                return instructions;
             }
 
-            codeMatcher.AddLabels(new[] { infiniteTackleLabel });
+            object skipConsumeBaitLabel = codeMatcher.Instruction.Clone().operand;
+
+            if (skipConsumeBaitLabel is not Label)
+            {
+                s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. skipConsumeBaitLabel is not a label.", LogLevel.Error);
+                return instructions;
+            }
+
+            // Similarly, find a unique matching point to insert our bait consumption skip.
+            // In this case it's being inserted right after the bait != null check after GetBait().
+            // This skips the next part of the if statement (the ConsumeStack call), which would consume bait,
+            // as well as skipping past the if statement entirely (treating the if statement as if it was false).
+            codeMatcher.Start();
+            codeMatcher.MatchEndForward(
+                new(OpCodes.Ldarg_0),
+                new(OpCodes.Call, typeof(FishingRod).GetMethod(nameof(FishingRod.GetBait))),
+                new(OpCodes.Stloc_2),
+                new(OpCodes.Ldloc_2)
+            );
+
+            if (!codeMatcher.IsValid)
+            {
+                s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. Match for infinite bait entry point is invalid.", LogLevel.Error);
+                return instructions;
+            }
+
+            codeMatcher.Insert(
+                new(OpCodes.Call, typeof(Patches).GetMethod(nameof(HasInfiniteBait))),
+                new(OpCodes.Brtrue, skipConsumeBaitLabel)
+            );
+
+            // To skip tackle consumption when infinite tackles is enabled, skip the entire foreach loop its consumed inside of.
+            codeMatcher.Start();
+
+            // Finds the break; inside the foreach loop, which has a label jumping us past the loop.
+            codeMatcher.MatchEndForward(
+                new(OpCodes.Ldloc_S),
+                new(OpCodes.Callvirt, typeof(Item).GetProperty(nameof(Item.QualifiedItemId)).GetMethod),
+                new(OpCodes.Ldstr),
+                new(OpCodes.Call),
+                new(OpCodes.Brfalse_S),
+                new(OpCodes.Leave_S)
+            );
+
+            if (!codeMatcher.IsValid)
+            {
+                s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. Match for tackle label entry point is invalid.", LogLevel.Error);
+                return instructions;
+            }
+
+            object skipConsumeTackleLabel = codeMatcher.Instruction.Clone().operand;
+
+            if (skipConsumeTackleLabel is not Label)
+            {
+                s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. skipConsumeTackleLabel is not a label.", LogLevel.Error);
+                return instructions;
+            }
+
+            // Finds a unique matching point right before the foreach loop and advances to the start of it,
+            // and inserts the infinite tackle jump.
+            codeMatcher.Start();
+            codeMatcher.MatchStartForward(
+                new(OpCodes.Ldc_I4_1),
+                new(OpCodes.Stloc_3),
+                new(OpCodes.Ldarg_0),
+                new(OpCodes.Call, typeof(FishingRod).GetMethod(nameof(FishingRod.GetTackle))),
+                new(OpCodes.Callvirt),
+                new(OpCodes.Stloc_S)
+            ).Advance(2);
+
+            if (!codeMatcher.IsValid)
+            {
+                s_monitor.Log($"Failed to patch {nameof(FishingRod_DoDoneFishing_Transpiler)}. Match for infinite tackle entry point is invalid.", LogLevel.Error);
+                return instructions;
+            }
+
+            codeMatcher.Insert(
+                new(OpCodes.Call, typeof(Patches).GetMethod(nameof(HasInfiniteTackle))),
+                new(OpCodes.Brtrue, skipConsumeTackleLabel)
+            );
 
             return codeMatcher.InstructionEnumeration();
         }
