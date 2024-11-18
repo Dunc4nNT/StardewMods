@@ -1,3 +1,4 @@
+<!-- omit in toc -->
 # Self Serve
 
 Don't want to wait for shop owners like Marnie and Clint while they're gone? You no longer have to! Access any shop services even while its owner isn't attending it.
@@ -6,6 +7,7 @@ Don't want to wait for shop owners like Marnie and Clint while they're gone? You
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration](#configuration)
@@ -58,19 +60,21 @@ This mod is made for Stardew Valley 1.6 using SMAPI 4.0. This mod will **not** w
 
 ## Translations
 
-Currently, only English is supported.
+English is the only language fully supported by me, and guaranteed to be up to date.
 
-If you'd like another language to be supported and would like to help, please check the [modding translations wiki](https://stardewvalleywiki.com/Modding:Translations) and send a [pull request][gh-pr].
+There are various languages that have translations available to download and use on NexusMods. Do note that these may not always be up to date, as I can't guarantee support for those languages myself.
+
+If the language you'd like to see has no translation, or it's outdated, feel free to create your own translations and publish them as a mod translation on NexusMods. **Please only upload the translation file and nothing else.** You can either upload it inside of a `SelfServe/i18n/` folder or as just the file. For extra information, take a look at the [translation wiki](https://stardewvalleywiki.com/Modding:Translations).
+
+Due to me not being able to guarantee whether other languages are up to date, I prefer they be uploaded separately from this mod (so a mod translation on NexusMods). For players this means you'll have to look at the "Translations" tab on Nexus and check if the language you speak is on there. For translators this means you'll have to publish your translations on Nexus and publish updates after new releases yourself.
+
+If you have a question regarding translations (whether it's about how to translate, how to upload them etc), feel free to contact me any way.
 
 ## Contact
 
-**Having issues with installing or using the mod?** Leave a comment on the [NexusMods page][nexus-comments] detailing which steps you've done, which step you're failing at and if SMAPI is giving an error, please include a link to your [SMAPI log][smapi-log].
+**In almost all cases** please leave a comment on the [NexusMods page][nexus-comments] detailing your issue. **Always** include a link to your [SMAPI log][smapi-log]. **Without** this log it may be impossible for me to solve the problem you're having. If you prefer, you could send a DM on Nexus.
 
-**Certain you've found a bug?** Please open an [issue][gh-issues] using the bug report template and add the appropriate mod label. If you prefer using Nexus, you can leave a report on the [bug reports page][nexus-bugs]. **Uncertain?** Leave a [comment][nexus-comments] first detailing what you've run into, including a link to your [SMAPI log][smapi-log]. **Know what you're doing?** Feel free to send a PR if you'd like.
-
-**Like to request a new feature or addition to an existing feature?** Please open an [issue][gh-issues] using the feature request template and add the appropriate mod label.
-
-**I may take a while to see a comment on nexus, you can try contacting me through Discord DMs or the SDV server (never.toxic) if that's the case, or incase of an urgent issue.**
+**Only after receiving permission**, may you try contacting me through Discord DMs or the SDV server (never.toxic). I likely won't respond otherwise.
 
 ## Links
 

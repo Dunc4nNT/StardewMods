@@ -1,3 +1,4 @@
+<!-- omit in toc -->
 # Yet Another Fishing Mod
 
 Having difficulty fishing? Or finding it too easy? This is yet another mod that allows you to adjust various fishing-related options.
@@ -6,9 +7,59 @@ Having difficulty fishing? Or finding it too easy? This is yet another mod that 
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration](#configuration)
+  - [Minigame Skip](#minigame-skip)
+    - [Automatically Cast](#automatically-cast)
+    - [Skip Minigame](#skip-minigame)
+    - [Catches Required](#catches-required)
+    - [Chance of Perfect](#chance-of-perfect)
+    - [Treasure Catch Chance](#treasure-catch-chance)
+  - [Difficulty](#difficulty)
+    - [Difficulty Multiplier](#difficulty-multiplier)
+    - [Adjust XP Gain](#adjust-xp-gain)
+    - [Fish Catch Multiplier](#fish-catch-multiplier)
+    - [Fish Escape Multiplier](#fish-escape-multiplier)
+    - [Bar Size Multiplier](#bar-size-multiplier)
+    - [Always Max Casting Power](#always-max-casting-power)
+    - [Automatically Hook](#automatically-hook)
+    - [Always Perfect](#always-perfect)
+    - [Instantly Catch Treasure](#instantly-catch-treasure)
+    - [Treasure Catch Multiplier](#treasure-catch-multiplier)
+  - [Fishing Loot](#fishing-loot)
+    - [Fish](#fish)
+    - [Rubbish](#rubbish)
+    - [Other](#other)
+    - [Amount of Fish](#amount-of-fish)
+    - [Minimum Fish Quality](#minimum-fish-quality)
+    - [Set Fish Quality](#set-fish-quality)
+    - [Treasure Probability](#treasure-probability)
+    - [Golden Treasure Probability](#golden-treasure-probability)
+  - [Faster Please](#faster-please)
+    - [Instant Bite](#instant-bite)
+    - [Automatically Loot Fish](#automatically-loot-fish)
+    - [Automatically Loot Treasure](#automatically-loot-treasure)
+    - [Faster Animations](#faster-animations)
+  - [Attachments](#attachments)
+    - [Override Attachment Limit](#override-attachment-limit)
+    - [Reset Attachments Limit](#reset-attachments-limit)
+    - [Infinite Bait](#infinite-bait)
+    - [Spawn Bait When Equipped](#spawn-bait-when-equipped)
+    - [Amount of Bait](#amount-of-bait)
+    - [Bait to Spawn](#bait-to-spawn)
+    - [Infinite Tackles](#infinite-tackles)
+    - [Spawn Tackle When Equipped](#spawn-tackle-when-equipped)
+    - [Tackle to Spawn](#tackle-to-spawn)
+  - [Enchantments](#enchantments)
+    - [Enable Adding Enchantments](#enable-adding-enchantments)
+    - [Reset Enchantments](#reset-enchantments)
+    - [Add All Enchantments](#add-all-enchantments)
+    - [Add Auto-Hook Enchantment](#add-auto-hook-enchantment)
+    - [Add Efficient Enchantment](#add-efficient-enchantment)
+    - [Add Master Enchantment](#add-master-enchantment)
+    - [Add Preserving Enchantment](#add-preserving-enchantment)
 - [How to Use](#how-to-use)
 - [Compatibility](#compatibility)
 - [Translations](#translations)
@@ -202,7 +253,7 @@ English is the only language fully supported by me, and guaranteed to be up to d
 
 There are various languages that have translations available to download and use on NexusMods. Do note that these may not always be up to date, as I can't guarantee support for those languages myself.
 
-If the language you'd like to see has no translation, or it's outdated, feel free to create your own translations and publish them as a mod translation on NexusMods. **Please only upload the translation file and nothing else.** You can either upload it inside of a `Yet Another Fishing Mod/i18n/` folder or as just the file. For extra information, take a look at the [translation wiki](https://stardewvalleywiki.com/Modding:Translations).
+If the language you'd like to see has no translation, or it's outdated, feel free to create your own translations and publish them as a mod translation on NexusMods. **Please only upload the translation file and nothing else.** You can either upload it inside of a `YetAnotherFishingMod/i18n/` folder or as just the file. For extra information, take a look at the [translation wiki](https://stardewvalleywiki.com/Modding:Translations).
 
 Due to me not being able to guarantee whether other languages are up to date, I prefer they be uploaded separately from this mod (so a mod translation on NexusMods). For players this means you'll have to look at the "Translations" tab on Nexus and check if the language you speak is on there. For translators this means you'll have to publish your translations on Nexus and publish updates after new releases yourself.
 
