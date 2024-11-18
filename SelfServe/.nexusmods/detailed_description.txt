@@ -43,27 +43,29 @@ Once you've configured the mod the way you want, simply go to a shop and interac
 
 This mod is made for Stardew Valley 1.6 using SMAPI 4.0. This mod will [b]not[/b] work on versions prior to those mentioned.
 
-[b][size=5]Translations[/size][/b]
+[size=5][b]Translations[/b][/size]
 
-Currently, only English is supported.
+English is the only language fully supported by me, and guaranteed to be up to date.
 
-If you'd like another language to be supported and would like to help, please check the [url=https://stardewvalleywiki.com/Modding:Translations]modding translations wiki[/url] and send a[url=https://github.com/Dunc4nNT/StardewMods/pulls] pull request[/url].
+There are various languages that have translations available to download and use on NexusMods. Do note that these may not always be up to date, as I can't guarantee support for those languages myself.
 
-[b][size=5]Contact[/size][/b]
+If the language you'd like to see has no translation, or it's outdated, feel free to create your own translations and publish them as a mod translation on NexusMods. [b]Please only upload the translation file and nothing else.[/b] You can either upload it inside of a [u]SelfServe/i18n/[/u] folder or as just the file. For extra information, take a look at the [url=https://stardewvalleywiki.com/Modding:Translations]translation wiki[/url].
 
-[b]Having issues with installing or using the mod?[/b] Leave a comment on the [url=https://www.nexusmods.com/stardewvalley/mods/20985?tab=posts]NexusMods[/url] page detailing which steps you've done, which step you're failing at and if SMAPI is giving an error, please include a link to your [url=https://smapi.io/log]SMAPI log[/url].
+Due to me not being able to guarantee whether other languages are up to date, I prefer they be uploaded separately from this mod (so a mod translation on NexusMods). For players this means you'll have to look at the "Translations" tab on Nexus and check if the language you speak is on there. For translators this means you'll have to publish your translations on Nexus and publish updates after new releases yourself.
 
-[b]Certain you've found a bug?[/b] Please open an [url=https://github.com/Dunc4nNT/StardewMods/issues]issue[/url] using the bug report template and add the appropriate mod label. If you prefer using Nexus, you can leave a report on the [url=https://www.nexusmods.com/stardewvalley/mods/20985?tab=bugs]bug reports page[/url]. [b]Uncertain?[/b] Leave a [url=https://www.nexusmods.com/stardewvalley/mods/20985?tab=posts]comment[/url] first detailing what you've run into, including a link to your [url=https://smapi.io/log]SMAPI log[/url]. [b]Know what you're doing?[/b] Feel free to send a PR if you'd like.
+If you have a question regarding translations (whether it's about how to translate, how to upload them etc), feel free to contact me any way.
 
-[b]Like to request a new feature or addition to an existing feature?[/b] Please open an [url=https://github.com/Dunc4nNT/StardewMods/issues]issue[/url] using the feature request template and add the appropriate mod label.
+[size=5][b]Contact[/b][/size]
 
-[b]I may take a while to see a comment on nexus, you can try contacting me through Discord DMs or the SDV server (never.toxic) if that's the case, or incase of an urgent issue.[/b]
+[b]In almost all cases[/b] please leave a comment on the [url=https://www.nexusmods.com/stardewvalley/mods/20985?tab=posts]NexusMods page[/url] detailing your issue. [b]Always[/b] include a link to your [url=https://smapi.io/log]SMAPI log[/url]. [b]Without[/b] this log it may be impossible for me to solve the problem you're having. If you prefer, you could send a DM on Nexus.
 
-[b][size=5]Links[/size][/b]
+[b]Only after receiving permission[/b], may you try contacting me through Discord DMs or the SDV server (never.toxic). I likely won't respond otherwise.
 
-- [url=https://www.nexusmods.com/stardewvalley/mods/20985]NexusMods page for this mod[/url]
-- [url=https://github.com/Dunc4nNT/StardewMods]GitHub mono repo with all my mods[/url]
-
+[size=4][b]Links[/b][/size]
+[list]
+[*][url=https://www.nexusmods.com/stardewvalley/mods/20985]NexusMods page for this mod[/url]
+[*][url=https://github.com/Dunc4nNT/StardewMods]GitHub mono repo with all my mods[/url]
+[/list]
 [b][size=5]Credits[/size][/b]
 
 This is a complete rewrite of the [url=https://www.nexusmods.com/stardewvalley/mods/11313]Self Serve mod[/url], made to be compatible with the Stardew Valley 1.6 update. Credit to [url=https://www.nexusmods.com/stardewvalley/users/18901754]Aedenthorn[/url] for the original mod!
