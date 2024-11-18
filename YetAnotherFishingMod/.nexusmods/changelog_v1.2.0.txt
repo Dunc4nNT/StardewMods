@@ -1,4 +1,5 @@
 Version 1.2.0
 
-- Hotfix for Stardew Valley 1.6.9+ compatibility.
+- Updated harmony patch for infinite bait and tackles for Stardew Valley 1.6.9+ compatibility.
 - Infinite tackles option should now work as intended, the workaround of also enabling infinite bait is no longer necessary.
+- Updated harmony patch for AutoLootFish option for Stardew Valley 1.6.9/1.6.14+ compatibility.

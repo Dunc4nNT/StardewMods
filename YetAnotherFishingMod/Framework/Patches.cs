@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.GameData.Locations;
@@ -57,22 +58,74 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
 
         public static IEnumerable<CodeInstruction> FishingRodTickUpdatePatch(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
         {
-            List<CodeInstruction> output = [];
+            CodeMatcher codeMatcher = new(instructions, generator);
 
-            Label label = generator.DefineLabel();
+            // If AutoLootFish is enabled, jump to the this.doneHoldingFish(who) call.
+            // Insert our own code inside of the for loop, just after the who.IsLocalPlayer call
+            // Find a unique match to get the brtrue jump label.
+            codeMatcher.MatchEndForward(
+                new(OpCodes.Ldloc_0),
+                new(OpCodes.Ldfld),
+                new(OpCodes.Callvirt, typeof(Farmer).GetMethod(nameof(Farmer.IsLocalPlayer))),
+                new(OpCodes.Brfalse),
+                new(OpCodes.Ldsfld),
+                new(OpCodes.Callvirt, typeof(InputState).GetMethod(nameof(InputState.GetMouseState))),
+                new(OpCodes.Stloc_1),
+                new(OpCodes.Ldloca_S),
+                new(OpCodes.Call, typeof(MouseState).GetProperty(nameof(MouseState.LeftButton)).GetMethod),
+                new(OpCodes.Ldc_I4_1),
+                new(OpCodes.Beq_S),
+                new(OpCodes.Ldc_I4_0),
+                new(OpCodes.Call, typeof(Game1).GetMethod(nameof(Game1.didPlayerJustClickAtAll))),
+                new(OpCodes.Brtrue_S)
+            );
 
-            foreach (CodeInstruction instruction in instructions)
+            if (!codeMatcher.IsValid)
             {
-                if (instruction.opcode == OpCodes.Ldstr && (string)instruction.operand == "coin")
-                {
-                    output.Insert(output.Count - 17, new CodeInstruction(OpCodes.Call, typeof(Patches).GetMethod(nameof(DoAutoLootFish))));
-                    output.Insert(output.Count - 17, new CodeInstruction(OpCodes.Brtrue, label));
-                    output[^2].labels.Add(label);
-                }
-                output.Add(instruction);
+                s_monitor.Log($"Failed to patch {nameof(FishingRodTickUpdatePatch)}. Match not found.", LogLevel.Error);
+                return instructions;
             }
 
-            return output;
+            object jumpToDoneHoldingFishLabel = codeMatcher.Instruction.Clone().operand;
+
+            if (jumpToDoneHoldingFishLabel is not Label)
+            {
+                s_monitor.Log($"Failed to patch {nameof(FishingRodTickUpdatePatch)}. jumpToDoneHoldingFishLabel is not a label.", LogLevel.Error);
+                return instructions;
+            }
+
+            // Go back to the same match, but just after the who.IsLocalPlayer call,
+            // insert our jump there.
+            codeMatcher.Start();
+            codeMatcher.MatchStartForward(
+                new(OpCodes.Ldloc_0),
+                new(OpCodes.Ldfld),
+                new(OpCodes.Callvirt, typeof(Farmer).GetMethod(nameof(Farmer.IsLocalPlayer))),
+                new(OpCodes.Brfalse),
+                new(OpCodes.Ldsfld),
+                new(OpCodes.Callvirt, typeof(InputState).GetMethod(nameof(InputState.GetMouseState))),
+                new(OpCodes.Stloc_1),
+                new(OpCodes.Ldloca_S),
+                new(OpCodes.Call, typeof(MouseState).GetProperty(nameof(MouseState.LeftButton)).GetMethod),
+                new(OpCodes.Ldc_I4_1),
+                new(OpCodes.Beq_S),
+                new(OpCodes.Ldc_I4_0),
+                new(OpCodes.Call, typeof(Game1).GetMethod(nameof(Game1.didPlayerJustClickAtAll))),
+                new(OpCodes.Brtrue_S)
+            ).Advance(4);
+
+            if (!codeMatcher.IsValid)
+            {
+                s_monitor.Log($"Failed to patch {nameof(FishingRodTickUpdatePatch)}. Match not found.", LogLevel.Error);
+                return instructions;
+            }
+
+            codeMatcher.Insert(
+                new(OpCodes.Call, typeof(Patches).GetMethod(nameof(DoAutoLootFish))),
+                new(OpCodes.Brtrue, jumpToDoneHoldingFishLabel)
+            );
+
+            return codeMatcher.InstructionEnumeration();
         }
 
         public static IEnumerable<CodeInstruction> BobberBar_Update_Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
