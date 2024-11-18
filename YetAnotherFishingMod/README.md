@@ -12,54 +12,11 @@ Having difficulty fishing? Or finding it too easy? This is yet another mod that 
 - [Installation](#installation)
 - [Configuration](#configuration)
   - [Minigame Skip](#minigame-skip)
-    - [Automatically Cast](#automatically-cast)
-    - [Skip Minigame](#skip-minigame)
-    - [Catches Required](#catches-required)
-    - [Chance of Perfect](#chance-of-perfect)
-    - [Treasure Catch Chance](#treasure-catch-chance)
   - [Difficulty](#difficulty)
-    - [Difficulty Multiplier](#difficulty-multiplier)
-    - [Adjust XP Gain](#adjust-xp-gain)
-    - [Fish Catch Multiplier](#fish-catch-multiplier)
-    - [Fish Escape Multiplier](#fish-escape-multiplier)
-    - [Bar Size Multiplier](#bar-size-multiplier)
-    - [Always Max Casting Power](#always-max-casting-power)
-    - [Automatically Hook](#automatically-hook)
-    - [Always Perfect](#always-perfect)
-    - [Instantly Catch Treasure](#instantly-catch-treasure)
-    - [Treasure Catch Multiplier](#treasure-catch-multiplier)
   - [Fishing Loot](#fishing-loot)
-    - [Fish](#fish)
-    - [Rubbish](#rubbish)
-    - [Other](#other)
-    - [Amount of Fish](#amount-of-fish)
-    - [Minimum Fish Quality](#minimum-fish-quality)
-    - [Set Fish Quality](#set-fish-quality)
-    - [Treasure Probability](#treasure-probability)
-    - [Golden Treasure Probability](#golden-treasure-probability)
   - [Faster Please](#faster-please)
-    - [Instant Bite](#instant-bite)
-    - [Automatically Loot Fish](#automatically-loot-fish)
-    - [Automatically Loot Treasure](#automatically-loot-treasure)
-    - [Faster Animations](#faster-animations)
   - [Attachments](#attachments)
-    - [Override Attachment Limit](#override-attachment-limit)
-    - [Reset Attachments Limit](#reset-attachments-limit)
-    - [Infinite Bait](#infinite-bait)
-    - [Spawn Bait When Equipped](#spawn-bait-when-equipped)
-    - [Amount of Bait](#amount-of-bait)
-    - [Bait to Spawn](#bait-to-spawn)
-    - [Infinite Tackles](#infinite-tackles)
-    - [Spawn Tackle When Equipped](#spawn-tackle-when-equipped)
-    - [Tackle to Spawn](#tackle-to-spawn)
   - [Enchantments](#enchantments)
-    - [Enable Adding Enchantments](#enable-adding-enchantments)
-    - [Reset Enchantments](#reset-enchantments)
-    - [Add All Enchantments](#add-all-enchantments)
-    - [Add Auto-Hook Enchantment](#add-auto-hook-enchantment)
-    - [Add Efficient Enchantment](#add-efficient-enchantment)
-    - [Add Master Enchantment](#add-master-enchantment)
-    - [Add Preserving Enchantment](#add-preserving-enchantment)
 - [How to Use](#how-to-use)
 - [Compatibility](#compatibility)
 - [Translations](#translations)
@@ -88,144 +45,76 @@ The mod's configurable options can be found below. These can either be adjusted 
 
 ### Minigame Skip
 
-#### Automatically Cast
-Keybind to toggle automatically casting your fishing rod. Will try casting every second if enabled.
-
-#### Skip Minigame
-Skips the fishing minigame. Amount of catches required before skip can be changed below.
-
-#### Catches Required
-Amount of catches required before it skips the minigame. The "Skip Minigame" option must be enabled.
-
-#### Chance of Perfect
-The chance that the minigame skip causes a perfect catch. "Always Perfect" trumps this option. The "Skip Minigame" option must be enabled.
-
-#### Treasure Catch Chance
-The chance that the skip minigame catches treasure, if there was one. "Instant Catch Treasure" trumps this option. The "Skip Minigame" option must be enabled.
+| Feature               | Description                                                                                                                                                    |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Automatically Cast    | Keybind to toggle automatically casting your fishing rod. Will try casting every second if enabled.                                                            |
+| Skip Minigame         | Skips the fishing minigame. Amount of catches required before skip can be changed below.                                                                       |
+| Catches Required      | Amount of catches required before it skips the minigame. The "Skip Minigame" option must be enabled.                                                           |
+| Chance of Perfect     | The chance that the minigame skip causes a perfect catch. "Always Perfect" trumps this option. The "Skip Minigame" option must be enabled.                     |
+| Treasure Catch Chance | The chance that the skip minigame catches treasure, if there was one. "Instant Catch Treasure" trumps this option. The "Skip Minigame" option must be enabled. |
 
 ### Difficulty
 
-#### Difficulty Multiplier
-Value with which the standard fishing difficulty is multiplied.
-
-#### Adjust XP Gain
-Adjust the XP gained based on the fish difficulty set above.
-
-#### Fish Catch Multiplier
-A multiplier for the increase given when the fish is inside the green bar. The higher the value, the quicker the fish is caught.
-
-#### Fish Escape Multiplier
-A multiplier for the penalty given when the fish is outside of the green bar. The higher the value, the quicker the fish escapes.
-
-#### Bar Size Multiplier
-A multiplier for the size of the bar in the fishing minigame. The higher the value, the larger the bar.
-
-#### Always Max Casting Power
-Always casts the fishing rod with maximum power, no matter how long you held the button.
-
-#### Automatically Hook
-Automatically starts reeling in your fish after one bites.
-
-#### Always Perfect
-Always get a perfect after catching a fish, even if you did not.
-
-#### Instantly Catch Treasure
-If there are any treasures in the fishing minigame, instantly catch them even if you missed them.
-
-#### Treasure Catch Multiplier
-A multiplier for the increase given when a treasure is inside the green bar. The higher the value, the quicker the treasure is caught.
+| Feature                   | Description                                                                                                                            |
+|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Difficulty Multiplier     | Value with which the standard fishing difficulty is multiplied.                                                                        |
+| Adjust XP Gain            | Adjust the XP gained based on the fish difficulty set above.                                                                           |
+| Fish Catch Multiplier     | A multiplier for the increase given when the fish is inside the green bar. The higher the value, the quicker the fish is caught.       |
+| Fish Escape Multiplier    | A multiplier for the penalty given when the fish is outside of the green bar. The higher the value, the quicker the fish escapes.      |
+| Bar Size Multiplier       | A multiplier for the size of the bar in the fishing minigame. The higher the value, the larger the bar.                                |
+| Always Max Casting Power  | Always casts the fishing rod with maximum power, no matter how long you held the button.                                               |
+| Automatically Hook        | Automatically starts reeling in your fish after one bites.                                                                             |
+| Always Perfect            | Always get a perfect after catching a fish, even if you did not.                                                                       |
+| Instantly Catch Treasure  | If there are any treasures in the fishing minigame, instantly catch them even if you missed them.                                      |
+| Treasure Catch Multiplier | A multiplier for the increase given when a treasure is inside the green bar. The higher the value, the quicker the treasure is caught. |
 
 ### Fishing Loot
 
-#### Fish
-Increases the chance of catching fish when enabled.
-
-#### Rubbish
-Increases the chance of catching rubbish when enabled.
-
-#### Other
-Increases the chance of catching other items when enabled. This includes items such as seaweed and algae.
-
-#### Amount of Fish
-Catch the set amount of fish. Using bait may override this amount. Whichever is highest.
-
-#### Minimum Fish Quality
-Always gets fish of the set quality or better. Trumps the "Fish Quality" option.
-
-#### Set Fish Quality
-Always catch fish with the set quality. Trumped by the "Minimum Fish Quality" option.
-
-#### Treasure Probability
-Adjust how often treasure chests appear. (vanilla, always, never)
-
-#### Golden Treasure Probability
-Adjust how often a treasure chest is a golden treasure chest. (vanilla, always, never)
+| Feature                     | Description                                                                                               |
+|-----------------------------|-----------------------------------------------------------------------------------------------------------|
+| Fish                        | Increases the chance of catching fish when enabled.                                                       |
+| Rubbish                     | Increases the chance of catching rubbish when enabled.                                                    |
+| Other                       | Increases the chance of catching other items when enabled. This includes items such as seaweed and algae. |
+| Amount of Fish              | Catch the set amount of fish. Using bait may override this amount. Whichever is highest.                  |
+| Minimum Fish Quality        | Always gets fish of the set quality or better. Trumps the "Fish Quality" option.                          |
+| Set Fish Quality            | Always catch fish with the set quality. Trumped by the "Minimum Fish Quality" option.                     |
+| Treasure Probability        | Adjust how often treasure chests appear. (vanilla, always, never)                                         |
+| Golden Treasure Probability | Adjust how often a treasure chest is a golden treasure chest. (vanilla, always, never)                    |
 
 ### Faster Please
 
-#### Instant Bite
-Fish instantly bite after casting your fishing rod.
-
-#### Automatically Loot Fish
-Automatically loot and close the fish popup after catching a fish.
-
-#### Automatically Loot Treasure
-Automatically loot and close the treasure menu popup after catching treasure.
-
-#### Faster Animations
-Various animations are quicker. These include the casting, reeling and treasure opening animations.
+| Feature                     | Description                                                                                         |
+|-----------------------------|-----------------------------------------------------------------------------------------------------|
+| Instant Bite                | Fish instantly bite after casting your fishing rod.                                                 |
+| Automatically Loot Fish     | Automatically loot and close the fish popup after catching a fish.                                  |
+| Automatically Loot Treasure | Automatically loot and close the treasure menu popup after catching treasure.                       |
+| Faster Animations           | Various animations are quicker. These include the casting, reeling and treasure opening animations. |
 
 ### Attachments
 
-#### Override Attachment Limit
-Overrides the fishing rod's attachment limit when spawning bait and tackle.
-
-#### Reset Attachments Limit
-Resets attachment limit back to the default when unequipping the fishing rod. **WARNING: If you have any attachments in an overriden slot, they will be deleted.**
-
-#### Infinite Bait
-Never run out of bait.
-
-#### Spawn Bait When Equipped
-Spawns the below selected bait item whenever you equip your fishing rod.
-
-#### Amount of Bait
-How much bait to spawn.
-
-#### Bait to Spawn
-Which bait to automatically spawn when fishing rod is equipped.
-
-#### Infinite Tackles
-Your tackle never wears out.
-
-#### Spawn Tackle When Equipped
-Spawns the below selected tackle item whenever you equip your fishing rod.
-
-#### Tackle to Spawn
-Which tackle to automatically spawn when fishing rod is equipped.
+| Feature                    | Description                                                                                                                                                        |
+|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Override Attachment Limit  | Overrides the fishing rod's attachment limit when spawning bait and tackle.                                                                                        |
+| Reset Attachments Limit    | Resets attachment limit back to the default when unequipping the fishing rod. **WARNING: If you have any attachments in an overriden slot, they will be deleted.** |
+| Infinite Bait              | Never run out of bait.                                                                                                                                             |
+| Spawn Bait When Equipped   | Spawns the below selected bait item whenever you equip your fishing rod.                                                                                           |
+| Amount of Bait             | How much bait to spawn.                                                                                                                                            |
+| Bait to Spawn              | Which bait to automatically spawn when fishing rod is equipped.                                                                                                    |
+| Infinite Tackles           | Your tackle never wears out.                                                                                                                                       |
+| Spawn Tackle When Equipped | Spawns the below selected tackle item whenever you equip your fishing rod.                                                                                         |
+| Tackle to Spawn            | Which tackle to automatically spawn when fishing rod is equipped.                                                                                                  |
 
 ### Enchantments
 
-#### Enable Adding Enchantments
-Adds enchantments as set below when checked.
-
-#### Reset Enchantments
-Resets enchantments to what they were before after unequipping the fishing rod.
-
-#### Add All Enchantments
-Adds all available enchantments when you equip a fishing rod.
-
-#### Add Auto-Hook Enchantment
-Adds the auto-hook enchantment when equipping a fishing rod.
-
-#### Add Efficient Enchantment
-Adds the efficient tool enchantment when equipping a fishing rod.
-
-#### Add Master Enchantment
-Adds the master enchantment when equipping a fishing rod.
-
-#### Add Preserving Enchantment
-Adds the preserving enchantment when equipping a fishing rod.
+| Feature                    | Description                                                                     |
+|----------------------------|---------------------------------------------------------------------------------|
+| Enable Adding Enchantments | Adds enchantments as set below when checked.                                    |
+| Reset Enchantments         | Resets enchantments to what they were before after unequipping the fishing rod. |
+| Add All Enchantments       | Adds all available enchantments when you equip a fishing rod.                   |
+| Add Auto-Hook Enchantment  | Adds the auto-hook enchantment when equipping a fishing rod.                    |
+| Add Efficient Enchantment  | Adds the efficient tool enchantment when equipping a fishing rod.               |
+| Add Master Enchantment     | Adds the master enchantment when equipping a fishing rod.                       |
+| Add Preserving Enchantment | Adds the preserving enchantment when equipping a fishing rod.                   |
 
 ## How to Use
 
