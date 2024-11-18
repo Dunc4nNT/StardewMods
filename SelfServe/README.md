@@ -72,7 +72,7 @@ If you have a question regarding translations (whether it's about how to transla
 
 ## Contact
 
-**In almost all cases** please leave a comment on the [NexusMods page][nexus-comments] detailing your issue. **Always** include a link to your [SMAPI log][smapi-log]. **Without** this log it may be impossible for me to solve the problem you're having. If you prefer, you could send a DM on Nexus.
+**In almost all cases** please leave a comment on the [NexusMods page][nexus-comments] detailing your issue. **Always** include a link to your [SMAPI log](smapi-log). **Without** this log it may be impossible for me to solve the problem you're having. If you prefer, you could send a DM on Nexus.
 
 **Only after receiving permission**, may you try contacting me through Discord DMs or the SDV server (never.toxic). I likely won't respond otherwise.
 
