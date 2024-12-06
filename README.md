@@ -3,9 +3,9 @@
 
 This is the mono repository containing all of my Stardew Valley mods.
 
+<!-- omit in toc -->
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
 - [Mod List](#mod-list)
 - [Translations](#translations)
 - [Contact](#contact)
@@ -18,6 +18,7 @@ Documentation and downloads for the individual mods can be found on their respec
 
 - [Dutch Localisation](/DutchLocalisation)
 - [Little Helpers](/LittleHelpers/)
+- [No Stamina Wasted](/NoStaminaWasted/)
 - [Self Serve](/SelfServe/)
 - [Yet Another Fishing Mod](/YetAnotherFishingMod)
 - [Yet Another Time Mod](/YetAnotherTimeMod/)
