@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleHelpersCore", "Little
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfServe", "SelfServe\SelfServe.csproj", "{D29F6B85-A49C-488F-A7D3-982EDAB63687}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoStaminaWasted", "NoStaminaWasted\NoStaminaWasted.csproj", "{EF5B9C6B-0071-4747-B2DD-65FFD93F47EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{D29F6B85-A49C-488F-A7D3-982EDAB63687}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D29F6B85-A49C-488F-A7D3-982EDAB63687}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D29F6B85-A49C-488F-A7D3-982EDAB63687}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF5B9C6B-0071-4747-B2DD-65FFD93F47EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF5B9C6B-0071-4747-B2DD-65FFD93F47EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF5B9C6B-0071-4747-B2DD-65FFD93F47EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF5B9C6B-0071-4747-B2DD-65FFD93F47EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +54,6 @@ Global
 		Common\Common.projitems*{3d3403ae-bff8-48db-8fa0-2def6e37440f}*SharedItemsImports = 5
 		Common\Common.projitems*{85fc1c47-2272-4daa-bd42-0e87bd6d883d}*SharedItemsImports = 5
 		Common\Common.projitems*{d29f6b85-a49c-488f-a7d3-982edab63687}*SharedItemsImports = 5
+		Common\Common.projitems*{ef5b9c6b-0071-4747-b2dd-65ffd93f47ef}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
