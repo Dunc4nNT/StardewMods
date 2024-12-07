@@ -15,7 +15,8 @@ namespace NeverToxic.StardewMods.NoStaminaWasted.Framework
         private static Func<ModConfig> s_config;
         private static IReflectionHelper s_reflectionHelper;
         public static bool DoConsumeStamina = false;
-        public static float StaminaOnSuccessfulUse = 0f;
+        public static float? StaminaBeforeSuccessfulUse = null;
+        public static float? StaminaOnSuccessfulUse = null;
 
         internal static void Initialise(Harmony harmony, IMonitor monitor, Func<ModConfig> config, IReflectionHelper reflectionHelper)
         {
@@ -60,13 +61,7 @@ namespace NeverToxic.StardewMods.NoStaminaWasted.Framework
             }
 
             // Remove the 4 lines we just found in the match.
-            // Because the Farmer::set_Stamina takes a who loaded onto the stack earlier,
-            // we have to remove an earlier ldarg_s who instruction at 11 spots before out current position.
-            codeMatcher
-                .RemoveInstructions(4)
-                .Advance(-11)
-                .RemoveInstruction()
-                .Advance(10);
+            codeMatcher.RemoveInstructions(4);
 
             // Save the value that would've been subtracted from our stamina to a variable we can use later in the postfix.
             codeMatcher.Insert(
@@ -103,7 +98,7 @@ namespace NeverToxic.StardewMods.NoStaminaWasted.Framework
             {
                 DoConsumeStamina = false;
             }
-            else if (config.FishingRodStaminaConsumption == StaminaConsumptionOption.Vanilla && StaminaOnSuccessfulUse > 0f)
+            else if (config.FishingRodStaminaConsumption == StaminaConsumptionOption.Vanilla && StaminaOnSuccessfulUse < StaminaBeforeSuccessfulUse)
             {
                 DoConsumeStamina = true;
             }
@@ -115,16 +110,17 @@ namespace NeverToxic.StardewMods.NoStaminaWasted.Framework
 
         public static void TryConsumeStamina(Farmer who)
         {
-            if (DoConsumeStamina)
+            if (DoConsumeStamina && StaminaOnSuccessfulUse is not null)
             {
-                who.Stamina = StaminaOnSuccessfulUse;
+                who.Stamina = (float)StaminaOnSuccessfulUse;
             }
 
             ResetState();
         }
 
-        public static void SetStaminaOnSuccessfulUse(float value)
+        public static void SetStaminaOnSuccessfulUse(Farmer who, float value)
         {
+            StaminaBeforeSuccessfulUse = who.Stamina;
             StaminaOnSuccessfulUse = value;
         }
 
@@ -136,7 +132,8 @@ namespace NeverToxic.StardewMods.NoStaminaWasted.Framework
         public static void ResetState()
         {
             DoConsumeStamina = false;
-            StaminaOnSuccessfulUse = 0f;
+            StaminaBeforeSuccessfulUse = null;
+            StaminaOnSuccessfulUse = null;
         }
     }
 }
