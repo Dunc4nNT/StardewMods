@@ -72,14 +72,16 @@ The mod's configurable options can be found below. These can either be adjusted 
 
 | Feature                     | Description                                                                                               |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------|
-| Fish                        | Increases the chance of catching fish when enabled.                                                       |
-| Rubbish                     | Increases the chance of catching rubbish when enabled.                                                    |
-| Other                       | Increases the chance of catching other items when enabled. This includes items such as seaweed and algae. |
+| Fish                        | Allows the catching of fish when enabled.																  |
+| Rubbish                     | Allows the catching of rubbish when enabled.															  |
+| Other                       | Allows catching of other items when enabled. This includes items such as seaweed and algae.				  |
 | Amount of Fish              | Catch the set amount of fish. Using bait may override this amount. Whichever is highest.                  |
 | Minimum Fish Quality        | Always gets fish of the set quality or better. Trumps the "Fish Quality" option.                          |
 | Set Fish Quality            | Always catch fish with the set quality. Trumped by the "Minimum Fish Quality" option.                     |
 | Treasure Probability        | Adjust how often treasure chests appear. (vanilla, always, never)                                         |
 | Golden Treasure Probability | Adjust how often a treasure chest is a golden treasure chest. (vanilla, always, never)                    |
+
+Disabling all of Fish, Rubbish and Other will have the same effect as all of them enabled as a fallback.
 
 ### Faster Please
 
