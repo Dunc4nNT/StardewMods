@@ -350,17 +350,12 @@ namespace NeverToxic.StardewMods.YetAnotherFishingMod.Framework
         public static bool IsFishInPreferredCategory(ParsedItemData fish)
         {
             ModConfig config = s_config();
-
-            if (fish == null && config.AllowCatchingRubbish)
-                return true;
-            else if (!config.AllowCatchingFish && !config.AllowCatchingRubbish && !config.AllowCatchingOther)
-                return true;
-            else if (fish == null)
-                return false;
+            if (!config.AllowCatchingFish && !config.AllowCatchingRubbish && !config.AllowCatchingOther) return true;
+            if (fish == null) return config.AllowCatchingRubbish;
 
             if ((fish.Category == SObject.FishCategory && config.AllowCatchingFish) ||
                 ((fish.Category == SObject.junkCategory) && config.AllowCatchingRubbish) ||
-                (fish.Category == 0 && config.AllowCatchingOther))
+                (fish.Category != SObject.FishCategory && fish.Category != SObject.junkCategory && config.AllowCatchingOther))
                 return true;
 
             return false;
