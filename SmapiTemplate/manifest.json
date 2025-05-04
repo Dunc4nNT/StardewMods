@@ -1,0 +1,18 @@
+{
+  "Name": "Template Mod",
+  "Author": "NeverToxic",
+  "Version": "0.0.1",
+  "Description": "Template description.",
+  "UniqueID": "NeverToxic.TemplateMod",
+  "EntryDll": "TemplateMod.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": [
+  ],
+  "Dependencies": [
+    {
+      "UniqueID": "spacechase0.GenericModConfigMenu",
+      "MinimumVersion": "1.12.0",
+      "IsRequired": false
+    }
+  ]
+}
