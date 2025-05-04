@@ -5,6 +5,7 @@
         <LangVersion>latest</LangVersion>
         <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
         <RootNamespace>NeverToxic.$(SolutionName.Replace(" ", "_")).$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+        <EnableHarmony>true</EnableHarmony>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Lib.Harmony" Version="2.3.0" />
         <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.1.1" />
         <PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder" Version="2.0.1" />
     </ItemGroup>

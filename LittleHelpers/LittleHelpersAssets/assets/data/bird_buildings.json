@@ -1,0 +1,121 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/BigCraftables",
+      "Entries": {
+        "{{ModId}}_BirdHelperBuilding_0": {
+          "Name": "{{ModId}}_BirdHelperBuilding_0",
+          "DisplayName": "Basic Bird Helper Building",
+          "Description": "does stuff",
+          "Price": 0,
+          "Fragility": 0,
+          "CanBePlacedOutdoors": true,
+          "CanBePlacedIndoors": true,
+          "IsLamp": false,
+          "Texture": null,
+          "SpriteIndex": 0,
+          "ContextTags": null,
+          "CustomFields": {
+            "{{ModId}}.Radius": 10,
+            "{{ModId}}.HelperAmount": 1,
+            "{{ModId}}.LocationCheck": "Greenhouse",
+            "{{ModId}}.HarvestCrops": true,
+            "{{ModId}}.HarvestTrees": true
+          }
+        }
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/BigCraftables",
+      "Entries": {
+        "{{ModId}}_BirdHelperBuilding_1": {
+          "Name": "{{ModId}}_BirdHelperBuilding_1",
+          "DisplayName": "Advanced Bird Helper Building",
+          "Description": "does more stuff",
+          "Price": 0,
+          "Fragility": 0,
+          "CanBePlacedOutdoors": true,
+          "CanBePlacedIndoors": true,
+          "IsLamp": false,
+          "Texture": null,
+          "SpriteIndex": 0,
+          "ContextTags": [
+            "crow_scare",
+            "crow_scare_radius_15"
+          ],
+          "CustomFields": {
+            "{{ModId}}.Radius": 15,
+            "{{ModId}}.HelperAmount": 2,
+            "{{ModId}}.LocationCheck": "Greenhouse",
+            "{{ModId}}.HarvestCrops": true,
+            "{{ModId}}.HarvestTrees": true
+          }
+        }
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/BigCraftables",
+      "Entries": {
+        "{{ModId}}_BirdHelperBuilding_2": {
+          "Name": "{{ModId}}_BirdHelperBuilding_2",
+          "DisplayName": "Proficient Bird Helper Building",
+          "Description": "does even more stuff",
+          "Price": 0,
+          "Fragility": 0,
+          "CanBePlacedOutdoors": true,
+          "CanBePlacedIndoors": true,
+          "IsLamp": false,
+          "Texture": null,
+          "SpriteIndex": 0,
+          "ContextTags": [
+            "crow_scare",
+            "crow_scare_radius_20"
+          ],
+          "CustomFields": {
+            "{{ModId}}.Radius": 20,
+            "{{ModId}}.HelperAmount": 3,
+            "{{ModId}}.LocationCheck": "Greenhouse",
+            "{{ModId}}.HarvestCrops": true,
+            "{{ModId}}.HarvestTrees": true,
+            "{{ModId}}.WaterCrops": true
+          }
+        }
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/BigCraftables",
+      "Entries": {
+        "{{ModId}}_BirdHelperBuilding_3": {
+          "Name": "{{ModId}}_BirdHelperBuilding_3",
+          "DisplayName": "Mystic Bird Helper Building",
+          "Description": "does more than even more stuff",
+          "Price": 0,
+          "Fragility": 0,
+          "CanBePlacedOutdoors": true,
+          "CanBePlacedIndoors": true,
+          "IsLamp": false,
+          "Texture": null,
+          "SpriteIndex": 0,
+          "ContextTags": [
+            "crow_scare",
+            "crow_scare_radius_25"
+          ],
+          "CustomFields": {
+            "{{ModId}}.Radius": 25,
+            "{{ModId}}.HelperAmount": 4,
+            "{{ModId}}.LocationCheck": "Greenhouse",
+            "{{ModId}}.HarvestCrops": true,
+            "{{ModId}}.HarvestTrees": true,
+            "{{ModId}}.WaterCrops": true,
+            "{{ModId}}.ReplantCrops": true
+          }
+        }
+      }
+    }
+  ]
+}

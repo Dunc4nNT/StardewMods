@@ -1,12 +1,12 @@
-﻿using NeverToxic.StardewMods.LittleHelpersCore.Framework.Commands;
-using NeverToxic.StardewMods.LittleHelpersCore.Framework.Validators;
+﻿using NeverToxic.StardewMods.LittleHelpersCore.Framework.Actions;
+using NeverToxic.StardewMods.LittleHelpersCore.Framework.Checks;
 using System.Collections.Generic;
 
 namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Buildings
 {
-    internal class BaseBuilding(int helperCapacity, ILocationValidator locationValidator, int? radius = null, int? location = null) : IBuilding
+    internal class BaseBuilding(int helperCapacity, ILocationCheck locationCheck, int? radius = null, int? location = null) : IBuilding
     {
-        public virtual List<BaseCommand> Commands { get; set; } = [];
+        public virtual List<BaseAction> Actions { get; set; } = [];
 
         public List<int> Tiles { get; } = [1];
 
@@ -16,16 +16,16 @@ namespace NeverToxic.StardewMods.LittleHelpersCore.Framework.Buildings
 
         public int? Location { get; set; } = location;
 
-        public ILocationValidator LocationValidator { get; set; } = locationValidator;
+        public ILocationCheck LocationCheck { get; set; } = locationCheck;
 
-        public virtual void ExecuteCommands()
+        public virtual void ExecuteActions()
         {
-            if (this.Commands is null)
+            if (this.Actions is null)
                 return;
 
             foreach (int tile in this.Tiles)
-                foreach (BaseCommand command in this.Commands)
-                    command.Handle(tile);
+                foreach (BaseAction action in this.Actions)
+                    action.Handle(tile);
         }
     }
 }

@@ -7,12 +7,5 @@
   "UpdateKeys": [],
   "ContentPackFor": {
     "UniqueID": "Pathoschild.ContentPatcher"
-  },
-  "Dependencies": [
-    {
-      "UniqueID": "NeverToxic.LittleHelpersCore",
-      "MinimumVersion": "0.0.1-alpha",
-      "IsRequired": false
-    }
-  ]
+  }
 }

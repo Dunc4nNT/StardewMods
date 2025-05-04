@@ -1,0 +1,82 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/BigCraftables",
+      "Entries": {
+        "{{ModId}}_BatHelperBuilding_0": {
+          "Name": "{{ModId}}_BatHelperBuilding_0",
+          "DisplayName": "Basic Bat Helper Building",
+          "Description": "does stuff",
+          "Price": 0,
+          "Fragility": 0,
+          "CanBePlacedOutdoors": true,
+          "CanBePlacedIndoors": true,
+          "IsLamp": false,
+          "Texture": null,
+          "SpriteIndex": 0,
+          "ContextTags": null,
+          "CustomFields": {
+            "{{ModId}}.Radius": 10,
+            "{{ModId}}.HelperAmount": 1,
+            "{{ModId}}.LocationCheck": "Map",
+            "{{ModId}}.GatherForagables": true,
+          }
+        }
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/BigCraftables",
+      "Entries": {
+        "{{ModId}}_BatHelperBuilding_1": {
+          "Name": "{{ModId}}_BatHelperBuilding_1",
+          "DisplayName": "Advanced Bat Helper Building",
+          "Description": "does more stuff",
+          "Price": 0,
+          "Fragility": 0,
+          "CanBePlacedOutdoors": true,
+          "CanBePlacedIndoors": true,
+          "IsLamp": false,
+          "Texture": null,
+          "SpriteIndex": 0,
+          "ContextTags": null,
+          "CustomFields": {
+            "{{ModId}}.Radius": 20,
+            "{{ModId}}.HelperAmount": 2,
+            "{{ModId}}.LocationCheck": "Map",
+            "{{ModId}}.GatherForagables": true,
+            "{{ModId}}.GatherTruffles": true
+          }
+        }
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/BigCraftables",
+      "Entries": {
+        "{{ModId}}_BatHelperBuilding_2": {
+          "Name": "{{ModId}}_BatHelperBuilding_2",
+          "DisplayName": "Proficient Bat Helper Building",
+          "Description": "does even more stuff",
+          "Price": 0,
+          "Fragility": 0,
+          "CanBePlacedOutdoors": true,
+          "CanBePlacedIndoors": true,
+          "IsLamp": false,
+          "Texture": null,
+          "SpriteIndex": 0,
+          "ContextTags": null,
+          "CustomFields": {
+            "{{ModId}}.Radius": 0,
+            "{{ModId}}.HelperAmount": 3,
+            "{{ModId}}.LocationCheck": "Map",
+            "{{ModId}}.GatherForagables": true,
+            "{{ModId}}.GatherTruffles": true
+          }
+        }
+      }
+    }
+  ]
+}

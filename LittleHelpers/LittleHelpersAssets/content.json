@@ -1,5 +1,30 @@
 {
   "$schema": "https://smapi.io/schemas/content-patcher.json",
-  "Format": "2.0.0-alpha",
-  "Changes": []
+  "Format": "2.0.0",
+  "Changes": [
+    {
+      "Action": "Include",
+      "FromFile": "assets/data/bat_buildings.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/data/bird_buildings.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/data/junimo_buildings.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/data/magpie_buildings.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/data/parrot_buildings.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "assets/data/seagull_buildings.json"
+    }
+  ]
 }
