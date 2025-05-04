@@ -1,6 +1,9 @@
 {
   "message.config-reloaded": "Configuration file reloaded.",
 
+  "config.shops.other-shops.name": "Unlisted Shops",
+  "config.shops.other-shops.tooltip": "Try to force open any shop which is not specifically mentioned in the other options for this mod.",
+
   "config.shops.town-section": "Town Shops",
   "config.shops.pierres-general-shop.name": "Pierre's General Store",
   "config.shops.pierres-general-shop.tooltip": "Whether Pierre's general store is always open.",

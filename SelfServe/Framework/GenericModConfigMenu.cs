@@ -15,7 +15,13 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
 
             configMenu.Register(mod: manifest, reset: reset, save: save);
 
-
+            configMenu.AddBoolOption(
+                mod: manifest,
+                name: I18n.Config_Shops_OtherShops_Name,
+                tooltip: I18n.Config_Shops_OtherShops_Tooltip,
+                getValue: () => config().OtherShops,
+                setValue: value => config().OtherShops = value
+            );
             configMenu.AddSectionTitle(
                 mod: manifest,
                 text: I18n.Config_Shops_TownSection

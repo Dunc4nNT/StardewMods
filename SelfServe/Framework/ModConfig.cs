@@ -40,7 +40,7 @@ namespace NeverToxic.StardewMods.SelfServe.Framework
 
         public bool NightMarketDecorationBoatShop { get; set; } = true;
 
-
+        public bool OtherShops { get; set; } = true;
     }
 
     internal class ModConfigKeys
