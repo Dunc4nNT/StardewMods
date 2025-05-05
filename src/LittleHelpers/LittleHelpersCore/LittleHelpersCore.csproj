@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <EnableHarmony>true</EnableHarmony>
+        <UseCommon>true</UseCommon>
+    </PropertyGroup>
+    <Import Project="..\..\..\shared\Common\Common.projitems" Label="Shared" />
+</Project>

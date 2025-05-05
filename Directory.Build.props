@@ -1,0 +1,27 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <!-- Metadata -->
+        <Authors>Dunc4nNT</Authors>
+        <Copyright>Copyright (c) Dunc4nNT</Copyright>
+        <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>git@github.com:Dunc4nNT/StardewMods.git</RepositoryUrl>
+
+        <!-- Build settings -->
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+        <RootNamespace>NeverToxic.$(SolutionName.Replace(" ", "_")).$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="StyleCop.Analyzers">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+
+        <AdditionalFiles Include="$(SolutionDir)\stylecop.json" />
+    </ItemGroup>
+</Project>
