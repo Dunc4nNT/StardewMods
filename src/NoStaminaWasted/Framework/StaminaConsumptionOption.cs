@@ -9,5 +9,5 @@ internal enum StaminaConsumptionOption
 {
     Vanilla,
     NoAccidents,
-    Never
+    Never,
 }
