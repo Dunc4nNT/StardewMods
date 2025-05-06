@@ -9,7 +9,13 @@ using System.Collections.Generic;
 using NeverToxic.StardewMods.LittleHelpersCore.Framework.Actions;
 using NeverToxic.StardewMods.LittleHelpersCore.Framework.Checks;
 
-internal class CropHelperBuilding(int helperCapacity, ILocationCheck locationCheck, int radius, int? location = null, bool canScareCrows = false, bool canReplantCrops = false) : BaseBuilding(helperCapacity, locationCheck, radius: radius, location: location)
+internal class CropHelperBuilding(
+    int helperCapacity,
+    ILocationCheck locationCheck,
+    int radius,
+    int? location = null,
+    bool canScareCrows = false,
+    bool canReplantCrops = false) : BaseBuilding(helperCapacity, locationCheck, radius, location)
 {
     public override List<BaseAction> Actions { get; set; } = [new HarvestCropAction(), new HarvestTreeAction()];
 

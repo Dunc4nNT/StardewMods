@@ -62,7 +62,6 @@
   "config.general.do-speed-up-animations.tooltip": "Various animations are quicker. These include the casting, reeling and treasure opening animations.",
   "config.general.disable-vibrations.name": "Disable Vibrations",
   "config.general.disable-vibrations.tooltip": "Disables various controller vibrations while fishing.",
-
   "config.attachments.page-title": "Attachments",
   "config.attachments.general-section": "General",
   "config.attachments.override-attachment-limit.name": "Override Attachment Limit",
@@ -85,7 +84,6 @@
   "config.attachments.spawn-tackle-when-equipped.tooltip": "Spawns the below selected tackle item whenever you equip your fishing rod.",
   "config.attachments.spawn-which-tackle.name": "Tackle to Spawn",
   "config.attachments.spawn-which-tackle.tooltip": "Which tackle to automatically spawn when fishing rod is equipped.",
-
   "config.enchantments.page-title": "Enchantments",
   "config.enchantments.general-section": "General",
   "config.enchantments.do-add-enchantments.name": "Enable Adding Enchantments",
@@ -103,17 +101,14 @@
   "config.enchantments.add-master-enchantment.tooltip": "Adds the master enchantment when equipping a fishing rod.",
   "config.enchantments.add-preserving-enchantment.name": "Add Preserving Enchantment",
   "config.enchantments.add-preserving-enchantment.tooltip": "Adds the preserving enchantment when equipping a fishing rod.",
-
   "config.treasure-appearance-vanilla": "Vanilla",
   "config.treasure-appearance-never": "Never",
   "config.treasure-appearance-always": "Always",
-
   "config.quality-any": "Any",
   "config.quality-none": "None",
   "config.quality-silver": "Silver",
   "config.quality-gold": "Gold",
   "config.quality-iridium": "Iridium",
-
   "message.config-reloaded": "Configuration file reloaded.",
   "message.inventory-full": "Your inventory is full.",
   "message.do-auto-cast-enabled": "Automatic casting is now enabled.",

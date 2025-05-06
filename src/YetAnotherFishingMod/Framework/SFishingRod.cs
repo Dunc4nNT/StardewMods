@@ -14,11 +14,11 @@ using SObject = StardewValley.Object;
 
 internal class SFishingRod(FishingRod instance)
 {
+    private readonly int initialAttachmentSlotsCount = instance.AttachmentSlotsCount;
+
+    private readonly List<BaseEnchantment> addedEnchantments = [];
+
     public FishingRod Instance { get; set; } = instance;
-
-    private readonly int _initialAttachmentSlotsCount = instance.AttachmentSlotsCount;
-
-    private readonly List<BaseEnchantment> _addedEnchantments = [];
 
     private bool CanHook()
     {
@@ -34,26 +34,33 @@ internal class SFishingRod(FishingRod instance)
 
     public void AutoHook(bool doVibrate)
     {
-        if (this.CanHook())
+        if (!this.CanHook())
         {
-            this.Instance.timePerBobberBob = 1f;
-            this.Instance.timeUntilFishingNibbleDone = FishingRod.maxTimeToNibble;
-            this.Instance.DoFunction(Game1.player.currentLocation, (int)this.Instance.bobber.X, (int)this.Instance.bobber.Y, 1, Game1.player);
+            return;
+        }
 
-            if (doVibrate)
-            {
-                Rumble.rumble(0.95f, 200f);
-            }
+        this.Instance.timePerBobberBob = 1f;
+        this.Instance.timeUntilFishingNibbleDone = FishingRod.maxTimeToNibble;
+        this.Instance.DoFunction(
+            Game1.player.currentLocation,
+            (int)this.Instance.bobber.X,
+            (int)this.Instance.bobber.Y,
+            1,
+            Game1.player);
+
+        if (doVibrate)
+        {
+            Rumble.rumble(0.95f, 200f);
         }
     }
 
-    public void SpawnBait(List<string> baitIds, int amountOfBait = 1, bool overrideAttachmentLimit = false)
+    public void SpawnBait(List<string?> baitIds, int amountOfBait = 1, bool overrideAttachmentLimit = false)
     {
         for (int i = FishingRod.BaitIndex; i < FishingRod.TackleIndex; i++)
         {
-            string baitId = baitIds.ElementAtOrDefault(i);
+            string? baitId = baitIds.ElementAtOrDefault(i);
 
-            if (baitId == null || baitId == "" || ItemRegistry.GetDataOrErrorItem(baitId).IsErrorItem)
+            if (string.IsNullOrEmpty(baitId) || ItemRegistry.GetDataOrErrorItem(baitId).IsErrorItem)
             {
                 continue;
             }
@@ -75,13 +82,13 @@ internal class SFishingRod(FishingRod instance)
         }
     }
 
-    public void SpawnTackles(List<string> tackleIds, bool overrideAttachmentLimit = false)
+    public void SpawnTackles(List<string?> tackleIds, bool overrideAttachmentLimit = false)
     {
         for (int i = FishingRod.TackleIndex; i < FishingRod.TackleIndex + 2; i++)
         {
-            string tackleId = tackleIds.ElementAtOrDefault(i - FishingRod.TackleIndex);
+            string? tackleId = tackleIds.ElementAtOrDefault(i - FishingRod.TackleIndex);
 
-            if (tackleId == null || tackleId == "" || ItemRegistry.GetDataOrErrorItem(tackleId).IsErrorItem)
+            if (string.IsNullOrEmpty(tackleId) || ItemRegistry.GetDataOrErrorItem(tackleId).IsErrorItem)
             {
                 continue;
             }
@@ -105,28 +112,28 @@ internal class SFishingRod(FishingRod instance)
 
     public void ResetAttachmentsLimit()
     {
-        if (this._initialAttachmentSlotsCount == this.Instance.AttachmentSlotsCount)
+        if (this.initialAttachmentSlotsCount == this.Instance.AttachmentSlotsCount)
         {
             return;
         }
 
-        for (int i = this.Instance.AttachmentSlotsCount; i > this._initialAttachmentSlotsCount; i--)
+        for (int i = this.Instance.AttachmentSlotsCount; i > this.initialAttachmentSlotsCount; i--)
         {
             this.Instance.attachments[i - 1] = null;
         }
 
-        this.Instance.AttachmentSlotsCount = this._initialAttachmentSlotsCount;
+        this.Instance.AttachmentSlotsCount = this.initialAttachmentSlotsCount;
     }
 
     public void AddEnchantment(BaseEnchantment enchantment)
     {
         this.Instance.enchantments.Add(enchantment);
-        this._addedEnchantments.Add(enchantment);
+        this.addedEnchantments.Add(enchantment);
     }
 
     public void ResetEnchantments()
     {
-        foreach (BaseEnchantment enchantment in this._addedEnchantments)
+        foreach (BaseEnchantment enchantment in this.addedEnchantments)
         {
             this.Instance.enchantments.Remove(enchantment);
         }

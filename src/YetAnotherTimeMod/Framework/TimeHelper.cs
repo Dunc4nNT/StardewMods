@@ -11,11 +11,11 @@ using StardewValley;
 
 internal class TimeHelper(ModConfig config, IMonitor monitor)
 {
-    private int lastTimeInterval = 0;
+    private int lastTimeInterval;
 
     private int speedPercentage = config.DefaultSpeedPercentage;
 
-    private bool isTimeFrozen = false;
+    private bool isTimeFrozen;
 
     private int SpeedPercentage
     {
@@ -54,7 +54,8 @@ internal class TimeHelper(ModConfig config, IMonitor monitor)
             this.lastTimeInterval = 0;
         }
 
-        Game1.gameTimeInterval = this.lastTimeInterval + ((Game1.gameTimeInterval - this.lastTimeInterval) * this.SpeedPercentage / 100);
+        Game1.gameTimeInterval = this.lastTimeInterval +
+                                 ((Game1.gameTimeInterval - this.lastTimeInterval) * this.SpeedPercentage / 100);
         this.lastTimeInterval = Game1.gameTimeInterval;
     }
 
@@ -90,7 +91,7 @@ internal class TimeHelper(ModConfig config, IMonitor monitor)
 
     private void OnSpeedUpdate()
     {
-        string message = I18n.Message_TimeUpdate(Percentage: this.SpeedPercentage);
+        string message = I18n.Message_TimeUpdate(this.SpeedPercentage);
         monitor.Log(message, LogLevel.Info);
         Notifier.DisplayHudNotification(message);
     }

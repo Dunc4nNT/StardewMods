@@ -9,7 +9,8 @@ using System.Collections.Generic;
 using NeverToxic.StardewMods.LittleHelpersCore.Framework.Actions;
 using NeverToxic.StardewMods.LittleHelpersCore.Framework.Checks;
 
-internal class BaseBuilding(int helperCapacity, ILocationCheck locationCheck, int? radius = null, int? location = null) : IBuilding
+internal class BaseBuilding(int helperCapacity, ILocationCheck locationCheck, int? radius = null, int? location = null)
+    : IBuilding
 {
     public virtual List<BaseAction> Actions { get; set; } = [];
 

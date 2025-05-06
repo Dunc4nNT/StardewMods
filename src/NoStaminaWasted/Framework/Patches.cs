@@ -6,13 +6,18 @@
 namespace NeverToxic.StardewMods.NoStaminaWasted.Framework;
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection.Emit;
 using HarmonyLib;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Tools;
 
-internal class Patches()
+[SuppressMessage(
+    "StyleCop.CSharp.NamingRules",
+    "SA1313:Parameter names should begin with lower-case letter",
+    Justification = "Harmony naming convention has double underscore.")]
+internal static class Patches
 {
     private static bool doConsumeStamina;
 
@@ -24,16 +29,20 @@ internal class Patches()
 
     public static void Patch(ModEntry mod)
     {
-        mod.Harmony.Patch(
-            original: AccessTools.Method(typeof(FishingRod), nameof(FishingRod.DoFunction)),
+        Mod = mod;
+
+        Mod.Harmony.Patch(
+            AccessTools.Method(typeof(FishingRod), nameof(FishingRod.DoFunction)),
             transpiler: new HarmonyMethod(typeof(Patches), nameof(FishingRod_DoFunction_Transpiler)));
 
-        mod.Harmony.Patch(
-            original: AccessTools.Method(typeof(FishingRod), nameof(FishingRod.DoFunction)),
+        Mod.Harmony.Patch(
+            AccessTools.Method(typeof(FishingRod), nameof(FishingRod.DoFunction)),
             postfix: new HarmonyMethod(typeof(Patches), nameof(FishingRod_DoFunction_Postfix)));
     }
 
-    public static IEnumerable<CodeInstruction>? FishingRod_DoFunction_Transpiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions)
+    public static IEnumerable<CodeInstruction>? FishingRod_DoFunction_Transpiler(
+        ILGenerator generator,
+        IEnumerable<CodeInstruction> instructions)
     {
         CodeMatcher codeMatcher = new(instructions, generator);
 

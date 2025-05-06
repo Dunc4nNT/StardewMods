@@ -3,9 +3,11 @@
 // This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
+// ReSharper disable InconsistentNaming
 namespace NeverToxic.StardewMods.SelfServe.Framework;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
@@ -14,65 +16,62 @@ using StardewValley.Locations;
 using xTile.Dimensions;
 using Rectangle = xTile.Dimensions.Rectangle;
 
+[SuppressMessage(
+    "StyleCop.CSharp.NamingRules",
+    "SA1313:Parameter names should begin with lower-case letter",
+    Justification = "Harmony naming convention has double underscore.")]
 internal class Patches
 {
-    private static Harmony s_harmony;
-    private static IMonitor s_monitor;
-    private static Func<ModConfig> s_config;
-    private static IReflectionHelper s_reflectionHelper;
+    private static ModEntry? Mod { get; set; }
 
-    internal static void Initialise(Harmony harmony, IMonitor monitor, Func<ModConfig> config, IReflectionHelper reflectionHelper)
+    public static void Patch(ModEntry mod)
     {
-        s_harmony = harmony;
-        s_monitor = monitor;
-        s_config = config;
-        s_reflectionHelper = reflectionHelper;
+        Mod = mod;
 
-        ApplyPatches();
-    }
-
-    private static void ApplyPatches()
-    {
-        s_harmony.Patch(
-            original: AccessTools.Method(typeof(GameLocation), nameof(GameLocation.performAction), [typeof(string[]), typeof(Farmer), typeof(Location)]),
-            prefix: new HarmonyMethod(typeof(Patches), nameof(GameLocationPerformActionPatch))
-        );
-        s_harmony.Patch(
-            original: AccessTools.Method(typeof(Forest), nameof(Forest.checkAction), [typeof(Location), typeof(Rectangle), typeof(Farmer)]),
-            prefix: new HarmonyMethod(typeof(Patches), nameof(ForestCheckActionPatch))
-        );
-        s_harmony.Patch(
-            original: AccessTools.Method(typeof(IslandSouth), nameof(IslandSouth.checkAction), [typeof(Location), typeof(Rectangle), typeof(Farmer)]),
-            prefix: new HarmonyMethod(typeof(Patches), nameof(IslandSouthCheckActionPatch))
-        );
-        s_harmony.Patch(
-            original: AccessTools.Method(typeof(Desert), nameof(Desert.OnDesertTrader)),
-            prefix: new HarmonyMethod(typeof(Patches), nameof(DesertOnDesertTraderPatch))
-        );
-        s_harmony.Patch(
-            original: AccessTools.Method(typeof(BeachNightMarket), nameof(BeachNightMarket.checkAction)),
-            prefix: new HarmonyMethod(typeof(Patches), nameof(BeachNightMarketCheckActionPatch))
-        );
-        s_harmony.Patch(
-            original: AccessTools.Method(typeof(Utility), nameof(Utility.TryOpenShopMenu), [typeof(string), typeof(string), typeof(bool)]),
-            postfix: new HarmonyMethod(typeof(Patches), nameof(Utility_TryOpenShopMenu_PostFix))
-        );
-        s_harmony.Patch(
-            original: AccessTools.Method(typeof(Utility), nameof(Utility.TryOpenShopMenu), [typeof(string), typeof(GameLocation), typeof(Microsoft.Xna.Framework.Rectangle), typeof(int), typeof(bool), typeof(bool), typeof(Action<string>)]),
-            prefix: new HarmonyMethod(typeof(Patches), nameof(Utility_TryOpenShopMenu_Prefix))
-        );
+        Mod.Harmony.Patch(
+            AccessTools.Method(
+                typeof(GameLocation),
+                nameof(GameLocation.performAction),
+                [typeof(string[]), typeof(Farmer), typeof(Location)]),
+            new HarmonyMethod(typeof(Patches), nameof(GameLocationPerformActionPatch)));
+        Mod.Harmony.Patch(
+            AccessTools.Method(
+                typeof(Forest),
+                nameof(Forest.checkAction),
+                [typeof(Location), typeof(Rectangle), typeof(Farmer)]),
+            new HarmonyMethod(typeof(Patches), nameof(ForestCheckActionPatch)));
+        Mod.Harmony.Patch(
+            AccessTools.Method(
+                typeof(IslandSouth),
+                nameof(IslandSouth.checkAction),
+                [typeof(Location), typeof(Rectangle), typeof(Farmer)]),
+            new HarmonyMethod(typeof(Patches), nameof(IslandSouthCheckActionPatch)));
+        Mod.Harmony.Patch(
+            AccessTools.Method(typeof(Desert), nameof(Desert.OnDesertTrader)),
+            new HarmonyMethod(typeof(Patches), nameof(DesertOnDesertTraderPatch)));
+        Mod.Harmony.Patch(
+            AccessTools.Method(typeof(BeachNightMarket), nameof(BeachNightMarket.checkAction)),
+            new HarmonyMethod(typeof(Patches), nameof(BeachNightMarketCheckActionPatch)));
+        Mod.Harmony.Patch(
+            AccessTools.Method(
+                typeof(Utility),
+                nameof(Utility.TryOpenShopMenu),
+                [typeof(string), typeof(string), typeof(bool)]),
+            postfix: new HarmonyMethod(typeof(Patches), nameof(Utility_TryOpenShopMenu_PostFix)));
+        Mod.Harmony.Patch(
+            AccessTools.Method(
+                typeof(Utility),
+                nameof(Utility.TryOpenShopMenu),
+                [
+                    typeof(string), typeof(GameLocation), typeof(Microsoft.Xna.Framework.Rectangle), typeof(int),
+                    typeof(bool), typeof(bool), typeof(Action<string>)
+                ]),
+            new HarmonyMethod(typeof(Patches), nameof(Utility_TryOpenShopMenu_Prefix)));
     }
 
     public static void Utility_TryOpenShopMenu_PostFix(string shopId, ref bool __result)
     {
-        if (__result)
-        {
-            return;
-        }
-
-        ModConfig config = s_config();
-
-        if (!config.OtherShops)
+        if (Mod is null || __result || !Mod.Config.OtherShops)
         {
             return;
         }
@@ -82,9 +81,12 @@ internal class Patches
 
     public static bool Utility_TryOpenShopMenu_Prefix(ref bool forceOpen)
     {
-        ModConfig config = s_config();
+        if (Mod is null)
+        {
+            return true;
+        }
 
-        if (config.OtherShops)
+        if (Mod.Config.OtherShops)
         {
             forceOpen = true;
         }
@@ -96,7 +98,10 @@ internal class Patches
     {
         try
         {
-            ModConfig config = s_config();
+            if (Mod is null)
+            {
+                return __result;
+            }
 
             if (!ArgUtility.TryGet(action, 0, out string actionType, out string error))
             {
@@ -114,7 +119,7 @@ internal class Patches
                 switch (which)
                 {
                 case "General":
-                    if (!config.PierresGeneralShop)
+                    if (!Mod.Config.PierresGeneralShop)
                     {
                         return true;
                     }
@@ -123,7 +128,7 @@ internal class Patches
                     __result = true;
                     return false;
                 case "Fish":
-                    if (!config.WillysFishShop)
+                    if (!Mod.Config.WillysFishShop)
                     {
                         return true;
                     }
@@ -132,7 +137,7 @@ internal class Patches
                     __result = true;
                     return false;
                 case "SandyShop":
-                    if (!config.SandyOasisShop)
+                    if (!Mod.Config.SandyOasisShop)
                     {
                         return true;
                     }
@@ -145,7 +150,7 @@ internal class Patches
                 return true;
 
             case Game1.shop_iceCreamStand:
-                if (!config.IceCreamShop)
+                if (!Mod.Config.IceCreamShop)
                 {
                     return true;
                 }
@@ -154,7 +159,7 @@ internal class Patches
                 __result = true;
                 return false;
             case Game1.shop_blacksmith:
-                if (!config.BlacksmithShop)
+                if (!Mod.Config.BlacksmithShop)
                 {
                     return true;
                 }
@@ -163,7 +168,7 @@ internal class Patches
                 __result = true;
                 return false;
             case Game1.shop_carpenter:
-                if (!config.CarpentersShop)
+                if (!Mod.Config.CarpentersShop)
                 {
                     return true;
                 }
@@ -172,7 +177,7 @@ internal class Patches
                 __result = true;
                 return false;
             case Game1.shop_animalSupplies:
-                if (!config.MarniesAnimalShop)
+                if (!Mod.Config.MarniesAnimalShop)
                 {
                     return true;
                 }
@@ -181,7 +186,7 @@ internal class Patches
                 __result = true;
                 return false;
             case "HospitalShop":
-                if (!config.HospitalShop)
+                if (!Mod.Config.HospitalShop)
                 {
                     return true;
                 }
@@ -190,7 +195,7 @@ internal class Patches
                 __result = true;
                 return false;
             case Game1.shop_saloon:
-                if (!config.SaloonShop)
+                if (!Mod.Config.SaloonShop)
                 {
                     return true;
                 }
@@ -199,7 +204,7 @@ internal class Patches
                 __result = true;
                 return false;
             case Game1.shop_bookseller:
-                if (!config.BooksellerShop)
+                if (!Mod.Config.BooksellerShop)
                 {
                     return true;
                 }
@@ -213,7 +218,7 @@ internal class Patches
         }
         catch (Exception e)
         {
-            s_monitor.Log($"Failed in {nameof(GameLocationPerformActionPatch)}:\n{e}", LogLevel.Error);
+            Mod?.Monitor.Log($"Failed in {nameof(GameLocationPerformActionPatch)}:\n{e}", LogLevel.Error);
             return true;
         }
     }
@@ -222,24 +227,30 @@ internal class Patches
     {
         try
         {
-            ModConfig config = s_config();
+            if (Mod is null)
+            {
+                return true;
+            }
 
             if (__instance.travelingMerchantDay)
             {
                 Point cartTile = __instance.GetTravelingMerchantCartTile();
-                if (tileLocation.X == cartTile.X + 4 && tileLocation.Y == cartTile.Y + 1 && config.TravelingMerchantShop)
+                if (tileLocation.X != cartTile.X + 4 || tileLocation.Y != cartTile.Y + 1 ||
+                    !Mod.Config.TravelingMerchantShop)
                 {
-                    Utility.TryOpenShopMenu(Game1.shop_travelingCart, __instance, forceOpen: true);
-                    __result = true;
-                    return false;
+                    return true;
                 }
+
+                Utility.TryOpenShopMenu(Game1.shop_travelingCart, __instance, forceOpen: true);
+                __result = true;
+                return false;
             }
 
             return true;
         }
         catch (Exception e)
         {
-            s_monitor.Log($"Failed in {nameof(ForestCheckActionPatch)}:\n{e}", LogLevel.Error);
+            Mod?.Monitor.Log($"Failed in {nameof(ForestCheckActionPatch)}:\n{e}", LogLevel.Error);
             return true;
         }
     }
@@ -248,20 +259,23 @@ internal class Patches
     {
         try
         {
-            ModConfig config = s_config();
-
-            if (tileLocation.X == 14 && tileLocation.Y == 22 && config.ResortBarShop)
+            if (Mod is null)
             {
-                Utility.TryOpenShopMenu(Game1.shop_resortBar, __instance, forceOpen: true);
-                __result = true;
-                return false;
+                return true;
             }
 
-            return true;
+            if (tileLocation is not { X: 14, Y: 22 } || !Mod.Config.ResortBarShop)
+            {
+                return true;
+            }
+
+            Utility.TryOpenShopMenu(Game1.shop_resortBar, __instance, forceOpen: true);
+            __result = true;
+            return false;
         }
         catch (Exception e)
         {
-            s_monitor.Log($"Failed in {nameof(IslandSouthCheckActionPatch)}:\n{e}", LogLevel.Error);
+            Mod?.Monitor.Log($"Failed in {nameof(IslandSouthCheckActionPatch)}:\n{e}", LogLevel.Error);
             return true;
         }
     }
@@ -270,60 +284,77 @@ internal class Patches
     {
         try
         {
-            ModConfig config = s_config();
-
-            if (config.DesertTraderShop)
+            if (Mod is null)
             {
-                Utility.TryOpenShopMenu(Game1.shop_desertTrader, __instance, forceOpen: true);
-                return false;
+                return true;
             }
 
-            return true;
+            if (!Mod.Config.DesertTraderShop)
+            {
+                return true;
+            }
+
+            Utility.TryOpenShopMenu(Game1.shop_desertTrader, __instance, forceOpen: true);
+            return false;
         }
         catch (Exception e)
         {
-            s_monitor.Log($"Failed in {nameof(DesertOnDesertTraderPatch)}:\n{e}", LogLevel.Error);
+            Mod?.Monitor.Log($"Failed in {nameof(DesertOnDesertTraderPatch)}:\n{e}", LogLevel.Error);
             return true;
         }
     }
 
-    private static bool BeachNightMarketCheckActionPatch(ref BeachNightMarket __instance, Location tileLocation, ref bool __result)
+    private static bool BeachNightMarketCheckActionPatch(
+        ref BeachNightMarket __instance,
+        Location tileLocation,
+        ref bool __result)
     {
         try
         {
-            ModConfig config = s_config();
+            if (Mod is null)
+            {
+                return true;
+            }
 
             switch (__instance.getTileIndexAt(tileLocation, "Buildings"))
             {
             case 68:
-                if (!config.NightMarketPainterShop)
+                if (!Mod.Config.NightMarketPainterShop)
                 {
                     return true;
                 }
 
-                if (Game1.player.mailReceived.Contains(s_reflectionHelper.GetField<string>(__instance, "paintingMailKey").GetValue()))
+                if (Game1.player.mailReceived.Contains(
+                        Mod.Helper.Reflection.GetField<string>(__instance, "paintingMailKey").GetValue()))
                 {
-                    Game1.drawObjectDialogue(Game1.content.LoadString("Strings\\Locations:BeachNightMarket_PainterSold"));
+                    Game1.drawObjectDialogue(
+                        Game1.content.LoadString("Strings\\Locations:BeachNightMarket_PainterSold"));
                 }
                 else
                 {
-                    __instance.createQuestionDialogue(Game1.content.LoadString("Strings\\Locations:BeachNightMarket_PainterQuestion"), __instance.createYesNoResponses(), "PainterQuestion");
+                    __instance.createQuestionDialogue(
+                        Game1.content.LoadString("Strings\\Locations:BeachNightMarket_PainterQuestion"),
+                        __instance.createYesNoResponses(),
+                        "PainterQuestion");
                 }
 
                 __result = true;
                 return false;
             case 70:
-                if (!config.NightMarketMagicBoatShop)
+                if (!Mod.Config.NightMarketMagicBoatShop)
                 {
                     return true;
                 }
 
-                Utility.TryOpenShopMenu("Festival_NightMarket_MagicBoat_Day" + __instance.getDayOfNightMarket(), __instance, forceOpen: true);
+                Utility.TryOpenShopMenu(
+                    "Festival_NightMarket_MagicBoat_Day" + __instance.getDayOfNightMarket(),
+                    __instance,
+                    forceOpen: true);
 
                 __result = true;
                 return false;
             case 399:
-                if (!config.NightMarketTravelingMerchantShop)
+                if (!Mod.Config.NightMarketTravelingMerchantShop)
                 {
                     return true;
                 }
@@ -333,7 +364,7 @@ internal class Patches
                 __result = true;
                 return false;
             case 595:
-                if (!config.NightMarketDecorationBoatShop)
+                if (!Mod.Config.NightMarketDecorationBoatShop)
                 {
                     return true;
                 }
@@ -348,7 +379,7 @@ internal class Patches
         }
         catch (Exception e)
         {
-            s_monitor.Log($"Failed in {nameof(BeachNightMarketCheckActionPatch)}:\n{e}", LogLevel.Error);
+            Mod?.Monitor.Log($"Failed in {nameof(BeachNightMarketCheckActionPatch)}:\n{e}", LogLevel.Error);
             return true;
         }
     }

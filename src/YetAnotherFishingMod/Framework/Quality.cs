@@ -13,12 +13,5 @@ internal enum Quality
     None = SObject.lowQuality,
     Silver = SObject.medQuality,
     Gold = SObject.highQuality,
-    Iridium = SObject.bestQuality
-}
-
-internal enum TreasureAppearanceSettings
-{
-    Vanilla,
-    Never,
-    Always
+    Iridium = SObject.bestQuality,
 }

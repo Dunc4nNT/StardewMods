@@ -20,23 +20,23 @@ using SObject = StardewValley.Object;
 
 internal sealed class ModEntry : Mod
 {
-    private ModConfig Config { get; set; }
+    private readonly List<string> baitList = [string.Empty];
 
-    private ModConfigKeys Keys => this.Config.Keys;
+    private readonly List<string> tackleList = [string.Empty];
 
-    private FishHelper FishHelper { get; set; }
+    internal ModConfig Config { get; set; } = null!;
 
-    private readonly List<string> _baitList = [""];
+    internal Harmony Harmony { get; set; } = null!;
 
-    private readonly List<string> _tackleList = [""];
+    private FishHelper FishHelper { get; set; } = null!;
 
     public override void Entry(IModHelper helper)
     {
         I18n.Init(helper.Translation);
 
         this.Config = helper.ReadConfig<ModConfig>();
-        Harmony harmony = new(this.ModManifest.UniqueID);
-        Patches.Initialise(harmony, this.Monitor, () => this.Config, this.Helper.Reflection);
+        this.Harmony = new Harmony(this.ModManifest.UniqueID);
+        Patches.Patch(this);
         this.FishHelper = new FishHelper(() => this.Config, this.Monitor, this.Helper.Reflection);
 
         helper.Events.GameLoop.GameLaunched += this.OnGameLaunched;
@@ -46,29 +46,38 @@ internal sealed class ModEntry : Mod
         helper.Events.GameLoop.OneSecondUpdateTicked += this.OnSecondUpdateTicked;
     }
 
-    private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
+    private void OnGameLaunched(object? sender, GameLaunchedEventArgs e)
     {
         foreach (KeyValuePair<string, ObjectData> item in Game1.objectData)
         {
-            if (item.Value.Category == SObject.baitCategory)
+            switch (item.Value.Category)
             {
-                this._baitList.Add(ItemRegistry.QualifyItemId(item.Key));
-            }
-            else if (item.Value.Category == SObject.tackleCategory)
-            {
-                this._tackleList.Add(ItemRegistry.QualifyItemId(item.Key));
+            case SObject.baitCategory:
+                this.baitList.Add(ItemRegistry.QualifyItemId(item.Key));
+                break;
+            case SObject.tackleCategory:
+                this.tackleList.Add(ItemRegistry.QualifyItemId(item.Key));
+                break;
             }
         }
 
-        new GenericModConfigMenu(this.Helper.ModRegistry, this.ModManifest, this.Monitor, () => this.Config, () => this.Config = new ModConfig(), () => this.Helper.WriteConfig(this.Config), this._baitList, this._tackleList).Register();
+        new GenericModConfigMenu(
+            this.Helper.ModRegistry,
+            this.ModManifest,
+            this.Monitor,
+            () => this.Config,
+            () => this.Config = new ModConfig(),
+            () => this.Helper.WriteConfig(this.Config),
+            this.baitList,
+            this.tackleList).Register();
     }
 
-    private void OnSecondUpdateTicked(object sender, OneSecondUpdateTickedEventArgs e)
+    private void OnSecondUpdateTicked(object? sender, OneSecondUpdateTickedEventArgs e)
     {
         this.FishHelper.AutoCast();
     }
 
-    private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
+    private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e)
     {
         if (!Context.IsWorldReady)
         {
@@ -92,7 +101,7 @@ internal sealed class ModEntry : Mod
         this.FishHelper.SpeedUpAnimations();
     }
 
-    private void OnMenuChanged(object sender, MenuChangedEventArgs e)
+    private void OnMenuChanged(object? sender, MenuChangedEventArgs e)
     {
         if (e.NewMenu is BobberBar bobberBar)
         {
@@ -103,38 +112,40 @@ internal sealed class ModEntry : Mod
             this.FishHelper.OnFishingMiniGameEnd();
         }
 
-        if (e.NewMenu is ItemGrabMenu itemGrabMenu && itemGrabMenu.source == ItemGrabMenu.source_fishingChest)
+        if (e.NewMenu is ItemGrabMenu { source: ItemGrabMenu.source_fishingChest } itemGrabMenu)
         {
             this.FishHelper.OnTreasureMenuOpen(itemGrabMenu);
         }
     }
 
-    private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)
+    private void OnButtonsChanged(object? sender, ButtonsChangedEventArgs e)
     {
         if (!Context.IsWorldReady)
         {
             return;
         }
 
-        if (this.Keys.ReloadConfig.JustPressed())
+        if (this.Config.Keys.ReloadConfig.JustPressed())
         {
             this.ReloadConfig();
         }
 
-        if (this.Keys.DoAutoCast.JustPressed())
+        if (!this.Config.Keys.DoAutoCast.JustPressed())
         {
-            this.FishHelper.DoAutoCast.Value = !this.FishHelper.DoAutoCast.Value;
+            return;
+        }
 
-            if (this.FishHelper.DoAutoCast.Value)
-            {
-                this.Monitor.Log(I18n.Message_DoAutoCastEnabled());
-                Notifier.DisplayHudNotification(I18n.Message_DoAutoCastEnabled(), 1500);
-            }
-            else
-            {
-                this.Monitor.Log(I18n.Message_DoAutoCastDisabled());
-                Notifier.DisplayHudNotification(I18n.Message_DoAutoCastDisabled(), 1500);
-            }
+        this.FishHelper.DoAutoCast.Value = !this.FishHelper.DoAutoCast.Value;
+
+        if (this.FishHelper.DoAutoCast.Value)
+        {
+            this.Monitor.Log(I18n.Message_DoAutoCastEnabled());
+            Notifier.DisplayHudNotification(I18n.Message_DoAutoCastEnabled(), 1500);
+        }
+        else
+        {
+            this.Monitor.Log(I18n.Message_DoAutoCastDisabled());
+            Notifier.DisplayHudNotification(I18n.Message_DoAutoCastDisabled(), 1500);
         }
     }
 

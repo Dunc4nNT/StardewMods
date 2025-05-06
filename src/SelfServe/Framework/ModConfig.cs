@@ -5,8 +5,6 @@
 
 namespace NeverToxic.StardewMods.SelfServe.Framework;
 
-using StardewModdingAPI.Utilities;
-
 internal class ModConfig
 {
     public ModConfigKeys Keys { get; set; } = new();
@@ -46,9 +44,4 @@ internal class ModConfig
     public bool NightMarketDecorationBoatShop { get; set; } = true;
 
     public bool OtherShops { get; set; } = true;
-}
-
-internal class ModConfigKeys
-{
-    public KeybindList ReloadConfig { get; set; } = new();
 }

@@ -25,7 +25,8 @@ public static class Notifier
         case LogLevel.Debug:
         case LogLevel.Info:
         default:
-            Game1.addHUDMessage(new HUDMessage(message, HUDMessage.newQuest_type) { timeLeft = duration, noIcon = true });
+            Game1.addHUDMessage(
+                new HUDMessage(message, HUDMessage.newQuest_type) { timeLeft = duration, noIcon = true });
             break;
         }
     }

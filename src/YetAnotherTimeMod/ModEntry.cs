@@ -9,7 +9,7 @@ using NeverToxic.StardewMods.YetAnotherTimeMod.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 
-internal class ModEntry : Mod
+internal sealed class ModEntry : Mod
 {
     private ModConfig config = null!;
 

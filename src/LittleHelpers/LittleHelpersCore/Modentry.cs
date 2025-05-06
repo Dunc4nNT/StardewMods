@@ -41,7 +41,13 @@ internal sealed class ModEntry : Mod
 
     private void OnGameLaunched(object? sender, GameLaunchedEventArgs e)
     {
-        new GenericModConfigMenu(this.Helper.ModRegistry, this.ModManifest, this.Monitor, () => this.Config, () => this.Config = new ModConfig(), () => this.Helper.WriteConfig(this.Config)).Register();
+        new GenericModConfigMenu(
+            this.Helper.ModRegistry,
+            this.ModManifest,
+            this.Monitor,
+            () => this.Config,
+            () => this.Config = new ModConfig(),
+            () => this.Helper.WriteConfig(this.Config)).Register();
     }
 
     private void OnButtonsChanged(object? sender, ButtonsChangedEventArgs e)

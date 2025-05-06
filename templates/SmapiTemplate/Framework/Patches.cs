@@ -5,28 +5,18 @@
 
 namespace NeverToxic.StardewMods.SmapiTemplate.Framework;
 
-using System;
-using HarmonyLib;
-using StardewModdingAPI;
+using System.Diagnostics.CodeAnalysis;
 
-internal class Patches
+[SuppressMessage(
+    "StyleCop.CSharp.NamingRules",
+    "SA1313:Parameter names should begin with lower-case letter",
+    Justification = "Harmony naming convention has double underscore.")]
+internal static class Patches
 {
-    private static Harmony s_harmony;
-    private static IMonitor s_monitor;
-    private static Func<ModConfig> s_config;
-    private static IReflectionHelper s_reflectionHelper;
+    private static ModEntry? Mod { get; set; }
 
-    internal static void Initialise(Harmony harmony, IMonitor monitor, Func<ModConfig> config, IReflectionHelper reflectionHelper)
+    public static void Patch(ModEntry mod)
     {
-        s_harmony = harmony;
-        s_monitor = monitor;
-        s_config = config;
-        s_reflectionHelper = reflectionHelper;
-
-        ApplyPatches();
-    }
-
-    private static void ApplyPatches()
-    {
+        Mod = mod;
     }
 }

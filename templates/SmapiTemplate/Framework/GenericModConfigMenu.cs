@@ -9,11 +9,18 @@ using System;
 using NeverToxic.StardewMods.Common;
 using StardewModdingAPI;
 
-internal class GenericModConfigMenu(IModRegistry modRegistry, IManifest manifest, IMonitor monitor, Func<ModConfig> config, Action reset, Action save)
+internal class GenericModConfigMenu(
+    IModRegistry modRegistry,
+    IManifest manifest,
+    IMonitor monitor,
+    Func<ModConfig> config,
+    Action reset,
+    Action save)
 {
     public void Register()
     {
-        IGenericModConfigMenuApi configMenu = modRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
+        IGenericModConfigMenuApi? configMenu =
+            modRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
 
         if (configMenu is null)
         {

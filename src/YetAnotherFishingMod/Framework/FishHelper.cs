@@ -18,134 +18,69 @@ using StardewValley.Menus;
 using StardewValley.Tools;
 using SObject = StardewValley.Object;
 
-internal class FishHelper(Func<ModConfig> config, IMonitor monitor, IReflectionHelper reflectionHelper)
+internal class FishHelper(Func<ModConfig> modConfig, IMonitor monitor, IReflectionHelper reflectionHelper)
 {
-    private readonly PerScreen<BobberBar> _bobberBar = new();
-    private readonly PerScreen<SFishingRod> _fishingRod = new();
-    public readonly PerScreen<bool> IsInFishingMiniGame = new();
-    public readonly PerScreen<bool> DoAutoCast = new();
+    private readonly PerScreen<BobberBar?> bobberBar = new();
 
-    private void ApplyFishingRodBuffs()
-    {
-        ModConfig config_ = config();
-        SFishingRod fishingRod = this._fishingRod.Value;
+    private readonly PerScreen<SFishingRod?> fishingRod = new();
 
-        if (ItemRegistry.GetData(fishingRod.Instance.whichFish?.QualifiedItemId)?.Category == SObject.FishCategory)
-        {
-            if ((int)config_.MinimumFishQuality > fishingRod.Instance.fishQuality)
-            {
-                fishingRod.Instance.fishQuality = (int)config_.MinimumFishQuality;
-            }
-            else if (config_.FishQuality != Quality.Any)
-            {
-                fishingRod.Instance.fishQuality = (int)config_.FishQuality;
-            }
+    internal PerScreen<bool> IsInFishingMiniGame { get; set; } = new();
 
-            if (config_.NumberOfFishCaught > fishingRod.Instance.numberOfFishCaught)
-            {
-                fishingRod.Instance.numberOfFishCaught = config_.NumberOfFishCaught;
-            }
-        }
-
-        if (config_.AlwaysMaxCastingPower)
-        {
-            fishingRod.Instance.castingPower = 1.01f;
-        }
-
-        if (config_.InstantBite)
-        {
-            fishingRod.InstantBite();
-        }
-
-        if (config_.AutoHook)
-        {
-            fishingRod.AutoHook(!config_.DisableVibrations);
-        }
-    }
+    internal PerScreen<bool> DoAutoCast { get; set; } = new();
 
     public void OnTreasureMenuOpen(ItemGrabMenu itemGrabMenu)
     {
-        ModConfig config_ = config();
+        ModConfig config = modConfig();
 
-        if (config_.AutoLootTreasure)
+        if (!config.AutoLootTreasure)
         {
-            IList<Item> actualInventory = itemGrabMenu.ItemsToGrabMenu.actualInventory;
-            for (int i = actualInventory.Count - 1; i >= 0; i--)
-            {
-                if (Game1.player.addItemToInventoryBool(actualInventory.ElementAt(i)))
-                {
-                    actualInventory.RemoveAt(i);
-                }
-            }
+            return;
+        }
 
-            if (actualInventory.Count == 0)
+        IList<Item> actualInventory = itemGrabMenu.ItemsToGrabMenu.actualInventory;
+        for (int i = actualInventory.Count - 1; i >= 0; i--)
+        {
+            if (Game1.player.addItemToInventoryBool(actualInventory.ElementAt(i)))
             {
-                itemGrabMenu.exitThisMenu();
+                actualInventory.RemoveAt(i);
             }
-            else
-            {
-                Notifier.DisplayHudNotification(I18n.Message_InventoryFull(), logLevel: LogLevel.Warn);
-            }
+        }
+
+        if (actualInventory.Count == 0)
+        {
+            itemGrabMenu.exitThisMenu();
+        }
+        else
+        {
+            Notifier.DisplayHudNotification(I18n.Message_InventoryFull(), logLevel: LogLevel.Warn);
         }
     }
 
     public void ApplyFishingMiniGameBuffs()
     {
-        BobberBar bobberBar = this._bobberBar.Value;
+        BobberBar? bBar = this.bobberBar.Value;
 
-        if (bobberBar is null)
+        if (bBar is null)
         {
             return;
         }
 
-        if (config().AlwaysPerfect)
+        if (modConfig().AlwaysPerfect)
         {
-            bobberBar.perfect = true;
+            bBar.perfect = true;
         }
     }
 
-    private void CreateFishingRod(FishingRod fishingRod)
+    public void OnFishingRodEquipped(FishingRod rod)
     {
-        ModConfig config_ = config();
-        this._fishingRod.Value = new SFishingRod(fishingRod);
-
-        this._fishingRod.Value.SpawnBait(config_.BaitToSpawn, amountOfBait: config_.AmountOfBait, overrideAttachmentLimit: config_.OverrideAttachmentLimit);
-        this._fishingRod.Value.SpawnTackles(config_.TacklesToSpawn, overrideAttachmentLimit: config_.OverrideAttachmentLimit);
-
-        if (config_.DoAddEnchantments)
+        if (this.fishingRod.Value is null)
         {
-            if (!fishingRod.hasEnchantmentOfType<AutoHookEnchantment>() && (config_.AddAllEnchantments || config_.AddAutoHookEnchantment))
-            {
-                this._fishingRod.Value.AddEnchantment(new AutoHookEnchantment());
-            }
-
-            if (!fishingRod.hasEnchantmentOfType<EfficientToolEnchantment>() && (config_.AddAllEnchantments || config_.AddEfficientToolEnchantment))
-            {
-                this._fishingRod.Value.AddEnchantment(new EfficientToolEnchantment());
-            }
-
-            if (!fishingRod.hasEnchantmentOfType<MasterEnchantment>() && (config_.AddAllEnchantments || config_.AddMasterEnchantment))
-            {
-                this._fishingRod.Value.AddEnchantment(new MasterEnchantment());
-            }
-
-            if (!fishingRod.hasEnchantmentOfType<PreservingEnchantment>() && (config_.AddAllEnchantments || config_.AddPreservingEnchantment))
-            {
-                this._fishingRod.Value.AddEnchantment(new PreservingEnchantment());
-            }
+            this.CreateFishingRod(rod);
         }
-    }
-
-    public void OnFishingRodEquipped(FishingRod fishingRod)
-    {
-        if (this._fishingRod.Value is null)
-        {
-            this.CreateFishingRod(fishingRod);
-        }
-        else if (this._fishingRod.Value.Instance != fishingRod)
+        else if (this.fishingRod.Value.Instance != rod)
         {
             this.OnFishingRodNotEquipped();
-            this.CreateFishingRod(fishingRod);
+            this.CreateFishingRod(rod);
         }
 
         this.ApplyFishingRodBuffs();
@@ -153,127 +88,41 @@ internal class FishHelper(Func<ModConfig> config, IMonitor monitor, IReflectionH
 
     public void OnFishingRodNotEquipped()
     {
-        SFishingRod fishingRod = this._fishingRod.Value;
+        SFishingRod? rod = this.fishingRod.Value;
 
-        if (fishingRod is not null)
+        if (rod is null)
         {
-            ModConfig config_ = config();
-
-            if (config_.ResetAttachmentsLimitWhenNotEquipped)
-            {
-                fishingRod.ResetAttachmentsLimit();
-            }
-
-            if (config_.ResetEnchantmentsWhenNotEquipped)
-            {
-                fishingRod.ResetEnchantments();
-            }
-
-            this._fishingRod.Value = null;
+            return;
         }
+
+        ModConfig config = modConfig();
+
+        if (config.ResetAttachmentsLimitWhenNotEquipped)
+        {
+            rod.ResetAttachmentsLimit();
+        }
+
+        if (config.ResetEnchantmentsWhenNotEquipped)
+        {
+            rod.ResetEnchantments();
+        }
+
+        this.fishingRod.Value = null;
     }
 
-    public void OnFishingMiniGameStart(BobberBar bobberBar)
+    public void OnFishingMiniGameStart(BobberBar bBar)
     {
         this.IsInFishingMiniGame.Value = true;
-        this._bobberBar.Value = bobberBar;
+        this.bobberBar.Value = bBar;
 
         this.ApplyBobberBarBuffs();
     }
 
-    private void ApplyBobberBarBuffs()
-    {
-        BobberBar bobberBar = this._bobberBar.Value;
-        SFishingRod fishingRod = this._fishingRod.Value;
-        ModConfig config_ = config();
-
-        bobberBar.difficulty *= config_.DifficultyMultiplier;
-        bobberBar.distanceFromCatchPenaltyModifier = config_.FishNotInBarPenaltyMultiplier;
-        bobberBar.bobberBarHeight = (int)(bobberBar.bobberBarHeight * config_.BarSizeMultiplier);
-        bobberBar.bobberBarPos = BobberBar.bobberBarTrackHeight - bobberBar.bobberBarHeight;
-
-        if (config_.TreasureAppearence == TreasureAppearanceSettings.Never)
-        {
-            bobberBar.treasure = false;
-        }
-        else if (config_.TreasureAppearence == TreasureAppearanceSettings.Always)
-        {
-            bobberBar.treasure = true;
-        }
-
-        if (config_.GoldenTreasureAppearance == TreasureAppearanceSettings.Never)
-        {
-            fishingRod.Instance.goldenTreasure = false;
-            bobberBar.goldenTreasure = false;
-        }
-        else if (bobberBar.treasure && config_.GoldenTreasureAppearance == TreasureAppearanceSettings.Always)
-        {
-            fishingRod.Instance.goldenTreasure = true;
-            bobberBar.goldenTreasure = true;
-        }
-
-        if ((config_.InstantCatchTreasure && bobberBar.treasure))
-        {
-            bobberBar.treasureCaught = true;
-        }
-
-        if (this.ShouldSkipMinigame(config_.SkipFishingMinigame, config_.SkipFishingMinigameCatchesRequired))
-        {
-            this.SkipMinigame(config_.SkipFishingMinigameTreasureChance, config_.InstantCatchTreasure, config_.SkipFishingMinigamePerfectChance, config_.AlwaysPerfect, config_.SkipMinigamePopup);
-        }
-    }
-
-    private bool ShouldSkipMinigame(bool maySkipFishingMiniGame, int minimumCatchesRequired)
-    {
-        if (!maySkipFishingMiniGame)
-        {
-            return false;
-        }
-
-        if (minimumCatchesRequired == 0)
-        {
-            return true;
-        }
-        else if (Game1.player.fishCaught.TryGetValue(ItemRegistry.GetData(this._bobberBar.Value.whichFish)?.QualifiedItemId, out int[] fishCaughtInfo) && fishCaughtInfo.Length > 0 && fishCaughtInfo[0] >= minimumCatchesRequired)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    private void SkipMinigame(float treasureChance, bool instantCatchTreasure, float perfectChance, bool alwaysPerfect, bool skipPopup)
-    {
-        BobberBar bobberBar = this._bobberBar.Value;
-
-        if (bobberBar.treasure && (Game1.random.NextDouble() < treasureChance || instantCatchTreasure))
-        {
-            bobberBar.treasureCaught = true;
-        }
-
-        if (Game1.random.NextDouble() > perfectChance && !alwaysPerfect)
-        {
-            bobberBar.perfect = false;
-        }
-
-        bobberBar.distanceFromCatching = 1f;
-
-        if (skipPopup)
-        {
-            for (int i = 0; i < 250; i++)
-            {
-                bobberBar?.update(Game1.currentGameTime);
-            }
-        }
-    }
-
     public void SpeedUpAnimations()
     {
-        ModConfig config_ = config();
+        ModConfig config = modConfig();
 
-        if (!config_.DoSpeedUpAnimations)
+        if (!config.DoSpeedUpAnimations)
         {
             return;
         }
@@ -286,14 +135,22 @@ internal class FishHelper(Func<ModConfig> config, IMonitor monitor, IReflectionH
             }
         }
 
-        if (this.IsInFishingMiniGame.Value)
+        if (!this.IsInFishingMiniGame.Value)
         {
+            return;
+        }
 
-            BobberBar bobberBar = this._bobberBar.Value;
+        {
+            BobberBar? bBar = this.bobberBar.Value;
 
-            bobberBar.everythingShakeTimer = 0f;
+            if (bBar is null)
+            {
+                return;
+            }
 
-            SparklingText sparkleText = reflectionHelper.GetField<SparklingText>(bobberBar, "sparkleText").GetValue();
+            bBar.everythingShakeTimer = 0f;
+
+            SparklingText sparkleText = reflectionHelper.GetField<SparklingText>(bBar, "sparkleText").GetValue();
 
             for (int i = 0; i < 10; i++)
             {
@@ -309,7 +166,12 @@ internal class FishHelper(Func<ModConfig> config, IMonitor monitor, IReflectionH
             return;
         }
 
-        if (Game1.player.CurrentTool is FishingRod { isCasting: false, isReeling: false, fishCaught: false, showingTreasure: false, isFishing: false } && !Game1.player.UsingTool && Game1.activeClickableMenu is null && Game1.player.CanMove)
+        if (Game1.player.CurrentTool is FishingRod
+            {
+                isCasting: false, isReeling: false, fishCaught: false, showingTreasure: false, isFishing: false
+            }
+
+            && !Game1.player.UsingTool && Game1.activeClickableMenu is null && Game1.player.CanMove)
         {
             Game1.pressUseToolButton();
         }
@@ -318,6 +180,192 @@ internal class FishHelper(Func<ModConfig> config, IMonitor monitor, IReflectionH
     public void OnFishingMiniGameEnd()
     {
         this.IsInFishingMiniGame.Value = false;
-        this._bobberBar.Value = null;
+        this.bobberBar.Value = null;
+    }
+
+    private void ApplyFishingRodBuffs()
+    {
+        ModConfig config = modConfig();
+        SFishingRod? rod = this.fishingRod.Value;
+
+        if (rod is null)
+        {
+            return;
+        }
+
+        if (ItemRegistry.GetData(rod.Instance.whichFish?.QualifiedItemId)?.Category == SObject.FishCategory)
+        {
+            if ((int)config.MinimumFishQuality > rod.Instance.fishQuality)
+            {
+                rod.Instance.fishQuality = (int)config.MinimumFishQuality;
+            }
+            else if (config.FishQuality != Quality.Any)
+            {
+                rod.Instance.fishQuality = (int)config.FishQuality;
+            }
+
+            if (config.NumberOfFishCaught > rod.Instance.numberOfFishCaught)
+            {
+                rod.Instance.numberOfFishCaught = config.NumberOfFishCaught;
+            }
+        }
+
+        if (config.AlwaysMaxCastingPower)
+        {
+            rod.Instance.castingPower = 1.01f;
+        }
+
+        if (config.InstantBite)
+        {
+            rod.InstantBite();
+        }
+
+        if (config.AutoHook)
+        {
+            rod.AutoHook(!config.DisableVibrations);
+        }
+    }
+
+    private void CreateFishingRod(FishingRod rod)
+    {
+        ModConfig config = modConfig();
+        this.fishingRod.Value = new SFishingRod(rod);
+
+        this.fishingRod.Value.SpawnBait(config.BaitToSpawn, config.AmountOfBait, config.OverrideAttachmentLimit);
+        this.fishingRod.Value.SpawnTackles(config.TacklesToSpawn, config.OverrideAttachmentLimit);
+
+        if (!config.DoAddEnchantments)
+        {
+            return;
+        }
+
+        if (!rod.hasEnchantmentOfType<AutoHookEnchantment>() &&
+            (config.AddAllEnchantments || config.AddAutoHookEnchantment))
+        {
+            this.fishingRod.Value.AddEnchantment(new AutoHookEnchantment());
+        }
+
+        if (!rod.hasEnchantmentOfType<EfficientToolEnchantment>() &&
+            (config.AddAllEnchantments || config.AddEfficientToolEnchantment))
+        {
+            this.fishingRod.Value.AddEnchantment(new EfficientToolEnchantment());
+        }
+
+        if (!rod.hasEnchantmentOfType<MasterEnchantment>() &&
+            (config.AddAllEnchantments || config.AddMasterEnchantment))
+        {
+            this.fishingRod.Value.AddEnchantment(new MasterEnchantment());
+        }
+
+        if (!rod.hasEnchantmentOfType<PreservingEnchantment>() &&
+            (config.AddAllEnchantments || config.AddPreservingEnchantment))
+        {
+            this.fishingRod.Value.AddEnchantment(new PreservingEnchantment());
+        }
+    }
+
+    private void ApplyBobberBarBuffs()
+    {
+        BobberBar? bBar = this.bobberBar.Value;
+        SFishingRod? rod = this.fishingRod.Value;
+        ModConfig config = modConfig();
+
+        if (bBar is null || rod is null)
+        {
+            return;
+        }
+
+        bBar.difficulty *= config.DifficultyMultiplier;
+        bBar.distanceFromCatchPenaltyModifier = config.FishNotInBarPenaltyMultiplier;
+        bBar.bobberBarHeight = (int)(bBar.bobberBarHeight * config.BarSizeMultiplier);
+        bBar.bobberBarPos = BobberBar.bobberBarTrackHeight - bBar.bobberBarHeight;
+
+        bBar.treasure = config.TreasureAppearance switch
+        {
+            TreasureAppearanceSettings.Never => false,
+            TreasureAppearanceSettings.Always => true,
+            _ => bBar.treasure,
+        };
+
+        if (config.GoldenTreasureAppearance == TreasureAppearanceSettings.Never)
+        {
+            rod.Instance.goldenTreasure = false;
+            bBar.goldenTreasure = false;
+        }
+        else if (bBar.treasure && config.GoldenTreasureAppearance == TreasureAppearanceSettings.Always)
+        {
+            rod.Instance.goldenTreasure = true;
+            bBar.goldenTreasure = true;
+        }
+
+        if (config.InstantCatchTreasure && bBar.treasure)
+        {
+            bBar.treasureCaught = true;
+        }
+
+        if (this.ShouldSkipMinigame(config.SkipFishingMinigame, config.SkipFishingMinigameCatchesRequired))
+        {
+            this.SkipMinigame(
+                config.SkipFishingMinigameTreasureChance,
+                config.InstantCatchTreasure,
+                config.SkipFishingMinigamePerfectChance,
+                config.AlwaysPerfect,
+                config.SkipMinigamePopup);
+        }
+    }
+
+    private bool ShouldSkipMinigame(bool maySkipFishingMiniGame, int minimumCatchesRequired)
+    {
+        if (!maySkipFishingMiniGame)
+        {
+            return false;
+        }
+
+        if (minimumCatchesRequired == 0)
+        {
+            return true;
+        }
+
+        return Game1.player.fishCaught.TryGetValue(
+                   ItemRegistry.GetData(this.bobberBar.Value?.whichFish)?.QualifiedItemId,
+                   out int[] fishCaughtInfo) && fishCaughtInfo.Length > 0 &&
+               fishCaughtInfo[0] >= minimumCatchesRequired;
+    }
+
+    private void SkipMinigame(
+        float treasureChance,
+        bool instantCatchTreasure,
+        float perfectChance,
+        bool alwaysPerfect,
+        bool skipPopup)
+    {
+        BobberBar? bBar = this.bobberBar.Value;
+
+        if (bBar is null)
+        {
+            return;
+        }
+
+        if (bBar.treasure && (Game1.random.NextDouble() < treasureChance || instantCatchTreasure))
+        {
+            bBar.treasureCaught = true;
+        }
+
+        if (Game1.random.NextDouble() > perfectChance && !alwaysPerfect)
+        {
+            bBar.perfect = false;
+        }
+
+        bBar.distanceFromCatching = 1f;
+
+        if (!skipPopup)
+        {
+            return;
+        }
+
+        for (int i = 0; i < 250; i++)
+        {
+            bBar?.update(Game1.currentGameTime);
+        }
     }
 }

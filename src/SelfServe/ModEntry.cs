@@ -13,34 +13,40 @@ using Patches = NeverToxic.StardewMods.SelfServe.Framework.Patches;
 
 internal sealed class ModEntry : Mod
 {
-    private ModConfig Config { get; set; }
+    internal ModConfig Config { get; set; } = null!;
 
-    private ModConfigKeys Keys => this.Config.Keys;
+    internal Harmony Harmony { get; set; } = null!;
 
     public override void Entry(IModHelper helper)
     {
         I18n.Init(helper.Translation);
 
         this.Config = helper.ReadConfig<ModConfig>();
-        Harmony harmony = new(this.ModManifest.UniqueID);
-        Patches.Initialise(harmony, this.Monitor, () => this.Config, this.Helper.Reflection);
+        this.Harmony = new Harmony(this.ModManifest.UniqueID);
+        Patches.Patch(this);
 
         helper.Events.GameLoop.GameLaunched += this.OnGameLaunched;
     }
 
-    private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
+    private void OnGameLaunched(object? sender, GameLaunchedEventArgs e)
     {
-        new GenericModConfigMenu(this.Helper.ModRegistry, this.ModManifest, this.Monitor, () => this.Config, () => this.Config = new ModConfig(), () => this.Helper.WriteConfig(this.Config)).Register();
+        new GenericModConfigMenu(
+            this.Helper.ModRegistry,
+            this.ModManifest,
+            this.Monitor,
+            () => this.Config,
+            () => this.Config = new ModConfig(),
+            () => this.Helper.WriteConfig(this.Config)).Register();
     }
 
-    private void OnButtonsChanged(object sender, ButtonsChangedEventArgs e)
+    private void OnButtonsChanged(object? sender, ButtonsChangedEventArgs e)
     {
         if (!Context.IsWorldReady)
         {
             return;
         }
 
-        if (this.Keys.ReloadConfig.JustPressed())
+        if (this.Config.Keys.ReloadConfig.JustPressed())
         {
             this.ReloadConfig();
         }

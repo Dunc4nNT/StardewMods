@@ -30,31 +30,31 @@ internal class ObjectPatch
         Mod = mod;
 
         Mod.Harmony.Patch(
-            original: AccessTools.Method(typeof(SObject), nameof(SObject.canBePlacedHere)),
-            prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(CanBePlacedHerePatch)));
+            AccessTools.Method(typeof(SObject), nameof(SObject.canBePlacedHere)),
+            new HarmonyMethod(typeof(ObjectPatch), nameof(CanBePlacedHerePatch)));
 
         Mod.Harmony.Patch(
-            original: AccessTools.Method(typeof(SObject), nameof(SObject.placementAction)),
-            prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(PlacementActionPatch)));
+            AccessTools.Method(typeof(SObject), nameof(SObject.placementAction)),
+            new HarmonyMethod(typeof(ObjectPatch), nameof(PlacementActionPatch)));
 
         Mod.Harmony.Patch(
-            original: AccessTools.Method(typeof(SObject), nameof(SObject.checkForAction)),
-            prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(CheckForActionPatch)));
+            AccessTools.Method(typeof(SObject), nameof(SObject.checkForAction)),
+            new HarmonyMethod(typeof(ObjectPatch), nameof(CheckForActionPatch)));
 
         Mod.Harmony.Patch(
-            original: AccessTools.Method(typeof(SObject), nameof(SObject.minutesElapsed)),
-            prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(MinutesElapsedPatch)));
+            AccessTools.Method(typeof(SObject), nameof(SObject.minutesElapsed)),
+            new HarmonyMethod(typeof(ObjectPatch), nameof(MinutesElapsedPatch)));
 
         Mod.Harmony.Patch(
-            original: AccessTools.Method(typeof(SObject), nameof(SObject.performToolAction)),
-            prefix: new HarmonyMethod(typeof(ObjectPatch), nameof(PerformToolActionPatch)));
+            AccessTools.Method(typeof(SObject), nameof(SObject.performToolAction)),
+            new HarmonyMethod(typeof(ObjectPatch), nameof(PerformToolActionPatch)));
 
         Mod.Harmony.Patch(
-            original: AccessTools.Method(typeof(SObject), nameof(SObject.performRemoveAction)),
+            AccessTools.Method(typeof(SObject), nameof(SObject.performRemoveAction)),
             postfix: new HarmonyMethod(typeof(ObjectPatch), nameof(PerformRemoveActionPatch)));
 
         Mod.Harmony.Patch(
-            original: AccessTools.Method(typeof(SObject), nameof(SObject.DayUpdate)),
+            AccessTools.Method(typeof(SObject), nameof(SObject.DayUpdate)),
             postfix: new HarmonyMethod(typeof(ObjectPatch), nameof(DayUpdatePatch)));
     }
 
@@ -77,7 +77,13 @@ internal class ObjectPatch
         }
     }
 
-    private static bool PlacementActionPatch(ref SObject __instance, GameLocation location, int x, int y, Farmer who, ref bool __result)
+    private static bool PlacementActionPatch(
+        ref SObject __instance,
+        GameLocation location,
+        int x,
+        int y,
+        Farmer who,
+        ref bool __result)
     {
         try
         {
@@ -101,28 +107,32 @@ internal class ObjectPatch
         }
     }
 
-    private static bool CheckForActionPatch(ref SObject __instance, Farmer who, bool justCheckingForActivity, ref bool __result)
+    private static bool CheckForActionPatch(
+        ref SObject __instance,
+        Farmer who,
+        bool justCheckingForActivity,
+        ref bool __result)
     {
         try
         {
-            if (__instance.QualifiedItemId.StartsWith($"(BC){Mod?.ModManifest.UniqueID}"))
+            if (!__instance.QualifiedItemId.StartsWith($"(BC){Mod?.ModManifest.UniqueID}"))
             {
-                if (justCheckingForActivity)
-                {
-                    __result = true;
-                }
-                else if (__instance.heldObject.Value is Chest chest)
-                {
-                    chest.ShowMenu();
-                    __result = true;
-                }
-
-                __result = false;
-
-                return false;
+                return true;
             }
 
-            return true;
+            if (justCheckingForActivity)
+            {
+                __result = true;
+            }
+            else if (__instance.heldObject.Value is Chest chest)
+            {
+                chest.ShowMenu();
+                __result = true;
+            }
+
+            __result = false;
+
+            return false;
         }
         catch (Exception e)
         {
@@ -135,14 +145,14 @@ internal class ObjectPatch
     {
         try
         {
-            if (__instance.QualifiedItemId.StartsWith($"(BC){Mod?.ModManifest.UniqueID}"))
+            if (!__instance.QualifiedItemId.StartsWith($"(BC){Mod?.ModManifest.UniqueID}"))
             {
-                __result = false;
-
-                return false;
+                return true;
             }
 
-            return true;
+            __result = false;
+
+            return false;
         }
         catch (Exception e)
         {

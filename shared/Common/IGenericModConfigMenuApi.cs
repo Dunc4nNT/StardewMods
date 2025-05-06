@@ -48,7 +48,11 @@ public interface IGenericModConfigMenuApi
     /// <param name="texture">The image texture to display.</param>
     /// <param name="texturePixelArea">The pixel area within the texture to display, or <c>null</c> to show the entire image.</param>
     /// <param name="scale">The zoom factor to apply to the image.</param>
-    void AddImage(IManifest mod, Func<Texture2D> texture, Rectangle? texturePixelArea = null, int scale = Game1.pixelZoom);
+    void AddImage(
+        IManifest mod,
+        Func<Texture2D> texture,
+        Rectangle? texturePixelArea = null,
+        int scale = Game1.pixelZoom);
 
     /// <summary>Add a boolean option at the current position in the form.</summary>
     /// <param name="mod">The mod's manifest.</param>
@@ -57,7 +61,13 @@ public interface IGenericModConfigMenuApi
     /// <param name="name">The label text to show in the form.</param>
     /// <param name="tooltip">The tooltip text shown when the cursor hovers on the field, or <c>null</c> to disable the tooltip.</param>
     /// <param name="fieldId">The unique field ID for use with <see cref="OnFieldChanged"/>, or <c>null</c> to auto-generate a randomized ID.</param>
-    void AddBoolOption(IManifest mod, Func<bool> getValue, Action<bool> setValue, Func<string> name, Func<string> tooltip = null, string fieldId = null);
+    void AddBoolOption(
+        IManifest mod,
+        Func<bool> getValue,
+        Action<bool> setValue,
+        Func<string> name,
+        Func<string> tooltip = null,
+        string fieldId = null);
 
     /// <summary>Add an integer option at the current position in the form.</summary>
     /// <param name="mod">The mod's manifest.</param>
@@ -70,7 +80,17 @@ public interface IGenericModConfigMenuApi
     /// <param name="interval">The interval of values that can be selected.</param>
     /// <param name="formatValue">Get the display text to show for a value, or <c>null</c> to show the number as-is.</param>
     /// <param name="fieldId">The unique field ID for use with <see cref="OnFieldChanged"/>, or <c>null</c> to auto-generate a randomized ID.</param>
-    void AddNumberOption(IManifest mod, Func<int> getValue, Action<int> setValue, Func<string> name, Func<string> tooltip = null, int? min = null, int? max = null, int? interval = null, Func<int, string> formatValue = null, string fieldId = null);
+    void AddNumberOption(
+        IManifest mod,
+        Func<int> getValue,
+        Action<int> setValue,
+        Func<string> name,
+        Func<string> tooltip = null,
+        int? min = null,
+        int? max = null,
+        int? interval = null,
+        Func<int, string> formatValue = null,
+        string fieldId = null);
 
     /// <summary>Add a float option at the current position in the form.</summary>
     /// <param name="mod">The mod's manifest.</param>
@@ -83,7 +103,17 @@ public interface IGenericModConfigMenuApi
     /// <param name="interval">The interval of values that can be selected.</param>
     /// <param name="formatValue">Get the display text to show for a value, or <c>null</c> to show the number as-is.</param>
     /// <param name="fieldId">The unique field ID for use with <see cref="OnFieldChanged"/>, or <c>null</c> to auto-generate a randomized ID.</param>
-    void AddNumberOption(IManifest mod, Func<float> getValue, Action<float> setValue, Func<string> name, Func<string> tooltip = null, float? min = null, float? max = null, float? interval = null, Func<float, string> formatValue = null, string fieldId = null);
+    void AddNumberOption(
+        IManifest mod,
+        Func<float> getValue,
+        Action<float> setValue,
+        Func<string> name,
+        Func<string> tooltip = null,
+        float? min = null,
+        float? max = null,
+        float? interval = null,
+        Func<float, string> formatValue = null,
+        string fieldId = null);
 
     /// <summary>Add a string option at the current position in the form.</summary>
     /// <param name="mod">The mod's manifest.</param>
@@ -94,7 +124,15 @@ public interface IGenericModConfigMenuApi
     /// <param name="allowedValues">The values that can be selected, or <c>null</c> to allow any.</param>
     /// <param name="formatAllowedValue">Get the display text to show for a value from <paramref name="allowedValues"/>, or <c>null</c> to show the values as-is.</param>
     /// <param name="fieldId">The unique field ID for use with <see cref="OnFieldChanged"/>, or <c>null</c> to auto-generate a randomized ID.</param>
-    void AddTextOption(IManifest mod, Func<string> getValue, Action<string> setValue, Func<string> name, Func<string> tooltip = null, string[] allowedValues = null, Func<string, string> formatAllowedValue = null, string fieldId = null);
+    void AddTextOption(
+        IManifest mod,
+        Func<string> getValue,
+        Action<string> setValue,
+        Func<string> name,
+        Func<string> tooltip = null,
+        string[] allowedValues = null,
+        Func<string, string> formatAllowedValue = null,
+        string fieldId = null);
 
     /// <summary>Add a key binding at the current position in the form.</summary>
     /// <param name="mod">The mod's manifest.</param>
@@ -103,7 +141,13 @@ public interface IGenericModConfigMenuApi
     /// <param name="name">The label text to show in the form.</param>
     /// <param name="tooltip">The tooltip text shown when the cursor hovers on the field, or <c>null</c> to disable the tooltip.</param>
     /// <param name="fieldId">The unique field ID for use with <see cref="OnFieldChanged"/>, or <c>null</c> to auto-generate a randomized ID.</param>
-    void AddKeybind(IManifest mod, Func<SButton> getValue, Action<SButton> setValue, Func<string> name, Func<string> tooltip = null, string fieldId = null);
+    void AddKeybind(
+        IManifest mod,
+        Func<SButton> getValue,
+        Action<SButton> setValue,
+        Func<string> name,
+        Func<string> tooltip = null,
+        string fieldId = null);
 
     /// <summary>Add a key binding list at the current position in the form.</summary>
     /// <param name="mod">The mod's manifest.</param>
@@ -112,7 +156,13 @@ public interface IGenericModConfigMenuApi
     /// <param name="name">The label text to show in the form.</param>
     /// <param name="tooltip">The tooltip text shown when the cursor hovers on the field, or <c>null</c> to disable the tooltip.</param>
     /// <param name="fieldId">The unique field ID for use with <see cref="OnFieldChanged"/>, or <c>null</c> to auto-generate a randomized ID.</param>
-    void AddKeybindList(IManifest mod, Func<KeybindList> getValue, Action<KeybindList> setValue, Func<string> name, Func<string> tooltip = null, string fieldId = null);
+    void AddKeybindList(
+        IManifest mod,
+        Func<KeybindList> getValue,
+        Action<KeybindList> setValue,
+        Func<string> name,
+        Func<string> tooltip = null,
+        string fieldId = null);
 
     /****
      ** Multi-page management
@@ -150,7 +200,19 @@ public interface IGenericModConfigMenuApi
     /// <param name="height">The pixel height to allocate for the option in the form, or <c>null</c> for a standard input-sized option. This is called and cached each time the form is opened.</param>
     /// <param name="fieldId">The unique field ID for use with <see cref="OnFieldChanged"/>, or <c>null</c> to auto-generate a randomized ID.</param>
     /// <remarks>The custom logic represented by the callback parameters is responsible for managing its own state if needed. For example, you can store state in a static field or use closures to use a state variable.</remarks>
-    void AddComplexOption(IManifest mod, Func<string> name, Action<SpriteBatch, Vector2> draw, Func<string> tooltip = null, Action beforeMenuOpened = null, Action beforeSave = null, Action afterSave = null, Action beforeReset = null, Action afterReset = null, Action beforeMenuClosed = null, Func<int> height = null, string fieldId = null);
+    void AddComplexOption(
+        IManifest mod,
+        Func<string> name,
+        Action<SpriteBatch, Vector2> draw,
+        Func<string> tooltip = null,
+        Action beforeMenuOpened = null,
+        Action beforeSave = null,
+        Action afterSave = null,
+        Action beforeReset = null,
+        Action afterReset = null,
+        Action beforeMenuClosed = null,
+        Func<int> height = null,
+        string fieldId = null);
 
     /// <summary>Set whether the options registered after this point can only be edited from the title screen.</summary>
     /// <param name="mod">The mod's manifest.</param>

@@ -1,12 +1,11 @@
 <Project>
-    <PropertyGroup>
-        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
-        <PackageVersion Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
-        <!-- TODO: wait for https://github.com/Pathoschild/SMAPI-ModTranslationClassBuilder/issues/4 -->
-        <PackageVersion Include="Pathoschild.Stardew.ModTranslationClassBuilder" Version="2.1.0" />
-    </ItemGroup>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
+    <PackageVersion Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
+    <!-- TODO: wait for https://github.com/Pathoschild/SMAPI-ModTranslationClassBuilder/issues/4 -->
+    <PackageVersion Include="Pathoschild.Stardew.ModTranslationClassBuilder" Version="2.1.0" />
+  </ItemGroup>
 </Project>

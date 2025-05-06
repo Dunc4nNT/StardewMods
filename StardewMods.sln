@@ -36,6 +36,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F70DCCEC-3F94-4C5C-B58D-F42DAFC11547}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{E92FEADD-592F-43FD-8F6C-56BC47EE4E86}"
+	ProjectSection(SolutionItems) = preProject
+		templates\Directory.Build.props = templates\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mods", "mods", "{3EC3DC06-FD4B-4889-B561-5EB9284FE776}"
 	ProjectSection(SolutionItems) = preProject
