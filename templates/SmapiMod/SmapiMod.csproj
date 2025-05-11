@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <!--#if EnableI18n -->
+        <EnableI18n>true</EnableI18n>
+        <!--#endif -->
+
+        <!--#if EnableHarmony -->
+        <EnableHarmony>true</EnableHarmony>
+        <!--#endif -->
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <!-- Metadata for ModManifestBuilder -->
+        <Name>ModNamePlaceHolder</Name>
+        <Description>ModShortDescriptionPlaceHolder</Description>
+        <UniqueId>ModIdPlaceHolder</UniqueId>
+        <MinimumApiVersion>MinimumApiVersionPlaceHolder</MinimumApiVersion>
+        <MinimumGameVersion>MinimumGameVersionPlaceHolder</MinimumGameVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!--#if EnableConfig -->
+        <SMAPIDependency Include="spacechase0.GenericModConfigMenu" Version="1.14.1" Required="false"/>
+        <!--#endif -->
+    </ItemGroup>
+
+    <!--#if 
+    
+    <Import Project="..\..\shared\Common\Common.projitems" Label="Shared" />
+</Project>

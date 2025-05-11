@@ -1,20 +1,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))"/>
-
+    <!-- Templates should use same props as all mods do. -->
+    <Import Project="$(SolutionDir)\src\Directory.Build.props"/>
+    <!-- Ensure templates have access to I18n class, while not including it in every project. -->
     <PropertyGroup>
-        <EnableI18n Condition="$(EnableI18n) == ''">true</EnableI18n>
+        <EnableI18n>true</EnableI18n>
     </PropertyGroup>
-
-    <!-- When we're not building a release -->
-    <PropertyGroup Condition=" '$(Configuration)' != 'Release' ">
-        <EnableModZip>false</EnableModZip>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Pathoschild.Stardew.ModBuildConfig"/>
-    </ItemGroup>
-
-    <ItemGroup Condition="$(EnableI18n) == 'true' ">
-        <PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder"/>
-    </ItemGroup>
 </Project>

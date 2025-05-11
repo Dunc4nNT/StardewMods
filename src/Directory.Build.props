@@ -2,7 +2,9 @@
     <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))"/>
 
     <PropertyGroup>
-        <EnableI18n Condition="$(EnableI18n) == ''">true</EnableI18n>
+        <!-- ModManifestBuilder -->
+        <BaseManifest>new</BaseManifest>
+        <ManifestWarningsAsErrors Condition="$(Configuration) == 'Release'">true</ManifestWarningsAsErrors>
     </PropertyGroup>
 
     <!-- When we're not building a release -->
@@ -12,9 +14,18 @@
 
     <ItemGroup>
         <PackageReference Include="Pathoschild.Stardew.ModBuildConfig"/>
+        <PackageReference Include="Leclair.Stardew.ModManifestBuilder"/>
     </ItemGroup>
 
     <ItemGroup Condition="$(EnableI18n) == 'true' ">
+        <!-- bug: https://github.com/Pathoschild/SMAPI-ModTranslationClassBuilder/issues/4
         <PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder"/>
+        -->
+
+        <!-- temporarily use fork: https://github.com/Dunc4nNT/SMAPI-ModTranslationClassBuilder -->
+        <ProjectReference Include="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\ModTranslationClassBuilder.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
+
+    <!-- temporarily use fork: https://github.com/Dunc4nNT/SMAPI-ModTranslationClassBuilder -->
+    <Import Condition="$(EnableI18n) == 'true' " Project="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\assets\package.targets" />
 </Project>

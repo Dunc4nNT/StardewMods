@@ -1,0 +1,110 @@
+﻿{
+  "schema": "https://json.schemastore.org/template",
+  "author": "Dunc4nNT",
+  "name": "SMAPI Mod",
+  "description": "A mod made in SMAPI, with i18n support.",
+  "identity": "NeverToxic.StardewMods.SmapiMod",
+  "shortName": "smapi_mod",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "SmapiMod",
+  "preferNameDirectory": "true",
+  "symbols": {
+    "ModName": {
+      "type": "parameter",
+      "dataType": "string",
+      "description": "Name of the mod. Defaults to the project name.",
+      "replaces": "ModNamePlaceHolder"
+    },
+    "ShortDescription": {
+      "type": "parameter",
+      "dataType": "string",
+      "description": "Short mod description.",
+      "replaces": "ModShortDescriptionPlaceHolder"
+    },
+    "Description": {
+      "type": "parameter",
+      "dataType": "string",
+      "description": "Mod description.",
+      "replaces": "ModDescriptionPlaceHolder"
+    },
+    "ModId": {
+      "type": "parameter",
+      "dataType": "string",
+      "description": "Unique mod ID.",
+      "replaces": "ModIdPlaceHolder"
+    },
+    "MinimumApiVersion": {
+      "type": "parameter",
+      "dataType": "string",
+      "description": "Sets the minimum required SMAPI version.",
+      "defaultValue": "4.0.0",
+      "replaces": "MinimumApiVersionPlaceHolder"
+    },
+    "MinimumGameVersion": {
+      "type": "parameter",
+      "dataType": "string",
+      "description": "Sets the minimum required game version.",
+      "defaultValue": "1.6.15",
+      "replaces": "MinimumGameVersionPlaceHolder"
+    },
+    "AddReadMe": {
+      "type": "parameter",
+      "dataType": "bool",
+      "description": "Includes a standard README.md file.",
+      "defaultValue": "true"
+    },
+    "EnableHarmony": {
+      "type": "parameter",
+      "dataType": "bool",
+      "description": "Sets `EnableHarmony` to true, and includes a `Patches` folder.",
+      "defaultValue": "true"
+    },
+    "EnableI18n": {
+      "type": "parameter",
+      "dataType": "bool",
+      "description": "Include i18n file, and add ModTranslationClassBuilder as package.",
+      "defaultValue": "true"
+    },
+    "EnableConfig": {
+      "type": "parameter",
+      "dataType": "bool",
+      "description": "Adds config and gmcm templates, and sets GMCM as optional dependency.",
+      "defaultValue": "true"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!AddReadMe)",
+          "exclude": [
+            "README.md"
+          ]
+        },
+        {
+          "condition": "(!EnableI18n)",
+          "exclude": [
+            "i18n/**"
+          ]
+        },
+        {
+          "condition": "(!EnableConfig)",
+          "exclude": [
+            "Framework/GenericModConfigMenu.cs",
+            "Framework/ModConfig.cs",
+            "Framework/ModConfigKeys.cs"
+          ]
+        },
+        {
+          "condition": "(!EnableHarmony)",
+          "exclude": [
+            "Framework/Patches/**"
+          ]
+        }
+      ]
+    }
+  ]
+}

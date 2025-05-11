@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelfServe", "src\SelfServe\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoStaminaWasted", "src\NoStaminaWasted\NoStaminaWasted.csproj", "{EF5B9C6B-0071-4747-B2DD-65FFD93F47EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmapiTemplate", "templates\SmapiTemplate\SmapiTemplate.csproj", "{F5DC03BA-134E-4C9D-B452-0AEE31438B60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmapiMod", "templates\SmapiMod\SmapiMod.csproj", "{F5DC03BA-134E-4C9D-B452-0AEE31438B60}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelevisionFramework", "src\TelevisionFramework\TelevisionFramework.csproj", "{F272B2B4-3999-4C20-AC0E-6C2EDD49AD1B}"
 EndProject
@@ -46,6 +46,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mods", "mods", "{3EC3DC06-F
 	ProjectSection(SolutionItems) = preProject
 		src\Directory.Build.props = src\Directory.Build.props
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{346A2C4A-B31F-4B35-A7F0-28E14AD30B60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModTranslationClassBuilder", "..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\ModTranslationClassBuilder.csproj", "{9A91F9CD-8459-4114-89BC-6BC030200D50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,10 +84,15 @@ Global
 		{F272B2B4-3999-4C20-AC0E-6C2EDD49AD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F272B2B4-3999-4C20-AC0E-6C2EDD49AD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F272B2B4-3999-4C20-AC0E-6C2EDD49AD1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A91F9CD-8459-4114-89BC-6BC030200D50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A91F9CD-8459-4114-89BC-6BC030200D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A91F9CD-8459-4114-89BC-6BC030200D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A91F9CD-8459-4114-89BC-6BC030200D50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{399EE2CB-FC83-44E1-9820-78C0F29AA2BF} = {B4DC5E43-9BFF-476A-9D98-B22D88B3BE3B}
 		{F5DC03BA-134E-4C9D-B452-0AEE31438B60} = {E92FEADD-592F-43FD-8F6C-56BC47EE4E86}
 		{3EC3DC06-FD4B-4889-B561-5EB9284FE776} = {A264D708-55DE-48A2-B272-F4276BF98C9B}
+		{9A91F9CD-8459-4114-89BC-6BC030200D50} = {346A2C4A-B31F-4B35-A7F0-28E14AD30B60}
 	EndGlobalSection
 EndGlobal
