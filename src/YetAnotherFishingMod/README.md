@@ -13,12 +13,12 @@ fishing-related options.
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration](#configuration)
-    - [Minigame Skip](#minigame-skip)
-    - [Difficulty](#difficulty)
-    - [Fishing Loot](#fishing-loot)
-    - [Faster Please](#faster-please)
-    - [Attachments](#attachments)
-    - [Enchantments](#enchantments)
+  - [Minigame Skip](#minigame-skip)
+  - [Difficulty](#difficulty)
+  - [Fishing Loot](#fishing-loot)
+  - [Faster Please](#faster-please)
+  - [Attachments](#attachments)
+  - [Enchantments](#enchantments)
 - [How to Use](#how-to-use)
 - [Compatibility](#compatibility)
 - [Translations](#translations)
@@ -76,16 +76,16 @@ recommended. GMCM will also provide descriptive tooltips if the option itself is
 
 ### Fishing Loot
 
-| Feature                     | Description                                                                                     |
-|-----------------------------|-------------------------------------------------------------------------------------------------|
-| Fish                        | Allows the catching of fish when enabled.																                                       |
-| Rubbish                     | Allows the catching of rubbish when enabled.															                                     |
-| Other                       | Allows catching of other items when enabled. This includes items such as seaweed and algae.				 |
-| Amount of Fish              | Catch the set amount of fish. Using bait may override this amount. Whichever is highest.        |
-| Minimum Fish Quality        | Always gets fish of the set quality or better. Trumps the "Fish Quality" option.                |
-| Set Fish Quality            | Always catch fish with the set quality. Trumped by the "Minimum Fish Quality" option.           |
-| Treasure Probability        | Adjust how often treasure chests appear. (vanilla, always, never)                               |
-| Golden Treasure Probability | Adjust how often a treasure chest is a golden treasure chest. (vanilla, always, never)          |
+| Feature                     | Description                                                                                 |
+|-----------------------------|---------------------------------------------------------------------------------------------|
+| Fish                        | Allows the catching of fish when enabled.                                                   |
+| Rubbish                     | Allows the catching of rubbish when enabled.                                                |
+| Other                       | Allows catching of other items when enabled. This includes items such as seaweed and algae. |
+| Amount of Fish              | Catch the set amount of fish. Using bait may override this amount. Whichever is highest.    |
+| Minimum Fish Quality        | Always gets fish of the set quality or better. Trumps the "Fish Quality" option.            |
+| Set Fish Quality            | Always catch fish with the set quality. Trumped by the "Minimum Fish Quality" option.       |
+| Treasure Probability        | Adjust how often treasure chests appear. (vanilla, always, never)                           |
+| Golden Treasure Probability | Adjust how often a treasure chest is a golden treasure chest. (vanilla, always, never)      |
 
 Disabling all of Fish, Rubbish and Other will have the same effect as all of them enabled as a fallback.
 
@@ -193,7 +193,8 @@ specific order.
 
 - Rewrite enchantment logic.
 - Allow for custom enchantments.
-- Add a transpiler for catching fish in the mines. Currently, it's just vanilla settings, so you'll mostly catch rubbish.
+- Add a transpiler for catching fish in the mines. Currently, it's just vanilla settings, so you'll mostly catch
+  rubbish.
 - Look into fish probability more in depth, currently if you just enable catching "Other", you won't catch jellies, and
   you'll catch rubbish in certain cases.
 - For spawning bait and tackles, allow switching them without having to remove them from your rod.

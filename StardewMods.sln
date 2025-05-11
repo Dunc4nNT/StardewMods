@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{A264D708
 		Directory.Build.props = Directory.Build.props
 		Directory.Packages.props = Directory.Packages.props
 		stylecop.json = stylecop.json
+		.github\CONTRIBUTING.md = .github\CONTRIBUTING.md
+		.github\SUPPORT.md = .github\SUPPORT.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F70DCCEC-3F94-4C5C-B58D-F42DAFC11547}"
