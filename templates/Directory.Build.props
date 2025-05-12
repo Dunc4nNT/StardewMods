@@ -1,9 +1,4 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <!-- Ensure templates have access to I18n class, while not including it in every project. -->
-    <PropertyGroup>
-        <EnableI18n>true</EnableI18n>
-        <UseCommonI18n>true</UseCommonI18n>
-    </PropertyGroup>
     <!-- Templates should use same props as all mods do. -->
     <Import Project="$(SolutionDir)\src\Directory.Build.props"/>
 </Project>
