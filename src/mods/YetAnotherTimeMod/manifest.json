@@ -5,9 +5,23 @@
    | 
    | Do not change this file directly.
    */
-  "$schema": "https://smapi.io/schemas/manifest.json",
-  "Name": "YetAnotherTimeMod",
+  "$schema": "https://raw.githubusercontent.com/Dunc4nNT/SMAPI/6cb4e9b055f1ae900cf5a9e47019c9351d2e1a01/src/SMAPI.Web/wwwroot/schemas/manifest.json",
+  "UniqueID": "NeverToxic.YetAnotherTimeMod",
+  "Name": "Yet Another Time Mod",
   "Author": "Dunc4nNT",
-  "Version": "1.0.0-Debug",
-  "EntryDll": "YetAnotherTimeMod.dll"
+  "Version": "1.0.0-alpha.Debug",
+  "Description": "Manipulate game time.",
+  "MinimumApiVersion": "4.0.0",
+  "EntryDll": "YetAnotherTimeMod.dll",
+  "Dependencies": [
+    {
+      "UniqueID": "spacechase0.GenericModConfigMenu",
+      "MinimumVersion": "1.14.1",
+      "IsRequired": false
+    }
+  ],
+  "UpdateKeys": [
+    "Nexus:???",
+    "CurseForge:???"
+  ]
 }

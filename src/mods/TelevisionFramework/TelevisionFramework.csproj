@@ -1,5 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
+        <!-- Metadata -->
+        <Version>1.0.0-alpha</Version>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <EnableI18n>true</EnableI18n>
         <EnableHarmony>true</EnableHarmony>
     </PropertyGroup>
+
+    <PropertyGroup>
+        <!-- Metadata for ModManifestBuilder -->
+        <Name>Television Framework</Name>
+        <Description>A framework for custom TV channels.</Description>
+        <UniqueId>NeverToxic.TelevisionFramework</UniqueId>
+        <MinimumApiVersion>4.0.0</MinimumApiVersion>
+        <MinimumGameVersion>1.6.15</MinimumGameVersion>
+        <UpdateKeys>Nexus:???;CurseForge:???</UpdateKeys>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <SMAPIDependency Include="spacechase0.GenericModConfigMenu" Version="1.14.1" Required="false"/>
+    </ItemGroup>
 </Project>

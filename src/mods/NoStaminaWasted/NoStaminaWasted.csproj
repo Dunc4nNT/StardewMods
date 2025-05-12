@@ -1,5 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <EnableHarmony>true</EnableHarmony>
+        <!-- Metadata -->
+        <Version>1.0.0-alpha</Version>
     </PropertyGroup>
+
+    <PropertyGroup>
+        <EnableI18n>true</EnableI18n>
+        <EnableHarmony>true</EnableHarmony>
+        <UseCommonI18n>true</UseCommonI18n>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <!-- Metadata for ModManifestBuilder -->
+        <Name>No Stamina Wasted</Name>
+        <Description>"No more accidentally wasting stamina on missclicks.</Description>
+        <UniqueId>NeverToxic.NoStaminaWasted</UniqueId>
+        <MinimumApiVersion>4.0.0</MinimumApiVersion>
+        <MinimumGameVersion>1.6.15</MinimumGameVersion>
+        <UpdateKeys>Nexus:29916;CurseForge:???</UpdateKeys>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <SMAPIDependency Include="spacechase0.GenericModConfigMenu" Version="1.14.1" Required="false"/>
+    </ItemGroup>
 </Project>

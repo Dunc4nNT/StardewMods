@@ -5,9 +5,23 @@
    | 
    | Do not change this file directly.
    */
-  "$schema": "https://smapi.io/schemas/manifest.json",
-  "Name": "TelevisionFramework",
+  "$schema": "https://raw.githubusercontent.com/Dunc4nNT/SMAPI/6cb4e9b055f1ae900cf5a9e47019c9351d2e1a01/src/SMAPI.Web/wwwroot/schemas/manifest.json",
+  "UniqueID": "NeverToxic.TelevisionFramework",
+  "Name": "Television Framework",
   "Author": "Dunc4nNT",
-  "Version": "1.0.0-Debug",
-  "EntryDll": "TelevisionFramework.dll"
+  "Version": "1.0.0-alpha.Debug",
+  "Description": "A framework for custom TV channels.",
+  "MinimumApiVersion": "4.0.0",
+  "EntryDll": "TelevisionFramework.dll",
+  "Dependencies": [
+    {
+      "UniqueID": "spacechase0.GenericModConfigMenu",
+      "MinimumVersion": "1.14.1",
+      "IsRequired": false
+    }
+  ],
+  "UpdateKeys": [
+    "Nexus:???",
+    "CurseForge:???"
+  ]
 }

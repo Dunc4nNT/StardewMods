@@ -25,9 +25,14 @@
 
         <!-- temporarily use fork: https://github.com/Dunc4nNT/SMAPI-ModTranslationClassBuilder -->
         <ProjectReference Include="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\ModTranslationClassBuilder.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <AdditionalFiles Include="i18n\**\*"/>
+    </ItemGroup>
 
-        <!-- Include shared I18n filed -->
-        <AdditionalFiles Condition="$(UseCommonI18n) == 'true'" Include="$(SolutionDir)\src\shared\i18n\**" LinkBase="i18n\"/>
+
+    <ItemGroup Condition="$(EnableI18n) == 'true' And $(UseCommonI18n) == 'true' ">
+        <!-- Include shared I18n files -->
+        <Content Include="$(SolutionDir)\src\shared\i18n\**\*" LinkBase="i18n\"/>
+        <AdditionalFiles Include="$(SolutionDir)\src\shared\i18n\**\*"/>
     </ItemGroup>
 
     <!-- temporarily use fork: https://github.com/Dunc4nNT/SMAPI-ModTranslationClassBuilder -->

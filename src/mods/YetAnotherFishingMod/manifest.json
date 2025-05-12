@@ -5,9 +5,23 @@
    | 
    | Do not change this file directly.
    */
-  "$schema": "https://smapi.io/schemas/manifest.json",
-  "Name": "YetAnotherFishingMod",
+  "$schema": "https://raw.githubusercontent.com/Dunc4nNT/SMAPI/6cb4e9b055f1ae900cf5a9e47019c9351d2e1a01/src/SMAPI.Web/wwwroot/schemas/manifest.json",
+  "UniqueID": "NeverToxic.YetAnotherFishingMod",
+  "Name": "Yet Another Fishing Mod",
   "Author": "Dunc4nNT",
-  "Version": "1.0.0-Debug",
-  "EntryDll": "YetAnotherFishingMod.dll"
+  "Version": "1.2.0-Debug",
+  "Description": "Automatically catch fish and treasure.",
+  "MinimumApiVersion": "4.0.0",
+  "EntryDll": "YetAnotherFishingMod.dll",
+  "Dependencies": [
+    {
+      "UniqueID": "spacechase0.GenericModConfigMenu",
+      "MinimumVersion": "1.12.0",
+      "IsRequired": false
+    }
+  ],
+  "UpdateKeys": [
+    "Nexus:20391",
+    "CurseForge:996759"
+  ]
 }

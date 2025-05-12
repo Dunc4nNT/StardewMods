@@ -1,5 +1,4 @@
 {
-  "message.config-reloaded": "Configuration file reloaded.",
   "config.stamina.consumption-section.name": "Stamina Consumption",
   "config.stamina.consumption-section.description": "Each of the following tools is able to consume stamina on use.\nThis mod respects Efficient Tool enchantment, and allows for three modes:\n- Vanilla: Stamina gets consumed the same it does in vanilla.\n- No Accidents: Stamina does not get consumed on unsuccessful tool uses.\n- Never: Stamina does not get consumed on tool use.",
   "config.stamina.axe-consumption.name": "Axe",
