@@ -9,7 +9,7 @@ namespace NeverToxic.StardewMods.SmapiMod;
 using HarmonyLib;
 #endif
 #if EnableConfig
-using NeverToxic.StardewMods.SmapiMod.Framework;
+using NeverToxic.StardewMods.SmapiMod.Framework.Config;
 #endif
 #if EnableHarmony
 using NeverToxic.StardewMods.SmapiMod.Framework.Patches;

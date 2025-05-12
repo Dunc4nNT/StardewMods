@@ -1,4 +1,3 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <!-- Templates should use same props as all mods do. -->
-    <Import Project="$(SolutionDir)\src\Directory.Build.props"/>
+    <Import Project="$(SolutionDir)\src\mods\Directory.Build.props"/>
 </Project>

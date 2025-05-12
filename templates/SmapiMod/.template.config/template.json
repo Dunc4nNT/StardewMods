@@ -94,29 +94,19 @@
       "modifiers": [
         {
           "condition": "(!AddReadMe)",
-          "exclude": [
-            "README.md"
-          ]
+          "exclude": ["README.md"]
         },
         {
           "condition": "(!EnableI18n)",
-          "exclude": [
-            "i18n/**"
-          ]
+          "exclude": ["i18n/**"]
         },
         {
           "condition": "(!EnableConfig)",
-          "exclude": [
-            "Framework/GenericModConfigMenu.cs",
-            "Framework/ModConfig.cs",
-            "Framework/ModConfigKeys.cs"
-          ]
+          "exclude": ["Framework/Config/**"]
         },
         {
           "condition": "(!EnableHarmony)",
-          "exclude": [
-            "Framework/Patches/**"
-          ]
+          "exclude": ["Framework/Patches/**"]
         }
       ]
     }

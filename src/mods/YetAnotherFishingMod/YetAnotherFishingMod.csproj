@@ -2,5 +2,4 @@
     <PropertyGroup>
         <EnableHarmony>true</EnableHarmony>
     </PropertyGroup>
-    <Import Project="..\..\shared\Common\Common.projitems" Label="Shared"/>
 </Project>
