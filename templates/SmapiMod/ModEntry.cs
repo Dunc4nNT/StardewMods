@@ -11,12 +11,12 @@ using HarmonyLib;
 #if EnableConfig
 using NeverToxic.StardewMods.SmapiMod.Framework;
 #endif
+#if EnableHarmony
+using NeverToxic.StardewMods.SmapiMod.Framework.Patches;
+#endif
 using StardewModdingAPI;
 #if EnableConfig
 using StardewModdingAPI.Events;
-#endif
-#if EnableHarmony
-using Patches = NeverToxic.StardewMods.SmapiMod.Framework.Patches;
 #endif
 
 internal sealed class ModEntry : Mod
@@ -27,6 +27,8 @@ internal sealed class ModEntry : Mod
 
 #if EnableHarmony
     internal Harmony Harmony { get; set; } = null!;
+
+    internal Patcher Patcher { get; set; } = null!;
 #endif
 
     public override void Entry(IModHelper helper)
@@ -41,7 +43,8 @@ internal sealed class ModEntry : Mod
 
 #if EnableHarmony
         this.Harmony = new Harmony(this.ModManifest.UniqueID);
-        Patches.Patcher(this);
+        this.Patcher = new Patcher(this);
+        this.Patcher.PatchAll();
 #endif
 
 #if EnableConfig

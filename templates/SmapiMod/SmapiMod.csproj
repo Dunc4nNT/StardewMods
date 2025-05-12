@@ -3,9 +3,11 @@
         <!--#if EnableI18n -->
         <EnableI18n>true</EnableI18n>
         <!--#endif -->
-
         <!--#if EnableHarmony -->
         <EnableHarmony>true</EnableHarmony>
+        <!--#endif -->
+        <!--#if (EnableI18n && UseCommon == I18n) -->
+        <UseCommonI18n>true</UseCommonI18n>
         <!--#endif -->
     </PropertyGroup>
 
@@ -24,7 +26,5 @@
         <!--#endif -->
     </ItemGroup>
 
-    <!--#if 
-    
     <Import Project="..\..\shared\Common\Common.projitems" Label="Shared" />
 </Project>

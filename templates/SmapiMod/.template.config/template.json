@@ -73,6 +73,20 @@
       "dataType": "bool",
       "description": "Adds config and gmcm templates, and sets GMCM as optional dependency.",
       "defaultValue": "true"
+    },
+    "UseCommon": {
+      "type": "parameter",
+      "dataType": "choice",
+      "description": "Which of the shared items to use include.",
+      "allowMultipleValues": "true",
+      "enableQuotelessLiterals": "true",
+      "choices": [
+        {
+          "choice": "I18n",
+          "description": "Include i18n files."
+        }
+      ],
+      "defaultValue": "I18n"
     }
   },
   "sources": [

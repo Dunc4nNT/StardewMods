@@ -5,9 +5,9 @@
 
 namespace NeverToxic.StardewMods.SmapiMod.Framework.Patches;
 
-internal class Patcher
+internal class Patcher(ModEntry mod)
 {
-    internal void PatchAll(ModEntry mod)
+    internal void PatchAll()
     {
         MyPatches.Patch(mod);
     }
