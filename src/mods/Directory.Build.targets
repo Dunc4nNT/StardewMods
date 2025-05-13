@@ -1,0 +1,22 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemGroup>
+        <Content Include="$(SolutionDir)\LICENSE">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <None Update="$(ProjectDir)\README.md">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(EnableI18n) == 'true' And $(UseCommonI18n) == 'true' ">
+        <SharedI18nFiles Include="$(SharedI18nFolder)\**\*"/>
+    </ItemGroup>
+
+    <Target Condition="$(EnableI18n) == 'true' And $(UseCommonI18n) == 'true' "
+            Name="CopySharedI18nFiles"
+            AfterTargets="AfterBuild">
+        <Copy SourceFiles="@(SharedI18nFiles)"
+              DestinationFolder="$(GameModsPath)\$(ModFolderName)\i18n\%(RecursiveDir)"
+        />
+    </Target>
+</Project>

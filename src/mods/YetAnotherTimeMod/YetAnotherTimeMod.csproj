@@ -14,8 +14,6 @@
         <Name>Yet Another Time Mod</Name>
         <Description>Manipulate game time.</Description>
         <UniqueId>NeverToxic.YetAnotherTimeMod</UniqueId>
-        <MinimumApiVersion>4.0.0</MinimumApiVersion>
-        <MinimumGameVersion>1.6.15</MinimumGameVersion>
         <UpdateKeys>Nexus:???;CurseForge:???</UpdateKeys>
     </PropertyGroup>
 

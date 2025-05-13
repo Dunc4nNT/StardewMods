@@ -14,8 +14,6 @@
         <Name>Television Framework</Name>
         <Description>A framework for custom TV channels.</Description>
         <UniqueId>NeverToxic.TelevisionFramework</UniqueId>
-        <MinimumApiVersion>4.0.0</MinimumApiVersion>
-        <MinimumGameVersion>1.6.15</MinimumGameVersion>
         <UpdateKeys>Nexus:???;CurseForge:???</UpdateKeys>
     </PropertyGroup>
 

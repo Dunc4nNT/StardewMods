@@ -14,8 +14,6 @@
         <Name>Self Serve</Name>
         <Description>Shops don't close.</Description>
         <UniqueId>NeverToxic.SelfServe</UniqueId>
-        <MinimumApiVersion>4.0.0</MinimumApiVersion>
-        <MinimumGameVersion>1.6.15</MinimumGameVersion>
         <UpdateKeys>Nexus:20985;CurseForge:???</UpdateKeys>
     </PropertyGroup>
 

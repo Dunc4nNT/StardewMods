@@ -2,14 +2,37 @@
     <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))"/>
 
     <PropertyGroup>
+        <!-- Custom mod path instead of overriding everything in the standard /Mods folder.
+        
+        This is used in ~/stardewvalley.targets with:
+        <PropertyGroup Condition="$(ModsFolder) != '' ">
+            <GameModsPath>$(GamePath)\$(ModsFolder)</GameModsPath>
+            <StartArguments>- -mods-path "$(ModsFolder)"</StartArguments>
+        </PropertyGroup>
+        
+        NOTE: double hyphen is not allow inside comments, so remove the space character.
+        -->
+        <ModsFolder>ModsDev</ModsFolder>
+
+        <SharedI18nFolder>$(SolutionDir)\src\shared\i18n</SharedI18nFolder>
+
         <!-- ModManifestBuilder -->
         <BaseManifest>new</BaseManifest>
-        <ManifestWarningsAsErrors Condition="$(Configuration) == 'Release'">true</ManifestWarningsAsErrors>
+        <MinimumApiVersion Condition="$(MinimumApiVersion) == '' ">auto</MinimumApiVersion>
+        <MinimumGameVersion Condition="$(MinimumGameVersion) == '' ">auto</MinimumGameVersion>
+        <!--
+        <ManifestWarningsAsErrors Condition="$(Configuration) == 'Release' ">true</ManifestWarningsAsErrors>
+        -->
         <ManifestSchema>https://raw.githubusercontent.com/Dunc4nNT/SMAPI/6cb4e9b055f1ae900cf5a9e47019c9351d2e1a01/src/SMAPI.Web/wwwroot/schemas/manifest.json</ManifestSchema>
     </PropertyGroup>
 
-    <!-- When we're not building a release -->
-    <PropertyGroup Condition=" '$(Configuration)' != 'Release' ">
+    <!-- Alternative build path for distributed files -->
+    <PropertyGroup Condition="$(Configuration) == 'Release'">
+        <ModZipPath>$(SolutionDir)\dist\$(ProjectName)</ModZipPath>
+    </PropertyGroup>
+
+    <!-- Don't create mod distributions for non-release builds. -->
+    <PropertyGroup Condition="$(Configuration) != 'Release' ">
         <EnableModZip>false</EnableModZip>
     </PropertyGroup>
 
@@ -25,14 +48,18 @@
 
         <!-- temporarily use fork: https://github.com/Dunc4nNT/SMAPI-ModTranslationClassBuilder -->
         <ProjectReference Include="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\ModTranslationClassBuilder.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-        <AdditionalFiles Include="i18n\**\*"/>
+        <AdditionalFiles Include="i18n\**\*">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </AdditionalFiles>
     </ItemGroup>
 
 
     <ItemGroup Condition="$(EnableI18n) == 'true' And $(UseCommonI18n) == 'true' ">
         <!-- Include shared I18n files -->
-        <Content Include="$(SolutionDir)\src\shared\i18n\**\*" LinkBase="i18n\"/>
-        <AdditionalFiles Include="$(SolutionDir)\src\shared\i18n\**\*"/>
+        <Content Include="$(SharedI18nFolder)\**\*" LinkBase="i18n\">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <AdditionalFiles Include="$(SharedI18nFolder)\**\*" LinkBase="i18n\"/>
     </ItemGroup>
 
     <!-- temporarily use fork: https://github.com/Dunc4nNT/SMAPI-ModTranslationClassBuilder -->

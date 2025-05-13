@@ -21,14 +21,12 @@
         <Name>ModNamePlaceHolder</Name>
         <Description>ModShortDescriptionPlaceHolder</Description>
         <UniqueId>ModIdPlaceHolder</UniqueId>
-        <MinimumApiVersion>MinimumApiVersionPlaceHolder</MinimumApiVersion>
-        <MinimumGameVersion>MinimumGameVersionPlaceHolder</MinimumGameVersion>
         <UpdateKeys>Nexus:???;CurseForge:???</UpdateKeys>
     </PropertyGroup>
 
     <ItemGroup>
         <!--#if EnableConfig -->
-        <SMAPIDependency Include="spacechase0.GenericModConfigMenu" Version="1.14.1" Required="false"/>
+        <SMAPIDependency Include="spacechase0.GenericModConfigMenu" Required="false"/>
         <!--#endif -->
     </ItemGroup>
 </Project>

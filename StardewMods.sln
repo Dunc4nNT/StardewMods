@@ -1,4 +1,3 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
@@ -56,6 +55,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "i18n", "i18n", "{6192BE3B-D
 		src\shared\i18n\default\common.json = src\shared\i18n\default\common.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMod", "src\mods\TestMod\TestMod.csproj", "{22427AAA-130A-4482-9A39-AEE573A4B63C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,7 +85,6 @@ Global
 		{EF5B9C6B-0071-4747-B2DD-65FFD93F47EF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5DC03BA-134E-4C9D-B452-0AEE31438B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5DC03BA-134E-4C9D-B452-0AEE31438B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5DC03BA-134E-4C9D-B452-0AEE31438B60}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F272B2B4-3999-4C20-AC0E-6C2EDD49AD1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F272B2B4-3999-4C20-AC0E-6C2EDD49AD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F272B2B4-3999-4C20-AC0E-6C2EDD49AD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -93,6 +93,13 @@ Global
 		{9A91F9CD-8459-4114-89BC-6BC030200D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A91F9CD-8459-4114-89BC-6BC030200D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A91F9CD-8459-4114-89BC-6BC030200D50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22427AAA-130A-4482-9A39-AEE573A4B63C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22427AAA-130A-4482-9A39-AEE573A4B63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22427AAA-130A-4482-9A39-AEE573A4B63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22427AAA-130A-4482-9A39-AEE573A4B63C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{399EE2CB-FC83-44E1-9820-78C0F29AA2BF} = {B4DC5E43-9BFF-476A-9D98-B22D88B3BE3B}
@@ -100,5 +107,16 @@ Global
 		{9A91F9CD-8459-4114-89BC-6BC030200D50} = {346A2C4A-B31F-4B35-A7F0-28E14AD30B60}
 		{50858356-D06C-4F87-8898-578FEA517AC4} = {A264D708-55DE-48A2-B272-F4276BF98C9B}
 		{6192BE3B-D729-446D-9E70-3D55A47B092E} = {B4DC5E43-9BFF-476A-9D98-B22D88B3BE3B}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\shared\Common\Common.projitems*{22427aaa-130a-4482-9a39-aee573a4b63c}*SharedItemsImports = 5
+		src\shared\Common\Common.projitems*{27f6f3ed-0fe0-4c85-802a-c19c61e4e802}*SharedItemsImports = 5
+		src\shared\Common\Common.projitems*{399ee2cb-fc83-44e1-9820-78c0f29aa2bf}*SharedItemsImports = 13
+		src\shared\Common\Common.projitems*{3d3403ae-bff8-48db-8fa0-2def6e37440f}*SharedItemsImports = 5
+		src\shared\Common\Common.projitems*{85fc1c47-2272-4daa-bd42-0e87bd6d883d}*SharedItemsImports = 5
+		src\shared\Common\Common.projitems*{d29f6b85-a49c-488f-a7d3-982edab63687}*SharedItemsImports = 5
+		src\shared\Common\Common.projitems*{ef5b9c6b-0071-4747-b2dd-65ffd93f47ef}*SharedItemsImports = 5
+		src\shared\Common\Common.projitems*{f272b2b4-3999-4c20-ac0e-6c2edd49ad1b}*SharedItemsImports = 5
+		src\shared\Common\Common.projitems*{f5dc03ba-134e-4c9d-b452-0aee31438b60}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

@@ -15,8 +15,6 @@
         <Name>Little Helpers</Name>
         <Description>Adds helpers to the farm that harvest, water and replant crops, gather foragables and more.</Description>
         <UniqueId>NeverToxic.LittleHelpers</UniqueId>
-        <MinimumApiVersion>4.0.0</MinimumApiVersion>
-        <MinimumGameVersion>1.6.15</MinimumGameVersion>
         <UpdateKeys>Nexus:???;CurseForge:???</UpdateKeys>
     </PropertyGroup>
 

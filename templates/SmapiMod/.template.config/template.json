@@ -36,20 +36,6 @@
       "description": "Unique mod ID.",
       "replaces": "ModIdPlaceHolder"
     },
-    "MinimumApiVersion": {
-      "type": "parameter",
-      "dataType": "string",
-      "description": "Sets the minimum required SMAPI version.",
-      "defaultValue": "4.0.0",
-      "replaces": "MinimumApiVersionPlaceHolder"
-    },
-    "MinimumGameVersion": {
-      "type": "parameter",
-      "dataType": "string",
-      "description": "Sets the minimum required game version.",
-      "defaultValue": "1.6.15",
-      "replaces": "MinimumGameVersionPlaceHolder"
-    },
     "AddReadMe": {
       "type": "parameter",
       "dataType": "bool",

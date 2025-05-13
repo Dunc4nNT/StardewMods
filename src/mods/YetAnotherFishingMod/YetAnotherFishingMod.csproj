@@ -14,8 +14,6 @@
         <Name>Yet Another Fishing Mod</Name>
         <Description>Automatically catch fish and treasure.</Description>
         <UniqueId>NeverToxic.YetAnotherFishingMod</UniqueId>
-        <MinimumApiVersion>4.0.0</MinimumApiVersion>
-        <MinimumGameVersion>1.6.15</MinimumGameVersion>
         <UpdateKeys>Nexus:20391;CurseForge:996759</UpdateKeys>
     </PropertyGroup>
 

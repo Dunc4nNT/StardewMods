@@ -9,9 +9,10 @@
   "UniqueID": "NeverToxic.NoStaminaWasted",
   "Name": "No Stamina Wasted",
   "Author": "Dunc4nNT",
-  "Version": "1.0.0-alpha.Debug",
+  "Version": "1.0.0-alpha",
   "Description": "\"No more accidentally wasting stamina on missclicks.",
-  "MinimumApiVersion": "4.0.0",
+  "MinimumApiVersion": "4.2",
+  "MinimumGameVersion": "1.6.15",
   "EntryDll": "NoStaminaWasted.dll",
   "Dependencies": [
     {

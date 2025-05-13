@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <!-- Metadata -->
         <Version>1.0.0-alpha</Version>
@@ -12,10 +12,10 @@
 
     <PropertyGroup>
         <!-- Metadata for ModManifestBuilder -->
-        <Name>No Stamina Wasted</Name>
-        <Description>"No more accidentally wasting stamina on missclicks.</Description>
-        <UniqueId>NeverToxic.NoStaminaWasted</UniqueId>
-        <UpdateKeys>Nexus:29916;CurseForge:???</UpdateKeys>
+        <Name>test mod</Name>
+        <Description>test mod description short</Description>
+        <UniqueId>NeverToxic.TestMod</UniqueId>
+        <UpdateKeys>Nexus:???;CurseForge:???</UpdateKeys>
     </PropertyGroup>
 
     <ItemGroup>

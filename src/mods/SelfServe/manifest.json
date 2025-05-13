@@ -9,9 +9,10 @@
   "UniqueID": "NeverToxic.SelfServe",
   "Name": "Self Serve",
   "Author": "Dunc4nNT",
-  "Version": "1.0.1-Debug",
+  "Version": "1.0.1",
   "Description": "Shops don't close.",
-  "MinimumApiVersion": "4.0.0",
+  "MinimumApiVersion": "4.2",
+  "MinimumGameVersion": "1.6.15",
   "EntryDll": "SelfServe.dll",
   "Dependencies": [
     {

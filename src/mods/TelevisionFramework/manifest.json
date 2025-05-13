@@ -9,9 +9,10 @@
   "UniqueID": "NeverToxic.TelevisionFramework",
   "Name": "Television Framework",
   "Author": "Dunc4nNT",
-  "Version": "1.0.0-alpha.Debug",
+  "Version": "1.0.0-alpha",
   "Description": "A framework for custom TV channels.",
-  "MinimumApiVersion": "4.0.0",
+  "MinimumApiVersion": "4.2",
+  "MinimumGameVersion": "1.6.15",
   "EntryDll": "TelevisionFramework.dll",
   "Dependencies": [
     {
