@@ -48,6 +48,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mods", "mods", "{50858356-D06C-4F87-8898-578FEA517AC4}"
 	ProjectSection(SolutionItems) = preProject
 		src\mods\Directory.Build.props = src\mods\Directory.Build.props
+		src\mods\Directory.Build.targets = src\mods\Directory.Build.targets
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "i18n", "i18n", "{6192BE3B-D729-446D-9E70-3D55A47B092E}"
