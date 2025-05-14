@@ -16,24 +16,17 @@
 
         <SharedI18nFolder>$(SolutionDir)\src\shared\i18n</SharedI18nFolder>
 
+        <!-- We're not building for multiple .NET versions -->
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+
         <!-- ModManifestBuilder -->
         <BaseManifest>new</BaseManifest>
         <MinimumApiVersion Condition="$(MinimumApiVersion) == '' ">auto</MinimumApiVersion>
         <MinimumGameVersion Condition="$(MinimumGameVersion) == '' ">auto</MinimumGameVersion>
-        <!--
+        <!-- TODO: uncomment once release ready
         <ManifestWarningsAsErrors Condition="$(Configuration) == 'Release' ">true</ManifestWarningsAsErrors>
         -->
         <ManifestSchema>https://raw.githubusercontent.com/Dunc4nNT/SMAPI/6cb4e9b055f1ae900cf5a9e47019c9351d2e1a01/src/SMAPI.Web/wwwroot/schemas/manifest.json</ManifestSchema>
-    </PropertyGroup>
-
-    <!-- Alternative build path for distributed files -->
-    <PropertyGroup Condition="$(Configuration) == 'Release'">
-        <ModZipPath>$(SolutionDir)\dist\$(ProjectName)</ModZipPath>
-    </PropertyGroup>
-
-    <!-- Don't create mod distributions for non-release builds. -->
-    <PropertyGroup Condition="$(Configuration) != 'Release' ">
-        <EnableModZip>false</EnableModZip>
     </PropertyGroup>
 
     <ItemGroup>
@@ -48,6 +41,8 @@
 
         <!-- temporarily use fork: https://github.com/Dunc4nNT/SMAPI-ModTranslationClassBuilder -->
         <ProjectReference Include="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\ModTranslationClassBuilder.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+
+        <!-- SMAPI doesn't include i18n files in the build directory, so we add it here. -->
         <AdditionalFiles Include="i18n\**\*">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </AdditionalFiles>
