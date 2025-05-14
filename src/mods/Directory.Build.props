@@ -3,13 +3,13 @@
 
     <PropertyGroup>
         <!-- Custom mod path instead of overriding everything in the standard /Mods folder.
-        
+
         This is used in ~/stardewvalley.targets with:
         <PropertyGroup Condition="$(ModsFolder) != '' ">
             <GameModsPath>$(GamePath)\$(ModsFolder)</GameModsPath>
             <StartArguments>- -mods-path "$(ModsFolder)"</StartArguments>
         </PropertyGroup>
-        
+
         NOTE: double hyphen is not allow inside comments, so remove the space character.
         -->
         <ModsFolder>ModsDev</ModsFolder>
@@ -52,7 +52,6 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </AdditionalFiles>
     </ItemGroup>
-
 
     <ItemGroup Condition="$(EnableI18n) == 'true' And $(UseCommonI18n) == 'true' ">
         <!-- Include shared I18n files -->
