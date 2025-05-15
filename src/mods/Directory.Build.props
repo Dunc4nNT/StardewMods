@@ -14,8 +14,6 @@
         -->
         <ModsFolder>ModsDev</ModsFolder>
 
-        <SharedI18nFolder>$(SolutionDir)\src\shared\i18n</SharedI18nFolder>
-
         <!-- We're not building for multiple .NET versions -->
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 
@@ -33,31 +31,6 @@
         <PackageReference Include="Pathoschild.Stardew.ModBuildConfig"/>
         <PackageReference Include="Leclair.Stardew.ModManifestBuilder"/>
     </ItemGroup>
-
-    <ItemGroup Condition="$(EnableI18n) == 'true' ">
-        <!-- bug: https://github.com/Pathoschild/SMAPI-ModTranslationClassBuilder/issues/4
-        <PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder"/>
-        -->
-
-        <!-- temporarily use fork: https://github.com/Dunc4nNT/SMAPI-ModTranslationClassBuilder -->
-        <ProjectReference Include="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\ModTranslationClassBuilder.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-
-        <!-- SMAPI doesn't include i18n files in the build directory, so we add it here. -->
-        <AdditionalFiles Include="i18n\**\*">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </AdditionalFiles>
-    </ItemGroup>
-
-    <ItemGroup Condition="$(EnableI18n) == 'true' And $(UseCommonI18n) == 'true' ">
-        <!-- Include shared I18n files -->
-        <Content Include="$(SharedI18nFolder)\**\*" LinkBase="i18n\">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-        <AdditionalFiles Include="$(SharedI18nFolder)\**\*" LinkBase="i18n\"/>
-    </ItemGroup>
-
-    <!-- temporarily use fork: https://github.com/Dunc4nNT/SMAPI-ModTranslationClassBuilder -->
-    <Import Condition="$(EnableI18n) == 'true' " Project="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\assets\package.targets" />
 
     <Import Project="$(SolutionDir)\src\shared\Common\Common.projitems" Label="Shared"/>
 </Project>

@@ -2,16 +2,11 @@
     <!-- Alternative build path for distributed files -->
     <PropertyGroup Condition="$(Configuration) == 'Release'">
         <ModZipPath>$(SolutionDir)\dist\$(ProjectName)</ModZipPath>
-        <TempPath>$(SolutionDir)\_temp\$(ProjectName)</TempPath>
     </PropertyGroup>
 
     <!-- Don't create mod distributions for non-release builds. -->
     <PropertyGroup Condition="$(Configuration) != 'Release' ">
         <EnableModZip>false</EnableModZip>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <IncludeSharedI18nFiles Condition="$(EnableI18n) == 'true' And $(UseCommonI18n) == 'true' ">true</IncludeSharedI18nFiles>
     </PropertyGroup>
 
     <!-- Include standard files in output -->
@@ -24,32 +19,13 @@
         </None>
     </ItemGroup>
 
-    <!-- Include shared i18n files only if i18n is enabled and shared is used. -->
-    <ItemGroup Condition="$(IncludeSharedI18nFiles) == 'true'">
-        <SharedI18nFiles Include="$(SharedI18nFolder)\**\*"/>
+    <!-- temporarily use fork: https://github.com/Dunc4nNT/SMAPI-ModTranslationClassBuilder
+    Bug is fixed: https://github.com/Pathoschild/SMAPI-ModTranslationClassBuilder/issues/4
+    Wait for next release :)
+    -->
+    <ItemGroup Condition="$(EnableI18n) == 'true' ">
+        <!--<PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder"/>-->
+        <ProjectReference Include="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\ModTranslationClassBuilder.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
-
-    <!-- Ensure shared i18n files are included in the ModFolder.  -->
-    <Target Name="CopySharedI18nFiles"
-            Condition="$(IncludeSharedI18nFiles) == 'true'"
-            AfterTargets="AfterBuild">
-        <Copy SourceFiles="@(SharedI18nFiles)"
-              DestinationFolder="$(GameModsPath)\$(ModFolderName)\i18n\%(RecursiveDir)"/>
-    </Target>
-
-    <!-- Ensure shared i18n files are included in the distribution zip. -->
-    <Target Name="CreateModDistZip" Condition="$(EnableModZip) == 'true' " AfterTargets="AfterBuild">
-        <RemoveDir Directories="$(TempPath)" Condition="Exists('$(TempDir)')"/>
-        <MakeDir Directories="$(TempPath)"/>
-        <Unzip DestinationFolder="$(TempPath)"
-               SourceFiles="$(ModZipPath)\$(ProjectName) $(Version).zip"
-               OverwriteReadOnlyFiles="true"/>
-        <Copy SourceFiles="@(SharedI18nFiles)"
-              Condition="$(IncludeSharedI18nFiles) == 'true'"
-              DestinationFolder="$(TempPath)\$(ProjectName)\i18n\%(RecursiveDir)"/>
-        <ZipDirectory SourceDirectory="$(TempPath)"
-                      DestinationFile="$(ModZipPath)\$(ProjectName) $(Version).zip"
-                      Overwrite="true"/>
-        <RemoveDir Directories="$(TempPath)"/>
-    </Target>
+    <Import Condition="$(EnableI18n) == 'true' " Project="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\assets\package.targets" />
 </Project>

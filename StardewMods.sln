@@ -51,11 +51,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mods", "mods", "{50858356-D
 		src\mods\Directory.Build.targets = src\mods\Directory.Build.targets
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "i18n", "i18n", "{6192BE3B-D729-446D-9E70-3D55A47B092E}"
-	ProjectSection(SolutionItems) = preProject
-		src\shared\i18n\default\common.json = src\shared\i18n\default\common.json
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMod", "src\mods\TestMod\TestMod.csproj", "{22427AAA-130A-4482-9A39-AEE573A4B63C}"
 EndProject
 Global
@@ -107,7 +102,6 @@ Global
 		{F5DC03BA-134E-4C9D-B452-0AEE31438B60} = {E92FEADD-592F-43FD-8F6C-56BC47EE4E86}
 		{9A91F9CD-8459-4114-89BC-6BC030200D50} = {346A2C4A-B31F-4B35-A7F0-28E14AD30B60}
 		{50858356-D06C-4F87-8898-578FEA517AC4} = {A264D708-55DE-48A2-B272-F4276BF98C9B}
-		{6192BE3B-D729-446D-9E70-3D55A47B092E} = {B4DC5E43-9BFF-476A-9D98-B22D88B3BE3B}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		src\shared\Common\Common.projitems*{22427aaa-130a-4482-9a39-aee573a4b63c}*SharedItemsImports = 5
