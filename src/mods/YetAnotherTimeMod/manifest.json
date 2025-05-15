@@ -11,7 +11,7 @@
   "Author": "Dunc4nNT",
   "Version": "1.0.0-alpha",
   "Description": "Manipulate game time.",
-  "MinimumApiVersion": "4.1",
+  "MinimumApiVersion": "4.2",
   "MinimumGameVersion": "1.6.15",
   "EntryDll": "YetAnotherTimeMod.dll",
   "Dependencies": [

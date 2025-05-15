@@ -11,7 +11,7 @@
   "Author": "Dunc4nNT",
   "Version": "1.0.0-alpha",
   "Description": "Adds helpers to the farm that harvest, water and replant crops, gather foragables and more.",
-  "MinimumApiVersion": "4.1",
+  "MinimumApiVersion": "4.2",
   "MinimumGameVersion": "1.6.15",
   "EntryDll": "LittleHelpersCore.dll",
   "Dependencies": [

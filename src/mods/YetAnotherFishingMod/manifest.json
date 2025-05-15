@@ -11,7 +11,7 @@
   "Author": "Dunc4nNT",
   "Version": "1.2.0",
   "Description": "Automatically catch fish and treasure.",
-  "MinimumApiVersion": "4.1",
+  "MinimumApiVersion": "4.2",
   "MinimumGameVersion": "1.6.15",
   "EntryDll": "YetAnotherFishingMod.dll",
   "Dependencies": [
