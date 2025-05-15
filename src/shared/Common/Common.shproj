@@ -3,6 +3,7 @@
     <PropertyGroup Label="Globals">
         <ProjectGuid>399ee2cb-fc83-44e1-9820-78c0f29aa2bf</ProjectGuid>
         <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+        <RootNamespace>NeverToxic.$(SolutionName.Replace(" ", "_")).Common</RootNamespace>
     </PropertyGroup>
     <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
     <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.Default.props"/>
