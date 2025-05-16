@@ -5,11 +5,11 @@
    | 
    | Do not change this file directly.
    */
-  "$schema": "https://raw.githubusercontent.com/Dunc4nNT/SMAPI/6cb4e9b055f1ae900cf5a9e47019c9351d2e1a01/src/SMAPI.Web/wwwroot/schemas/manifest.json",
+  "$schema": "https://smapi.io/schemas/manifest.json",
   "UniqueID": "NeverToxic.LittleHelpers",
   "Name": "Little Helpers",
   "Author": "Dunc4nNT",
-  "Version": "1.0.0-alpha",
+  "Version": "1.0.0-alpha.Debug",
   "Description": "Adds helpers to the farm that harvest, water and replant crops, gather foragables and more.",
   "MinimumApiVersion": "4.2",
   "MinimumGameVersion": "1.6.15",

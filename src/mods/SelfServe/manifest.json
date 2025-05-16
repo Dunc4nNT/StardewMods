@@ -5,11 +5,11 @@
    | 
    | Do not change this file directly.
    */
-  "$schema": "https://raw.githubusercontent.com/Dunc4nNT/SMAPI/6cb4e9b055f1ae900cf5a9e47019c9351d2e1a01/src/SMAPI.Web/wwwroot/schemas/manifest.json",
+  "$schema": "https://smapi.io/schemas/manifest.json",
   "UniqueID": "NeverToxic.SelfServe",
   "Name": "Self Serve",
   "Author": "Dunc4nNT",
-  "Version": "1.0.1",
+  "Version": "1.0.1-Debug",
   "Description": "Shops don't close.",
   "MinimumApiVersion": "4.2",
   "MinimumGameVersion": "1.6.15",
