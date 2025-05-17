@@ -14,7 +14,7 @@
         <Content Include="$(SolutionDir)\LICENSE">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <None Update="$(ProjectDir)\README.md">
+        <None Update="$(MSBuildProjectDirectory)\README.md">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
     </ItemGroup>
@@ -26,6 +26,7 @@
     <ItemGroup Condition="$(EnableI18n) == 'true' ">
         <!--<PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder"/>-->
         <ProjectReference Include="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\ModTranslationClassBuilder.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <AdditionalFiles Condition="$(UseCommonI18n) == 'true' " Include="$(SolutionDir)\src\shared\i18n\**\*" LinkBase="i18n"/>
     </ItemGroup>
     <Import Condition="$(EnableI18n) == 'true' " Project="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\assets\package.targets" />
 </Project>
