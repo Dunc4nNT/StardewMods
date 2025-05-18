@@ -24,9 +24,18 @@
     Wait for next release :)
     -->
     <ItemGroup Condition="$(EnableI18n) == 'true' ">
-        <!--<PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder"/>-->
+        <!--<PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder"/>
+
+        Using personal fork https://github.com/Dunc4nNT/SMAPI-ModTranslationClassBuilder/tree/external_i18n
+        Has a feature to include i18n folders outside of project directory.
+        -->
         <ProjectReference Include="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\ModTranslationClassBuilder.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-        <AdditionalFiles Condition="$(UseCommonI18n) == 'true' " Include="$(SolutionDir)\src\shared\i18n\**\*" LinkBase="i18n"/>
     </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Pathoschild.Stardew.ModBuildConfig"/>
+        <PackageReference Include="Leclair.Stardew.ModManifestBuilder"/>
+    </ItemGroup>
+
     <Import Condition="$(EnableI18n) == 'true' " Project="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\assets\package.targets" />
 </Project>

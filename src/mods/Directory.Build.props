@@ -27,8 +27,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Pathoschild.Stardew.ModBuildConfig"/>
-        <PackageReference Include="Leclair.Stardew.ModManifestBuilder"/>
+        <I18nFiles Condition="$(UseCommonI18n) == 'true' " Include="$(SolutionDir)\src\shared\i18n\**\*" Link="i18n\%(RecursiveDir)\%(FileName)"/>
     </ItemGroup>
 
     <Import Project="$(SolutionDir)\src\shared\Common\Common.projitems" Label="Shared"/>

@@ -1,12 +1,16 @@
 <Project>
-  <PropertyGroup>
-    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
-    <PackageVersion Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
-    <PackageVersion Include="Leclair.Stardew.ModManifestBuilder" Version="2.4.1"/>
-    <!-- TODO: wait for https://github.com/Pathoschild/SMAPI-ModTranslationClassBuilder/issues/4 -->
-    <PackageVersion Include="Pathoschild.Stardew.ModTranslationClassBuilder" Version="2.1.0" />
-  </ItemGroup>
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
+
+        <!-- Currently using local version from https://github.com/Dunc4nNT/SMAPI
+        Adds a feature which allows for i18n folders outside of the project directory to be included.
+        -->
+        <PackageVersion Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.1-alpha.8" />
+        <PackageVersion Include="Leclair.Stardew.ModManifestBuilder" Version="2.4.1"/>
+        <PackageVersion Include="Pathoschild.Stardew.ModTranslationClassBuilder" Version="2.1.0" />
+    </ItemGroup>
 </Project>
