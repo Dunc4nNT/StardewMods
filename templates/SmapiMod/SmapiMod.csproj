@@ -11,6 +11,9 @@
         <!--#if EnableHarmony -->
         <EnableHarmony>true</EnableHarmony>
         <!--#endif -->
+        <!--if (UseCommon == Code) -->
+        <UseCommonCode>true</UseCommonCode>
+        <!--#endif -->
         <!--#if (EnableI18n && UseCommon == I18n) -->
         <UseCommonI18n>true</UseCommonI18n>
         <!--#endif -->

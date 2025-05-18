@@ -57,7 +57,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "i18n", "i18n", "{BDD38648-1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "default", "default", "{176A2BFE-6FD4-44A7-922B-F06AFEF81DC3}"
 	ProjectSection(SolutionItems) = preProject
-		src\shared\i18n\default\common.json = src\shared\i18n\default\common.json
+		src\shared\i18n\default\_config.json = src\shared\i18n\default\_config.json
 	EndProjectSection
 EndProject
 Global

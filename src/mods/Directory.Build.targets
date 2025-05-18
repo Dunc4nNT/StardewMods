@@ -37,5 +37,6 @@
         <PackageReference Include="Leclair.Stardew.ModManifestBuilder"/>
     </ItemGroup>
 
+    <Import Condition="$(UseCommonCode) == 'true' " Project="$(SolutionDir)\src\shared\Common\Common.projitems" Label="Shared"/>
     <Import Condition="$(EnableI18n) == 'true' " Project="$(SolutionDir)\..\SMAPI-ModTranslationClassBuilder\ModTranslationClassBuilder\assets\package.targets" />
 </Project>

@@ -68,11 +68,15 @@
       "enableQuotelessLiterals": "true",
       "choices": [
         {
+          "choice": "Code",
+          "description": "Include common code."
+        },
+        {
           "choice": "I18n",
           "description": "Include i18n files."
         }
       ],
-      "defaultValue": "I18n"
+      "defaultValue": "Code|I18n"
     }
   },
   "sources": [
