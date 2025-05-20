@@ -4,11 +4,17 @@ Please share your [SMAPI log][smapi-log], and copy the link. Create a comment on
 you're having issues with. Describe your issue in as much detail as possible.
 <ins>**Include the SMAPI log link you copied in your message.**</ins>
 
+## Conflicting Mods
+
+Found a mod that conflicts with one of mine? Feel free to report any mods that do conflict by
+[opening an issue][gh-issues], updating the mod's README and [sending a pull request][gh-pr], leave a
+[comment on the NexusMods page][nexusmods], or message me on [NexusMods][[nexusmods].
+
 ## Frameworks (for Mod Author)
 
 If you're using one of my framework mods, and you need help, you can either open a comment on the NexusMods page,
 send me a message on [NexusMods][nexusmods], or send me a discord message (`never.toxic`) as it's likely to be a
-longer back and forth. Please include your [SMAPI log][smapi-log], your [code][smapi-json], and your 
+longer back and forth. Please include your [SMAPI log][smapi-log], your [code][smapi-json], and your
 [manifest][smapi-json]. Describe, in detail, what you are trying to achieve.
 
 ## Translating (for Translators)

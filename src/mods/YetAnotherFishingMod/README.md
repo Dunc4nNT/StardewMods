@@ -1,15 +1,23 @@
 <!-- omit in toc -->
-
 # Yet Another Fishing Mod
 
 Having difficulty fishing? Or finding it too easy? This is yet another mod that allows you to adjust various
 fishing-related options.
 
-![Header image showing a bamboo pole with all enchantments, infinite bait and tackle](./.nexusmods/header_image.jpg)
+<div align="center">
 
+![A person cathing a fish in Stardew Valley.](./.nexusmods/header_image.jpg)
+
+[NexusMods](https://www.nexusmods.com/stardewvalley/mods/20391) •
+[CurseForge](https://www.curseforge.com/stardewvalley/mods/yet-another-fishing-mod) •
+[Source](./src/mods/YetAnotherFishingMod) •
+[Documentation](https://dunc4nnt.github.io/StardewMods/YetAnotherFishingMod)
+
+</div>
+
+<!-- omit in toc -->
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration](#configuration)
@@ -21,11 +29,6 @@ fishing-related options.
   - [Enchantments](#enchantments)
 - [How to Use](#how-to-use)
 - [Compatibility](#compatibility)
-- [Translations](#translations)
-- [Contact](#contact)
-- [Links](#links)
-- [To Do](#to-do)
-- [Licensing](#licensing)
 
 ## Prerequisites
 
@@ -46,13 +49,13 @@ Mandatory and optional requirements for use of this mod.
 ## Configuration
 
 The mod's configurable options can be found below. These can either be adjusted
-through [Generic Mod Configuration Menu (GMCM)][GMCM-nexus] or the `config.json` file. Editing the options using GMCM is
-recommended. GMCM will also provide descriptive tooltips if the option itself is not clear.
+through [Generic Mod Configuration Menu (GMCM)][GMCM-nexus] or the `config.json` file. Editing the options using GMCM
+is recommended. GMCM will also provide descriptive tooltips if the option itself is not clear.
 
 ### Minigame Skip
 
 | Feature               | Description                                                                                                                                                    |
-|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Automatically Cast    | Keybind to toggle automatically casting your fishing rod. Will try casting every second if enabled.                                                            |
 | Skip Minigame         | Skips the fishing minigame. Amount of catches required before skip can be changed below.                                                                       |
 | Catches Required      | Amount of catches required before it skips the minigame. The "Skip Minigame" option must be enabled.                                                           |
@@ -62,7 +65,7 @@ recommended. GMCM will also provide descriptive tooltips if the option itself is
 ### Difficulty
 
 | Feature                   | Description                                                                                                                            |
-|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | Difficulty Multiplier     | Value with which the standard fishing difficulty is multiplied.                                                                        |
 | Adjust XP Gain            | Adjust the XP gained based on the fish difficulty set above.                                                                           |
 | Fish Catch Multiplier     | A multiplier for the increase given when the fish is inside the green bar. The higher the value, the quicker the fish is caught.       |
@@ -77,7 +80,7 @@ recommended. GMCM will also provide descriptive tooltips if the option itself is
 ### Fishing Loot
 
 | Feature                     | Description                                                                                 |
-|-----------------------------|---------------------------------------------------------------------------------------------|
+| --------------------------- | ------------------------------------------------------------------------------------------- |
 | Fish                        | Allows the catching of fish when enabled.                                                   |
 | Rubbish                     | Allows the catching of rubbish when enabled.                                                |
 | Other                       | Allows catching of other items when enabled. This includes items such as seaweed and algae. |
@@ -92,7 +95,7 @@ Disabling all of Fish, Rubbish and Other will have the same effect as all of the
 ### Faster Please
 
 | Feature                     | Description                                                                                         |
-|-----------------------------|-----------------------------------------------------------------------------------------------------|
+| --------------------------- | --------------------------------------------------------------------------------------------------- |
 | Instant Bite                | Fish instantly bite after casting your fishing rod.                                                 |
 | Automatically Loot Fish     | Automatically loot and close the fish popup after catching a fish.                                  |
 | Automatically Loot Treasure | Automatically loot and close the treasure menu popup after catching treasure.                       |
@@ -101,7 +104,7 @@ Disabling all of Fish, Rubbish and Other will have the same effect as all of the
 ### Attachments
 
 | Feature                    | Description                                                                                                                                                        |
-|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Override Attachment Limit  | Overrides the fishing rod's attachment limit when spawning bait and tackle.                                                                                        |
 | Reset Attachments Limit    | Resets attachment limit back to the default when unequipping the fishing rod. **WARNING: If you have any attachments in an overriden slot, they will be deleted.** |
 | Infinite Bait              | Never run out of bait.                                                                                                                                             |
@@ -115,7 +118,7 @@ Disabling all of Fish, Rubbish and Other will have the same effect as all of the
 ### Enchantments
 
 | Feature                    | Description                                                                     |
-|----------------------------|---------------------------------------------------------------------------------|
+| -------------------------- | ------------------------------------------------------------------------------- |
 | Enable Adding Enchantments | Adds enchantments as set below when checked.                                    |
 | Reset Enchantments         | Resets enchantments to what they were before after unequipping the fishing rod. |
 | Add All Enchantments       | Adds all available enchantments when you equip a fishing rod.                   |
@@ -146,82 +149,7 @@ category for the custom item was set correctly, this mod should detect them.
 This mod will **not** work with **custom enchantments** at the moment. I'm looking to add support for this in the
 future.
 
-Likely to conflict with mods that try to do the same thing. Due to every option in this mod being configurable it should
-not be likely to cause issues, as you can simply turn the conflicting option off. Though, feel free to report any mods
-that do conflict by [opening an issue][gh-issues], updating the README and [sending a pull request][gh-pr]
-or [comment on the NexusMods page][nexus-comments].
-
-## Translations
-
-English is the only language fully supported by me, and guaranteed to be up to date.
-
-There are various languages that have translations available to download and use on NexusMods. Do note that these may
-not always be up to date, as I can't guarantee support for those languages myself.
-
-If the language you'd like to see has no translation, or it's outdated, feel free to create your own translations and
-publish them as a mod translation on NexusMods. **Please only upload the translation file and nothing else.** You can
-either upload it inside a `YetAnotherFishingMod/i18n/` folder or as just the file. For extra information, take a look
-at the [translation wiki](https://stardewvalleywiki.com/Modding:Translations).
-
-Due to me not being able to guarantee whether other languages are up to date, I prefer they be uploaded separately from
-this mod (so a mod translation on NexusMods). For players this means you'll have to look at the "Translations" tab on
-Nexus and check if the language you speak is on there. For translators this means you'll have to publish your
-translations on Nexus and publish updates after new releases yourself.
-
-If you have a question regarding translations (whether it's about how to translate, how to upload them etc.), feel free
-to contact me any way.
-
-## Contact
-
-**In almost all cases** please leave a comment on the [NexusMods page][nexus-comments] detailing your issue. **Always**
-include a link to your [SMAPI log](smapi-log). **Without** this log it may be impossible for me to solve the problem
-you're having. If you prefer, you could send a DM on Nexus.
-
-**Only after receiving permission**, may you try contacting me through Discord DMs or the SDV server (never.toxic). I
-likely won't respond otherwise.
-
-## Links
-
-- [NexusMods page for this mod](https://www.nexusmods.com/stardewvalley/mods/20391)
-- [GitHub mono repo with all my mods](https://github.com/Dunc4nNT/StardewMods)
-- [CurseForge page for this mod](https://legacy.curseforge.com/stardewvalley/mods/yet-another-fishing-mod)
-
-## To Do
-
-List of things I'd like to add at some point. I'm uncertain how many of these I'll actually end up doing. List in no
-specific order.
-
-- Rewrite enchantment logic.
-- Allow for custom enchantments.
-- Add a transpiler for catching fish in the mines. Currently, it's just vanilla settings, so you'll mostly catch
-  rubbish.
-- Look into fish probability more in depth, currently if you just enable catching "Other", you won't catch jellies, and
-  you'll catch rubbish in certain cases.
-- For spawning bait and tackles, allow switching them without having to remove them from your rod.
-- Option to apply fishing related buffs, such as luck and fishing.
-- Refund stamina on max cast option.
-- Gradually learn catching fish, so say after catching 5 of a certain fish the amount of time it takes to catch the next
-  one decreases, all the way till it's instant.
-- Allow requiring a certain amount of perfect catches before the minigame gets skipped.
-- Split animation skip up into separate options.
-- Add a slider to change animation speed (say from vanilla speed, up to 100% speed increase)
-- Per fish override settings, e.g. have red snappers never appear or change difficulty for that fish specifically.
-- Dutch translations.
-
-## Licensing
-
-Copyright © 2024 Dunc4nNT
-
-This project is licensed under the Mozilla Public License 2.0 (MPL 2.0). See [LICENSE](../LICENSE) for more information.
+Likely to conflict with mods that try to do the same thing. Due to every option in this mod being configurable it
+should not be likely to cause issues, as you can simply turn the conflicting option off.
 
 [GMCM-nexus]: https://www.nexusmods.com/stardewvalley/mods/5098
-
-[nexus-comments]: https://www.nexusmods.com/stardewvalley/mods/20391?tab=posts
-
-[nexus-bugs]: https://www.nexusmods.com/stardewvalley/mods/20391?tab=bugs
-
-[smapi-log]: https://smapi.io/log
-
-[gh-issues]: https://github.com/Dunc4nNT/StardewMods/issues
-
-[gh-pr]: https://github.com/Dunc4nNT/StardewMods/pulls

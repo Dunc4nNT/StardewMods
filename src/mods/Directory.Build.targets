@@ -19,10 +19,6 @@
         </None>
     </ItemGroup>
 
-    <!-- temporarily use fork: https://github.com/Dunc4nNT/SMAPI-ModTranslationClassBuilder
-    Bug is fixed: https://github.com/Pathoschild/SMAPI-ModTranslationClassBuilder/issues/4
-    Wait for next release :)
-    -->
     <ItemGroup Condition="$(EnableI18n) == 'true' ">
         <!--<PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder"/>
 
