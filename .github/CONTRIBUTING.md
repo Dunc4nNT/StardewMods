@@ -8,8 +8,8 @@ Please read the contents of this document to figure out how you can help.
 ## Table of Contents
 
 - [Before Contributing](#before-contributing)
-- [Contributing to Mods (for Mod Authors)](#contributing-to-mods-for-mod-authors)
-- [Contributing to Translations (for Translators)](#contributing-to-translations-for-translators)
+- [Contributing to Development](#contributing-to-development)
+- [Contributing to Translations](#contributing-to-translations)
   - [Navigating the i18n Folder](#navigating-the-i18n-folder)
   - [Navigating Translation Files](#navigating-translation-files)
   - [Language Codes](#language-codes)
@@ -24,21 +24,24 @@ Please read the contents of this document to figure out how you can help.
 ## Before Contributing
 
 Before you start writing code or translating, please make sure it hasn't already been done, isn't already being
-worked on, and hasn't been rejected. You can check [issues][gh-issues], [pull requests][gh-pulls], and the mod pages
+worked on, or hasn't been rejected. You can check [issues][gh-issues], [pull requests][gh-pulls], and the mod pages
 for the individual mod. If I'm already working on updates for a mod, they can usually be found on a branch with the
 name of the mod.
 
 If you're uncertain, please open an [issue][gh-issues] first.
 
-## Contributing to Mods (for Mod Authors)
+## Contributing to Development
 
-If you've already forked the repository and changed some things, you're free to open a [PR][gh-pulls].
-Obviously, there is no guarantee of your PR getting accepted. I review every PR and comment what I think,
-and may request changes or decline it altogether.
+See [instructions on compiling](../README.md#compiling) for a step-by-step guide on how to get this repository
+and all its projects (mods, and tools) running locally. You can make a fork of this repo on your own branch.
 
-In a lot of cases it's preferred you open an [issue][gh-issues] first, so we can discuss, before changing anything.
+Most of the time, it's preferred you open an [issue][gh-issues] first, so we can discuss, before changing anything.
+Once you've made changes and pushed them to your fork, you're free to open a [PR][gh-pulls]. Obviously there is no
+guarantee that your PR gets accepted. However, I do review every PR, and give my thoughts as well as mentioning
+whether it is likely to a PR I accept.
 
-**The following must be true for a PR to be considered as a merge candidate:**
+**Every PR must meet the following criteria to be considered a merge candidate:**
+
 - Your PR description must be detailed, it should be clear what it is you're changing, and why.
 - You've made sure the mod runs locally and all features work as intended, and you cannot find any obvious bugs.
 - You've compiled a release version, and also tested this.
@@ -48,7 +51,7 @@ In a lot of cases it's preferred you open an [issue][gh-issues] first, so we can
 In case you don't check all the boxes above, or need help to, no worries! Feel free to open a PR or draft, and we can
 have a discussion.
 
-## Contributing to Translations (for Translators)
+## Contributing to Translations
 
 To start, please download the mod you're looking to translate, if you haven't already, and remember to unzip it.
 If you open this folder inside your file explorer, you'll notice it contains various files and folders. We only care
@@ -128,7 +131,7 @@ When providing translations, we don't want SMAPI to pick the default, meaning we
 translations are. The following table shows what you have to name your file, or folder, to match your language:
 
 | Language   | Folder name | File Name  |
-| ---------- | ----------- | ---------- |
+|------------|-------------|------------|
 | Chinese    | zh          | zh.json    |
 | Dutch      | nl-NL       | nl-NL.json |
 | English    | en          | en.json    |
