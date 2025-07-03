@@ -2,6 +2,19 @@
     <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))"/>
 
     <PropertyGroup>
+        <!-- Custom game install location for use of multiple SDV versions.
+
+        This is used in ~/stardewvalley.targets with:
+        <PropertyGroup>
+            <GamePath Condition="$(GamePathVersionOverride) != '' And $(GamePathVersionOverride) != 'default' ">alternative\path\to\game$(GamePathVersionOverride)</GamePath>
+        </PropertyGroup>
+
+        Adjust this property according to your file naming.
+
+        NOTE: "default" is a special value, which does not override GamePath.
+        -->
+        <GamePathVersionOverride>1.6.15</GamePathVersionOverride>
+
         <!-- Custom mod path instead of overriding everything in the standard /Mods folder.
 
         This is used in ~/stardewvalley.targets with:
@@ -13,21 +26,6 @@
         NOTE: double hyphen is not allow inside comments, so remove the space character.
         -->
         <ModsFolder>ModsDev</ModsFolder>
-
-        <!-- Custom game install location for use of multiple SDV versions.
-
-        This is used in ~/stardewvalley.targets with:
-        <PropertyGroup>
-            <GamePath>default\path\to\game</GamePath>
-
-            <GamePath Condition="$(GamePathVersionOverride) != 'default' ">alternative\path\to\game$(GamePathVersionOverride)</GamePath>
-        </PropertyGroup>
-
-        Adjust this property according to your file naming.
-
-        NOTE: "default" is a special value, which does not override GamePath.
-        -->
-        <GamePathVersionOverride>1.6.15</GamePathVersionOverride>
 
         <!-- We're not building for multiple .NET versions -->
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
