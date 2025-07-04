@@ -46,6 +46,8 @@ Mandatory and optional requirements for use of this mod.
 3. Unzip the downloaded file into the `Stardew Valley/Mods` directory.
 4. Launch the game using SMAPI.
 
+**First time?** Check the [wiki](https://stardewvalleywiki.com/Modding:Player_Guide/Getting_Started) for help installing your first mod.
+
 ## Configuration
 
 The mod's configurable options can be found below. These can either be adjusted

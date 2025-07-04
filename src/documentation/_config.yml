@@ -1,0 +1,10 @@
+title: Stardew Valley Modding
+description: >-
+  A collection of my Stardew Valley mods, tutorials, and resources.
+baseurl: ""
+url: ""
+github_username: Dunc4nNT
+
+# Build settings
+plugins:
+  - jekyll-feed

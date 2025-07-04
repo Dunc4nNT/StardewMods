@@ -1,0 +1,22 @@
+<Project>
+    <PropertyGroup>
+        <GamePath>D:\Games\Steam\steamapps\common\Stardew Valley</GamePath>
+    </PropertyGroup>
+
+    <!-- Set a custom alternative path to the game, supporting multiple versions of the game.
+    This requires setting a custom property <GamePathVersionOverride> in your mod, specifying the version to append.
+    When set to "default", SMAPI uses the standard <GamePath>.
+    -->
+    <PropertyGroup Condition="$(GamePathVersionOverride) != '' And $(GamePathVersionOverride) != 'default' ">
+		<GamePath>D:\modding\StardewValley\GameFiles\GameFiles$(GamePathVersionOverride)\Game\Stardew Valley</GamePath>
+    </PropertyGroup>
+
+    <!-- ModsFolder is a property that can be used to specify a custom mod directory.
+    This allows having a "normal play" collection, as well as a "developing mod" collection.
+    A mod needs to specify <ModsFolder> in order to use this.
+    -->
+    <PropertyGroup Condition="$(ModsFolder) != '' ">
+        <GameModsPath>$(GamePath)\$(ModsFolder)</GameModsPath>
+        <StartArguments>--mods-path "$(ModsFolder)"</StartArguments>
+    </PropertyGroup>
+</Project>
