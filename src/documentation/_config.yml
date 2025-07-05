@@ -8,3 +8,5 @@ github_username: Dunc4nNT
 # Build settings
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
