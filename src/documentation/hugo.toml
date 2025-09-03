@@ -1,0 +1,21 @@
+baseURL = 'https://dunc4nnt.github.io/'
+languageCode = 'en-GB'
+title = 'Stardew Valley Modding'
+
+enableGitInfo = true
+enableRobotsTXT = true
+enableEmoji = true
+copyright = 'Copyright © 2024-2025 Dunc4nNT'
+
+[markup.goldmark.extensions]
+strikethrough = false
+
+[markup.goldmark.extensions.extras]
+delete.enable = true
+insert.enable = true
+mark.enable = true
+subscript.enable = true
+superscript.enable = true
+
+[markup.goldmark.extensions.passthrough]
+enable = true
