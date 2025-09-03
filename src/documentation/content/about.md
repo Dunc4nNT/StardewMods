@@ -1,5 +1,7 @@
 +++
-title = "About"
+title = 'About'
+menus = ['main']
+weight = 5
 +++
 
-test
+## Contact

@@ -1,14 +1,4 @@
 +++
 +++
 
-test
-
-[Mods](/mods)
-
-[Tutorials](/tutorials)
-
-[Posts](/posts)
-
-[Resources](/resources)
-
-[About](/about)
+Documentation for my Stardew Valley mods, tools, tutorials, templates, and other resources.

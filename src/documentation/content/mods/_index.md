@@ -1,5 +1,5 @@
 +++
-title = "Mods"
+title = 'Mods'
+menus = ['main']
+weight = 1
 +++
-
-test

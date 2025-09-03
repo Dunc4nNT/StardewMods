@@ -1,0 +1,6 @@
+<p>
+  Updated: {{ .Lastmod.UTC.Format "2006-01-02 15:04:05" }}
+  {{ with .GitInfo }}
+    <a href=https://github.com/Dunc4nNT/StardewMods/commit/{{ .AbbreviatedHash }}>{{ .AbbreviatedHash }}</a>
+  {{ end }}
+</p>

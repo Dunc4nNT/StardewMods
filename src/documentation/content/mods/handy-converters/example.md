@@ -1,5 +1,5 @@
 +++
-title = "Example"
+title = 'Example'
 +++
 
 test

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} - {{ end }}{{ .Site.Title }}{{ end }}</title>
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  {{ with resources.Get "scss/main.scss" }}
+    {{ $opts := dict
+      "enableSourceMap" hugo.IsDevelopment
+      "outputStyle" (cond hugo.IsDevelopment "expanded" "compressed")
+      "targetPath" "css/main.css"
+      "transpiler" "dartsass"
+    }}
+
+    {{ with . | toCSS $opts }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ end }}
+  {{ end }}
+
+  {{ block "script" . }}{{ end }}
+</head>
+<body>
+  <header>{{ block "header" . }}{{ partials.Include "header.html" . }}{{ end }}</header>
+
+  <main id="main-content">
+    {{ block "content" . }}
+    {{ end }}
+  </main>
+
+  <footer>{{ block "footer" . }}{{ partials.Include "footer.html" . }}{{ end }}</footer>
+</body>
+</html>

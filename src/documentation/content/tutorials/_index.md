@@ -1,5 +1,5 @@
 +++
-title = "Tutorials"
+title = 'Tutorials'
+menus = ['main']
+weight = 2
 +++
-
-test

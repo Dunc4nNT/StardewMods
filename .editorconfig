@@ -5,10 +5,10 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{csproj,props,targets}]
+[*.{csproj,props,targets,sln}]
 indent_size = 4
 
-[*.{yml,json,md,html}]
+[*.{yml,json,md,html,css,scss,toml,jsonc}]
 indent_size = 2
 
 [*.cs]

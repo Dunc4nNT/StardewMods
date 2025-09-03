@@ -1,0 +1,7 @@
+{{ define "content" }}
+  <h1>{{ .Title | compare.Default .Site.Title }}</h1>
+
+  {{ .Content }}
+
+  {{ partials.Include "last_updated.html" . }}
+{{ end }}
