@@ -4,4 +4,6 @@ title = 'JSON'
 
 json tutorial
 
-[more]({{% relref "more" %}})
+[Syntax]({{% relref "syntax" %}})
+
+[Text Editor]({{% relref "text_editor" %}})
