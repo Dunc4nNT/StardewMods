@@ -1,0 +1,23 @@
+@use "../abstracts" as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  color: $body-text-clr;
+  background-color: $body-bg-clr;
+}
+
+a {
+  color: $link-clr;
+
+  &:is(:hover, :focus) {
+    color: $link-clr-hover;
+  }
+}

@@ -1,9 +1,5 @@
 <nav class="primary-nav">
-  <a href="{{ .Site.Home.RelPermalink }}" class="nav-logo">
-    <img src="/favicon.ico" alt="{{ $.Site.Title }}">
-  </a>
-
-  <ul role="list" class="nav-list">
+  <ul role="list" class="nav-list flex">
     {{ $currentPage := . }}
     {{ range .Site.Menus.main.ByWeight }}
       <li class="nav-item {{ if $currentPage.IsMenuCurrent .Menu . }}active{{ end }}">

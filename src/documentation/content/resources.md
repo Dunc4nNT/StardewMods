@@ -1,5 +1,5 @@
 +++
 title = 'Resources'
 menus = ['main']
-weight = 4
+weight = 5
 +++

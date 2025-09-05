@@ -1,5 +1,13 @@
-<a id="skip-nav" class="screenreader-text" href="#main-content">
-  Skip to content.
-</a>
+<div>
+  <a id="skip-nav" class="screenreader-text" href="#main-content">
+    Skip to content.
+  </a>
+</div>
+
+<div>
+  <a href="{{ .Site.Home.RelPermalink }}">
+    <img src="/favicon.ico" alt="{{ $.Site.Title }}" class="header-logo">
+  </a>
+</div>
 
 {{ partials.Include "navigation.html" . }}

@@ -1,7 +1,7 @@
 +++
 title = 'About'
 menus = ['main']
-weight = 5
+weight = 6
 +++
 
 ## Contact

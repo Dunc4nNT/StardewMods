@@ -1,0 +1,18 @@
+@use "colours" as *;
+@use "sizes" as *;
+@use "typography" as *;
+
+$current-theme: $light-theme;
+
+$flex-column-gap-default: get-size(6);
+$flex-row-gap-default: calc($flex-column-gap-default / 2);
+
+$body-text-clr: $clr-neutral-900;
+$body-bg-clr: $clr-primary-300;
+$link-clr: $clr-accent-900;
+$link-clr-hover: $clr-accent-600;
+$header-clr: $clr-neutral-900;
+$header-bg-clr: $clr-primary-500;
+$nav-link-clr: $clr-accent-900;
+$nav-link-clr-hover: $clr-accent-600;
+$nav-active-bg-clr: $clr-primary-300;

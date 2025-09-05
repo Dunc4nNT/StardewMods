@@ -1,0 +1,28 @@
+@use "../abstracts" as *;
+
+.primary-nav {
+  padding: 2rem 0;
+
+  .nav-list {
+    list-style: none;
+    text-transform: uppercase;
+
+    & > * {
+      padding: .5em;
+      margin: 0 .5em;
+    }
+
+    a {
+      color: $nav-link-clr;
+      text-decoration: none;
+
+      &:is(:hover, :focus) {
+        color: $nav-link-clr-hover;
+      }
+    }
+
+    .active {
+      background-color: $nav-active-bg-clr;
+    }
+  }
+}

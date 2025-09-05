@@ -1,0 +1,17 @@
+@use "../abstracts" as *;
+
+:root {
+  @each $order, $shade-map in $current-theme {
+    @each $shade, $colour in $shade-map {
+      --clr-#{$order}-#{$shade}: #{$colour};
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @each $order, $shade-map in $dark-theme {
+      @each $shade, $colour in $shade-map {
+        --clr-#{$order}-#{$shade}: #{$colour};
+      }
+    }
+  }
+}

@@ -1,0 +1,139 @@
+$-clr-white: hsl(0, 0%, 100%);
+$-clr-grey-100: hsl(0, 0%, 95%);
+$-clr-grey-200: hsl(0, 0%, 85%);
+$-clr-grey-300: hsl(0, 0%, 75%);
+$-clr-grey-400: hsl(0, 0%, 60%);
+$-clr-grey-500: hsl(0, 0%, 50%);
+$-clr-grey-600: hsl(0, 0%, 40%);
+$-clr-grey-700: hsl(0, 0%, 30%);
+$-clr-grey-800: hsl(0, 0%, 20%);
+$-clr-grey-900: hsl(0, 0%, 10%);
+$-clr-black: hsl(0, 0%, 0%);
+
+$-clr-yellowgreen-100: hsl(89, 54%, 95%);
+$-clr-yellowgreen-200: hsl(89, 54%, 85%);
+$-clr-yellowgreen-300: hsl(89, 54%, 75%);
+$-clr-yellowgreen-400: hsl(89, 54%, 60%);
+$-clr-yellowgreen-500: hsl(89, 54%, 50%);
+$-clr-yellowgreen-600: hsl(89, 54%, 40%);
+$-clr-yellowgreen-700: hsl(89, 54%, 30%);
+$-clr-yellowgreen-800: hsl(89, 54%, 15%);
+$-clr-yellowgreen-900: hsl(89, 54%, 7.5%);
+
+$-clr-darkpurple-100: hsl(317, 37%, 95%);
+$-clr-darkpurple-200: hsl(317, 37%, 85%);
+$-clr-darkpurple-300: hsl(317, 37%, 75%);
+$-clr-darkpurple-400: hsl(317, 37%, 60%);
+$-clr-darkpurple-500: hsl(317, 37%, 50%);
+$-clr-darkpurple-600: hsl(317, 37%, 40%);
+$-clr-darkpurple-700: hsl(317, 37%, 30%);
+$-clr-darkpurple-800: hsl(317, 37%, 15%);
+$-clr-darkpurple-900: hsl(317, 37%, 7.5%);
+
+$light-theme: (
+  "neutral": (
+    "000": $-clr-white,
+    "100": $-clr-grey-100,
+    "200": $-clr-grey-200,
+    "300": $-clr-grey-300,
+    "400": $-clr-grey-400,
+    "500": $-clr-grey-500,
+    "600": $-clr-grey-600,
+    "700": $-clr-grey-700,
+    "800": $-clr-grey-800,
+    "900": $-clr-grey-900,
+    "1000": $-clr-black,
+  ),
+  "primary": (
+    "100": $-clr-darkpurple-100,
+    "200": $-clr-darkpurple-200,
+    "300": $-clr-darkpurple-300,
+    "400": $-clr-darkpurple-400,
+    "500": $-clr-darkpurple-500,
+    "600": $-clr-darkpurple-600,
+    "700": $-clr-darkpurple-700,
+    "800": $-clr-darkpurple-800,
+    "900": $-clr-darkpurple-900,
+  ),
+  "accent": (
+    "100": $-clr-yellowgreen-100,
+    "200": $-clr-yellowgreen-200,
+    "300": $-clr-yellowgreen-300,
+    "400": $-clr-yellowgreen-400,
+    "500": $-clr-yellowgreen-500,
+    "600": $-clr-yellowgreen-600,
+    "700": $-clr-yellowgreen-700,
+    "800": $-clr-yellowgreen-800,
+    "900": $-clr-yellowgreen-900,
+  ),
+);
+
+$dark-theme: (
+  "neutral": (
+    "000": $-clr-black,
+    "100": $-clr-grey-900,
+    "200": $-clr-grey-800,
+    "300": $-clr-grey-700,
+    "400": $-clr-grey-600,
+    "500": $-clr-grey-500,
+    "600": $-clr-grey-400,
+    "700": $-clr-grey-300,
+    "800": $-clr-grey-200,
+    "900": $-clr-grey-100,
+    "1000": $-clr-white,
+  ),
+  "primary": (
+    "100": $-clr-darkpurple-900,
+    "200": $-clr-darkpurple-800,
+    "300": $-clr-darkpurple-700,
+    "400": $-clr-darkpurple-600,
+    "500": $-clr-darkpurple-500,
+    "600": $-clr-darkpurple-400,
+    "700": $-clr-darkpurple-300,
+    "800": $-clr-darkpurple-200,
+    "900": $-clr-darkpurple-100,
+  ),
+  "accent": (
+    "100": $-clr-yellowgreen-900,
+    "200": $-clr-yellowgreen-800,
+    "300": $-clr-yellowgreen-700,
+    "400": $-clr-yellowgreen-600,
+    "500": $-clr-yellowgreen-500,
+    "600": $-clr-yellowgreen-400,
+    "700": $-clr-yellowgreen-300,
+    "800": $-clr-yellowgreen-200,
+    "900": $-clr-yellowgreen-100,
+  ),
+);
+
+$clr-neutral-000: var(--clr-neutral-000);
+$clr-neutral-100: var(--clr-neutral-100);
+$clr-neutral-200: var(--clr-neutral-200);
+$clr-neutral-300: var(--clr-neutral-300);
+$clr-neutral-400: var(--clr-neutral-400);
+$clr-neutral-500: var(--clr-neutral-500);
+$clr-neutral-600: var(--clr-neutral-600);
+$clr-neutral-700: var(--clr-neutral-700);
+$clr-neutral-800: var(--clr-neutral-800);
+$clr-neutral-900: var(--clr-neutral-900);
+$clr-neutral-1000: var(--clr-neutral-1000);
+
+$clr-primary-100: var(--clr-primary-100);
+$clr-primary-200: var(--clr-primary-200);
+$clr-primary-300: var(--clr-primary-300);
+$clr-primary-400: var(--clr-primary-400);
+$clr-primary-500: var(--clr-primary-500);
+$clr-primary-600: var(--clr-primary-600);
+$clr-primary-700: var(--clr-primary-700);
+$clr-primary-800: var(--clr-primary-800);
+$clr-primary-900: var(--clr-primary-900);
+
+$clr-accent-100: var(--clr-accent-100);
+$clr-accent-200: var(--clr-accent-200);
+$clr-accent-300: var(--clr-accent-300);
+$clr-accent-400: var(--clr-accent-400);
+$clr-accent-500: var(--clr-accent-500);
+$clr-accent-600: var(--clr-accent-600);
+$clr-accent-700: var(--clr-accent-700);
+$clr-accent-800: var(--clr-accent-800);
+$clr-accent-900: var(--clr-accent-900);

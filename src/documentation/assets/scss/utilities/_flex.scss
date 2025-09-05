@@ -1,0 +1,10 @@
+@use "../abstracts" as *;
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--flex-column-gap, $flex-column-gap-default);
+  column-gap: var(--flex-row-gap, $flex-row-gap-default);
+  width: fit-content;
+  justify-content: center;
+}

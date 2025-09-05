@@ -1,0 +1,11 @@
+@use "../abstracts" as *;
+
+.primary-header {
+  color: $header-clr;
+  background-color: $header-bg-clr;
+}
+
+.header-logo {
+  width: 5rem;
+  height: 5rem;
+}
