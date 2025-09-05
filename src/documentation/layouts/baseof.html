@@ -30,8 +30,10 @@
   </header>
 
   <main id="main-content">
-    {{ block "content" . }}
-    {{ end }}
+    <div class="container flow">
+      {{ block "content" . }}
+      {{ end }}
+    </div>
   </main>
 
   {{ partials.Include "footer.html" . }}

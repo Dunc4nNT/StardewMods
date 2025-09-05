@@ -2,7 +2,7 @@
   <ul role="list" class="nav-list flex">
     {{ $currentPage := . }}
     {{ range .Site.Menus.main.ByWeight }}
-      <li class="nav-item {{ if $currentPage.IsMenuCurrent .Menu . }}active{{ end }}">
+      <li class="nav-item {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{ end }}">
         <a href="{{ .URL }}">
           {{ .Name }}
         </a>

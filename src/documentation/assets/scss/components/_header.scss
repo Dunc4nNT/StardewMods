@@ -1,6 +1,7 @@
 @use "../abstracts" as *;
 
 .primary-header {
+  --flex-width: auto;
   color: $header-clr;
   background-color: $header-bg-clr;
 }

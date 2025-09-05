@@ -1,9 +1,11 @@
 @use "colours" as *;
 @use "sizes" as *;
 @use "typography" as *;
+@use "functions" as *;
 
 $current-theme: $light-theme;
 
+$flow-space-default: 1em;
 $flex-column-gap-default: get-size(6);
 $flex-row-gap-default: calc($flex-column-gap-default / 2);
 

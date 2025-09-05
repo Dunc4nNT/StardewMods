@@ -5,6 +5,6 @@
   flex-wrap: wrap;
   column-gap: var(--flex-column-gap, $flex-column-gap-default);
   column-gap: var(--flex-row-gap, $flex-row-gap-default);
-  width: fit-content;
+  width: var(--flex-width, fit-content);
   justify-content: center;
 }
