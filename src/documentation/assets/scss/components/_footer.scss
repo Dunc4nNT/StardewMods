@@ -1,0 +1,13 @@
+@use "../abstracts" as *;
+
+.primary-footer {
+  background-color: $footer-bg-clr;
+  text-align: center;
+  display: grid;
+  justify-content: center;
+  padding: get-size(10) 0;
+
+  ul {
+    list-style: none;
+  }
+}

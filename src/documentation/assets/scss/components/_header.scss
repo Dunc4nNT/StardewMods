@@ -4,6 +4,7 @@
   --flex-width: auto;
   color: $header-clr;
   background-color: $header-bg-clr;
+  padding: get-size(5) 0;
 }
 
 .header-logo {
